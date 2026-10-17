@@ -1,0 +1,1172 @@
+{
+  "schema_version": 1,
+  "context": "example",
+  "cases": [
+    {
+      "id": "complete-example",
+      "description": "Coherent fictional accepted result.",
+      "changes": [],
+      "reference_policy": "rebuild",
+      "assessment": "completion",
+      "expected_codes": []
+    },
+    {
+      "id": "unknown-field",
+      "description": "Reject an undeclared workflow field.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "review_stats"
+          ],
+          "operation": "set",
+          "value": "pass"
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "structure",
+      "expected_codes": [
+        "unknown-field"
+      ]
+    },
+    {
+      "id": "missing-value",
+      "description": "Preserve an unresolved draft without readiness.",
+      "changes": [
+        {
+          "file": "records/decision/method-choice/r1.json",
+          "target": "envelope",
+          "pointer": [
+            "lifecycle"
+          ],
+          "operation": "set",
+          "value": "draft"
+        },
+        {
+          "file": "records/decision/method-choice/r1.json",
+          "target": "content",
+          "pointer": [
+            "selection"
+          ],
+          "operation": "set",
+          "value": null
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "approval",
+      "expected_codes": [
+        "unresolved-decision"
+      ]
+    },
+    {
+      "id": "partial-approval",
+      "description": "Group approval leaves the resource choice unapproved.",
+      "changes": [
+        {
+          "file": "records/approval/spec-approval/r1.json",
+          "target": "content",
+          "pointer": [
+            "target_paths"
+          ],
+          "operation": "set",
+          "value": [
+            "artifacts/design.md",
+            "artifacts/input.json",
+            "artifacts/overview.md",
+            "artifacts/spec.md",
+            "artifacts/tasks.md",
+            "records/decision/method-choice/r1.json",
+            "records/decision/pair-choice/r1.json",
+            "records/evidence/example-source/r1.json",
+            "records/step/copy-step/r1.json",
+            "records/unit/copy-unit/r1.json"
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "approval",
+      "expected_codes": [
+        "unapproved-decision"
+      ]
+    },
+    {
+      "id": "missing-reference",
+      "description": "Report an absent referenced artifact.",
+      "changes": [
+        {
+          "file": "artifacts/input.json",
+          "target": "file",
+          "pointer": [],
+          "operation": "remove",
+          "value": null
+        }
+      ],
+      "reference_policy": "preserve",
+      "assessment": "references",
+      "expected_codes": [
+        "missing-reference"
+      ]
+    },
+    {
+      "id": "changed-decision",
+      "description": "Changed bytes cannot retain earlier approval.",
+      "changes": [
+        {
+          "file": "records/decision/method-choice/r1.json",
+          "target": "content",
+          "pointer": [
+            "selection",
+            "value",
+            "operation"
+          ],
+          "operation": "set",
+          "value": "reverse"
+        }
+      ],
+      "reference_policy": "preserve",
+      "assessment": "references",
+      "expected_codes": [
+        "digest-mismatch"
+      ]
+    },
+    {
+      "id": "conflicting-prose",
+      "description": "Readable and structured methods conflict.",
+      "changes": [
+        {
+          "file": "artifacts/design.md",
+          "target": "content",
+          "pointer": [],
+          "operation": "set",
+          "value": "# Copy contract\n\nReverse the array before writing the output.\n"
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "representation",
+      "expected_codes": [
+        "representation-conflict"
+      ]
+    },
+    {
+      "id": "missing-pair-decision",
+      "description": "A step must record its pairing decision.",
+      "changes": [
+        {
+          "file": "records/step/copy-step/r1.json",
+          "target": "envelope",
+          "pointer": [
+            "lifecycle"
+          ],
+          "operation": "set",
+          "value": "draft"
+        },
+        {
+          "file": "records/step/copy-step/r1.json",
+          "target": "content",
+          "pointer": [
+            "paired_validation"
+          ],
+          "operation": "set",
+          "value": null
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "approval",
+      "expected_codes": [
+        "missing-pair-decision"
+      ]
+    },
+    {
+      "id": "self-review",
+      "description": "An artifact author cannot supply its own separate review.",
+      "changes": [
+        {
+          "file": "records/review/spec-review/r1.json",
+          "target": "envelope",
+          "pointer": [
+            "author"
+          ],
+          "operation": "set",
+          "value": {
+            "session_id": "example-session",
+            "context_id": "example-author"
+          }
+        },
+        {
+          "file": "records/review/spec-review/r1.json",
+          "target": "content",
+          "pointer": [
+            "reviewer"
+          ],
+          "operation": "set",
+          "value": {
+            "session_id": "example-session",
+            "context_id": "example-author"
+          }
+        },
+        {
+          "file": "records/review/work-review/r1.json",
+          "target": "content",
+          "pointer": [
+            "artifact_authors"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "session_id": "example-session",
+              "context_id": "example-author"
+            },
+            {
+              "session_id": "example-session",
+              "context_id": "example-worker"
+            }
+          ]
+        },
+        {
+          "file": "records/review/results-review/r1.json",
+          "target": "content",
+          "pointer": [
+            "artifact_authors"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "session_id": "example-session",
+              "context_id": "example-author"
+            },
+            {
+              "session_id": "example-session",
+              "context_id": "example-work-reviewer"
+            },
+            {
+              "session_id": "example-session",
+              "context_id": "example-worker"
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "reviews",
+      "expected_codes": [
+        "review-not-independent"
+      ]
+    },
+    {
+      "id": "indeterminate-review",
+      "description": "An indeterminate assessment cannot pass a gate.",
+      "changes": [
+        {
+          "file": "records/review/spec-review/r1.json",
+          "target": "content",
+          "pointer": [
+            "outcome"
+          ],
+          "operation": "set",
+          "value": "unable_to_determine"
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "reviews",
+      "expected_codes": [
+        "review-not-passing"
+      ]
+    },
+    {
+      "id": "stale-review",
+      "description": "Changed prepared work invalidates its prior review.",
+      "changes": [
+        {
+          "file": "artifacts/work.txt",
+          "target": "content",
+          "pointer": [],
+          "operation": "set",
+          "value": "Fictional changed operation: reverse the vector.\n"
+        }
+      ],
+      "reference_policy": "preserve",
+      "assessment": "references",
+      "expected_codes": [
+        "digest-mismatch"
+      ]
+    },
+    {
+      "id": "missing-acceptance",
+      "description": "Checks and review cannot replace user acceptance.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states",
+            0,
+            "acceptance_ref"
+          ],
+          "operation": "set",
+          "value": null
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "completion",
+      "expected_codes": [
+        "missing-acceptance"
+      ]
+    },
+    {
+      "id": "expanded-amendment",
+      "description": "An extra modification needs a new reopening approval.",
+      "changes": [
+        {
+          "file": "records/amendment/proposed-amendment/r1.json",
+          "target": "content",
+          "pointer": [
+            "edits"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "artifacts/spec-r2.md",
+              "operation": "create",
+              "planned_change": "Specify an output object containing the unchanged vector under values.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/design-r2.md",
+              "operation": "create",
+              "planned_change": "Define wrapping the array and writing artifacts/output-r2.json.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/tasks-r2.md",
+              "operation": "create",
+              "planned_change": "Define the revised implementation and verification work without claiming completion.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "records/decision/method-choice/r2.json",
+              "operation": "create",
+              "planned_change": "Propose the revised object representation and output path for user approval.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "records/unit/copy-unit/r2.json",
+              "operation": "create",
+              "planned_change": "Revise the interface, method, decisions, checks, and output path for step revision 2.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "records/step/copy-step/r2.json",
+              "operation": "create",
+              "planned_change": "Reference revised documents, decision, and unit; specify the object output and expected checks.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/work-r2.txt",
+              "operation": "create",
+              "planned_change": "Prepare the fictional operation specified by the revised approved contract.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/output-r2.json",
+              "operation": "create",
+              "planned_change": "Produce the revised object with the unchanged vector in its values field.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/extra.txt",
+              "operation": "create",
+              "planned_change": "Add an extra output.",
+              "necessity": "Newly discovered requirement."
+            }
+          ]
+        }
+      ],
+      "reference_policy": "preserve",
+      "assessment": "reopening",
+      "expected_codes": [
+        "amendment-scope-changed"
+      ]
+    },
+    {
+      "id": "reopened-state",
+      "description": "Reopening returns the affected step to specification.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 2,
+              "state": "reopened",
+              "acceptance_ref": null,
+              "amendment_ref": {
+                "path": "records/amendment/proposed-amendment/r1.json",
+                "sha256": "630fc4c2891900b2f40083b72683e3d77038aaa7cbc8931901379ff37e21b059"
+              },
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+            },
+            {
+              "path": "records/review/work-review/r1.json",
+              "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+            },
+            {
+              "path": "records/run/copy-run/r1.json",
+              "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+            },
+            {
+              "path": "records/comparison/copy-comparison/r1.json",
+              "sha256": "bb358f1e95fc083af5616212dbb963bcb11cf4ae4556d64717f7196d3f725737"
+            },
+            {
+              "path": "records/review/results-review/r1.json",
+              "sha256": "382fcedc289c3c1a78ee88ccf1f9f72618655d4f80c938f8cc79577d3f2c2843"
+            },
+            {
+              "path": "records/acceptance/copy-acceptance/r1.json",
+              "sha256": "4bf33c9499d9a69b73b3c7d6d84ff217db0598d2f2b0ebdcef1ddad19e29e118"
+            },
+            {
+              "path": "records/approval/reopen-approval/r1.json",
+              "sha256": "07678eb940b66fd6650fa1843b3a7e481f7a6c34902d066bc5201c6a57d19a62"
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "reopening",
+      "expected_codes": []
+    },
+    {
+      "id": "paired-draft",
+      "description": "A draft can request paired evidence without fabricating a second run.",
+      "changes": [
+        {
+          "file": "records/comparison/copy-comparison/r1.json",
+          "target": "envelope",
+          "pointer": [
+            "lifecycle"
+          ],
+          "operation": "set",
+          "value": "draft"
+        },
+        {
+          "file": "records/comparison/copy-comparison/r1.json",
+          "target": "content",
+          "pointer": [
+            "mode"
+          ],
+          "operation": "set",
+          "value": "paired"
+        },
+        {
+          "file": "records/comparison/copy-comparison/r1.json",
+          "target": "content",
+          "pointer": [
+            "run_refs"
+          ],
+          "operation": "set",
+          "value": null
+        },
+        {
+          "file": "records/comparison/copy-comparison/r1.json",
+          "target": "content",
+          "pointer": [
+            "worker_contexts"
+          ],
+          "operation": "set",
+          "value": null
+        },
+        {
+          "file": "records/comparison/copy-comparison/r1.json",
+          "target": "content",
+          "pointer": [
+            "pairwise_results"
+          ],
+          "operation": "set",
+          "value": null
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "representation",
+      "expected_codes": [
+        "incomplete-example"
+      ]
+    },
+    {
+      "id": "suspended-draft",
+      "description": "A draft can identify a suspended dependent step without inventing its accepted contract.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "envelope",
+          "pointer": [
+            "lifecycle"
+          ],
+          "operation": "set",
+          "value": "draft"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "step_order"
+          ],
+          "operation": "set",
+          "value": [
+            "copy-step",
+            "later-step"
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 2,
+              "state": "reopened",
+              "acceptance_ref": null,
+              "amendment_ref": {
+                "path": "records/amendment/proposed-amendment/r1.json",
+                "sha256": "630fc4c2891900b2f40083b72683e3d77038aaa7cbc8931901379ff37e21b059"
+              },
+              "blocked_by": []
+            },
+            {
+              "step_id": "later-step",
+              "revision": 1,
+              "state": "suspended",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": [
+                "copy-step"
+              ]
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+            },
+            {
+              "path": "records/review/work-review/r1.json",
+              "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+            },
+            {
+              "path": "records/run/copy-run/r1.json",
+              "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+            },
+            {
+              "path": "records/comparison/copy-comparison/r1.json",
+              "sha256": "bb358f1e95fc083af5616212dbb963bcb11cf4ae4556d64717f7196d3f725737"
+            },
+            {
+              "path": "records/review/results-review/r1.json",
+              "sha256": "382fcedc289c3c1a78ee88ccf1f9f72618655d4f80c938f8cc79577d3f2c2843"
+            },
+            {
+              "path": "records/acceptance/copy-acceptance/r1.json",
+              "sha256": "4bf33c9499d9a69b73b3c7d6d84ff217db0598d2f2b0ebdcef1ddad19e29e118"
+            },
+            {
+              "path": "records/approval/reopen-approval/r1.json",
+              "sha256": "07678eb940b66fd6650fa1843b3a7e481f7a6c34902d066bc5201c6a57d19a62"
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "representation",
+      "expected_codes": [
+        "incomplete-example"
+      ]
+    },
+    {
+      "id": "state-provisional",
+      "description": "A later step remains provisional while the current step awaits review.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "awaiting_specification",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            }
+          ]
+        },
+        {
+          "file": "artifacts/overview.md",
+          "target": "content",
+          "pointer": [],
+          "operation": "set",
+          "value": "# Fictional copy project\n\nCopy step followed by a provisional later step. No real approval or execution is represented.\n"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "step_order"
+          ],
+          "operation": "set",
+          "value": [
+            "copy-step",
+            "later-step"
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "awaiting_specification",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            },
+            {
+              "step_id": "later-step",
+              "revision": 1,
+              "state": "provisional",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "state",
+      "expected_codes": []
+    },
+    {
+      "id": "state-interviewing",
+      "description": "Overview approval does not approve the current step's detailed choices.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "interviewing",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            }
+          ]
+        },
+        {
+          "file": "records/approval/spec-approval/r1.json",
+          "target": "content",
+          "pointer": [
+            "purpose"
+          ],
+          "operation": "set",
+          "value": "overview"
+        },
+        {
+          "file": "records/approval/spec-approval/r1.json",
+          "target": "content",
+          "pointer": [
+            "target_paths"
+          ],
+          "operation": "set",
+          "value": [
+            "artifacts/overview.md"
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "state",
+      "expected_codes": []
+    },
+    {
+      "id": "state-awaiting-specification",
+      "description": "A complete approved specification still needs its separate review.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "awaiting_specification",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "state",
+      "expected_codes": []
+    },
+    {
+      "id": "state-ready-to-implement",
+      "description": "Approved complete specifications and separate review permit code preparation.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "ready_to_implement",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "state",
+      "expected_codes": []
+    },
+    {
+      "id": "state-awaiting-pre-execution-review",
+      "description": "Prepared work with an indeterminate review cannot execute.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "awaiting_pre_execution_review",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+            },
+            {
+              "path": "records/review/work-review/r1.json",
+              "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+            }
+          ]
+        },
+        {
+          "file": "records/review/work-review/r1.json",
+          "target": "content",
+          "pointer": [
+            "outcome"
+          ],
+          "operation": "set",
+          "value": "unable_to_determine"
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "state",
+      "expected_codes": []
+    },
+    {
+      "id": "state-ready-to-execute",
+      "description": "Passing review of the exact prepared work permits its specified execution.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "ready_to_execute",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+            },
+            {
+              "path": "records/review/work-review/r1.json",
+              "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "state",
+      "expected_codes": []
+    },
+    {
+      "id": "state-awaiting-results-review",
+      "description": "Run and comparison evidence still require separate results review.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "awaiting_results_review",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+            },
+            {
+              "path": "records/review/work-review/r1.json",
+              "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+            },
+            {
+              "path": "records/run/copy-run/r1.json",
+              "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+            },
+            {
+              "path": "records/comparison/copy-comparison/r1.json",
+              "sha256": "bb358f1e95fc083af5616212dbb963bcb11cf4ae4556d64717f7196d3f725737"
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "state",
+      "expected_codes": []
+    },
+    {
+      "id": "state-awaiting-acceptance",
+      "description": "Passing checks and results review still require explicit user acceptance.",
+      "changes": [
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "current_step_id"
+          ],
+          "operation": "set",
+          "value": "copy-step"
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "states"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "awaiting_acceptance",
+              "acceptance_ref": null,
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ]
+        },
+        {
+          "file": "records/project/project-state/r1.json",
+          "target": "content",
+          "pointer": [
+            "evidence_refs"
+          ],
+          "operation": "set",
+          "value": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+            },
+            {
+              "path": "records/review/work-review/r1.json",
+              "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+            },
+            {
+              "path": "records/run/copy-run/r1.json",
+              "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+            },
+            {
+              "path": "records/comparison/copy-comparison/r1.json",
+              "sha256": "bb358f1e95fc083af5616212dbb963bcb11cf4ae4556d64717f7196d3f725737"
+            },
+            {
+              "path": "records/review/results-review/r1.json",
+              "sha256": "382fcedc289c3c1a78ee88ccf1f9f72618655d4f80c938f8cc79577d3f2c2843"
+            }
+          ]
+        }
+      ],
+      "reference_policy": "rebuild",
+      "assessment": "state",
+      "expected_codes": []
+    }
+  ]
+}

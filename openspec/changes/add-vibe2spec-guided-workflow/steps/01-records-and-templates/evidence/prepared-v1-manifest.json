@@ -1,0 +1,119 @@
+{
+  "record_type": "manual-step1-prepared-evidence",
+  "work_version": 1,
+  "specification_revision": 4,
+  "specification_manifest_sha256": "682504af0fca728342b57c931848931fe86c850371cbe721ddee960a9dd6d68b",
+  "files": [
+    {
+      "path": "docs/record-format.md",
+      "size_bytes": 31407,
+      "sha256": "b5254afc2da9185d36c3ef083b19431baa8ffc5bc836998ee915f334092d34ea"
+    },
+    {
+      "path": "templates/project.md",
+      "size_bytes": 515,
+      "sha256": "e92f0e841d41f55dc5d28c65346eba3457c7cb205e97ad0ff8a121bd60c7b557"
+    },
+    {
+      "path": "templates/project.json",
+      "size_bytes": 465,
+      "sha256": "01a1963929287df354aaf08b926598c035c649f99ea501d06a8e8ebaa3190c6b"
+    },
+    {
+      "path": "templates/decision.json",
+      "size_bytes": 408,
+      "sha256": "3475851ccc3100f51f54f77c95abeb9a7cef8797d57afbd7abc1ce19d603f472"
+    },
+    {
+      "path": "templates/evidence.json",
+      "size_bytes": 461,
+      "sha256": "5f6696a73f842a24c4f87a5e8824c696f31eacc7dae56ea5b9d389264bf475db"
+    },
+    {
+      "path": "templates/approval.json",
+      "size_bytes": 387,
+      "sha256": "5c115d998e7ebe36ec7989fc72e1c46fe652743ec4c933a4e4e41511d13fde6b"
+    },
+    {
+      "path": "templates/step/spec.md",
+      "size_bytes": 534,
+      "sha256": "6f41194e804daf7893a979ad2329a1ab996830684dca84cc1947baf04cd92063"
+    },
+    {
+      "path": "templates/step/design.md",
+      "size_bytes": 845,
+      "sha256": "83652d5cd7395a6a4139518a11d01ba6f0aaa923f1140a3688a813c286449837"
+    },
+    {
+      "path": "templates/step/tasks.md",
+      "size_bytes": 526,
+      "sha256": "3793e9c08d15e834d998362938b9cb6d4b04673d7fb1e314a81c7adef1edb1ff"
+    },
+    {
+      "path": "templates/step/contract.json",
+      "size_bytes": 588,
+      "sha256": "cbc4e0d5bb1d9927d243a2fb0638c6c9627d7e30a52f7d00690fbe32cd6efc13"
+    },
+    {
+      "path": "templates/step/unit.json",
+      "size_bytes": 628,
+      "sha256": "03d497af5eedca366cdfe22c6d6cde47c38a015fa59c7ee5d041cb482ce2c2b1"
+    },
+    {
+      "path": "templates/review.json",
+      "size_bytes": 449,
+      "sha256": "fcf8eea59e19ddb76a4cd159d1aae9e5c8ab92670486b353b3eaa7744ec76671"
+    },
+    {
+      "path": "templates/run.json",
+      "size_bytes": 696,
+      "sha256": "a594a477b560693b5cbcfd3f4263205f7565badd5bb80375dafb31dc612bf334"
+    },
+    {
+      "path": "templates/comparison.json",
+      "size_bytes": 501,
+      "sha256": "fafdc0ecc49ab53b2b157c9b75eb6eed2a0a831b278431ecf6a460e78c49d9db"
+    },
+    {
+      "path": "templates/acceptance.json",
+      "size_bytes": 511,
+      "sha256": "a99af96176cd7c6ef21c038a6f1779c8496e1fc0d792ccb8c47fdc74c409ef50"
+    },
+    {
+      "path": "templates/amendment.json",
+      "size_bytes": 525,
+      "sha256": "c08ff0a35d19b248eba1619bb596d13552509d496b9ecd639884606efdafedfe"
+    },
+    {
+      "path": "templates/snapshot.json",
+      "size_bytes": 334,
+      "sha256": "4cd72e4a8009815d7b172e60d3884c6052f21d838f9f75d86e1b8b39abf9bb13"
+    },
+    {
+      "path": "tests/fixtures/records/base.json",
+      "size_bytes": 42398,
+      "sha256": "1da6089ccd6b921de320614344d87839129e66c73716fb242aa6d6896592e8e0"
+    },
+    {
+      "path": "tests/fixtures/records/cases.json",
+      "size_bytes": 35582,
+      "sha256": "dd019c723c489e0cd7b44cc77dba2a6ed97e863ca7ecc55cac8c2444e52f3cab"
+    },
+    {
+      "path": "tests/fixtures/records/README.md",
+      "size_bytes": 828,
+      "sha256": "5fe3805cab8d33a003cf13199e07416648858e9d21ef537c5b76a6cd1d722e42"
+    }
+  ],
+  "command": {
+    "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/01-records-and-templates/evidence/verification-command-v1.sh",
+    "size_bytes": 2894,
+    "sha256": "68a5dc6b15df02b6964c64c759c53cdccb5f0d829b43d5a51866957246685e9d",
+    "cwd": "/Users/jingxuan.bao/Downloads/Vibe2Spec"
+  },
+  "authors": {
+    "documentation_and_templates": "/root",
+    "fixtures": "/root/step1_fixture_implementation"
+  },
+  "verification_executed": false
+}

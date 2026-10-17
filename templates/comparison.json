@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "comparison",
+  "id": "template-comparison",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "mode": null,
+    "unit_ref": null,
+    "input_snapshot_ref": null,
+    "run_refs": null,
+    "worker_contexts": null,
+    "correctness_results": null,
+    "pairwise_results": null,
+    "rules": null
+  }
+}

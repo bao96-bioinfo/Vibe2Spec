@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "kind": "evidence",
+  "id": "template-evidence",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "source_uri": null,
+    "source_title": null,
+    "source_version": null,
+    "accessed_at": null,
+    "claim": null,
+    "location": null,
+    "limitations": null
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "kind": "decision",
+  "id": "template-decision",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "question": null,
+    "options": null,
+    "selection": null,
+    "rationale": null,
+    "evidence_refs": null
+  }
+}

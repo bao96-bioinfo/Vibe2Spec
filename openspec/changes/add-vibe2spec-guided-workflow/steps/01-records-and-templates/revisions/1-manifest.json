@@ -1,0 +1,25 @@
+{
+  "revision": 1,
+  "files": [
+    {
+      "path": "spec.md",
+      "size_bytes": 12740,
+      "sha256": "873cb9be7440acc2745a2189390c0d9bcacc12e42583a59e573e9df64c669a43"
+    },
+    {
+      "path": "record-format.md",
+      "size_bytes": 22446,
+      "sha256": "c045ffb295509f300309422a831bfa8478f5bf912c6d66b3a306ecdebc1d7d64"
+    },
+    {
+      "path": "fixtures.md",
+      "size_bytes": 23224,
+      "sha256": "87fa4a1d82a4742d1683704f378058ac3b5bffbfa332dc3e2eccddfaf6a87288"
+    },
+    {
+      "path": "verification.md",
+      "size_bytes": 10212,
+      "sha256": "1fed905ca24c6b6331d11e81e600549942300c7b2c39c227eec97a6f9caf9e6e"
+    }
+  ]
+}

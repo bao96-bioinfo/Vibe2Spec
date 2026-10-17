@@ -1,0 +1,25 @@
+{
+  "purpose": "Preserve previously presented planning contents before user-requested explanation clarification.",
+  "files": [
+    {
+      "path": "proposal.md",
+      "size_bytes": 6350,
+      "sha256": "c3f4da87d9dbe8b2b7142d1def037085732c3989117614dfa7a66b0f27285de1"
+    },
+    {
+      "path": "specs/request-discovery/spec.md",
+      "size_bytes": 6240,
+      "sha256": "6219f6871821daf4039d42184fe5c499a00dac28f87ca5e12737456ae203bacc"
+    },
+    {
+      "path": "design.md",
+      "size_bytes": 34278,
+      "sha256": "f61c735d548f37b857786649dc0bed0d5cb7e74b26e13c474cd4bc0878bfa37c"
+    },
+    {
+      "path": "tasks.md",
+      "size_bytes": 17578,
+      "sha256": "23a5186b2bf9e45c78a4601326bdc1dd29c44181a0d76e85517aafcec78e8682"
+    }
+  ]
+}

@@ -1,0 +1,1215 @@
+{
+  "schema_version": 1,
+  "context": "example",
+  "description": "Fictional records for format verification; no real approval or execution.",
+  "files": {
+    "artifacts/design.md": {
+      "encoding": "text",
+      "content": "# Copy contract\n\nCopy the exact approved JSON array from artifacts/input.json to artifacts/output.json. Preserve values and order. Do not mutate the input. Missing input or contents differing from the approved input stop without an output. No retry or fallback is allowed. The fictional example-copy tool performs exactly one call within the approved resource limits. Runtime is fictional-copy-1 and platform is fictional. There are no environment variables, random choices, or concurrent operations.\n"
+    },
+    "artifacts/input.json": {
+      "encoding": "json",
+      "content": [
+        1,
+        2,
+        3
+      ]
+    },
+    "artifacts/output.json": {
+      "encoding": "json",
+      "content": [
+        1,
+        2,
+        3
+      ]
+    },
+    "artifacts/overview.md": {
+      "encoding": "text",
+      "content": "# Fictional copy project\n\nOne copy step. No real approval or execution is represented.\n"
+    },
+    "artifacts/spec.md": {
+      "encoding": "text",
+      "content": "# Copy vector\n\n### Requirement: preserve-vector\n\nThe step SHALL copy the vector without changing its values or order.\n\n#### Scenario: Three values\n\nWHEN the input is [1, 2, 3],\nTHEN the output is [1, 2, 3] and the input is unchanged.\n"
+    },
+    "artifacts/tasks.md": {
+      "encoding": "text",
+      "content": "# Fictional tasks\n\n- [ ] 1.1 Copy the approved vector and check exact JSON equality.\n\nThis preserved task definition precedes implementation. Completion is recorded separately in acceptance and project state.\n"
+    },
+    "artifacts/work.txt": {
+      "encoding": "text",
+      "content": "Fictional prepared operation: example-copy artifacts/input.json artifacts/output.json\n"
+    },
+    "records/acceptance/copy-acceptance/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "acceptance",
+        "id": "copy-acceptance",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "step_id": "copy-step",
+          "step_revision": 1,
+          "spec_snapshot_ref": {
+            "path": "records/snapshot/spec-snapshot/r1.json",
+            "sha256": "e2e559143c7e884a203a6295578704984cac338f91163cae2850816756bde299"
+          },
+          "work_snapshot_ref": {
+            "path": "records/snapshot/work-snapshot/r1.json",
+            "sha256": "7e554f42dee1109f945d44cae9843d665980c9eeec04c41749da17569a6e4156"
+          },
+          "run_refs": [
+            {
+              "path": "records/run/copy-run/r1.json",
+              "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+            }
+          ],
+          "comparison_refs": [
+            {
+              "path": "records/comparison/copy-comparison/r1.json",
+              "sha256": "bb358f1e95fc083af5616212dbb963bcb11cf4ae4556d64717f7196d3f725737"
+            }
+          ],
+          "results_review_ref": {
+            "path": "records/review/results-review/r1.json",
+            "sha256": "382fcedc289c3c1a78ee88ccf1f9f72618655d4f80c938f8cc79577d3f2c2843"
+          },
+          "response": {
+            "session_id": "example-user-session",
+            "message_id": "example-accept-result",
+            "text": "Fictional acceptance of the assessed copy result."
+          }
+        }
+      }
+    },
+    "records/amendment/proposed-amendment/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "amendment",
+        "id": "proposed-amendment",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "step_id": "copy-step",
+          "previous_acceptance_ref": {
+            "path": "records/acceptance/copy-acceptance/r1.json",
+            "sha256": "4bf33c9499d9a69b73b3c7d6d84ff217db0598d2f2b0ebdcef1ddad19e29e118"
+          },
+          "proposed_revision": 2,
+          "reason": "A newly required output representation cannot be supplied by the accepted artifact.",
+          "blocking_requirement": "The revised downstream contract requires a named values field.",
+          "edits": [
+            {
+              "path": "artifacts/spec-r2.md",
+              "operation": "create",
+              "planned_change": "Specify an output object containing the unchanged vector under values.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/design-r2.md",
+              "operation": "create",
+              "planned_change": "Define wrapping the array and writing artifacts/output-r2.json.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/tasks-r2.md",
+              "operation": "create",
+              "planned_change": "Define the revised implementation and verification work without claiming completion.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "records/decision/method-choice/r2.json",
+              "operation": "create",
+              "planned_change": "Propose the revised object representation and output path for user approval.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "records/unit/copy-unit/r2.json",
+              "operation": "create",
+              "planned_change": "Revise the interface, method, decisions, checks, and output path for step revision 2.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "records/step/copy-step/r2.json",
+              "operation": "create",
+              "planned_change": "Reference revised documents, decision, and unit; specify the object output and expected checks.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/work-r2.txt",
+              "operation": "create",
+              "planned_change": "Prepare the fictional operation specified by the revised approved contract.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            },
+            {
+              "path": "artifacts/output-r2.json",
+              "operation": "create",
+              "planned_change": "Produce the revised object with the unchanged vector in its values field.",
+              "necessity": "Supply the required downstream representation while preserving accepted revision 1."
+            }
+          ],
+          "affected_step_ids": [],
+          "superseded_decision_refs": [
+            {
+              "path": "records/decision/method-choice/r1.json",
+              "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+            }
+          ]
+        }
+      }
+    },
+    "records/approval/reopen-approval/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "approval",
+        "id": "reopen-approval",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "purpose": "reopen",
+          "snapshot_ref": {
+            "path": "records/snapshot/amendment-snapshot/r1.json",
+            "sha256": "34cdec19b605f49c4420a6cf5d75d43b5737f34d846e2ac24e04eb4be4e52963"
+          },
+          "target_paths": [
+            "records/amendment/proposed-amendment/r1.json"
+          ],
+          "response": {
+            "session_id": "example-user-session",
+            "message_id": "example-approve-reopen",
+            "text": "Fictional approval to reopen only the listed amendment scope."
+          }
+        }
+      }
+    },
+    "records/approval/spec-approval/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "approval",
+        "id": "spec-approval",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "purpose": "step_specification",
+          "snapshot_ref": {
+            "path": "records/snapshot/spec-snapshot/r1.json",
+            "sha256": "e2e559143c7e884a203a6295578704984cac338f91163cae2850816756bde299"
+          },
+          "target_paths": [
+            "artifacts/design.md",
+            "artifacts/input.json",
+            "artifacts/overview.md",
+            "artifacts/spec.md",
+            "artifacts/tasks.md",
+            "records/decision/method-choice/r1.json",
+            "records/decision/pair-choice/r1.json",
+            "records/decision/resource-choice/r1.json",
+            "records/evidence/example-source/r1.json",
+            "records/step/copy-step/r1.json",
+            "records/unit/copy-unit/r1.json"
+          ],
+          "response": {
+            "session_id": "example-user-session",
+            "message_id": "example-approve-spec",
+            "text": "Fictional approval of all listed specification contents."
+          }
+        }
+      }
+    },
+    "records/comparison/copy-comparison/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "comparison",
+        "id": "copy-comparison",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "mode": "single",
+          "unit_ref": {
+            "path": "records/unit/copy-unit/r1.json",
+            "sha256": "18c6cf02239c4712bd40302b66a1e38587ffa873d4b5fb56ee8e97557c0f53d5"
+          },
+          "input_snapshot_ref": {
+            "path": "records/snapshot/input-snapshot/r1.json",
+            "sha256": "2a510ebb56920bbd257a502eb04c885442b11b0cdea000646b253c4a221ae9ea"
+          },
+          "run_refs": [
+            {
+              "path": "records/run/copy-run/r1.json",
+              "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+            }
+          ],
+          "worker_contexts": [
+            {
+              "session_id": "example-session",
+              "context_id": "example-worker"
+            }
+          ],
+          "correctness_results": [
+            {
+              "run_ref": {
+                "path": "records/run/copy-run/r1.json",
+                "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+              },
+              "results": [
+                {
+                  "check_id": "same-vector",
+                  "outcome": "pass",
+                  "observed": {
+                    "input": [
+                      1,
+                      2,
+                      3
+                    ],
+                    "output": [
+                      1,
+                      2,
+                      3
+                    ]
+                  },
+                  "detail": "Fictional output and retained input equal the approved array."
+                }
+              ]
+            }
+          ],
+          "pairwise_results": [],
+          "rules": [
+            {
+              "check_id": "same-vector",
+              "correctness_rule": {
+                "category": "exact_json",
+                "array_order": "preserved",
+                "object_key_order": "ignored"
+              },
+              "pairwise_rule": null,
+              "pairwise_decision_ref": null
+            }
+          ]
+        }
+      }
+    },
+    "records/decision/method-choice/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "decision",
+        "id": "method-choice",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "question": "Use the stated unchanged-copy contract?",
+          "options": [],
+          "selection": {
+            "mode": "literal",
+            "value": {
+              "operation": "copy",
+              "input": "artifacts/input.json",
+              "output": "artifacts/output.json",
+              "comparison": "exact_json",
+              "runtime": "fictional-copy-1",
+              "platform": "fictional"
+            }
+          },
+          "rationale": "Preserve the approved vector exactly.",
+          "evidence_refs": [
+            {
+              "path": "records/evidence/example-source/r1.json",
+              "sha256": "48804df695368b8aa2e877229e82ba2554acc86146e8842896a3366f0f335010"
+            }
+          ]
+        }
+      }
+    },
+    "records/decision/pair-choice/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "decision",
+        "id": "pair-choice",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "question": "Enable paired implementations for this example?",
+          "options": [],
+          "selection": {
+            "mode": "literal",
+            "value": "disabled"
+          },
+          "rationale": "This example illustrates a single fictional run.",
+          "evidence_refs": []
+        }
+      }
+    },
+    "records/decision/resource-choice/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "decision",
+        "id": "resource-choice",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "question": "Use these example limits?",
+          "options": [],
+          "selection": {
+            "mode": "literal",
+            "value": {
+              "max_calls": 1,
+              "max_elapsed_ms": 1000,
+              "max_input_bytes": 1024,
+              "max_output_bytes": 1024
+            }
+          },
+          "rationale": "Bound a single fictional copy operation.",
+          "evidence_refs": []
+        }
+      }
+    },
+    "records/evidence/example-source/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "evidence",
+        "id": "example-source",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "source_uri": "example:copy-contract",
+          "source_title": "Fictional copy contract",
+          "source_version": "1",
+          "accessed_at": "2000-01-01T00:00:00Z",
+          "claim": "This example defines an unchanged copy.",
+          "location": "Method paragraph",
+          "limitations": [
+            "Fictional source; no external claim."
+          ]
+        }
+      }
+    },
+    "records/project/project-state/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "project",
+        "id": "project-state",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "title": "Fictional copy project",
+          "overview_ref": {
+            "path": "artifacts/overview.md",
+            "sha256": "dcc88833c5fcb550b36aab9acb8cb123e8d981745f8c1b8bdca2ed00fb69226c"
+          },
+          "step_order": [
+            "copy-step"
+          ],
+          "current_step_id": null,
+          "states": [
+            {
+              "step_id": "copy-step",
+              "revision": 1,
+              "state": "finished",
+              "acceptance_ref": {
+                "path": "records/acceptance/copy-acceptance/r1.json",
+                "sha256": "4bf33c9499d9a69b73b3c7d6d84ff217db0598d2f2b0ebdcef1ddad19e29e118"
+              },
+              "amendment_ref": null,
+              "blocked_by": []
+            }
+          ],
+          "evidence_refs": [
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+            },
+            {
+              "path": "records/review/work-review/r1.json",
+              "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+            },
+            {
+              "path": "records/run/copy-run/r1.json",
+              "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+            },
+            {
+              "path": "records/comparison/copy-comparison/r1.json",
+              "sha256": "bb358f1e95fc083af5616212dbb963bcb11cf4ae4556d64717f7196d3f725737"
+            },
+            {
+              "path": "records/review/results-review/r1.json",
+              "sha256": "382fcedc289c3c1a78ee88ccf1f9f72618655d4f80c938f8cc79577d3f2c2843"
+            },
+            {
+              "path": "records/acceptance/copy-acceptance/r1.json",
+              "sha256": "4bf33c9499d9a69b73b3c7d6d84ff217db0598d2f2b0ebdcef1ddad19e29e118"
+            }
+          ],
+          "project_settings": {
+            "copy-method": {
+              "path": "records/decision/method-choice/r1.json",
+              "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+            }
+          }
+        }
+      }
+    },
+    "records/review/results-review/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "review",
+        "id": "results-review",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-results-reviewer"
+        },
+        "content": {
+          "phase": "results",
+          "snapshot_ref": {
+            "path": "records/snapshot/results-snapshot/r1.json",
+            "sha256": "298db4dd654cf9022785686d39c894acefe7d076648b737428e5c6732b667244"
+          },
+          "reviewer": {
+            "session_id": "example-session",
+            "context_id": "example-results-reviewer"
+          },
+          "artifact_authors": [
+            {
+              "session_id": "example-session",
+              "context_id": "example-author"
+            },
+            {
+              "session_id": "example-session",
+              "context_id": "example-spec-reviewer"
+            },
+            {
+              "session_id": "example-session",
+              "context_id": "example-work-reviewer"
+            },
+            {
+              "session_id": "example-session",
+              "context_id": "example-worker"
+            }
+          ],
+          "workers": [
+            {
+              "session_id": "example-session",
+              "context_id": "example-worker"
+            }
+          ],
+          "outcome": "pass",
+          "findings": []
+        }
+      }
+    },
+    "records/review/spec-review/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "review",
+        "id": "spec-review",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-spec-reviewer"
+        },
+        "content": {
+          "phase": "specification",
+          "snapshot_ref": {
+            "path": "records/snapshot/spec-snapshot/r1.json",
+            "sha256": "e2e559143c7e884a203a6295578704984cac338f91163cae2850816756bde299"
+          },
+          "reviewer": {
+            "session_id": "example-session",
+            "context_id": "example-spec-reviewer"
+          },
+          "artifact_authors": [
+            {
+              "session_id": "example-session",
+              "context_id": "example-author"
+            }
+          ],
+          "workers": [],
+          "outcome": "pass",
+          "findings": []
+        }
+      }
+    },
+    "records/review/work-review/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "review",
+        "id": "work-review",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-work-reviewer"
+        },
+        "content": {
+          "phase": "pre_execution",
+          "snapshot_ref": {
+            "path": "records/snapshot/work-snapshot/r1.json",
+            "sha256": "7e554f42dee1109f945d44cae9843d665980c9eeec04c41749da17569a6e4156"
+          },
+          "reviewer": {
+            "session_id": "example-session",
+            "context_id": "example-work-reviewer"
+          },
+          "artifact_authors": [
+            {
+              "session_id": "example-session",
+              "context_id": "example-author"
+            },
+            {
+              "session_id": "example-session",
+              "context_id": "example-spec-reviewer"
+            },
+            {
+              "session_id": "example-session",
+              "context_id": "example-worker"
+            }
+          ],
+          "workers": [
+            {
+              "session_id": "example-session",
+              "context_id": "example-worker"
+            }
+          ],
+          "outcome": "pass",
+          "findings": []
+        }
+      }
+    },
+    "records/run/copy-run/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "run",
+        "id": "copy-run",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-worker"
+        },
+        "content": {
+          "step_id": "copy-step",
+          "step_revision": 1,
+          "spec_snapshot_ref": {
+            "path": "records/snapshot/spec-snapshot/r1.json",
+            "sha256": "e2e559143c7e884a203a6295578704984cac338f91163cae2850816756bde299"
+          },
+          "work_snapshot_ref": {
+            "path": "records/snapshot/work-snapshot/r1.json",
+            "sha256": "7e554f42dee1109f945d44cae9843d665980c9eeec04c41749da17569a6e4156"
+          },
+          "pre_execution_review_ref": {
+            "path": "records/review/work-review/r1.json",
+            "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+          },
+          "input_snapshot_ref": {
+            "path": "records/snapshot/input-snapshot/r1.json",
+            "sha256": "2a510ebb56920bbd257a502eb04c885442b11b0cdea000646b253c4a221ae9ea"
+          },
+          "commands": [
+            {
+              "program": "example-copy",
+              "args": [
+                "artifacts/input.json",
+                "artifacts/output.json"
+              ],
+              "cwd": ".",
+              "environment": []
+            }
+          ],
+          "effective_settings": [
+            {
+              "name": "copy-method",
+              "value": {
+                "operation": "copy",
+                "input": "artifacts/input.json",
+                "output": "artifacts/output.json",
+                "comparison": "exact_json",
+                "runtime": "fictional-copy-1",
+                "platform": "fictional"
+              },
+              "decision_ref": {
+                "path": "records/decision/method-choice/r1.json",
+                "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+              },
+              "source": "Approved method choice."
+            }
+          ],
+          "environment": {
+            "runtime": "fictional-copy-1",
+            "platform": "fictional",
+            "details": "Deterministic example data only; no execution occurred."
+          },
+          "output_snapshot_ref": {
+            "path": "records/snapshot/output-snapshot/r1.json",
+            "sha256": "2512b2894b2af6217b3786743234f6dd572c3f03d5db9ad11921404f84e17c18"
+          },
+          "check_results": [
+            {
+              "check_id": "same-vector",
+              "outcome": "pass",
+              "observed": {
+                "input": [
+                  1,
+                  2,
+                  3
+                ],
+                "output": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "detail": "Fictional output and retained input equal the approved array."
+            }
+          ],
+          "worker": {
+            "session_id": "example-session",
+            "context_id": "example-worker"
+          },
+          "started_at": "2000-01-01T00:00:00Z",
+          "finished_at": "2000-01-01T00:00:01Z",
+          "resource_use": {
+            "elapsed_ms": 1000,
+            "input_bytes": 18,
+            "output_bytes": 18,
+            "calls": 1
+          }
+        }
+      }
+    },
+    "records/snapshot/amendment-snapshot/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "snapshot",
+        "id": "amendment-snapshot",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "purpose": "Proposed fictional amendment",
+          "entries": [
+            {
+              "path": "records/amendment/proposed-amendment/r1.json",
+              "sha256": "630fc4c2891900b2f40083b72683e3d77038aaa7cbc8931901379ff37e21b059",
+              "size_bytes": 3441
+            }
+          ]
+        }
+      }
+    },
+    "records/snapshot/input-snapshot/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "snapshot",
+        "id": "input-snapshot",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "purpose": "Fictional execution inputs",
+          "entries": [
+            {
+              "path": "artifacts/input.json",
+              "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a",
+              "size_bytes": 18
+            }
+          ]
+        }
+      }
+    },
+    "records/snapshot/output-snapshot/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "snapshot",
+        "id": "output-snapshot",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "purpose": "Fictional output and unchanged input after the operation",
+          "entries": [
+            {
+              "path": "artifacts/input.json",
+              "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a",
+              "size_bytes": 18
+            },
+            {
+              "path": "artifacts/output.json",
+              "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a",
+              "size_bytes": 18
+            }
+          ]
+        }
+      }
+    },
+    "records/snapshot/results-snapshot/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "snapshot",
+        "id": "results-snapshot",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "purpose": "Fictional results for review",
+          "entries": [
+            {
+              "path": "records/comparison/copy-comparison/r1.json",
+              "sha256": "bb358f1e95fc083af5616212dbb963bcb11cf4ae4556d64717f7196d3f725737",
+              "size_bytes": 1937
+            },
+            {
+              "path": "records/run/copy-run/r1.json",
+              "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d",
+              "size_bytes": 2848
+            },
+            {
+              "path": "records/snapshot/output-snapshot/r1.json",
+              "sha256": "2512b2894b2af6217b3786743234f6dd572c3f03d5db9ad11921404f84e17c18",
+              "size_bytes": 721
+            },
+            {
+              "path": "records/snapshot/spec-snapshot/r1.json",
+              "sha256": "e2e559143c7e884a203a6295578704984cac338f91163cae2850816756bde299",
+              "size_bytes": 2305
+            },
+            {
+              "path": "records/snapshot/work-snapshot/r1.json",
+              "sha256": "7e554f42dee1109f945d44cae9843d665980c9eeec04c41749da17569a6e4156",
+              "size_bytes": 1074
+            }
+          ]
+        }
+      }
+    },
+    "records/snapshot/spec-snapshot/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "snapshot",
+        "id": "spec-snapshot",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "purpose": "Complete fictional specification",
+          "entries": [
+            {
+              "path": "artifacts/design.md",
+              "sha256": "3df76703ec171c7638a1b19650e93c9a1eb16ce38d054c1b1b56201fcb015701",
+              "size_bytes": 501
+            },
+            {
+              "path": "artifacts/input.json",
+              "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a",
+              "size_bytes": 18
+            },
+            {
+              "path": "artifacts/overview.md",
+              "sha256": "dcc88833c5fcb550b36aab9acb8cb123e8d981745f8c1b8bdca2ed00fb69226c",
+              "size_bytes": 87
+            },
+            {
+              "path": "artifacts/spec.md",
+              "sha256": "42fb891430b6972c721c86ee8c91311528eade10b56e19741fd4119abddf8722",
+              "size_bytes": 234
+            },
+            {
+              "path": "artifacts/tasks.md",
+              "sha256": "e1791800b01388ee8993f9239986797cc77355df02f353e0fe11ca1f51d922ab",
+              "size_bytes": 209
+            },
+            {
+              "path": "records/decision/method-choice/r1.json",
+              "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4",
+              "size_bytes": 906
+            },
+            {
+              "path": "records/decision/pair-choice/r1.json",
+              "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63",
+              "size_bytes": 539
+            },
+            {
+              "path": "records/decision/resource-choice/r1.json",
+              "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9",
+              "size_bytes": 634
+            },
+            {
+              "path": "records/evidence/example-source/r1.json",
+              "sha256": "48804df695368b8aa2e877229e82ba2554acc86146e8842896a3366f0f335010",
+              "size_bytes": 610
+            },
+            {
+              "path": "records/step/copy-step/r1.json",
+              "sha256": "f9ce67243cf103dc5f9a6651f64059a0b12fb6aefa99369e918474f90d12073c",
+              "size_bytes": 3973
+            },
+            {
+              "path": "records/unit/copy-unit/r1.json",
+              "sha256": "18c6cf02239c4712bd40302b66a1e38587ffa873d4b5fb56ee8e97557c0f53d5",
+              "size_bytes": 1824
+            }
+          ]
+        }
+      }
+    },
+    "records/snapshot/work-snapshot/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "snapshot",
+        "id": "work-snapshot",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "purpose": "Fictional prepared work",
+          "entries": [
+            {
+              "path": "artifacts/work.txt",
+              "sha256": "dcad2fac14109ab6e9d7da7ef52bc975d50e0f4222b3285261ffd83ddc34da86",
+              "size_bytes": 86
+            },
+            {
+              "path": "records/approval/spec-approval/r1.json",
+              "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df",
+              "size_bytes": 1121
+            },
+            {
+              "path": "records/review/spec-review/r1.json",
+              "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830",
+              "size_bytes": 784
+            },
+            {
+              "path": "records/snapshot/spec-snapshot/r1.json",
+              "sha256": "e2e559143c7e884a203a6295578704984cac338f91163cae2850816756bde299",
+              "size_bytes": 2305
+            }
+          ]
+        }
+      }
+    },
+    "records/step/copy-step/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "step",
+        "id": "copy-step",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "title": "Copy the approved vector",
+          "documents": {
+            "spec": {
+              "path": "artifacts/spec.md",
+              "sha256": "42fb891430b6972c721c86ee8c91311528eade10b56e19741fd4119abddf8722"
+            },
+            "design": {
+              "path": "artifacts/design.md",
+              "sha256": "3df76703ec171c7638a1b19650e93c9a1eb16ce38d054c1b1b56201fcb015701"
+            },
+            "tasks": {
+              "path": "artifacts/tasks.md",
+              "sha256": "e1791800b01388ee8993f9239986797cc77355df02f353e0fe11ca1f51d922ab"
+            }
+          },
+          "depends_on": [],
+          "requirements": [
+            {
+              "id": "preserve-vector",
+              "text": "The step SHALL copy the vector without changing its values or order.",
+              "decision_refs": [
+                {
+                  "path": "records/decision/method-choice/r1.json",
+                  "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+                }
+              ],
+              "check_ids": [
+                "same-vector"
+              ]
+            }
+          ],
+          "decision_refs": [
+            {
+              "path": "records/decision/method-choice/r1.json",
+              "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+            },
+            {
+              "path": "records/decision/resource-choice/r1.json",
+              "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9"
+            },
+            {
+              "path": "records/decision/pair-choice/r1.json",
+              "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63"
+            }
+          ],
+          "input_refs": [
+            {
+              "path": "artifacts/input.json",
+              "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a"
+            }
+          ],
+          "unit_refs": [
+            {
+              "path": "records/unit/copy-unit/r1.json",
+              "sha256": "18c6cf02239c4712bd40302b66a1e38587ffa873d4b5fb56ee8e97557c0f53d5"
+            }
+          ],
+          "outputs": [
+            {
+              "id": "copied-vector",
+              "path": "artifacts/output.json",
+              "description": "Unchanged approved vector.",
+              "rule": {
+                "category": "exact_json",
+                "array_order": "preserved",
+                "object_key_order": "ignored"
+              },
+              "decision_refs": [
+                {
+                  "path": "records/decision/method-choice/r1.json",
+                  "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+                }
+              ]
+            }
+          ],
+          "checks": [
+            {
+              "id": "same-vector",
+              "description": "Check unchanged input and output in the same order.",
+              "expected": {
+                "input": [
+                  1,
+                  2,
+                  3
+                ],
+                "output": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "rule": {
+                "category": "exact_json",
+                "array_order": "preserved",
+                "object_key_order": "ignored"
+              },
+              "decision_refs": [
+                {
+                  "path": "records/decision/method-choice/r1.json",
+                  "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+                }
+              ]
+            }
+          ],
+          "paired_validation": {
+            "decision_ref": {
+              "path": "records/decision/pair-choice/r1.json",
+              "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63"
+            },
+            "mode": "disabled",
+            "unit_ids": []
+          },
+          "resource_decision_refs": [
+            {
+              "path": "records/decision/resource-choice/r1.json",
+              "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9"
+            }
+          ],
+          "project_settings": {
+            "copy-method": {
+              "path": "records/decision/method-choice/r1.json",
+              "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+            }
+          }
+        }
+      }
+    },
+    "records/unit/copy-unit/r1.json": {
+      "encoding": "json",
+      "content": {
+        "schema_version": 1,
+        "kind": "unit",
+        "id": "copy-unit",
+        "revision": 1,
+        "project_id": "example-project",
+        "context": "example",
+        "lifecycle": "frozen",
+        "author": {
+          "session_id": "example-session",
+          "context_id": "example-author"
+        },
+        "content": {
+          "name": "copy_vector",
+          "step_id": "copy-step",
+          "step_revision": 1,
+          "requirement_ids": [
+            "preserve-vector"
+          ],
+          "interface": "Read the JSON array at artifacts/input.json and write the same JSON array at artifacts/output.json. Preserve integer values and array order. Do not mutate the input.",
+          "method": "Copy the exact approved array unchanged in its existing order using one fictional example-copy call. Stop without output if the input is absent or its contents differ from the approved input.",
+          "argument_decision_refs": [
+            {
+              "path": "records/decision/method-choice/r1.json",
+              "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+            }
+          ],
+          "environment_decision_refs": [
+            {
+              "path": "records/decision/method-choice/r1.json",
+              "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+            }
+          ],
+          "failure_rules": [
+            "Stop on missing or changed input without creating output.",
+            "No retry or fallback is allowed."
+          ],
+          "fixture_refs": [
+            {
+              "path": "artifacts/input.json",
+              "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a"
+            }
+          ],
+          "check_ids": [
+            "same-vector"
+          ],
+          "write_paths": [
+            "artifacts/output.json"
+          ],
+          "project_settings": {
+            "copy-method": {
+              "path": "records/decision/method-choice/r1.json",
+              "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+            }
+          }
+        }
+      }
+    }
+  }
+}

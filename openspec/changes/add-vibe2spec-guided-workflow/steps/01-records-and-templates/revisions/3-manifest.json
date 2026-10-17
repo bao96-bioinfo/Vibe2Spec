@@ -1,0 +1,26 @@
+{
+  "revision": 3,
+  "status": "proposed-unapproved",
+  "files": [
+    {
+      "path": "spec.md",
+      "size_bytes": 12774,
+      "sha256": "a83eca8d4b674095b0a8266aee21f739cfd84dcf2474f09fe2bc2175091a8ccd"
+    },
+    {
+      "path": "record-format.md",
+      "size_bytes": 31123,
+      "sha256": "c8fe73769a72f4f8bfb7926adea862e08565f195e1a48251fa8be944fc581788"
+    },
+    {
+      "path": "fixtures.md",
+      "size_bytes": 30969,
+      "sha256": "87620460e27af67da6ba53b293990711d83e431364061cd21bed2156463a7f52"
+    },
+    {
+      "path": "verification.md",
+      "size_bytes": 10661,
+      "sha256": "3cbe7633bd096335ce7deb6ddc80dc602f2af3c4169fd7b6b5c894b9f020b50d"
+    }
+  ]
+}

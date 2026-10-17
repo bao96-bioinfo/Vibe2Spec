@@ -1,0 +1,253 @@
+{
+  "runtime": "v26.11.1",
+  "parsed": true,
+  "files": [
+    {
+      "path": "docs/record-format.md",
+      "size_bytes": 31407,
+      "sha256": "b5254afc2da9185d36c3ef083b19431baa8ffc5bc836998ee915f334092d34ea"
+    },
+    {
+      "path": "templates/project.md",
+      "size_bytes": 515,
+      "sha256": "e92f0e841d41f55dc5d28c65346eba3457c7cb205e97ad0ff8a121bd60c7b557"
+    },
+    {
+      "path": "templates/project.json",
+      "size_bytes": 465,
+      "sha256": "01a1963929287df354aaf08b926598c035c649f99ea501d06a8e8ebaa3190c6b"
+    },
+    {
+      "path": "templates/decision.json",
+      "size_bytes": 408,
+      "sha256": "3475851ccc3100f51f54f77c95abeb9a7cef8797d57afbd7abc1ce19d603f472"
+    },
+    {
+      "path": "templates/evidence.json",
+      "size_bytes": 461,
+      "sha256": "5f6696a73f842a24c4f87a5e8824c696f31eacc7dae56ea5b9d389264bf475db"
+    },
+    {
+      "path": "templates/approval.json",
+      "size_bytes": 387,
+      "sha256": "5c115d998e7ebe36ec7989fc72e1c46fe652743ec4c933a4e4e41511d13fde6b"
+    },
+    {
+      "path": "templates/step/spec.md",
+      "size_bytes": 534,
+      "sha256": "6f41194e804daf7893a979ad2329a1ab996830684dca84cc1947baf04cd92063"
+    },
+    {
+      "path": "templates/step/design.md",
+      "size_bytes": 845,
+      "sha256": "83652d5cd7395a6a4139518a11d01ba6f0aaa923f1140a3688a813c286449837"
+    },
+    {
+      "path": "templates/step/tasks.md",
+      "size_bytes": 526,
+      "sha256": "3793e9c08d15e834d998362938b9cb6d4b04673d7fb1e314a81c7adef1edb1ff"
+    },
+    {
+      "path": "templates/step/contract.json",
+      "size_bytes": 588,
+      "sha256": "cbc4e0d5bb1d9927d243a2fb0638c6c9627d7e30a52f7d00690fbe32cd6efc13"
+    },
+    {
+      "path": "templates/step/unit.json",
+      "size_bytes": 628,
+      "sha256": "03d497af5eedca366cdfe22c6d6cde47c38a015fa59c7ee5d041cb482ce2c2b1"
+    },
+    {
+      "path": "templates/review.json",
+      "size_bytes": 449,
+      "sha256": "fcf8eea59e19ddb76a4cd159d1aae9e5c8ab92670486b353b3eaa7744ec76671"
+    },
+    {
+      "path": "templates/run.json",
+      "size_bytes": 696,
+      "sha256": "a594a477b560693b5cbcfd3f4263205f7565badd5bb80375dafb31dc612bf334"
+    },
+    {
+      "path": "templates/comparison.json",
+      "size_bytes": 501,
+      "sha256": "fafdc0ecc49ab53b2b157c9b75eb6eed2a0a831b278431ecf6a460e78c49d9db"
+    },
+    {
+      "path": "templates/acceptance.json",
+      "size_bytes": 511,
+      "sha256": "a99af96176cd7c6ef21c038a6f1779c8496e1fc0d792ccb8c47fdc74c409ef50"
+    },
+    {
+      "path": "templates/amendment.json",
+      "size_bytes": 525,
+      "sha256": "c08ff0a35d19b248eba1619bb596d13552509d496b9ecd639884606efdafedfe"
+    },
+    {
+      "path": "templates/snapshot.json",
+      "size_bytes": 334,
+      "sha256": "4cd72e4a8009815d7b172e60d3884c6052f21d838f9f75d86e1b8b39abf9bb13"
+    },
+    {
+      "path": "tests/fixtures/records/base.json",
+      "size_bytes": 42398,
+      "sha256": "1da6089ccd6b921de320614344d87839129e66c73716fb242aa6d6896592e8e0"
+    },
+    {
+      "path": "tests/fixtures/records/cases.json",
+      "size_bytes": 35582,
+      "sha256": "dd019c723c489e0cd7b44cc77dba2a6ed97e863ca7ecc55cac8c2444e52f3cab"
+    },
+    {
+      "path": "tests/fixtures/records/README.md",
+      "size_bytes": 828,
+      "sha256": "5fe3805cab8d33a003cf13199e07416648858e9d21ef537c5b76a6cd1d722e42"
+    }
+  ],
+  "virtual_files": [
+    {
+      "path": "artifacts/design.md",
+      "size_bytes": 501,
+      "sha256": "3df76703ec171c7638a1b19650e93c9a1eb16ce38d054c1b1b56201fcb015701"
+    },
+    {
+      "path": "artifacts/input.json",
+      "size_bytes": 18,
+      "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a"
+    },
+    {
+      "path": "artifacts/output.json",
+      "size_bytes": 18,
+      "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a"
+    },
+    {
+      "path": "artifacts/overview.md",
+      "size_bytes": 87,
+      "sha256": "dcc88833c5fcb550b36aab9acb8cb123e8d981745f8c1b8bdca2ed00fb69226c"
+    },
+    {
+      "path": "artifacts/spec.md",
+      "size_bytes": 234,
+      "sha256": "42fb891430b6972c721c86ee8c91311528eade10b56e19741fd4119abddf8722"
+    },
+    {
+      "path": "artifacts/tasks.md",
+      "size_bytes": 209,
+      "sha256": "e1791800b01388ee8993f9239986797cc77355df02f353e0fe11ca1f51d922ab"
+    },
+    {
+      "path": "artifacts/work.txt",
+      "size_bytes": 86,
+      "sha256": "dcad2fac14109ab6e9d7da7ef52bc975d50e0f4222b3285261ffd83ddc34da86"
+    },
+    {
+      "path": "records/acceptance/copy-acceptance/r1.json",
+      "size_bytes": 1408,
+      "sha256": "4bf33c9499d9a69b73b3c7d6d84ff217db0598d2f2b0ebdcef1ddad19e29e118"
+    },
+    {
+      "path": "records/amendment/proposed-amendment/r1.json",
+      "size_bytes": 3441,
+      "sha256": "630fc4c2891900b2f40083b72683e3d77038aaa7cbc8931901379ff37e21b059"
+    },
+    {
+      "path": "records/approval/reopen-approval/r1.json",
+      "size_bytes": 759,
+      "sha256": "07678eb940b66fd6650fa1843b3a7e481f7a6c34902d066bc5201c6a57d19a62"
+    },
+    {
+      "path": "records/approval/spec-approval/r1.json",
+      "size_bytes": 1121,
+      "sha256": "35e31114ea8b1ca2621bcb355279c92d6fe0e98d7df5559fef3fa255163229df"
+    },
+    {
+      "path": "records/comparison/copy-comparison/r1.json",
+      "size_bytes": 1937,
+      "sha256": "bb358f1e95fc083af5616212dbb963bcb11cf4ae4556d64717f7196d3f725737"
+    },
+    {
+      "path": "records/decision/method-choice/r1.json",
+      "size_bytes": 906,
+      "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+    },
+    {
+      "path": "records/decision/pair-choice/r1.json",
+      "size_bytes": 539,
+      "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63"
+    },
+    {
+      "path": "records/decision/resource-choice/r1.json",
+      "size_bytes": 634,
+      "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9"
+    },
+    {
+      "path": "records/evidence/example-source/r1.json",
+      "size_bytes": 610,
+      "sha256": "48804df695368b8aa2e877229e82ba2554acc86146e8842896a3366f0f335010"
+    },
+    {
+      "path": "records/project/project-state/r1.json",
+      "size_bytes": 2261,
+      "sha256": "366bf52d48b000d021ad533ac9e22d5c8029def13213a9edd1037a917576f608"
+    },
+    {
+      "path": "records/review/results-review/r1.json",
+      "size_bytes": 1196,
+      "sha256": "382fcedc289c3c1a78ee88ccf1f9f72618655d4f80c938f8cc79577d3f2c2843"
+    },
+    {
+      "path": "records/review/spec-review/r1.json",
+      "size_bytes": 784,
+      "sha256": "be5e49c5320a4e7c1bcb236e73d9edb53ccccefa05b893c5bd07ff58e7fc6830"
+    },
+    {
+      "path": "records/review/work-review/r1.json",
+      "size_bytes": 1086,
+      "sha256": "3687836a555fea06032340da5fcf989290019c701387dc692a305a9fa6820963"
+    },
+    {
+      "path": "records/run/copy-run/r1.json",
+      "size_bytes": 2848,
+      "sha256": "f82c613a8fcc442bf70a877eb3e978c325b850fc4a1d5adea66beb178e23b65d"
+    },
+    {
+      "path": "records/snapshot/amendment-snapshot/r1.json",
+      "size_bytes": 553,
+      "sha256": "34cdec19b605f49c4420a6cf5d75d43b5737f34d846e2ac24e04eb4be4e52963"
+    },
+    {
+      "path": "records/snapshot/input-snapshot/r1.json",
+      "size_bytes": 521,
+      "sha256": "2a510ebb56920bbd257a502eb04c885442b11b0cdea000646b253c4a221ae9ea"
+    },
+    {
+      "path": "records/snapshot/output-snapshot/r1.json",
+      "size_bytes": 721,
+      "sha256": "2512b2894b2af6217b3786743234f6dd572c3f03d5db9ad11921404f84e17c18"
+    },
+    {
+      "path": "records/snapshot/results-snapshot/r1.json",
+      "size_bytes": 1292,
+      "sha256": "298db4dd654cf9022785686d39c894acefe7d076648b737428e5c6732b667244"
+    },
+    {
+      "path": "records/snapshot/spec-snapshot/r1.json",
+      "size_bytes": 2305,
+      "sha256": "e2e559143c7e884a203a6295578704984cac338f91163cae2850816756bde299"
+    },
+    {
+      "path": "records/snapshot/work-snapshot/r1.json",
+      "size_bytes": 1074,
+      "sha256": "7e554f42dee1109f945d44cae9843d665980c9eeec04c41749da17569a6e4156"
+    },
+    {
+      "path": "records/step/copy-step/r1.json",
+      "size_bytes": 3973,
+      "sha256": "f9ce67243cf103dc5f9a6651f64059a0b12fb6aefa99369e918474f90d12073c"
+    },
+    {
+      "path": "records/unit/copy-unit/r1.json",
+      "size_bytes": 1824,
+      "sha256": "18c6cf02239c4712bd40302b66a1e38587ffa873d4b5fb56ee8e97557c0f53d5"
+    }
+  ]
+}

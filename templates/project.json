@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "kind": "project",
+  "id": "template-project",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "title": null,
+    "overview_ref": null,
+    "step_order": null,
+    "current_step_id": null,
+    "states": null,
+    "evidence_refs": null,
+    "project_settings": null
+  }
+}

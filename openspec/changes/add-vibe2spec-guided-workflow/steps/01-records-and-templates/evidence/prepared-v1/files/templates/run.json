@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "run",
+  "id": "template-run",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "step_id": null,
+    "step_revision": null,
+    "spec_snapshot_ref": null,
+    "work_snapshot_ref": null,
+    "pre_execution_review_ref": null,
+    "input_snapshot_ref": null,
+    "commands": null,
+    "effective_settings": null,
+    "environment": null,
+    "output_snapshot_ref": null,
+    "check_results": null,
+    "worker": null,
+    "started_at": null,
+    "finished_at": null,
+    "resource_use": null
+  }
+}

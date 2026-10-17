@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "kind": "step",
+  "id": "template-step",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "title": null,
+    "documents": null,
+    "depends_on": null,
+    "requirements": null,
+    "decision_refs": null,
+    "input_refs": null,
+    "unit_refs": null,
+    "outputs": null,
+    "checks": null,
+    "paired_validation": null,
+    "resource_decision_refs": null,
+    "project_settings": null
+  }
+}

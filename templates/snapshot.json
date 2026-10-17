@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "kind": "snapshot",
+  "id": "template-snapshot",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "purpose": null,
+    "entries": null
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "purpose": "Preserve separately reviewed clarification before format-only requirement splitting.",
+  "files": [
+    {
+      "path": "proposal.md",
+      "size_bytes": 6666,
+      "sha256": "2a6678f3ae85fdab48de3772bb642ce796efb8d7beb37902596b9263b62f5ea9"
+    },
+    {
+      "path": "specs/request-discovery/spec.md",
+      "size_bytes": 9249,
+      "sha256": "6cc30a64238a37276c9b95a1792ba704d5749ec17895b1e7ed16240665ffc940"
+    },
+    {
+      "path": "design.md",
+      "size_bytes": 36240,
+      "sha256": "b3c877887373aed8535046cfbd2c25f54d35e2115342f731d66a1d7fb7d00ac8"
+    },
+    {
+      "path": "tasks.md",
+      "size_bytes": 18254,
+      "sha256": "44e955333ac3683b6f32c9e777f825bfe45d3ea3590be39f9e52d1d5a43bd120"
+    }
+  ]
+}
