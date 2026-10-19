@@ -1,0 +1,5 @@
+{
+  "name": "vibe2spec-marketplace",
+  "interface": {"displayName": "Vibe2Spec"},
+  "plugins": [{"name": "vibe2spec", "source": {"source": "local", "path": "./plugins/vibe2spec"}, "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"}, "category": "Developer Tools"}]
+}

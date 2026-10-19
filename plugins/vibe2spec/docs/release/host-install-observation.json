@@ -1,0 +1,1213 @@
+{
+  "date": "2026-10-19T02:44:05.782Z",
+  "sandbox": "/private/tmp/vibe2spec-host-check-dCbZwc",
+  "versions": {
+    "codex": "codex-cli 0.162.1",
+    "claude": "2.1.296 (Claude Code)"
+  },
+  "installed": {
+    "codex": "/private/tmp/vibe2spec-host-check-dCbZwc/codex-config/plugins/cache/vibe2spec-marketplace/vibe2spec/0.1.0",
+    "claude": "/private/tmp/vibe2spec-host-check-dCbZwc/claude-config/plugins/cache/vibe2spec-marketplace/vibe2spec/0.1.0"
+  },
+  "installedChecks": [
+    {
+      "case": "fictional-complete",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 1,
+          "report": {
+            "report_version": 1,
+            "operation": "implementation_readiness",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "366bf52d48b000d021ad533ac9e22d5c8029def13213a9edd1037a917576f608",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "blocked",
+            "lifecycle_status": "not_requested",
+            "findings": [
+              {
+                "category": "readiness",
+                "code": "missing-current-step",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/content/current_step_id",
+                "related_path": null,
+                "message": "The selected project evidence does not identify an assessable current step."
+              },
+              {
+                "category": "readiness",
+                "code": "non-project-context",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/context",
+                "related_path": null,
+                "message": "Authoring templates and fictional examples cannot establish readiness for an actual project."
+              }
+            ],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 1
+          }
+        },
+        {
+          "host": "claude",
+          "status": 1,
+          "report": {
+            "report_version": 1,
+            "operation": "implementation_readiness",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "366bf52d48b000d021ad533ac9e22d5c8029def13213a9edd1037a917576f608",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "blocked",
+            "lifecycle_status": "not_requested",
+            "findings": [
+              {
+                "category": "readiness",
+                "code": "missing-current-step",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/content/current_step_id",
+                "related_path": null,
+                "message": "The selected project evidence does not identify an assessable current step."
+              },
+              {
+                "category": "readiness",
+                "code": "non-project-context",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/context",
+                "related_path": null,
+                "message": "Authoring templates and fictional examples cannot establish readiness for an actual project."
+              }
+            ],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 1
+          }
+        }
+      ],
+      "identical": true
+    },
+    {
+      "case": "self-review",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 1,
+          "report": {
+            "report_version": 1,
+            "operation": "implementation_readiness",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "178756c1b8d1a353f39c93947160027a112a49285f9a2202dbaf4316fe1b0e81",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "invalid",
+            "implementation_readiness": "blocked",
+            "lifecycle_status": "not_requested",
+            "findings": [
+              {
+                "category": "structural",
+                "code": "record-inconsistency",
+                "path": "records/review/spec-review/r1.json",
+                "pointer": "/content/artifact_authors/0",
+                "related_path": null,
+                "message": "These declared fields contradict an explicit cross-field rule of the record format."
+              },
+              {
+                "category": "readiness",
+                "code": "missing-current-step",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/content/current_step_id",
+                "related_path": null,
+                "message": "The selected project evidence does not identify an assessable current step."
+              },
+              {
+                "category": "readiness",
+                "code": "non-project-context",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/context",
+                "related_path": null,
+                "message": "Authoring templates and fictional examples cannot establish readiness for an actual project."
+              },
+              {
+                "category": "readiness",
+                "code": "review-not-passing",
+                "path": "records/review/spec-review/r1.json",
+                "pointer": "/content/outcome",
+                "related_path": null,
+                "message": "The applicable specification review does not report a pass with no unresolved findings."
+              },
+              {
+                "category": "readiness",
+                "code": "review-not-independent",
+                "path": "records/review/spec-review/r1.json",
+                "pointer": "/content/reviewer",
+                "related_path": null,
+                "message": "The recorded reviewer context is also an assessed author's or relevant worker's context."
+              }
+            ],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 1
+          }
+        },
+        {
+          "host": "claude",
+          "status": 1,
+          "report": {
+            "report_version": 1,
+            "operation": "implementation_readiness",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "178756c1b8d1a353f39c93947160027a112a49285f9a2202dbaf4316fe1b0e81",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "invalid",
+            "implementation_readiness": "blocked",
+            "lifecycle_status": "not_requested",
+            "findings": [
+              {
+                "category": "structural",
+                "code": "record-inconsistency",
+                "path": "records/review/spec-review/r1.json",
+                "pointer": "/content/artifact_authors/0",
+                "related_path": null,
+                "message": "These declared fields contradict an explicit cross-field rule of the record format."
+              },
+              {
+                "category": "readiness",
+                "code": "missing-current-step",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/content/current_step_id",
+                "related_path": null,
+                "message": "The selected project evidence does not identify an assessable current step."
+              },
+              {
+                "category": "readiness",
+                "code": "non-project-context",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/context",
+                "related_path": null,
+                "message": "Authoring templates and fictional examples cannot establish readiness for an actual project."
+              },
+              {
+                "category": "readiness",
+                "code": "review-not-passing",
+                "path": "records/review/spec-review/r1.json",
+                "pointer": "/content/outcome",
+                "related_path": null,
+                "message": "The applicable specification review does not report a pass with no unresolved findings."
+              },
+              {
+                "category": "readiness",
+                "code": "review-not-independent",
+                "path": "records/review/spec-review/r1.json",
+                "pointer": "/content/reviewer",
+                "related_path": null,
+                "message": "The recorded reviewer context is also an assessed author's or relevant worker's context."
+              }
+            ],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 1
+          }
+        }
+      ],
+      "identical": true
+    },
+    {
+      "case": "indeterminate-review",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 1,
+          "report": {
+            "report_version": 1,
+            "operation": "implementation_readiness",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "06efb75cfc0095dda851b683cc68874e7118c7552e21b1aee35455ca48b0b70e",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "blocked",
+            "lifecycle_status": "not_requested",
+            "findings": [
+              {
+                "category": "readiness",
+                "code": "missing-current-step",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/content/current_step_id",
+                "related_path": null,
+                "message": "The selected project evidence does not identify an assessable current step."
+              },
+              {
+                "category": "readiness",
+                "code": "non-project-context",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/context",
+                "related_path": null,
+                "message": "Authoring templates and fictional examples cannot establish readiness for an actual project."
+              },
+              {
+                "category": "readiness",
+                "code": "review-not-passing",
+                "path": "records/review/spec-review/r1.json",
+                "pointer": "/content/outcome",
+                "related_path": null,
+                "message": "The applicable specification review does not report a pass with no unresolved findings."
+              }
+            ],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 1
+          }
+        },
+        {
+          "host": "claude",
+          "status": 1,
+          "report": {
+            "report_version": 1,
+            "operation": "implementation_readiness",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "06efb75cfc0095dda851b683cc68874e7118c7552e21b1aee35455ca48b0b70e",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "blocked",
+            "lifecycle_status": "not_requested",
+            "findings": [
+              {
+                "category": "readiness",
+                "code": "missing-current-step",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/content/current_step_id",
+                "related_path": null,
+                "message": "The selected project evidence does not identify an assessable current step."
+              },
+              {
+                "category": "readiness",
+                "code": "non-project-context",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/context",
+                "related_path": null,
+                "message": "Authoring templates and fictional examples cannot establish readiness for an actual project."
+              },
+              {
+                "category": "readiness",
+                "code": "review-not-passing",
+                "path": "records/review/spec-review/r1.json",
+                "pointer": "/content/outcome",
+                "related_path": null,
+                "message": "The applicable specification review does not report a pass with no unresolved findings."
+              }
+            ],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 1
+          }
+        }
+      ],
+      "identical": true
+    },
+    {
+      "case": "missing-value",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 1,
+          "report": {
+            "report_version": 1,
+            "operation": "implementation_readiness",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "78246a6a57cf6ae6a27a8839b24dcd1d9c150ff7a3e375ebfb1d34dda5c719f2",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "blocked",
+            "lifecycle_status": "not_requested",
+            "findings": [
+              {
+                "category": "readiness",
+                "code": "unresolved-decision",
+                "path": "records/decision/method-choice/r1.json",
+                "pointer": "/content/selection",
+                "related_path": null,
+                "message": "A required decision has no resolved selection."
+              },
+              {
+                "category": "readiness",
+                "code": "unresolved-decision",
+                "path": "records/decision/method-choice/r1.json",
+                "pointer": "/lifecycle",
+                "related_path": null,
+                "message": "A required decision has no resolved selection."
+              },
+              {
+                "category": "readiness",
+                "code": "missing-current-step",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/content/current_step_id",
+                "related_path": null,
+                "message": "The selected project evidence does not identify an assessable current step."
+              },
+              {
+                "category": "readiness",
+                "code": "non-project-context",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/context",
+                "related_path": null,
+                "message": "Authoring templates and fictional examples cannot establish readiness for an actual project."
+              }
+            ],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 1
+          }
+        },
+        {
+          "host": "claude",
+          "status": 1,
+          "report": {
+            "report_version": 1,
+            "operation": "implementation_readiness",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "78246a6a57cf6ae6a27a8839b24dcd1d9c150ff7a3e375ebfb1d34dda5c719f2",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "blocked",
+            "lifecycle_status": "not_requested",
+            "findings": [
+              {
+                "category": "readiness",
+                "code": "unresolved-decision",
+                "path": "records/decision/method-choice/r1.json",
+                "pointer": "/content/selection",
+                "related_path": null,
+                "message": "A required decision has no resolved selection."
+              },
+              {
+                "category": "readiness",
+                "code": "unresolved-decision",
+                "path": "records/decision/method-choice/r1.json",
+                "pointer": "/lifecycle",
+                "related_path": null,
+                "message": "A required decision has no resolved selection."
+              },
+              {
+                "category": "readiness",
+                "code": "missing-current-step",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/content/current_step_id",
+                "related_path": null,
+                "message": "The selected project evidence does not identify an assessable current step."
+              },
+              {
+                "category": "readiness",
+                "code": "non-project-context",
+                "path": "records/project/project-state/r1.json",
+                "pointer": "/context",
+                "related_path": null,
+                "message": "Authoring templates and fictional examples cannot establish readiness for an actual project."
+              }
+            ],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 1
+          }
+        }
+      ],
+      "identical": true
+    },
+    {
+      "case": "project-cycle-r1",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "037a01355954267b81daa0d2b66d1f5a501eb3fa2eb93c1195984829f24f99ae",
+            "target_step_id": "copy-step",
+            "target_step_revision": 1,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        },
+        {
+          "host": "claude",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r1.json",
+            "entry_sha256": "037a01355954267b81daa0d2b66d1f5a501eb3fa2eb93c1195984829f24f99ae",
+            "target_step_id": "copy-step",
+            "target_step_revision": 1,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        }
+      ],
+      "identical": true
+    },
+    {
+      "case": "project-cycle-r2",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r2.json",
+            "entry_sha256": "4370be3313273975f2c1b22ee195e8f43b115a9a4a5f30865a9c2b947b59ef14",
+            "target_step_id": "summary-step",
+            "target_step_revision": 1,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        },
+        {
+          "host": "claude",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r2.json",
+            "entry_sha256": "4370be3313273975f2c1b22ee195e8f43b115a9a4a5f30865a9c2b947b59ef14",
+            "target_step_id": "summary-step",
+            "target_step_revision": 1,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        }
+      ],
+      "identical": true
+    },
+    {
+      "case": "project-cycle-r3",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r3.json",
+            "entry_sha256": "70a56acdb3426a402fb245e6d1f59832c00c2eb8e8d38c4db804123f1e99599a",
+            "target_step_id": "copy-step",
+            "target_step_revision": 2,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        },
+        {
+          "host": "claude",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r3.json",
+            "entry_sha256": "70a56acdb3426a402fb245e6d1f59832c00c2eb8e8d38c4db804123f1e99599a",
+            "target_step_id": "copy-step",
+            "target_step_revision": 2,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        }
+      ],
+      "identical": true
+    },
+    {
+      "case": "project-cycle-r4",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r4.json",
+            "entry_sha256": "a4ab62154e1eefd77f09a03bf3dc98384982ba0ae1f4c23e8fa9a9e489ea954e",
+            "target_step_id": "summary-step",
+            "target_step_revision": 2,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        },
+        {
+          "host": "claude",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r4.json",
+            "entry_sha256": "a4ab62154e1eefd77f09a03bf3dc98384982ba0ae1f4c23e8fa9a9e489ea954e",
+            "target_step_id": "summary-step",
+            "target_step_revision": 2,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        }
+      ],
+      "identical": true
+    },
+    {
+      "case": "project-cycle-r5",
+      "outputs": [
+        {
+          "host": "codex",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r5.json",
+            "entry_sha256": "0c8ca5e2073d23419d844560e88dfc2459e701a2a82f71816bb37df966a52399",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        },
+        {
+          "host": "claude",
+          "status": 0,
+          "report": {
+            "report_version": 1,
+            "operation": "lifecycle",
+            "entry_path": "records/project/project-state/r5.json",
+            "entry_sha256": "0c8ca5e2073d23419d844560e88dfc2459e701a2a82f71816bb37df966a52399",
+            "target_step_id": null,
+            "target_step_revision": null,
+            "completion": "complete",
+            "structure": "valid",
+            "implementation_readiness": "not_requested",
+            "lifecycle_status": "satisfied_in_records",
+            "findings": [],
+            "review_obligations": [
+              {
+                "code": "semantic-completeness",
+                "message": "A separate reviewer must assess whether the specification resolves every effective decision and whether its readable and structured statements agree."
+              },
+              {
+                "code": "approval-provenance",
+                "message": "The coordinator and separate reviewer must assess the actual user response and its exact approval scope; text fields alone do not authenticate approval."
+              },
+              {
+                "code": "review-independence",
+                "message": "The separate review process must assess the actual handoff and context separation; distinct recorded labels alone do not prove independence."
+              },
+              {
+                "code": "evidence-authenticity",
+                "message": "The separate reviewer must assess whether preserved artifacts and claimed observations describe the actual work; matching record fields alone do not establish that fact."
+              }
+            ],
+            "exit_status": 0
+          }
+        }
+      ],
+      "identical": true
+    }
+  ],
+  "capabilityChecks": {
+    "unavailable_runtime": {
+      "status": null,
+      "error_code": "ENOENT",
+      "passed_validation": false
+    },
+    "reviewer_unavailable": {
+      "evidence": "docs/release/workflow-forward-review.md",
+      "outcome": "Separate-session fallback; gate remains pending."
+    }
+  },
+  "updated": {
+    "codex": true,
+    "claude": true
+  },
+  "removed": {
+    "codex": true,
+    "claude": true
+  },
+  "preserved": true,
+  "preserved_cycle_files": 75,
+  "project_record_sha256": "4ddeb55e2005b78995603daa53632246aa2bdde3154224528f5dfab9f0cc395f",
+  "transcript": [
+    {
+      "host": "codex",
+      "args": [
+        "--version"
+      ],
+      "status": 0,
+      "stdout": "codex-cli 0.162.1\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "--version"
+      ],
+      "status": 0,
+      "stdout": "2.1.296 (Claude Code)\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "codex",
+      "args": [
+        "plugin",
+        "marketplace",
+        "add",
+        "/private/tmp/vibe2spec-host-check-dCbZwc/marketplace",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"marketplaceName\": \"vibe2spec-marketplace\",\n  \"installedRoot\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace\",\n  \"alreadyAdded\": false\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "codex",
+      "args": [
+        "plugin",
+        "list",
+        "--marketplace",
+        "vibe2spec-marketplace",
+        "--available",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"installed\": [],\n  \"available\": [\n    {\n      \"pluginId\": \"vibe2spec@vibe2spec-marketplace\",\n      \"name\": \"vibe2spec\",\n      \"marketplaceName\": \"vibe2spec-marketplace\",\n      \"version\": \"0.1.0\",\n      \"installed\": false,\n      \"enabled\": false,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace/plugins/vibe2spec\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "codex",
+      "args": [
+        "plugin",
+        "add",
+        "vibe2spec@vibe2spec-marketplace",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"pluginId\": \"vibe2spec@vibe2spec-marketplace\",\n  \"name\": \"vibe2spec\",\n  \"marketplaceName\": \"vibe2spec-marketplace\",\n  \"version\": \"0.1.0\",\n  \"installedPath\": \"/private/tmp/vibe2spec-host-check-dCbZwc/codex-config/plugins/cache/vibe2spec-marketplace/vibe2spec/0.1.0\",\n  \"authPolicy\": \"ON_INSTALL\"\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "codex",
+      "args": [
+        "plugin",
+        "list",
+        "--marketplace",
+        "vibe2spec-marketplace",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"vibe2spec@vibe2spec-marketplace\",\n      \"name\": \"vibe2spec\",\n      \"marketplaceName\": \"vibe2spec-marketplace\",\n      \"version\": \"0.1.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace/plugins/vibe2spec\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "marketplace",
+        "add",
+        "/private/tmp/vibe2spec-host-check-dCbZwc/marketplace",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\"command\":\"marketplace-add\",\"outcome\":\"ok\",\"marketplace\":\"vibe2spec-marketplace\",\"message\":\"Successfully added marketplace: vibe2spec-marketplace (declared in user settings)\"}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "install",
+        "vibe2spec@vibe2spec-marketplace"
+      ],
+      "status": 0,
+      "stdout": "Installing plugin \"vibe2spec@vibe2spec-marketplace\"...✔ Successfully installed plugin: vibe2spec@vibe2spec-marketplace (scope: user)\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "details",
+        "vibe2spec"
+      ],
+      "status": 0,
+      "stdout": "vibe2spec 0.1.0\n  Description: Interview, specify, review, and verify one project step at a time.\n  Source: vibe2spec@vibe2spec-marketplace\n\nComponent inventory\n  Skills (3)  vibe2spec, vibe2spec-review, vibe2spec-worker\n  Agents (0)\n  Hooks (0)\n  MCP servers (0)\n  LSP servers (0)\n\nProjected token cost\n  Always-on:   ~180 tok   added to every session\n\nPer-component (rounded)\n  component         always-on  on-invoke\n  vibe2spec-worker        ~60      ~1.1k\n  vibe2spec               ~60        ~2k\n  vibe2spec-review        ~70      ~1.1k\n\n  On-invoke cost is paid each time a skill or agent fires.\n  Token counts are estimates and may differ from actual usage.\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "[\n  {\n    \"id\": \"vibe2spec@vibe2spec-marketplace\",\n    \"version\": \"0.1.0\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"/private/tmp/vibe2spec-host-check-dCbZwc/claude-config/plugins/cache/vibe2spec-marketplace/vibe2spec/0.1.0\",\n    \"readFromFolder\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace/plugins/vibe2spec\",\n    \"folderVersion\": \"0.1.0\",\n    \"installedAt\": \"2026-10-19T02:44:02.889Z\",\n    \"lastUpdated\": \"2026-10-19T02:44:02.889Z\",\n    \"projectEnabled\": false\n  }\n]\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "codex",
+      "args": [
+        "plugin",
+        "add",
+        "vibe2spec@vibe2spec-marketplace",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"pluginId\": \"vibe2spec@vibe2spec-marketplace\",\n  \"name\": \"vibe2spec\",\n  \"marketplaceName\": \"vibe2spec-marketplace\",\n  \"version\": \"0.1.1-smoke\",\n  \"installedPath\": \"/private/tmp/vibe2spec-host-check-dCbZwc/codex-config/plugins/cache/vibe2spec-marketplace/vibe2spec/0.1.1-smoke\",\n  \"authPolicy\": \"ON_INSTALL\"\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "codex",
+      "args": [
+        "plugin",
+        "list",
+        "--marketplace",
+        "vibe2spec-marketplace",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"vibe2spec@vibe2spec-marketplace\",\n      \"name\": \"vibe2spec\",\n      \"marketplaceName\": \"vibe2spec-marketplace\",\n      \"version\": \"0.1.1-smoke\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace/plugins/vibe2spec\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "marketplace",
+        "update",
+        "vibe2spec-marketplace"
+      ],
+      "status": 0,
+      "stdout": "Updating marketplace: vibe2spec-marketplace...Validating local marketplace\n✔ Successfully updated marketplace: vibe2spec-marketplace\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "update",
+        "vibe2spec@vibe2spec-marketplace"
+      ],
+      "status": 0,
+      "stdout": "Checking for updates for plugin \"vibe2spec@vibe2spec-marketplace\"…\n✔ Plugin \"vibe2spec\" updated from 0.1.0 to 0.1.1-smoke for scope user. Restart to apply changes.\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "[\n  {\n    \"id\": \"vibe2spec@vibe2spec-marketplace\",\n    \"version\": \"0.1.1-smoke\",\n    \"scope\": \"user\",\n    \"enabled\": true,\n    \"installPath\": \"/private/tmp/vibe2spec-host-check-dCbZwc/claude-config/plugins/cache/vibe2spec-marketplace/vibe2spec/0.1.1-smoke\",\n    \"readFromFolder\": \"/private/tmp/vibe2spec-host-check-dCbZwc/marketplace/plugins/vibe2spec\",\n    \"folderVersion\": \"0.1.1-smoke\",\n    \"installedAt\": \"2026-10-19T02:44:02.889Z\",\n    \"lastUpdated\": \"2026-10-19T02:44:05.290Z\",\n    \"projectEnabled\": false\n  }\n]\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "codex",
+      "args": [
+        "plugin",
+        "remove",
+        "vibe2spec@vibe2spec-marketplace",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"pluginId\": \"vibe2spec@vibe2spec-marketplace\",\n  \"name\": \"vibe2spec\",\n  \"marketplaceName\": \"vibe2spec-marketplace\"\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "uninstall",
+        "vibe2spec@vibe2spec-marketplace"
+      ],
+      "status": 0,
+      "stdout": "✔ Successfully uninstalled plugin: vibe2spec (scope: user)\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "codex",
+      "args": [
+        "plugin",
+        "list",
+        "--marketplace",
+        "vibe2spec-marketplace",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "{\n  \"installed\": [],\n  \"available\": []\n}\n",
+      "stderr": "",
+      "error": null
+    },
+    {
+      "host": "claude",
+      "args": [
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "status": 0,
+      "stdout": "[]\n",
+      "stderr": "",
+      "error": null
+    }
+  ]
+}

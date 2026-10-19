@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Make the Vibe2Spec workflow usable in Claude and Codex through a standalone plugin. Preserve the same specification, review, and approval rules across hosts and provide understandable project overviews.
+Make the Vibe2Spec workflow usable in Claude Code and Codex through standalone plugins installable through both hosts' marketplace mechanisms. Preserve the same specification, review, and approval rules across hosts and provide understandable project overviews.
 
 ## ADDED Requirements
 
@@ -111,3 +111,50 @@ Each distributed host package SHALL identify its required runtime and included c
 
 WHEN a packaged workflow depends on a file present only in the author's checkout,
 THEN installation verification fails and reports that reference before the package is considered ready for distribution.
+
+### Requirement: Deliver marketplace installation for both hosts
+
+The release SHALL provide plugin packages and project-maintained marketplace catalogs recognized by the approved Claude Code and Codex versions. Each package SHALL expose the shared workflow and include every required skill, template, helper, and asset. A manual checkout or development-only loading method SHALL NOT by itself establish marketplace installation support.
+
+#### Scenario: A user installs through Claude Code
+
+WHEN a user adds the released marketplace through Claude Code's supported marketplace interface and installs Vibe2Spec,
+THEN the installed plugin exposes the intended workflows and resolves its packaged resources without relying on the author's checkout.
+
+#### Scenario: A user installs through Codex
+
+WHEN a user adds the released marketplace through the supported Codex interface and installs Vibe2Spec,
+THEN the installed plugin exposes the same workflow requirements using the verified Codex package and documented prerequisites.
+
+### Requirement: Verify installed behavior and package lifecycle
+
+Release evidence SHALL identify each tested host surface, host version, runtime, package version, catalog, and installation source. Checks SHALL cover discovery, installed resource resolution, reviewer delegation or its required fallback, versioned update, removal, and project resumption. Updating or removing the plugin SHALL preserve the user's project records and accepted evidence.
+
+#### Scenario: A development checkout hides a missing packaged file
+
+WHEN an installed package cannot resolve a helper or template that exists only outside its distributed directory,
+THEN the host's installation assessment fails even if a development loading check passed.
+
+#### Scenario: An installed version is updated or removed
+
+WHEN the user updates or removes Vibe2Spec through the supported host interface,
+THEN the recorded check demonstrates the specified package change while preserving project records outside the installed package.
+
+#### Scenario: A project moves between hosts
+
+WHEN an approved cross-host case resumes a saved project in the other installed host,
+THEN the same decisions, review gates, unfinished questions, and accepted step revisions remain effective.
+
+### Requirement: Prepare and report public directory distribution accurately
+
+The release SHALL prepare the packages, listing materials, and verification evidence required by the documented Claude Code and OpenAI public submission routes. Project-maintained marketplace availability, submission readiness, submission, external approval, and published listing SHALL be reported separately. A compatibility check SHALL NOT imply directory acceptance or publication.
+
+#### Scenario: A package passes project-maintained marketplace checks
+
+WHEN both marketplace installation checks pass but official directory review has not occurred,
+THEN the release reports the verified installation routes and the pending public listing status without claiming official acceptance.
+
+#### Scenario: A directory changes its package requirements
+
+WHEN the current official submission requirements differ from the recorded packaging assumptions,
+THEN the affected requirements are rechecked and any necessary package change follows the applicable specification and approval process before submission.

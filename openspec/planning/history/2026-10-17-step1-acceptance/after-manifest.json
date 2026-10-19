@@ -1,0 +1,30 @@
+{
+  "purpose": "Status after actual Step 1 acceptance; accepted product files remain unchanged",
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 23406,
+      "sha256": "18ae3b1285d3052953f081d22ebc77ef3106407af69baea73c9382b73fa6caba"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/proposal.md",
+      "size_bytes": 7296,
+      "sha256": "1b4d591aa2eb6c6bd9ea0f15f51e9c0a5f70e775a0f67665f4585c49740fa6bb"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/design.md",
+      "size_bytes": 39578,
+      "sha256": "60ab12a2a30be6190c53bd14e2e9fe3d6c96c1f5dc4b203659e462e69a8d57cc"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/tasks.md",
+      "size_bytes": 19427,
+      "sha256": "4eae8e474190ccecf4254cdbb2f07d855889d0bc71c8b6faa18f8e11f2c291fe"
+    },
+    {
+      "path": "openspec/planning/vibe2spec-step-01-interview.md",
+      "size_bytes": 9184,
+      "sha256": "98484bd1655f8b2dcc8dbd9f8d00e6b7ee0915a4b82430b3ceaa338f9ffd2212"
+    }
+  ]
+}

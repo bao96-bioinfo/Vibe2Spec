@@ -1,0 +1,20 @@
+{
+  "purpose": "Preserve the Step 2 interview and initial planning drafts before incorporating six explicit policy decisions",
+  "files": [
+    {
+      "path": "openspec/planning/vibe2spec-step-02-interview.md",
+      "size_bytes": 7357,
+      "sha256": "4104b4130f9f31d38cee07a20dae60075c1ad859a47f46f9b935d98e34fc6524"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/interface-options.md",
+      "size_bytes": 9414,
+      "sha256": "a7b2f197a653f5c1945f5e84a189964b0c8aa4af094dfd0bb9d5a99ed58b3d00"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/coverage.md",
+      "size_bytes": 35507,
+      "sha256": "46399a7b229fca7837e5be0d7e0503d4d9dd26bff8a2fd02ab1322ba707d158a"
+    }
+  ]
+}

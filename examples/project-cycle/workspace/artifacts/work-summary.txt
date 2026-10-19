@@ -1,0 +1,1 @@
+Fictional prepared operation: sum exactly values [1,2,3] into {"sum":6} without modifying input. No code was executed.

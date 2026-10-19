@@ -1,5 +1,7 @@
 # Proposal
 
+Development authorization: the user has requested autonomous completion using recommended remaining choices. [The recorded instruction](../../planning/development-authorization.md) supersedes development-only interview and acceptance pauses below. Product workflow gates remain required. Historical completion evidence is preserved.
+
 ## Why
 
 An incomplete request leaves implementation choices to an agent, which can introduce assumptions that the user never accepted. Vibe2Spec will convert developer and researcher requests into explicit, reviewed step specifications so independent workers can produce the same specified behavior and outputs.
@@ -15,7 +17,7 @@ An incomplete request leaves implementation choices to an agent, which can intro
 - Define reproducibility through the specified behavior and outputs, an exact execution contract, and approved comparison rules. Control input identity, effective settings, algorithmic boundaries, ordering, randomness, and environment differences. Source code may differ. Numerical tolerances require explicit user approval.
 - Decide paired validation explicitly for each project step and include it in representative release examples. Two independent workers implement the same small function or unit from the same approved specification. Compare their outputs on identical small synthetic fixtures and check each result against approved expected behavior. This comparison does not duplicate large implementations or train on real data.
 - Save readable specifications alongside structured JSON decisions and validation results, with Node.js validation helpers. Use a separate reviewer context, with a separate review session requested when native delegation is unavailable.
-- Prepare standalone distribution for Claude and Codex without an OpenSpec installation dependency. Adapt OpenSpec's separation of behavioral requirements, testable scenarios, design decisions, implementation tasks, and explicit amendments. Extend that method with user approvals and reproducibility contracts. Use GitHub Spec Kit as an additional design reference.
+- Require standalone Claude Code and Codex packages with verified installation through both hosts' marketplace mechanisms. Prepare project-maintained catalogs and the materials required for public directory submission. Preserve the same workflow across hosts and test installed resources, updates, removal, and project resumption. Adapt OpenSpec's behavioral requirements, scenarios, design, tasks, and amendments without requiring its installation. Extend that method with user approvals and reproducibility contracts. Use GitHub Spec Kit as an additional design reference.
 - Present the ordered plan as an ASCII diagram. Adapt useful SpecViz components where appropriate without creating a SpecViz package dependency. Incorporate the supplied writing conventions directly into Vibe2Spec's instructions, without a separate style bundle.
 
 ## Capabilities
@@ -27,7 +29,7 @@ An incomplete request leaves implementation choices to an agent, which can intro
 - `reviewed-execution`: Worker instructions and reviews before execution and after results, including detection of unapproved effective settings.
 - `step-lifecycle`: User acceptance, preservation of completed work, and necessary revisions with an affected-script explanation.
 - `reproducibility-contract`: Explicit input, behavior, output, and comparison requirements for equivalent independent implementations.
-- `host-integration`: Installation and workflow access in Claude and Codex, with portable project records and understandable plan presentation.
+- `host-integration`: Marketplace installation and workflow access in Claude Code and Codex, public submission readiness, portable project records, and understandable plan presentation.
 
 ### Modified Capabilities
 
@@ -35,12 +37,12 @@ None. The repository has no existing capability specifications.
 
 ## Impact
 
-The repository currently contains its name in `README.md`, an Apache 2.0 license, and OpenSpec configuration and generated agent workflows. It has no product implementation or product tests. This proposal introduces the first product behavior contract and a sequential implementation roadmap.
+At proposal creation, the repository contained its name in `README.md`, an Apache 2.0 license, and OpenSpec configuration and generated agent workflows. Step 1 has since delivered reviewed record documents, templates, and fictional fixtures; the user accepted its exact reviewed result. Step 2 is current for interview and specification. The executable workflow, automated helpers, and installable packages remain planned. This proposal defines the release behavior contract and sequential implementation roadmap.
 
 The product will need agent instructions, specification templates, review instructions, examples, verification assets, and host installation metadata. Readable Markdown documents, JSON decision records, Node.js validation helpers, separate reviewer contexts, included diagram support, and incorporated writing conventions are accepted choices. Paired implementation testing is scoped to small units and synthetic fixtures, with an explicit decision for each project step and representative paired release examples.
 
 The first release uses instruction-based compliance with review evidence. A custom controlled execution runner is outside the accepted first-release scope. Review cannot retroactively prevent an action that has already occurred. The proposal must therefore distinguish the review protocol from technical prevention.
 
-The research-paper workflow is an example of the intended interaction. It does not prescribe a fixed sequence for every project or establish a requirement to conduct that biological study. Public marketplace publication is an eventual distribution goal; this planning workflow does not publish or implement the plugin.
+The research-paper workflow is an example of the intended interaction. It does not prescribe a fixed sequence for every project or establish a requirement to conduct that biological study. Installation through both hosts' marketplaces and public submission readiness are required release capabilities. Actual public listing requires the applicable external review and publication process after release acceptance. This planning update does not publish or implement the plugin.
 
 Accepted user decisions are recorded in `../../planning/vibe2spec-interview.md`. New design recommendations remain proposals until the user resolves them.

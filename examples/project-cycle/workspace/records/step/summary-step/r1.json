@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "kind": "step",
+  "id": "summary-step",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "title": "Calculate the vector sum",
+    "documents": null,
+    "depends_on": [
+      {
+        "step_id": "copy-step",
+        "revision": 1
+      }
+    ],
+    "requirements": null,
+    "decision_refs": null,
+    "input_refs": null,
+    "unit_refs": null,
+    "outputs": null,
+    "checks": null,
+    "paired_validation": null,
+    "resource_decision_refs": null,
+    "project_settings": {}
+  }
+}

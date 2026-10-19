@@ -1,0 +1,30 @@
+{
+  "purpose": "Preserve marketplace compatibility clarification for separate review",
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 23223,
+      "sha256": "6cd67a377f8b03b16ba7adeb3357d2e5e410ab81421b80e9e37f6106fe56c8db"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/proposal.md",
+      "size_bytes": 7235,
+      "sha256": "9b3fee2ef39cd34cf0d189d6eaf58395d02d3e879a607266569465684521e2bc"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/design.md",
+      "size_bytes": 39521,
+      "sha256": "dcd8775cecc14626c395d81f0e532c9ad1ad8563b68dc2cebe74732f7e9e7f4d"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/tasks.md",
+      "size_bytes": 19106,
+      "sha256": "e33f2888438ab6285efafc26de382ae9244791290d63fecc595d7ee2cb7d9a60"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/specs/host-integration/spec.md",
+      "size_bytes": 10210,
+      "sha256": "1964317526a02dc4d46f32c26c9a1fbb81ce5bffb4874d32bf20071577f77624"
+    }
+  ]
+}

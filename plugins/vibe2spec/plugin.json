@@ -1,0 +1,39 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vibe2spec",
+  "version": "0.1.0",
+  "description": "Turn developer and researcher requests into approved specifications, reviewed work, and reproducible results.",
+  "author": {
+    "name": "bao96-bioinfo",
+    "url": "https://github.com/bao96-bioinfo"
+  },
+  "homepage": "https://github.com/bao96-bioinfo/Vibe2Spec",
+  "repository": "https://github.com/bao96-bioinfo/Vibe2Spec",
+  "license": "Apache-2.0",
+  "keywords": [
+    "specification",
+    "research",
+    "review",
+    "reproducibility"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Vibe2Spec",
+        "shortDescription": "From ideas to approved specs",
+        "longDescription": "Clarify a development or research goal through an active interview. Approve one complete step at a time, review specifications and actual work in separate contexts, and verify outputs against explicit comparison rules. Includes local Node.js helpers and small paired-function checks. Execution control is instruction-based and requires user decisions and independent review.",
+        "developerName": "bao96-bioinfo",
+        "category": "Developer Tools",
+        "capabilities": [],
+        "websiteURL": "https://github.com/bao96-bioinfo/Vibe2Spec",
+        "supportURL": "https://github.com/bao96-bioinfo/Vibe2Spec/issues",
+        "defaultPrompt": [
+          "Help me turn my project idea into a precise specification.",
+          "Resume my project from its saved Vibe2Spec records."
+        ],
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
+      }
+    }
+  }
+}

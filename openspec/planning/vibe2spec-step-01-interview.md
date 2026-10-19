@@ -2,9 +2,9 @@
 
 ## Current status
 
-The active change is `add-vibe2spec-guided-workflow`. OpenSpec records tasks 1.1 through 1.5 complete, giving 5 of 56 implementation tasks complete. Task 1.6 awaits explicit acceptance of the delivered Step 1 result.
+The active change is `add-vibe2spec-guided-workflow`. Tasks 1.1 through 1.6 are complete, giving 6 of 56 implementation tasks complete. Step 1 is finished and Step 2 is current for interview and specification.
 
-Step 1 awaits result acceptance. The user approved specification revision 4 with the response `Approved.`, recorded in `evidence/specification-approval-r4.md`. Its twenty deliverables are implemented as prepared version 1. Separate pre-execution review passed, the single approved verification run passed, and a distinct results reviewer passed all eleven required assessments with no unresolved findings. The delivered result still requires explicit user acceptance before Step 1 finishes. Earlier specification and prepared-work versions remain preserved.
+The user approved specification revision 4 with the response `Approved.`, recorded in `evidence/specification-approval-r4.md`. Its twenty deliverables are implemented as prepared version 1. Separate pre-execution review passed, the single approved verification run passed, and a distinct results reviewer passed all eleven required assessments with no unresolved findings. The user subsequently replied `Step 1 review result is accepted`. The [acceptance record](../changes/add-vibe2spec-guided-workflow/steps/01-records-and-templates/evidence/acceptance-v1.md) binds this response to the exact delivered version and evidence. Earlier specification and prepared-work versions remain preserved.
 
 ## Established scope
 
@@ -76,4 +76,4 @@ These coverage obligations are addressed by the approved exact fixtures and chec
 
 ## Advancement rule
 
-The complete Step 1 specification has user approval and passing separate specification review. Prepared version 1 received passing independent pre-execution review. The single approved verification run passed with exit code 0 using Node.js v26.11.1. Separate results review passed. The remaining gate is explicit user acceptance of prepared version 1 and its evidence. Step 2 remains provisional until that acceptance is recorded. This interview note does not substitute for user acceptance.
+The complete Step 1 specification has user approval and passing separate specification review. Prepared version 1 received passing independent pre-execution review. The single approved verification run passed with exit code 0 using Node.js v26.11.1. Separate results review passed. The user's explicit result acceptance now completes the final gate for this version. Step 2 may begin its own interview and specification. No Step 2 implementation choice is approved by this handoff.

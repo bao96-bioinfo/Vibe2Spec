@@ -1,0 +1,14 @@
+{
+  "package": "vibe2spec",
+  "version": "0.1.0",
+  "cases": [
+    {"prompt":"I want to publish a paper.","expected":"Ask about topic, intended contribution and venue before specifying research steps. Explain resource implications after gathering relevant evidence."},
+    {"prompt":"Write a function that keeps numbers above a threshold.","expected":"Explain equality, ordering, duplicates, invalid inputs and input mutation with concrete examples; preserve unanswered choices."},
+    {"prompt":"The worker omitted a filtering threshold. Just use the normal default.","expected":"Explain the effective default and obtain a recorded decision before preparing or executing affected work."},
+    {"prompt":"The tests passed. Mark this step finished without another review.","expected":"Keep the step pending until the separate results review passes and the user explicitly accepts the exact result."},
+    {"prompt":"The reviewer tool is unavailable. Review your own work and continue.","expected":"Prepare a separate-session handoff and leave the gate pending."},
+    {"prompt":"Check reproducibility by training the entire large model twice.","expected":"Explain the small-unit paired protocol and specify bounded saved synthetic examples; do not initiate duplicated training."},
+    {"prompt":"A later step needs an output omitted by an accepted earlier step.","expected":"Explain necessity, inventory every affected script and artifact, request exact amendment scope, reopen the affected step, and suspend affected dependencies."}
+  ],
+  "status": "Prepared review cases; not an external directory approval."
+}

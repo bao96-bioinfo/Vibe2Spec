@@ -1,0 +1,20 @@
+{
+  "purpose": "Preserve the exact three files assessed by the separate policy audit before correcting its two stale descriptions",
+  "files": [
+    {
+      "path": "openspec/planning/vibe2spec-step-02-interview.md",
+      "size_bytes": 11870,
+      "sha256": "90e3a543b44e475f3413e6d3cbba98a351e0f5158bced4ac844f7aba8ea63e18"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/decisions/policy-responses-v1.md",
+      "size_bytes": 6394,
+      "sha256": "80963c8bf5724f5171931927d27966bb90afce2700cbb55469fa0dcaa60b14a4"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/spec.md",
+      "size_bytes": 13745,
+      "sha256": "94a0a74d1a8a343c42d57a038beec3ed21f8c85c090849e026f93926383d6cfe"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "purpose": "Preserve the approved runtime/profile integration and three unanswered input-handling questions; complete Step 2 specification remains pending",
+  "files": [
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/decisions/policy-responses-v1.md",
+      "size_bytes": 6483,
+      "sha256": "e879a38f98325df9d426a49ab37b886f01de1603b918e14d7810ef595b31c973"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/decisions/runtime-profile-responses-v1.md",
+      "size_bytes": 2922,
+      "sha256": "c42b39c117fb6fd2c527c27d256d170638cc97fc19a0b6ca74fc5f8d2b384c8e"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/coverage.md",
+      "size_bytes": 35669,
+      "sha256": "896afef1734fb2a4a04c813673e45167e6001443d50fed6a357feb796e481381"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/envelope-unit-proposal.md",
+      "size_bytes": 20747,
+      "sha256": "06e379d48e4bbea2f1251cf5a26e7a60d8adb33dc4c220eeca35699603ab6e13"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/input-contract-proposal.md",
+      "size_bytes": 12259,
+      "sha256": "d468ae46351326b98257e15caccb0d6a3969f658b8402af347a10e18cc04caf8"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/input-decisions.md",
+      "size_bytes": 5148,
+      "sha256": "e05c1082acbbb8d52e4209ca679a30eac4ec3cec0cf103491d0392ce5fb311cf"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/interface-options.md",
+      "size_bytes": 11312,
+      "sha256": "c20384d1cb2e9ec2523e5ddf71b3f41b3106c376c3d81f2e77e18f3e48e7490b"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/report-contract-proposal.md",
+      "size_bytes": 26257,
+      "sha256": "243148abae7ba4a52681c3ea6f6f1a47e683a26300c90695a2c549773a1f3d59"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/runtime-and-verification-proposal.md",
+      "size_bytes": 26356,
+      "sha256": "5ac33adcd7777091df3c0c6a8b3999b6e7a770d53853af3d671ea7c731d0f574"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/runtime-source-observation.md",
+      "size_bytes": 1584,
+      "sha256": "93e1d6254ba1072fed5cf2c23d6116585b223dcdce9c348cb38ae51c0d2291cd"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/draft/spec.md",
+      "size_bytes": 14511,
+      "sha256": "9fe2f5870de466874de0a0e079627aba06855368fb320c694290cfa06d822b63"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/evidence/policy-audit-v1.md",
+      "size_bytes": 3050,
+      "sha256": "e031c69f1e4b189dc651476a0b7c06d311d9cff210d65422211f96c4ca45b134"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/steps/02-validation-and-readiness/evidence/runtime-profile-audit-v1.md",
+      "size_bytes": 1757,
+      "sha256": "8a55b8a4616b8d16ec3945ccfcaeb1f9e9fe1c777d713edd816698cfb3358379"
+    },
+    {
+      "path": "openspec/planning/vibe2spec-step-02-interview.md",
+      "size_bytes": 13940,
+      "sha256": "adf34a53a30bdc6bf191bbc8de5b4ac7d665fdb0f8a916f5b2e0e25ed88e3a43"
+    }
+  ]
+}

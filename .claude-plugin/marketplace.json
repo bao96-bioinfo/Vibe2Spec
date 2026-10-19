@@ -1,0 +1,15 @@
+{
+  "name": "vibe2spec-marketplace",
+  "owner": {
+    "name": "bao96-bioinfo"
+  },
+  "plugins": [
+    {
+      "name": "vibe2spec",
+      "source": "./plugins/vibe2spec",
+      "description": "Interview, specify, review, and verify one project step at a time.",
+      "version": "0.1.0"
+    }
+  ],
+  "description": "Vibe2Spec tools for explicit specifications, independent review, and reproducible work."
+}

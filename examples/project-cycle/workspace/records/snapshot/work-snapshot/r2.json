@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "kind": "snapshot",
+  "id": "work-snapshot",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "purpose": "Fictional prepared work",
+    "entries": [
+      {
+        "path": "artifacts/work-r2.txt",
+        "sha256": "9edbff1ca98557ca71bf4513cda5b64416dc229f224bb8637cda0b90f3456d4a",
+        "size_bytes": 108
+      },
+      {
+        "path": "records/approval/spec-approval/r2.json",
+        "sha256": "e959b574ff6f0f97d0715d68693a1682b9598046b2ab9c6cffd32c7958b7fcec",
+        "size_bytes": 1163
+      },
+      {
+        "path": "records/review/spec-review/r2.json",
+        "sha256": "2afb5ebc23a5cab4dd8700a482b71d17605b3221a62cc654bd986f8b02a1c786",
+        "size_bytes": 784
+      },
+      {
+        "path": "records/snapshot/spec-snapshot/r2.json",
+        "sha256": "5c7642e82a0b99049800e4fec763da8975bc78faeb8fb1ebc11401addba0c3ba",
+        "size_bytes": 2316
+      }
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+Fictional prepared operation: example-copy artifacts/input.json artifacts/output.json

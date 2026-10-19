@@ -1,0 +1,10 @@
+import {renderOverview} from './overview.mjs';
+import {comparePair} from './compare.mjs';
+const states=[{step_id:'filter-values',revision:1,state:'interviewing',acceptance_ref:null,amendment_ref:null,blocked_by:[]},{step_id:'summarize-values',revision:1,state:'provisional',acceptance_ref:null,amendment_ref:null,blocked_by:[]}];
+console.log('Vibe2Spec fictional demonstration. These values do not authorize a real project.\n');
+console.log('Request: Keep numbers above a threshold.\n');
+console.log('A boundary choice changes the result. With [-1, 0, 2, 2, 5] and threshold 2, retaining equality returns [2, 2, 5]; strict comparison returns [5]. The inclusive rule treats 2 as the minimum acceptable value. Which meaning does the project need?\n');
+console.log(renderOverview({kind:'project',id:'example-project',content:{title:'Filter and summarize values',step_order:states.map(s=>s.step_id),current_step_id:'filter-values',states}}));
+const rule={category:'exact_json',array_order:'preserved',object_key_order:'ignored'};
+console.log('Checker demonstration: two supplied wrong outputs agree, but fail the expected result. This is not an independent implementation experiment.');
+console.log(JSON.stringify(comparePair([5],[5],[2,2,5],rule,rule),null,2));

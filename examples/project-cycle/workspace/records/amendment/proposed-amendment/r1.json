@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "kind": "amendment",
+  "id": "proposed-amendment",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "step_id": "copy-step",
+    "previous_acceptance_ref": {
+      "path": "records/acceptance/copy-acceptance/r1.json",
+      "sha256": "fafd44c5c849c262ffbb1cdfba4e8a9d95eb4530b54a3f7773622cb283464f7e"
+    },
+    "proposed_revision": 2,
+    "reason": "The fictional user confirms that a fixed external summary interface must consume the accepted preparation output directly. It requires a named values field, while the accepted revision 1 output is an array. An intermediate conversion and an interface change are excluded by that disclosed integration requirement.",
+    "blocking_requirement": "The preparation output itself must satisfy the fixed consumer interface: an object with exactly one values field. The consumer validates that input before the summary operation and cannot accept the bare array or an unapproved intermediate conversion.",
+    "edits": [
+      {
+        "path": "artifacts/design-r2.md",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at artifacts/design-r2.md. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "artifacts/output-r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at artifacts/output-r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "artifacts/spec-r2.md",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at artifacts/spec-r2.md. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "artifacts/tasks-r2.md",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at artifacts/tasks-r2.md. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "artifacts/work-r2.txt",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at artifacts/work-r2.txt. This is the complete affected prepared-operation inventory; the example has no executable scripts.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/acceptance/copy-acceptance/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/acceptance/copy-acceptance/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/approval/spec-approval/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/approval/spec-approval/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/comparison/copy-comparison/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/comparison/copy-comparison/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/decision/method-choice/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/decision/method-choice/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/review/results-review/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/review/results-review/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/review/spec-review/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/review/spec-review/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/review/work-review/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/review/work-review/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/run/copy-run/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/run/copy-run/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/snapshot/output-snapshot/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/snapshot/output-snapshot/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/snapshot/results-snapshot/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/snapshot/results-snapshot/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/snapshot/spec-snapshot/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/snapshot/spec-snapshot/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/snapshot/work-snapshot/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/snapshot/work-snapshot/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/step/copy-step/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/step/copy-step/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      },
+      {
+        "path": "records/unit/copy-unit/r2.json",
+        "operation": "create",
+        "planned_change": "Create the preserved revision 2 replacement at records/unit/copy-unit/r2.json. Record the revised named-field contract or its exact approved review, execution, comparison, or acceptance evidence.",
+        "necessity": "Supply and verify the required named-field output while preserving every revision 1 artifact."
+      }
+    ],
+    "affected_step_ids": [
+      "summary-step"
+    ],
+    "superseded_decision_refs": [
+      {
+        "path": "records/decision/method-choice/r1.json",
+        "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "kind": "snapshot",
+  "id": "results-snapshot",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "purpose": "Fictional results for review",
+    "entries": [
+      {
+        "path": "records/comparison/copy-comparison/r1.json",
+        "sha256": "0f4f5ddfef762898b1a3f0bbbd077b81716bad908b30519753f6ce00b197b694",
+        "size_bytes": 1937
+      },
+      {
+        "path": "records/run/copy-run/r1.json",
+        "sha256": "6d589229021d875588ff1691c13de615d94344595f7a22b3775b75429754d563",
+        "size_bytes": 2848
+      },
+      {
+        "path": "records/snapshot/output-snapshot/r1.json",
+        "sha256": "2512b2894b2af6217b3786743234f6dd572c3f03d5db9ad11921404f84e17c18",
+        "size_bytes": 721
+      },
+      {
+        "path": "records/snapshot/spec-snapshot/r1.json",
+        "sha256": "af93cb7cb49043ce20c39c4307ad190097878d9382eda8d33d440d53cfc3d01d",
+        "size_bytes": 2306
+      },
+      {
+        "path": "records/snapshot/work-snapshot/r1.json",
+        "sha256": "9f67bba28af7f3cef11e7d4098f6f61e948b4878bfff54e992357bf6a8992586",
+        "size_bytes": 1074
+      }
+    ]
+  }
+}

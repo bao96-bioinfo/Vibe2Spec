@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "kind": "acceptance",
+  "id": "copy-acceptance",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "step_id": "copy-step",
+    "step_revision": 2,
+    "spec_snapshot_ref": {
+      "path": "records/snapshot/spec-snapshot/r2.json",
+      "sha256": "5c7642e82a0b99049800e4fec763da8975bc78faeb8fb1ebc11401addba0c3ba"
+    },
+    "work_snapshot_ref": {
+      "path": "records/snapshot/work-snapshot/r2.json",
+      "sha256": "70aa295cbbe4972fc92d183453e175d53874d36e98233d5192985601b1fc0af4"
+    },
+    "run_refs": [
+      {
+        "path": "records/run/copy-run/r2.json",
+        "sha256": "1594dc8368913ca78a831212842cc08af9b88cdd9272fd551196e3b15d56ea2d"
+      }
+    ],
+    "comparison_refs": [
+      {
+        "path": "records/comparison/copy-comparison/r2.json",
+        "sha256": "0df618ddb3dfc16b3cffaf9e5fddf865f75e1bc6a71e9d572b763952705346aa"
+      }
+    ],
+    "results_review_ref": {
+      "path": "records/review/results-review/r2.json",
+      "sha256": "4f6d602b70bab7bae45b48747173214d63d61b4564a2af8ba475882fbdb6f98a"
+    },
+    "response": {
+      "session_id": "example-user-session",
+      "message_id": "example-accept-revised-result",
+      "text": "Fictional acceptance of copy-step revision 2 and its reviewed named-field output; revision 1 remains historical."
+    }
+  }
+}

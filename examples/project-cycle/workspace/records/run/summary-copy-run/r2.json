@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "kind": "run",
+  "id": "summary-copy-run",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-worker"
+  },
+  "content": {
+    "step_id": "summary-step",
+    "step_revision": 2,
+    "spec_snapshot_ref": {
+      "path": "records/snapshot/summary-spec-snapshot/r2.json",
+      "sha256": "93fdaffb4d4b4784eb1afde840b10258bce2d1d4307787531e638f771fcd01c1"
+    },
+    "work_snapshot_ref": {
+      "path": "records/snapshot/summary-work-snapshot/r2.json",
+      "sha256": "d3b954fcc339bc9714ff3212b403a112dd0c379d4b007267ac9cb2fd31b17068"
+    },
+    "pre_execution_review_ref": {
+      "path": "records/review/summary-work-review/r2.json",
+      "sha256": "b1d0f9a077c38630482b952d47b267cd3e13c3a579da52a826de4581dfd70470"
+    },
+    "input_snapshot_ref": {
+      "path": "records/snapshot/summary-input-snapshot/r2.json",
+      "sha256": "e9f59bb83175c6b51703153e52884591fe56a4da2279ea0f27bff8009b00912a"
+    },
+    "commands": [
+      {
+        "program": "example-sum",
+        "args": [
+          "artifacts/output-r2.json",
+          "artifacts/output-summary.json"
+        ],
+        "cwd": ".",
+        "environment": []
+      }
+    ],
+    "effective_settings": [
+      {
+        "name": "copy-method",
+        "value": {
+          "operation": "sum",
+          "input": "artifacts/output-r2.json",
+          "output": "artifacts/output-summary.json",
+          "comparison": "exact_json",
+          "runtime": "fictional-copy-1",
+          "platform": "fictional"
+        },
+        "decision_ref": {
+          "path": "records/decision/summary-method-choice/r2.json",
+          "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+        },
+        "source": "Approved method choice."
+      }
+    ],
+    "environment": {
+      "runtime": "fictional-copy-1",
+      "platform": "fictional",
+      "details": "Deterministic example data only; no execution occurred."
+    },
+    "output_snapshot_ref": {
+      "path": "records/snapshot/summary-output-snapshot/r2.json",
+      "sha256": "52a4b2916eb52cc3c3a28f04788532a81771f53bc715696793252420b6f5f2ce"
+    },
+    "check_results": [
+      {
+        "check_id": "same-vector",
+        "outcome": "pass",
+        "observed": {
+          "input": {
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": {
+            "sum": 6
+          }
+        },
+        "detail": "Fictional output and retained input equal the approved array."
+      }
+    ],
+    "worker": {
+      "session_id": "example-session",
+      "context_id": "example-worker"
+    },
+    "started_at": "2000-01-01T00:00:00Z",
+    "finished_at": "2000-01-01T00:00:01Z",
+    "resource_use": {
+      "elapsed_ms": 1000,
+      "input_bytes": 42,
+      "output_bytes": 15,
+      "calls": 1
+    }
+  }
+}

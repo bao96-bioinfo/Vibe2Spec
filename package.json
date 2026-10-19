@@ -1,0 +1,23 @@
+{
+  "name": "vibe2spec",
+  "version": "0.1.0",
+  "description": "Interview, specify, review, and verify one project step at a time.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": "^24.22.0 || ^26.11.1"
+  },
+  "bin": {
+    "vibe2spec": "scripts/vibe2spec.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/package.mjs",
+    "demo": "node scripts/demo.mjs"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bao96-bioinfo/Vibe2Spec.git"
+  }
+}

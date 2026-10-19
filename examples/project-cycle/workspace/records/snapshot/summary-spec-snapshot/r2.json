@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "kind": "snapshot",
+  "id": "summary-spec-snapshot",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "purpose": "Complete fictional specification",
+    "entries": [
+      {
+        "path": "artifacts/design-summary.md",
+        "sha256": "59f728c6a8fefbcb0efdd980ae98166411b0a4b3e220b35bce594aea32947299",
+        "size_bytes": 412
+      },
+      {
+        "path": "artifacts/output-r2.json",
+        "sha256": "12d1ca3e63e341ebe7fbf99fa8f2ee0291b41b69edaadda4f246728894364691",
+        "size_bytes": 42
+      },
+      {
+        "path": "artifacts/overview.md",
+        "sha256": "8b225f2b254b1d92076d4e8b84504f3b86c23d45150ce3bda13b1223cfddf44a",
+        "size_bytes": 274
+      },
+      {
+        "path": "artifacts/spec-summary.md",
+        "sha256": "a44cf696d6d135ea523d41b8cc672be0822c233032ea28d53fefac29a97745de",
+        "size_bytes": 365
+      },
+      {
+        "path": "artifacts/tasks-summary.md",
+        "sha256": "354cebe71c6c9ee059160e30014df92f7d05896da207fa0cb571332e9a5a70b1",
+        "size_bytes": 268
+      },
+      {
+        "path": "records/decision/pair-choice/r1.json",
+        "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63",
+        "size_bytes": 539
+      },
+      {
+        "path": "records/decision/resource-choice/r1.json",
+        "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9",
+        "size_bytes": 634
+      },
+      {
+        "path": "records/decision/summary-method-choice/r2.json",
+        "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f",
+        "size_bytes": 1002
+      },
+      {
+        "path": "records/evidence/example-source/r1.json",
+        "sha256": "48804df695368b8aa2e877229e82ba2554acc86146e8842896a3366f0f335010",
+        "size_bytes": 610
+      },
+      {
+        "path": "records/step/summary-step/r2.json",
+        "sha256": "baf2d0bf184cb9cbe38887b036803ec053ace0eb8cc00e3296feba214673edb9",
+        "size_bytes": 4220
+      },
+      {
+        "path": "records/unit/summary-unit/r2.json",
+        "sha256": "0d976d30556dbc2132055f33f1446ad07d078956c6c5aaf1367445edb9906d82",
+        "size_bytes": 1866
+      }
+    ]
+  }
+}

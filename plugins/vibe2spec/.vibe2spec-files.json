@@ -1,0 +1,436 @@
+{
+  "inventory_version": 1,
+  "files": [
+    {
+      "path": ".claude-plugin",
+      "kind": "directory"
+    },
+    {
+      "path": ".claude-plugin/plugin.json",
+      "kind": "file",
+      "sha256": "cebc758748a2d1df9ff1d11abdc6cecfed7a4eeb70f44ee7060cd88e94b9ed00"
+    },
+    {
+      "path": ".codex-plugin",
+      "kind": "directory"
+    },
+    {
+      "path": ".codex-plugin/plugin.json",
+      "kind": "file",
+      "sha256": "6ac5031dd466b42b568ef4fcbb66c3f5f191d3ddd193ba8567202c464617d2b1"
+    },
+    {
+      "path": ".vibe2spec-generated",
+      "kind": "file",
+      "sha256": "ad3540e5e8ffa2aa647e817e14b50be3411bdaa6c19c8942a5fe45299e8a1c6c"
+    },
+    {
+      "path": "LICENSE",
+      "kind": "file",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "assets",
+      "kind": "directory"
+    },
+    {
+      "path": "assets/icon.svg",
+      "kind": "file",
+      "sha256": "6c8fc5951ed367d708e4e9e1f528813fda0388a383ad4d812c7347956d5881a0"
+    },
+    {
+      "path": "docs",
+      "kind": "directory"
+    },
+    {
+      "path": "docs/assets",
+      "kind": "directory"
+    },
+    {
+      "path": "docs/assets/README.md",
+      "kind": "file",
+      "sha256": "097ae0709789509a3502b49b57b5c243e7c78868dc9611bda05d09e3a8cede34"
+    },
+    {
+      "path": "docs/assets/vibe2spec-overview.png",
+      "kind": "file",
+      "sha256": "5d4650d0de7ff1d0f95343f1993a3601a9e8406850f742caeaa1962d887f472f"
+    },
+    {
+      "path": "docs/comparison-api.md",
+      "kind": "file",
+      "sha256": "c2575b13d31c331b03720352978f5fb5f4bbf2cbbcd42f384e58d1b45dcce14d"
+    },
+    {
+      "path": "docs/envelope-unit.md",
+      "kind": "file",
+      "sha256": "0e1ff7d6293e247be085ad24ed80b57160b5cdd3ef967b3728e68bacf095ecf2"
+    },
+    {
+      "path": "docs/host-compatibility.md",
+      "kind": "file",
+      "sha256": "469e2ad9c75f6c3b295f73b9661054205e89a4d991351131ecec746dbda2e048"
+    },
+    {
+      "path": "docs/illustrative-example.md",
+      "kind": "file",
+      "sha256": "76a1f096ce9669f7221ff30eaf49dc1ecb397c395f39f6820a4474fb3b961f85"
+    },
+    {
+      "path": "docs/installation.md",
+      "kind": "file",
+      "sha256": "592b3155b883c7f278326c1816da7bef73caedd2fe5fc4b6fd824a9066f9c0fb"
+    },
+    {
+      "path": "docs/interview.md",
+      "kind": "file",
+      "sha256": "0f0374fc5712bf5beec1cf9653b47d4b7170918a32ac26d1d6d82175e8ec6c54"
+    },
+    {
+      "path": "docs/lifecycle.md",
+      "kind": "file",
+      "sha256": "4b3bb5f791a3c9de75d3cbc5a713c6c3b9d065ff3b8d64d15c9058dd4f2026b9"
+    },
+    {
+      "path": "docs/paired-validation.md",
+      "kind": "file",
+      "sha256": "07b5d5e4f156656f784d6e2d16a8324149757c35ccc5dabd6c223575a7512738"
+    },
+    {
+      "path": "docs/project-overview.md",
+      "kind": "file",
+      "sha256": "0ef23841f74006e73bc17331f0582d5270413c25191d1ff2fc881453d10a4704"
+    },
+    {
+      "path": "docs/publishing.md",
+      "kind": "file",
+      "sha256": "829c572741af2d9b3a3aa882473aea3d9263cf70b126431825fa41e771607c39"
+    },
+    {
+      "path": "docs/record-format.md",
+      "kind": "file",
+      "sha256": "b5254afc2da9185d36c3ef083b19431baa8ffc5bc836998ee915f334092d34ea"
+    },
+    {
+      "path": "docs/release",
+      "kind": "directory"
+    },
+    {
+      "path": "docs/release/envelope-v24.22.0.json",
+      "kind": "file",
+      "sha256": "d0e5b8740911d47173870f6612bf0589504a774fa7e0d2ab3f86fb37f0f570e8"
+    },
+    {
+      "path": "docs/release/envelope-v26.11.1.json",
+      "kind": "file",
+      "sha256": "d72abd1ffc19bce3ecc5a13acb572e63dbea53f26d34aa077cb088780cfbffce"
+    },
+    {
+      "path": "docs/release/final-results-review.md",
+      "kind": "file",
+      "sha256": "d013eeabf433fff2e1c36cb3c242d66524ec169d0cf9670426dc3676d7fa057f"
+    },
+    {
+      "path": "docs/release/host-install-observation.json",
+      "kind": "file",
+      "sha256": "528f1da65393a5f84176127e7d6ad1a29bd08311afeead5ec8d146b6d6cd60c0"
+    },
+    {
+      "path": "docs/release/independent-code-review.md",
+      "kind": "file",
+      "sha256": "b60074acab49d8a1ed0281479ab9d92c6d2ed9df379a927508928f45c826a84e"
+    },
+    {
+      "path": "docs/release/integration-review.md",
+      "kind": "file",
+      "sha256": "386e954778d7b09f2e26a9c7bd073fea22dd6df316bcd10d9552b4dfc0870762"
+    },
+    {
+      "path": "docs/release/listing.md",
+      "kind": "file",
+      "sha256": "3db35e55675f8606b554ca1c9f2d670301a3c487846dd34397cd3d815cb431e9"
+    },
+    {
+      "path": "docs/release/paired-pre-execution-review.md",
+      "kind": "file",
+      "sha256": "ed020a02b48b80e2d30f9166411a2de8149723ef5846294d810f57496d4ac9f2"
+    },
+    {
+      "path": "docs/release/prior-verification-findings.json",
+      "kind": "file",
+      "sha256": "e36c93566af5d35c369c66ccd151eb6da96bacdbbc13086a8c62b86734645f64"
+    },
+    {
+      "path": "docs/release/requirements-audit.md",
+      "kind": "file",
+      "sha256": "deb3d46968bdc2c66a195e28bd6663c4980eed9f2437238267d52cd225424505"
+    },
+    {
+      "path": "docs/release/runtime-verification.json",
+      "kind": "file",
+      "sha256": "c59c79444703dcbfb0a41869f5342291505ba79b6f8cad8bb6ca596cb8898b05"
+    },
+    {
+      "path": "docs/release/submission-cases.json",
+      "kind": "file",
+      "sha256": "50d6500a504035ef2db22a1d6dcf5b209162e2d87aa12daa0fef83ef7020d616"
+    },
+    {
+      "path": "docs/release/tested-source-manifest.json",
+      "kind": "file",
+      "sha256": "e2c4c35d90422c975112ac6f38c31ea56da61a108d6aeb31e341ebe32ea3c5d0"
+    },
+    {
+      "path": "docs/release/tests-node24.txt",
+      "kind": "file",
+      "sha256": "783d02b8fb65ff2b8868ad0c45d97b2b1c95066d3c05b3daa607616b92cecb14"
+    },
+    {
+      "path": "docs/release/tests-node26.txt",
+      "kind": "file",
+      "sha256": "7d53f468f74a9e459e032ed8e54e7b6ee6f792dad3ce36491529775beaf21af2"
+    },
+    {
+      "path": "docs/release/verification.md",
+      "kind": "file",
+      "sha256": "4a62493c8dd9ef2f814248b6346aebbfc616e672a6d98780520312c37ca17bc4"
+    },
+    {
+      "path": "docs/release/workflow-forward-responses.json",
+      "kind": "file",
+      "sha256": "8515b63d53bbda08ffb1e18d02e3b838ee99c3ff2f34180113cae3c3653f89c0"
+    },
+    {
+      "path": "docs/release/workflow-forward-review.md",
+      "kind": "file",
+      "sha256": "a65a6c9cd5eb0e8dd43cca20e14fab9586c5658adfb1fa88a92292f293d8bb76"
+    },
+    {
+      "path": "docs/review.md",
+      "kind": "file",
+      "sha256": "e3eaf02fa62ccb7be7b3cba20f87e63c2fa907377fd3a3ed1e82105c1215326e"
+    },
+    {
+      "path": "docs/specification-authoring.md",
+      "kind": "file",
+      "sha256": "055c4ace0613dce6ca17fb55eb6703c27b0efe9a8bd6edac83b4499df4415f50"
+    },
+    {
+      "path": "docs/validation-graph.md",
+      "kind": "file",
+      "sha256": "d042a4dd05fdf118e13b6988ababb9f98eb996acedb00853f4fef2f28e36c4ff"
+    },
+    {
+      "path": "docs/validation-records.md",
+      "kind": "file",
+      "sha256": "5894e2750fa79bfa98faa9187279baf24bd83fe17210362230790901a851ffef"
+    },
+    {
+      "path": "docs/validation.md",
+      "kind": "file",
+      "sha256": "428dcc1979eb9cb81185a48f28d9419fd1def3c5e2798c71ac8eb7d61e6fb335"
+    },
+    {
+      "path": "package.json",
+      "kind": "file",
+      "sha256": "0cd1383996e982c44aaf475a4f84a0148184e6f0b42dfb04c4cc340d50be764b"
+    },
+    {
+      "path": "plugin.json",
+      "kind": "file",
+      "sha256": "04f47d8dd29f0d9306a1fd20f328ab82f847dca14816da5e2c204ab687952c02"
+    },
+    {
+      "path": "scripts",
+      "kind": "directory"
+    },
+    {
+      "path": "scripts/compare.mjs",
+      "kind": "file",
+      "sha256": "b07cb7f502d071ef418c35ddaac2ac08c3090a5e203890d24b31f47d63b53bc0"
+    },
+    {
+      "path": "scripts/demo.mjs",
+      "kind": "file",
+      "sha256": "4efc6bc2f566cc30178140d9920a055206036c1fafd01e8670e6c360361a5ac2"
+    },
+    {
+      "path": "scripts/envelope.mjs",
+      "kind": "file",
+      "sha256": "209fc7a363ae0a6581f1b1899e95679daf580bd76c861eba4c595807c623e8d8"
+    },
+    {
+      "path": "scripts/findings.mjs",
+      "kind": "file",
+      "sha256": "b8bde8c1c62d1d430f85363d4e8bef59d66af432af446658ba50c1e3c1df463c"
+    },
+    {
+      "path": "scripts/graph.mjs",
+      "kind": "file",
+      "sha256": "15a88d0d6e03e46cd7e9c881b021c4af3967988969bf2228755b68b41c856ca6"
+    },
+    {
+      "path": "scripts/json.mjs",
+      "kind": "file",
+      "sha256": "3d4cd0d4e61a003092ca9632eb0e158799d669c93132edd06a5b37749e9368c8"
+    },
+    {
+      "path": "scripts/lifecycle.mjs",
+      "kind": "file",
+      "sha256": "b2100d0b4c2234d3e79bc4bcb6393130375ed0045da0d49888c94b3440a7d832"
+    },
+    {
+      "path": "scripts/overview.mjs",
+      "kind": "file",
+      "sha256": "1c6fd84bb099c3963779426603097497608bccd46ac58ed8d5233e0129290e8a"
+    },
+    {
+      "path": "scripts/readiness.mjs",
+      "kind": "file",
+      "sha256": "0cb805e5828d305964b68ebd50618c261fc1609351d955c45eb0ef7799623fde"
+    },
+    {
+      "path": "scripts/records.mjs",
+      "kind": "file",
+      "sha256": "565fe26ca791e2a802786ac90b0f5651097fdbe4e946c6fe3c6d2adcc523727f"
+    },
+    {
+      "path": "scripts/report.mjs",
+      "kind": "file",
+      "sha256": "3c6e7e053df3f119433f47b73de37418f7cf060932eb17d757afab04fffc492f"
+    },
+    {
+      "path": "scripts/vibe2spec.mjs",
+      "kind": "file",
+      "sha256": "b2058dda1cf84ba793486bff02aa3e94e4bf6a66fa2715059424fc8717d503df"
+    },
+    {
+      "path": "skills",
+      "kind": "directory"
+    },
+    {
+      "path": "skills/vibe2spec",
+      "kind": "directory"
+    },
+    {
+      "path": "skills/vibe2spec-review",
+      "kind": "directory"
+    },
+    {
+      "path": "skills/vibe2spec-review/SKILL.md",
+      "kind": "file",
+      "sha256": "053eb7ec67d690dfc1b2bf9e455cfd557d98d8c5c234d27683798f79c06f6ae1"
+    },
+    {
+      "path": "skills/vibe2spec-worker",
+      "kind": "directory"
+    },
+    {
+      "path": "skills/vibe2spec-worker/SKILL.md",
+      "kind": "file",
+      "sha256": "42001d295cc931545639cabb8b697b5725afb7756c2eafe245a6098d38ab3985"
+    },
+    {
+      "path": "skills/vibe2spec/SKILL.md",
+      "kind": "file",
+      "sha256": "20fca5a0f5ef6025d855644067f4135e354d60bcdbaab8babb7e4309cf581cc5"
+    },
+    {
+      "path": "skills/vibe2spec/references",
+      "kind": "directory"
+    },
+    {
+      "path": "skills/vibe2spec/references/lifecycle.md",
+      "kind": "file",
+      "sha256": "98a85cdcfaf241225a295014e1ac41c78a113f190e778fa45a53e5850674d341"
+    },
+    {
+      "path": "templates",
+      "kind": "directory"
+    },
+    {
+      "path": "templates/acceptance.json",
+      "kind": "file",
+      "sha256": "a99af96176cd7c6ef21c038a6f1779c8496e1fc0d792ccb8c47fdc74c409ef50"
+    },
+    {
+      "path": "templates/amendment.json",
+      "kind": "file",
+      "sha256": "c08ff0a35d19b248eba1619bb596d13552509d496b9ecd639884606efdafedfe"
+    },
+    {
+      "path": "templates/approval.json",
+      "kind": "file",
+      "sha256": "5c115d998e7ebe36ec7989fc72e1c46fe652743ec4c933a4e4e41511d13fde6b"
+    },
+    {
+      "path": "templates/comparison.json",
+      "kind": "file",
+      "sha256": "fafdc0ecc49ab53b2b157c9b75eb6eed2a0a831b278431ecf6a460e78c49d9db"
+    },
+    {
+      "path": "templates/decision.json",
+      "kind": "file",
+      "sha256": "3475851ccc3100f51f54f77c95abeb9a7cef8797d57afbd7abc1ce19d603f472"
+    },
+    {
+      "path": "templates/evidence.json",
+      "kind": "file",
+      "sha256": "5f6696a73f842a24c4f87a5e8824c696f31eacc7dae56ea5b9d389264bf475db"
+    },
+    {
+      "path": "templates/project.json",
+      "kind": "file",
+      "sha256": "01a1963929287df354aaf08b926598c035c649f99ea501d06a8e8ebaa3190c6b"
+    },
+    {
+      "path": "templates/project.md",
+      "kind": "file",
+      "sha256": "e92f0e841d41f55dc5d28c65346eba3457c7cb205e97ad0ff8a121bd60c7b557"
+    },
+    {
+      "path": "templates/review.json",
+      "kind": "file",
+      "sha256": "fcf8eea59e19ddb76a4cd159d1aae9e5c8ab92670486b353b3eaa7744ec76671"
+    },
+    {
+      "path": "templates/run.json",
+      "kind": "file",
+      "sha256": "a594a477b560693b5cbcfd3f4263205f7565badd5bb80375dafb31dc612bf334"
+    },
+    {
+      "path": "templates/snapshot.json",
+      "kind": "file",
+      "sha256": "4cd72e4a8009815d7b172e60d3884c6052f21d838f9f75d86e1b8b39abf9bb13"
+    },
+    {
+      "path": "templates/step",
+      "kind": "directory"
+    },
+    {
+      "path": "templates/step/contract.json",
+      "kind": "file",
+      "sha256": "cbc4e0d5bb1d9927d243a2fb0638c6c9627d7e30a52f7d00690fbe32cd6efc13"
+    },
+    {
+      "path": "templates/step/design.md",
+      "kind": "file",
+      "sha256": "83652d5cd7395a6a4139518a11d01ba6f0aaa923f1140a3688a813c286449837"
+    },
+    {
+      "path": "templates/step/spec.md",
+      "kind": "file",
+      "sha256": "6f41194e804daf7893a979ad2329a1ab996830684dca84cc1947baf04cd92063"
+    },
+    {
+      "path": "templates/step/tasks.md",
+      "kind": "file",
+      "sha256": "3793e9c08d15e834d998362938b9cb6d4b04673d7fb1e314a81c7adef1edb1ff"
+    },
+    {
+      "path": "templates/step/unit.json",
+      "kind": "file",
+      "sha256": "03d497af5eedca366cdfe22c6d6cde47c38a015fa59c7ee5d041cb482ce2c2b1"
+    }
+  ]
+}

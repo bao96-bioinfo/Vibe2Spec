@@ -1,0 +1,26 @@
+{
+  "platform": "darwin",
+  "architecture": "arm64",
+  "runs": [
+    {
+      "runtime": "26.11.1",
+      "tests": 192,
+      "passed": 192,
+      "failed": 0,
+      "duration_ms": 2016.345125,
+      "paired_cases": 64,
+      "paired_calls": 128,
+      "paired_outcome": "pass"
+    },
+    {
+      "runtime": "24.22.0",
+      "tests": 192,
+      "passed": 192,
+      "failed": 0,
+      "duration_ms": 1986.635917,
+      "paired_cases": 64,
+      "paired_calls": 128,
+      "paired_outcome": "pass"
+    }
+  ]
+}

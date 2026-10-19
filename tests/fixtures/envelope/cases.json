@@ -1,0 +1,1332 @@
+{
+  "fixture_version": 1,
+  "base": {
+    "schema_version": 1,
+    "kind": "project",
+    "id": "record-a",
+    "revision": 1,
+    "project_id": "project-a",
+    "context": "example",
+    "lifecycle": "draft",
+    "author": {
+      "session_id": "example-session",
+      "context_id": "example-author"
+    },
+    "content": {}
+  },
+  "cases": [
+    {
+      "id": "kind-project",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "project"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-decision",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "decision"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-evidence",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "evidence"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-approval",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "approval"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-step",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "step"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-unit",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "unit"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-review",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "review"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-run",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "run"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-comparison",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "comparison"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-acceptance",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "acceptance"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-amendment",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "amendment"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "kind-snapshot",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "snapshot"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "authoring",
+      "changes": [
+        [
+          "set",
+          "/context",
+          "authoring"
+        ],
+        [
+          "set",
+          "/author/session_id",
+          "template-session"
+        ],
+        [
+          "set",
+          "/author/context_id",
+          "template-author"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "project-actors",
+      "changes": [
+        [
+          "set",
+          "/context",
+          "project"
+        ],
+        [
+          "set",
+          "/author/session_id",
+          "session-a"
+        ],
+        [
+          "set",
+          "/author/context_id",
+          "worker-a"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "frozen",
+      "changes": [
+        [
+          "set",
+          "/lifecycle",
+          "frozen"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "maximum-revision",
+      "changes": [
+        [
+          "set",
+          "/revision",
+          9007199254740991
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "maximum-identifiers",
+      "changes": [
+        [
+          "repeat",
+          "/id",
+          "a",
+          80
+        ],
+        [
+          "repeat",
+          "/project_id",
+          "b",
+          80
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "untrimmed-actors",
+      "changes": [
+        [
+          "set",
+          "/context",
+          "project"
+        ],
+        [
+          "set",
+          "/author/session_id",
+          " "
+        ],
+        [
+          "set",
+          "/author/context_id",
+          " "
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "root-null",
+      "changes": [
+        [
+          "set",
+          "",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "root-array",
+      "changes": [
+        [
+          "set",
+          "",
+          []
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "root-number",
+      "changes": [
+        [
+          "set",
+          "",
+          0
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "root-string",
+      "changes": [
+        [
+          "set",
+          "",
+          "record"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "root-boolean",
+      "changes": [
+        [
+          "set",
+          "",
+          true
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "all-fields-missing",
+      "changes": [
+        [
+          "set",
+          "",
+          {}
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "missing-field",
+            "pointer": "/author"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/content"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/context"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/id"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/kind"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/lifecycle"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/project_id"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/revision"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/schema_version"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unknown-root-field",
+      "changes": [
+        [
+          "set",
+          "/extra",
+          false
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "unknown-field",
+            "pointer": "/extra"
+          }
+        ]
+      }
+    },
+    {
+      "id": "numeric-root-key",
+      "changes": [
+        [
+          "set",
+          "/0",
+          false
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "unknown-field",
+            "pointer": "/0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "root-order",
+      "changes": [
+        [
+          "order",
+          "",
+          [
+            "kind",
+            "schema_version",
+            "id",
+            "revision",
+            "project_id",
+            "context",
+            "lifecycle",
+            "author",
+            "content"
+          ]
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-field-order",
+            "pointer": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "version-type",
+      "changes": [
+        [
+          "set",
+          "/schema_version",
+          "1"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/schema_version"
+          }
+        ]
+      }
+    },
+    {
+      "id": "version-fraction",
+      "changes": [
+        [
+          "set",
+          "/schema_version",
+          1.5
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/schema_version"
+          }
+        ]
+      }
+    },
+    {
+      "id": "version-unsupported",
+      "changes": [
+        [
+          "set",
+          "/schema_version",
+          2
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "unsupported-version",
+            "pointer": "/schema_version"
+          }
+        ]
+      }
+    },
+    {
+      "id": "version-negative",
+      "changes": [
+        [
+          "set",
+          "/schema_version",
+          -1
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/schema_version"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kind-type",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/kind"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kind-unknown",
+      "changes": [
+        [
+          "set",
+          "/kind",
+          "other"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-enumeration",
+            "pointer": "/kind"
+          }
+        ]
+      }
+    },
+    {
+      "id": "identifier-length",
+      "changes": [
+        [
+          "repeat",
+          "/id",
+          "a",
+          81
+        ],
+        [
+          "repeat",
+          "/project_id",
+          "b",
+          81
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-identifier",
+            "pointer": "/id"
+          },
+          {
+            "code": "invalid-identifier",
+            "pointer": "/project_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "identifier-spelling",
+      "changes": [
+        [
+          "set",
+          "/id",
+          "A"
+        ],
+        [
+          "set",
+          "/project_id",
+          ""
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-identifier",
+            "pointer": "/id"
+          },
+          {
+            "code": "invalid-identifier",
+            "pointer": "/project_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "identifier-types",
+      "changes": [
+        [
+          "set",
+          "/id",
+          0
+        ],
+        [
+          "set",
+          "/project_id",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/id"
+          },
+          {
+            "code": "invalid-type",
+            "pointer": "/project_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "revision-zero",
+      "changes": [
+        [
+          "set",
+          "/revision",
+          0
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/revision"
+          }
+        ]
+      }
+    },
+    {
+      "id": "revision-negative",
+      "changes": [
+        [
+          "set",
+          "/revision",
+          -1
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/revision"
+          }
+        ]
+      }
+    },
+    {
+      "id": "revision-fraction",
+      "changes": [
+        [
+          "set",
+          "/revision",
+          1.5
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/revision"
+          }
+        ]
+      }
+    },
+    {
+      "id": "revision-unsafe",
+      "changes": [
+        [
+          "revision-above-safe"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/revision"
+          }
+        ]
+      }
+    },
+    {
+      "id": "revision-type",
+      "changes": [
+        [
+          "set",
+          "/revision",
+          "1"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/revision"
+          }
+        ]
+      }
+    },
+    {
+      "id": "context-type",
+      "changes": [
+        [
+          "set",
+          "/context",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/context"
+          }
+        ]
+      }
+    },
+    {
+      "id": "context-unknown",
+      "changes": [
+        [
+          "set",
+          "/context",
+          "other"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-enumeration",
+            "pointer": "/context"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lifecycle-type",
+      "changes": [
+        [
+          "set",
+          "/lifecycle",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/lifecycle"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lifecycle-unknown",
+      "changes": [
+        [
+          "set",
+          "/lifecycle",
+          "approved"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-enumeration",
+            "pointer": "/lifecycle"
+          }
+        ]
+      }
+    },
+    {
+      "id": "author-null",
+      "changes": [
+        [
+          "set",
+          "/author",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/author"
+          }
+        ]
+      }
+    },
+    {
+      "id": "author-array",
+      "changes": [
+        [
+          "set",
+          "/author",
+          []
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/author"
+          }
+        ]
+      }
+    },
+    {
+      "id": "author-fields-missing",
+      "changes": [
+        [
+          "set",
+          "/author",
+          {}
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "missing-field",
+            "pointer": "/author/context_id"
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/author/session_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "author-unknown-field",
+      "changes": [
+        [
+          "set",
+          "/author/extra",
+          true
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "unknown-field",
+            "pointer": "/author/extra"
+          }
+        ]
+      }
+    },
+    {
+      "id": "author-order",
+      "changes": [
+        [
+          "order",
+          "/author",
+          [
+            "context_id",
+            "session_id"
+          ]
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-field-order",
+            "pointer": "/author"
+          }
+        ]
+      }
+    },
+    {
+      "id": "actor-types",
+      "changes": [
+        [
+          "set",
+          "/author/session_id",
+          null
+        ],
+        [
+          "set",
+          "/author/context_id",
+          0
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/author/context_id"
+          },
+          {
+            "code": "invalid-type",
+            "pointer": "/author/session_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "actor-empty",
+      "changes": [
+        [
+          "set",
+          "/author/session_id",
+          ""
+        ],
+        [
+          "set",
+          "/author/context_id",
+          ""
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "empty-value",
+            "pointer": "/author/context_id"
+          },
+          {
+            "code": "empty-value",
+            "pointer": "/author/session_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "example-session-prefix",
+      "changes": [
+        [
+          "set",
+          "/author/session_id",
+          "session-a"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "context-conflict",
+            "pointer": "/author/session_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "example-context-prefix",
+      "changes": [
+        [
+          "set",
+          "/author/context_id",
+          "worker-a"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "context-conflict",
+            "pointer": "/author/context_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "authoring-actor-conflict",
+      "changes": [
+        [
+          "set",
+          "/context",
+          "authoring"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "context-conflict",
+            "pointer": "/author/context_id"
+          },
+          {
+            "code": "context-conflict",
+            "pointer": "/author/session_id"
+          }
+        ]
+      }
+    },
+    {
+      "id": "project-prefix-not-reserved",
+      "changes": [
+        [
+          "set",
+          "/context",
+          "project"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "frozen-authoring",
+      "changes": [
+        [
+          "set",
+          "/context",
+          "authoring"
+        ],
+        [
+          "set",
+          "/author/session_id",
+          "template-session"
+        ],
+        [
+          "set",
+          "/author/context_id",
+          "template-author"
+        ],
+        [
+          "set",
+          "/lifecycle",
+          "frozen"
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "content-null",
+      "changes": [
+        [
+          "set",
+          "/content",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/content"
+          }
+        ]
+      }
+    },
+    {
+      "id": "content-array",
+      "changes": [
+        [
+          "set",
+          "/content",
+          []
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/content"
+          }
+        ]
+      }
+    },
+    {
+      "id": "content-boolean",
+      "changes": [
+        [
+          "set",
+          "/content",
+          false
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/content"
+          }
+        ]
+      }
+    },
+    {
+      "id": "content-uninspected",
+      "changes": [
+        [
+          "set",
+          "/content",
+          {
+            "undeclared": null,
+            "nested": {
+              "2": false,
+              "10": true
+            }
+          }
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "id": "independent-findings",
+      "changes": [
+        [
+          "order",
+          "",
+          [
+            "kind",
+            "schema_version",
+            "id",
+            "revision",
+            "project_id",
+            "context",
+            "lifecycle",
+            "author",
+            "content"
+          ]
+        ],
+        [
+          "set",
+          "/schema_version",
+          2
+        ],
+        [
+          "set",
+          "/id",
+          "?"
+        ],
+        [
+          "remove",
+          "/author/context_id"
+        ],
+        [
+          "set",
+          "/author/session_id",
+          ""
+        ],
+        [
+          "set",
+          "/content",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-field-order",
+            "pointer": ""
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/author/context_id"
+          },
+          {
+            "code": "empty-value",
+            "pointer": "/author/session_id"
+          },
+          {
+            "code": "invalid-type",
+            "pointer": "/content"
+          },
+          {
+            "code": "invalid-identifier",
+            "pointer": "/id"
+          },
+          {
+            "code": "unsupported-version",
+            "pointer": "/schema_version"
+          }
+        ]
+      }
+    },
+    {
+      "id": "root-order-metadata-invalid",
+      "changes": [
+        [
+          "override-order",
+          "root",
+          []
+        ]
+      ],
+      "expected": {
+        "kind": "throw",
+        "name": "TypeError",
+        "message": "Invalid envelope-checker input."
+      }
+    },
+    {
+      "id": "author-order-metadata-invalid",
+      "changes": [
+        [
+          "override-order",
+          "author",
+          null
+        ]
+      ],
+      "expected": {
+        "kind": "throw",
+        "name": "TypeError",
+        "message": "Invalid envelope-checker input."
+      }
+    }
+  ]
+}

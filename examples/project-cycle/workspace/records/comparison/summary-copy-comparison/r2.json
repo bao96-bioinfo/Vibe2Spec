@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "kind": "comparison",
+  "id": "summary-copy-comparison",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "mode": "single",
+    "unit_ref": {
+      "path": "records/unit/summary-unit/r2.json",
+      "sha256": "0d976d30556dbc2132055f33f1446ad07d078956c6c5aaf1367445edb9906d82"
+    },
+    "input_snapshot_ref": {
+      "path": "records/snapshot/summary-input-snapshot/r2.json",
+      "sha256": "e9f59bb83175c6b51703153e52884591fe56a4da2279ea0f27bff8009b00912a"
+    },
+    "run_refs": [
+      {
+        "path": "records/run/summary-copy-run/r2.json",
+        "sha256": "c2612ffeb58ab5754d9428d3bc2b1fcba513388fd97122d55a8fa8132743093e"
+      }
+    ],
+    "worker_contexts": [
+      {
+        "session_id": "example-session",
+        "context_id": "example-worker"
+      }
+    ],
+    "correctness_results": [
+      {
+        "run_ref": {
+          "path": "records/run/summary-copy-run/r2.json",
+          "sha256": "c2612ffeb58ab5754d9428d3bc2b1fcba513388fd97122d55a8fa8132743093e"
+        },
+        "results": [
+          {
+            "check_id": "same-vector",
+            "outcome": "pass",
+            "observed": {
+              "input": {
+                "values": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "output": {
+                "sum": 6
+              }
+            },
+            "detail": "Fictional output and retained input equal the approved array."
+          }
+        ]
+      }
+    ],
+    "pairwise_results": [],
+    "rules": [
+      {
+        "check_id": "same-vector",
+        "correctness_rule": {
+          "category": "exact_json",
+          "array_order": "preserved",
+          "object_key_order": "ignored"
+        },
+        "pairwise_rule": null,
+        "pairwise_decision_ref": null
+      }
+    ]
+  }
+}

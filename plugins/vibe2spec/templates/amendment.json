@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "amendment",
+  "id": "template-amendment",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "step_id": null,
+    "previous_acceptance_ref": null,
+    "proposed_revision": null,
+    "reason": null,
+    "blocking_requirement": null,
+    "edits": null,
+    "affected_step_ids": null,
+    "superseded_decision_refs": null
+  }
+}

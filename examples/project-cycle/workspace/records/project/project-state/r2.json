@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "kind": "project",
+  "id": "project-state",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "title": "Fictional preparation and summary cycle",
+    "overview_ref": {
+      "path": "artifacts/overview.md",
+      "sha256": "8b225f2b254b1d92076d4e8b84504f3b86c23d45150ce3bda13b1223cfddf44a"
+    },
+    "step_order": [
+      "copy-step",
+      "summary-step"
+    ],
+    "current_step_id": "summary-step",
+    "states": [
+      {
+        "step_id": "copy-step",
+        "revision": 1,
+        "state": "finished",
+        "acceptance_ref": {
+          "path": "records/acceptance/copy-acceptance/r1.json",
+          "sha256": "fafd44c5c849c262ffbb1cdfba4e8a9d95eb4530b54a3f7773622cb283464f7e"
+        },
+        "amendment_ref": null,
+        "blocked_by": []
+      },
+      {
+        "step_id": "summary-step",
+        "revision": 1,
+        "state": "interviewing",
+        "acceptance_ref": null,
+        "amendment_ref": null,
+        "blocked_by": []
+      }
+    ],
+    "evidence_refs": [
+      {
+        "path": "records/approval/spec-approval/r1.json",
+        "sha256": "c17ba2321519499e727d855d1bd8aa76c0853c6d175f69129e5b77f9df8d3bc8"
+      },
+      {
+        "path": "records/review/spec-review/r1.json",
+        "sha256": "a820b050f6720b928f11c0382139d8328e761e2d7fd9246c446fa61992a30497"
+      },
+      {
+        "path": "records/review/work-review/r1.json",
+        "sha256": "2a719f6601af3618a17c184035e65bd983676e0b157763bf786a8d50f0372a00"
+      },
+      {
+        "path": "records/run/copy-run/r1.json",
+        "sha256": "6d589229021d875588ff1691c13de615d94344595f7a22b3775b75429754d563"
+      },
+      {
+        "path": "records/comparison/copy-comparison/r1.json",
+        "sha256": "0f4f5ddfef762898b1a3f0bbbd077b81716bad908b30519753f6ce00b197b694"
+      },
+      {
+        "path": "records/review/results-review/r1.json",
+        "sha256": "d15f27d2296e9534cfced879ec5aff512bd0f64648fc351a7588439792977d57"
+      },
+      {
+        "path": "records/acceptance/copy-acceptance/r1.json",
+        "sha256": "fafd44c5c849c262ffbb1cdfba4e8a9d95eb4530b54a3f7773622cb283464f7e"
+      },
+      {
+        "path": "records/review/summary-draft-review/r1.json",
+        "sha256": "2c69f46f6c81cb04f7226abb9945de8a1501541b505296b5b51464aa3670f94d"
+      }
+    ],
+    "project_settings": {}
+  }
+}

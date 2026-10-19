@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "kind": "snapshot",
+  "id": "summary-output-snapshot",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "purpose": "Fictional output and unchanged input after the operation",
+    "entries": [
+      {
+        "path": "artifacts/output-r2.json",
+        "sha256": "12d1ca3e63e341ebe7fbf99fa8f2ee0291b41b69edaadda4f246728894364691",
+        "size_bytes": 42
+      },
+      {
+        "path": "artifacts/output-summary.json",
+        "sha256": "8517f3fb76994f85704af1a50058b9a0cf629401a11d4c82a2ab35a389ee2ccb",
+        "size_bytes": 15
+      }
+    ]
+  }
+}

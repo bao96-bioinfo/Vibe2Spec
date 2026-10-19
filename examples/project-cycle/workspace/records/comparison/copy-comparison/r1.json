@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "kind": "comparison",
+  "id": "copy-comparison",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "mode": "single",
+    "unit_ref": {
+      "path": "records/unit/copy-unit/r1.json",
+      "sha256": "18c6cf02239c4712bd40302b66a1e38587ffa873d4b5fb56ee8e97557c0f53d5"
+    },
+    "input_snapshot_ref": {
+      "path": "records/snapshot/input-snapshot/r1.json",
+      "sha256": "2a510ebb56920bbd257a502eb04c885442b11b0cdea000646b253c4a221ae9ea"
+    },
+    "run_refs": [
+      {
+        "path": "records/run/copy-run/r1.json",
+        "sha256": "6d589229021d875588ff1691c13de615d94344595f7a22b3775b75429754d563"
+      }
+    ],
+    "worker_contexts": [
+      {
+        "session_id": "example-session",
+        "context_id": "example-worker"
+      }
+    ],
+    "correctness_results": [
+      {
+        "run_ref": {
+          "path": "records/run/copy-run/r1.json",
+          "sha256": "6d589229021d875588ff1691c13de615d94344595f7a22b3775b75429754d563"
+        },
+        "results": [
+          {
+            "check_id": "same-vector",
+            "outcome": "pass",
+            "observed": {
+              "input": [
+                1,
+                2,
+                3
+              ],
+              "output": [
+                1,
+                2,
+                3
+              ]
+            },
+            "detail": "Fictional output and retained input equal the approved array."
+          }
+        ]
+      }
+    ],
+    "pairwise_results": [],
+    "rules": [
+      {
+        "check_id": "same-vector",
+        "correctness_rule": {
+          "category": "exact_json",
+          "array_order": "preserved",
+          "object_key_order": "ignored"
+        },
+        "pairwise_rule": null,
+        "pairwise_decision_ref": null
+      }
+    ]
+  }
+}

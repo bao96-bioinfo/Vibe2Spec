@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "kind": "decision",
+  "id": "method-choice",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "question": "Use the stated unchanged-copy contract?",
+    "options": [],
+    "selection": {
+      "mode": "literal",
+      "value": {
+        "operation": "copy",
+        "input": "artifacts/input.json",
+        "output": "artifacts/output.json",
+        "comparison": "exact_json",
+        "runtime": "fictional-copy-1",
+        "platform": "fictional"
+      }
+    },
+    "rationale": "Preserve the approved vector exactly.",
+    "evidence_refs": [
+      {
+        "path": "records/evidence/example-source/r1.json",
+        "sha256": "48804df695368b8aa2e877229e82ba2554acc86146e8842896a3366f0f335010"
+      }
+    ]
+  }
+}

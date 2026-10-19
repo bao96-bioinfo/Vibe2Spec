@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "kind": "review",
+  "id": "results-review",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-results-reviewer"
+  },
+  "content": {
+    "phase": "results",
+    "snapshot_ref": {
+      "path": "records/snapshot/results-snapshot/r1.json",
+      "sha256": "dcd84450364617601a39843697b555783a0b803d2f6cdb8af775bee7c5c9c30a"
+    },
+    "reviewer": {
+      "session_id": "example-session",
+      "context_id": "example-results-reviewer"
+    },
+    "artifact_authors": [
+      {
+        "session_id": "example-session",
+        "context_id": "example-author"
+      },
+      {
+        "session_id": "example-session",
+        "context_id": "example-spec-reviewer"
+      },
+      {
+        "session_id": "example-session",
+        "context_id": "example-work-reviewer"
+      },
+      {
+        "session_id": "example-session",
+        "context_id": "example-worker"
+      }
+    ],
+    "workers": [
+      {
+        "session_id": "example-session",
+        "context_id": "example-worker"
+      }
+    ],
+    "outcome": "pass",
+    "findings": []
+  }
+}

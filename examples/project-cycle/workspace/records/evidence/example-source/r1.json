@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "evidence",
+  "id": "example-source",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "source_uri": "example:copy-contract",
+    "source_title": "Fictional copy contract",
+    "source_version": "1",
+    "accessed_at": "2000-01-01T00:00:00Z",
+    "claim": "This example defines an unchanged copy.",
+    "location": "Method paragraph",
+    "limitations": [
+      "Fictional source; no external claim."
+    ]
+  }
+}

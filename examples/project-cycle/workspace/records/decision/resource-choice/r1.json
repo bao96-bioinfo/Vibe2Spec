@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "kind": "decision",
+  "id": "resource-choice",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "question": "Use these example limits?",
+    "options": [],
+    "selection": {
+      "mode": "literal",
+      "value": {
+        "max_calls": 1,
+        "max_elapsed_ms": 1000,
+        "max_input_bytes": 1024,
+        "max_output_bytes": 1024
+      }
+    },
+    "rationale": "Bound a single fictional copy operation.",
+    "evidence_refs": []
+  }
+}

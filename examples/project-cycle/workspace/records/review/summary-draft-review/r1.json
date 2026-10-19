@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "kind": "review",
+  "id": "summary-draft-review",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-draft-reviewer"
+  },
+  "content": {
+    "phase": "specification",
+    "snapshot_ref": {
+      "path": "records/snapshot/summary-draft/r1.json",
+      "sha256": "16b50a3de02ded0584537576f794538aea82ea72240c7330a264431724687936"
+    },
+    "reviewer": {
+      "session_id": "example-session",
+      "context_id": "example-draft-reviewer"
+    },
+    "artifact_authors": [
+      {
+        "session_id": "example-session",
+        "context_id": "example-author"
+      }
+    ],
+    "workers": [],
+    "outcome": "changes_required",
+    "findings": [
+      {
+        "code": "summary-contract-incomplete",
+        "path": "records/step/summary-step/r1.json",
+        "message": "The current interview draft has unresolved input representation, method, outputs, and checks. No implementation is authorized."
+      }
+    ]
+  }
+}

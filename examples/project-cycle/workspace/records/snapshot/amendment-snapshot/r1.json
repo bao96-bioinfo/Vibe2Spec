@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "snapshot",
+  "id": "amendment-snapshot",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "purpose": "Proposed fictional amendment",
+    "entries": [
+      {
+        "path": "records/amendment/proposed-amendment/r1.json",
+        "sha256": "b35cb90efc70312089389fbc4965f4224b8a1acb33223dc83572dff4763074cc",
+        "size_bytes": 9857
+      }
+    ]
+  }
+}

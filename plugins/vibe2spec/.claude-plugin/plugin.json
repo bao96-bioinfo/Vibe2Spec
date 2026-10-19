@@ -1,0 +1,18 @@
+{
+  "name": "vibe2spec",
+  "version": "0.1.0",
+  "description": "Turn developer and researcher requests into approved specifications, reviewed work, and reproducible results.",
+  "author": {
+    "name": "bao96-bioinfo",
+    "url": "https://github.com/bao96-bioinfo"
+  },
+  "homepage": "https://github.com/bao96-bioinfo/Vibe2Spec",
+  "repository": "https://github.com/bao96-bioinfo/Vibe2Spec",
+  "license": "Apache-2.0",
+  "keywords": [
+    "specification",
+    "research",
+    "review",
+    "reproducibility"
+  ]
+}

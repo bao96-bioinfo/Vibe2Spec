@@ -1,0 +1,135 @@
+{
+  "scope": "Source observed after the two complete passing runtime runs; runtime source was unchanged between those runs and this observation.",
+  "files": [
+    {
+      "path": "scripts/compare.mjs",
+      "sha256": "b07cb7f502d071ef418c35ddaac2ac08c3090a5e203890d24b31f47d63b53bc0",
+      "size_bytes": 7144
+    },
+    {
+      "path": "scripts/demo.mjs",
+      "sha256": "4efc6bc2f566cc30178140d9920a055206036c1fafd01e8670e6c360361a5ac2",
+      "size_bytes": 1259
+    },
+    {
+      "path": "scripts/envelope.mjs",
+      "sha256": "209fc7a363ae0a6581f1b1899e95679daf580bd76c861eba4c595807c623e8d8",
+      "size_bytes": 5041
+    },
+    {
+      "path": "scripts/findings.mjs",
+      "sha256": "b8bde8c1c62d1d430f85363d4e8bef59d66af432af446658ba50c1e3c1df463c",
+      "size_bytes": 9279
+    },
+    {
+      "path": "scripts/graph.mjs",
+      "sha256": "15a88d0d6e03e46cd7e9c881b021c4af3967988969bf2228755b68b41c856ca6",
+      "size_bytes": 12677
+    },
+    {
+      "path": "scripts/host-smoke.mjs",
+      "sha256": "1b30a3c7a0298504555a903d4c3c0c8679ff106a4e7e8021a7db92cd814310fa",
+      "size_bytes": 7718
+    },
+    {
+      "path": "scripts/json.mjs",
+      "sha256": "3d4cd0d4e61a003092ca9632eb0e158799d669c93132edd06a5b37749e9368c8",
+      "size_bytes": 5883
+    },
+    {
+      "path": "scripts/lifecycle.mjs",
+      "sha256": "b2100d0b4c2234d3e79bc4bcb6393130375ed0045da0d49888c94b3440a7d832",
+      "size_bytes": 24185
+    },
+    {
+      "path": "scripts/overview.mjs",
+      "sha256": "1c6fd84bb099c3963779426603097497608bccd46ac58ed8d5233e0129290e8a",
+      "size_bytes": 2355
+    },
+    {
+      "path": "scripts/package.mjs",
+      "sha256": "4fd4d5844f04f71dce3f121a05d8ed71bda8c9059888ad7633aafe1d261b9a15",
+      "size_bytes": 7047
+    },
+    {
+      "path": "scripts/readiness.mjs",
+      "sha256": "0cb805e5828d305964b68ebd50618c261fc1609351d955c45eb0ef7799623fde",
+      "size_bytes": 11551
+    },
+    {
+      "path": "scripts/records.mjs",
+      "sha256": "565fe26ca791e2a802786ac90b0f5651097fdbe4e946c6fe3c6d2adcc523727f",
+      "size_bytes": 19251
+    },
+    {
+      "path": "scripts/report.mjs",
+      "sha256": "3c6e7e053df3f119433f47b73de37418f7cf060932eb17d757afab04fffc492f",
+      "size_bytes": 4688
+    },
+    {
+      "path": "scripts/vibe2spec.mjs",
+      "sha256": "b2058dda1cf84ba793486bff02aa3e94e4bf6a66fa2715059424fc8717d503df",
+      "size_bytes": 4026
+    },
+    {
+      "path": "tests/audit-regressions.test.mjs",
+      "sha256": "0879e701321a1fa8020322ba6c03051b90f3d886f83ba0522d75ee4c5a70b176",
+      "size_bytes": 14434
+    },
+    {
+      "path": "tests/compare.test.mjs",
+      "sha256": "1f1af04498b2a4bc39bcdd9641fbfa0cd7338f4ad35beaf3785125a8d59aeef4",
+      "size_bytes": 2847
+    },
+    {
+      "path": "tests/graph.test.mjs",
+      "sha256": "55f50c3f76d62a5c8449dca4e68f676110fb111138ae8b48d8d669e471e0afd8",
+      "size_bytes": 6334
+    },
+    {
+      "path": "tests/integration-review.test.mjs",
+      "sha256": "f9d75f3549f4d8833cbc6ce8084671006d3e1e1ca400506f5fc45b5dc1a9c4e6",
+      "size_bytes": 5404
+    },
+    {
+      "path": "tests/lifecycle.test.mjs",
+      "sha256": "6327752e02f645d784db13822b48e27b01045be951de3df1783404190e72c635",
+      "size_bytes": 7731
+    },
+    {
+      "path": "tests/overview.test.mjs",
+      "sha256": "aec93a4c140271031a92cfbdcb467c3821265febfbe221220fa5ea3bca1670ae",
+      "size_bytes": 1366
+    },
+    {
+      "path": "tests/packaging.test.mjs",
+      "sha256": "d222ed1ad6d72355354a6d6c71f7972ee38f743b873fd0cfb2a2c125485cef64",
+      "size_bytes": 3911
+    },
+    {
+      "path": "tests/paired-envelope.test.mjs",
+      "sha256": "e63a76eaec86ccb0aa7f6cf0929aa9865368d35c8bc6f2cdbf219860478ef5d9",
+      "size_bytes": 846
+    },
+    {
+      "path": "tests/project-cycle.test.mjs",
+      "sha256": "c7cead3de9028345391a25fe900668f9e5143303b26353b29dca12e1aca87a12",
+      "size_bytes": 4686
+    },
+    {
+      "path": "tests/records.test.mjs",
+      "sha256": "54757b471d3b5191c07b8ca974c7cfe8a1355de0d20808bc26fee8bf62827956",
+      "size_bytes": 9195
+    },
+    {
+      "path": "tests/report.test.mjs",
+      "sha256": "fb8e04a58abc3d5359de84a0078c85b6eb48a628a6fb64d05b28be0a90771b6f",
+      "size_bytes": 3020
+    },
+    {
+      "path": "tests/workflow.test.mjs",
+      "sha256": "040728f1ccbf0cb54114cc5a510f14e8685b0b246abde54307e5de9ed274b149",
+      "size_bytes": 7352
+    }
+  ]
+}

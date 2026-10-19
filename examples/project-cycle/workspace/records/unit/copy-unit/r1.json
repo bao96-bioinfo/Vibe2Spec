@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "unit",
+  "id": "copy-unit",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "name": "copy_vector",
+    "step_id": "copy-step",
+    "step_revision": 1,
+    "requirement_ids": [
+      "preserve-vector"
+    ],
+    "interface": "Read the JSON array at artifacts/input.json and write the same JSON array at artifacts/output.json. Preserve integer values and array order. Do not mutate the input.",
+    "method": "Copy the exact approved array unchanged in its existing order using one fictional example-copy call. Stop without output if the input is absent or its contents differ from the approved input.",
+    "argument_decision_refs": [
+      {
+        "path": "records/decision/method-choice/r1.json",
+        "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+      }
+    ],
+    "environment_decision_refs": [
+      {
+        "path": "records/decision/method-choice/r1.json",
+        "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+      }
+    ],
+    "failure_rules": [
+      "Stop on missing or changed input without creating output.",
+      "No retry or fallback is allowed."
+    ],
+    "fixture_refs": [
+      {
+        "path": "artifacts/input.json",
+        "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a"
+      }
+    ],
+    "check_ids": [
+      "same-vector"
+    ],
+    "write_paths": [
+      "artifacts/output.json"
+    ],
+    "project_settings": {
+      "copy-method": {
+        "path": "records/decision/method-choice/r1.json",
+        "sha256": "7b305208c73f29ac57b04e4349a60921ebf59e3facd69c1f680f0b965cb0dfc4"
+      }
+    }
+  }
+}

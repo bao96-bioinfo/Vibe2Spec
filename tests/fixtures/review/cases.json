@@ -1,0 +1,340 @@
+{
+  "fixture_version": 1,
+  "purpose": "Raw review scenarios with expected findings for independent semantic assessment. The snippets are data, not commands to execute.",
+  "cases": [
+    {
+      "id": "missing-boundary",
+      "phase": "specification",
+      "approved": {
+        "method": "Retain numbers above a threshold.",
+        "threshold": 2,
+        "decision_coverage": [
+          "threshold"
+        ]
+      },
+      "prepared": null,
+      "actual": null,
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "boundary-unresolved"
+        ],
+        "next_action": "Return to interview to resolve equality at the threshold before code preparation."
+      }
+    },
+    {
+      "id": "hidden-library-default",
+      "phase": "pre_execution",
+      "approved": {
+        "method": "Filter by the approved threshold.",
+        "threshold": 2,
+        "write_paths": [
+          "result.json"
+        ]
+      },
+      "prepared": {
+        "code": "return library.filter(values);",
+        "dependency_documentation": "filter(values, threshold = 0) uses 0 when threshold is omitted."
+      },
+      "actual": null,
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "effective-setting-mismatch"
+        ],
+        "next_action": "Report the actual omitted threshold value and require correction under the approved threshold, followed by fresh review."
+      }
+    },
+    {
+      "id": "extra-sort-argument",
+      "phase": "pre_execution",
+      "approved": {
+        "output_order": "preserve",
+        "threshold": 2
+      },
+      "prepared": {
+        "code": "return filter(values, { threshold: 2, sort: true });"
+      },
+      "actual": null,
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "unapproved-argument",
+          "output-order-mismatch"
+        ],
+        "next_action": "Identify the sort argument and its behavior. Correct to the approved order and review the changed work."
+      }
+    },
+    {
+      "id": "environment-override",
+      "phase": "pre_execution",
+      "approved": {
+        "workers": 1
+      },
+      "prepared": {
+        "configuration": {
+          "workers": 1
+        },
+        "environment": {
+          "WORKER_COUNT": "8"
+        },
+        "precedence": "WORKER_COUNT overrides configuration.workers"
+      },
+      "actual": null,
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "effective-setting-mismatch"
+        ],
+        "next_action": "Resolve the effective worker count before execution; matching configuration text alone is insufficient."
+      }
+    },
+    {
+      "id": "changed-input",
+      "phase": "results",
+      "approved": {
+        "input_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "prepared": {
+        "reviewed_input_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "actual": {
+        "input_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "checks": "pass"
+      },
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "input-identity-mismatch"
+        ],
+        "next_action": "Preserve the mismatch even though output checks passed; do not accept the run as conforming."
+      }
+    },
+    {
+      "id": "relaxed-tolerance",
+      "phase": "results",
+      "approved": {
+        "reference": 1,
+        "tolerance": 0.01,
+        "boundary": "inclusive"
+      },
+      "prepared": {
+        "tolerance": 0.01
+      },
+      "actual": {
+        "observed": 1.03,
+        "tolerance_used": 0.05,
+        "reported": "pass"
+      },
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "comparison-criterion-changed"
+        ],
+        "next_action": "Record failure under the original approved rule. Any new tolerance requires a new approval and fresh applicable evidence."
+      }
+    },
+    {
+      "id": "missing-execution-evidence",
+      "phase": "results",
+      "approved": {
+        "runtime": "approved runtime",
+        "threshold": 2
+      },
+      "prepared": {
+        "code": "approved source"
+      },
+      "actual": {
+        "output": [
+          2,
+          5
+        ],
+        "commands": null,
+        "effective_settings": null
+      },
+      "expected": {
+        "outcome": "unable_to_determine",
+        "findings": [
+          "execution-evidence-missing"
+        ],
+        "next_action": "Identify the missing association between output and actual execution. Keep acceptance pending."
+      }
+    },
+    {
+      "id": "same-reviewer-context",
+      "phase": "specification",
+      "approved": {
+        "artifact_author": {
+          "session_id": "session-a",
+          "context_id": "context-one"
+        }
+      },
+      "prepared": {
+        "reviewer": {
+          "session_id": "session-b",
+          "context_id": "context-one"
+        },
+        "claimed_outcome": "pass"
+      },
+      "actual": null,
+      "expected": {
+        "outcome": "unable_to_determine",
+        "findings": [
+          "reviewer-not-independent"
+        ],
+        "next_action": "Request a separate context or session with a distinct context identity and inspect actual handoff provenance."
+      }
+    },
+    {
+      "id": "post-review-source-change",
+      "phase": "pre_execution",
+      "approved": {
+        "threshold": 2
+      },
+      "prepared": {
+        "reviewed_source": "return values.filter(x => x >= 2);",
+        "current_source": "return values.filter(x => x > 2);"
+      },
+      "actual": null,
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "review-scope-changed",
+          "boundary-mismatch"
+        ],
+        "next_action": "The old review cannot authorize the changed source. Restore the approved behavior or revise the specification through approval, then obtain applicable review."
+      }
+    },
+    {
+      "id": "matching-wrong-pair",
+      "phase": "results",
+      "approved": {
+        "input": [
+          2
+        ],
+        "threshold": 2,
+        "expected": [
+          2
+        ],
+        "pairwise": "exact_json"
+      },
+      "prepared": {
+        "workers": [
+          "worker-a",
+          "worker-b"
+        ]
+      },
+      "actual": {
+        "left": [],
+        "right": []
+      },
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "individual-correctness-failed"
+        ],
+        "next_action": "Fail paired validation even though direct output equality passes."
+      }
+    },
+    {
+      "id": "reference-pass-pair-fail",
+      "phase": "results",
+      "approved": {
+        "reference": 1,
+        "correctness_tolerance": 0.1,
+        "pairwise_tolerance": 0.1,
+        "boundary": "inclusive"
+      },
+      "prepared": {
+        "workers": [
+          "worker-a",
+          "worker-b"
+        ]
+      },
+      "actual": {
+        "left": 0.91,
+        "right": 1.09
+      },
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "direct-comparison-failed"
+        ],
+        "next_action": "Preserve both passing reference checks and the failing direct comparison. Do not widen the pairwise tolerance."
+      }
+    },
+    {
+      "id": "finished-script-edit",
+      "phase": "pre_execution",
+      "approved": {
+        "finished_step": "prepare-inputs",
+        "accepted_script": "preprocess.mjs",
+        "amendment": null
+      },
+      "prepared": {
+        "planned_edit": {
+          "path": "preprocess.mjs",
+          "change": "Drop a previously retained column to simplify a later implementation."
+        }
+      },
+      "actual": null,
+      "expected": {
+        "outcome": "changes_required",
+        "findings": [
+          "protected-step-edit"
+        ],
+        "next_action": "Keep the finished step closed. Establish a necessary blocking defect and exact approved amendment scope before any protected edit."
+      }
+    },
+    {
+      "id": "missing-native-reviewer",
+      "phase": "pre_execution",
+      "approved": {
+        "specification_review": "separate pass"
+      },
+      "prepared": {
+        "worker": "worker-a",
+        "native_delegation": false,
+        "self_review": "pass"
+      },
+      "actual": null,
+      "expected": {
+        "outcome": "unable_to_determine",
+        "findings": [
+          "separate-review-missing"
+        ],
+        "next_action": "Prepare a separate-session handoff and keep execution pending."
+      }
+    },
+    {
+      "id": "compliant-filter",
+      "phase": "pre_execution",
+      "approved": {
+        "input_type": "dense standard JavaScript array with own data elements, each a finite number; accessor properties and proxies are outside the approved input domain",
+        "threshold_type": "finite number",
+        "threshold": 2,
+        "boundary": "inclusive",
+        "order": "preserve",
+        "duplicates": "preserve",
+        "mutation": "none",
+        "invalid": "TypeError with an empty message before output; reject non-arrays, sparse arrays, non-finite values, and non-finite or non-number thresholds",
+        "write_paths": [],
+        "method": "validate threshold and every array element, then retain matching elements in one stable pass"
+      },
+      "prepared": {
+        "code": "export function filter(values, threshold) { if (!Array.isArray(values) || !Number.isFinite(threshold)) throw new TypeError(); for (let index = 0; index < values.length; index++) if (!Object.hasOwn(values, index) || !Number.isFinite(values[index])) throw new TypeError(); const result = []; for (const value of values) if (value >= threshold) result.push(value); return result; }",
+        "runtime": "declared supported JavaScript runtime",
+        "defaults": "none",
+        "environment_overrides": "none",
+        "actual_review_context": "distinct from all scoped authors and workers",
+        "approval_provenance": "present in isolated fixture handoff"
+      },
+      "actual": null,
+      "expected": {
+        "outcome": "pass",
+        "findings": [],
+        "next_action": "Limit the pass to the supplied complete fictional scope. This fixture does not authorize real project execution."
+      }
+    }
+  ]
+}

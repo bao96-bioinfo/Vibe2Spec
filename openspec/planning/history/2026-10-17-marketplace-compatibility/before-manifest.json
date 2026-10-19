@@ -1,0 +1,30 @@
+{
+  "purpose": "Preserve presented documents before the explicit cross-host marketplace clarification",
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 21745,
+      "sha256": "7fc7c602eff7c48e09f9ffb6c0ddc26ac56e0af762c2cdd90b571cf6a7e25f60"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/proposal.md",
+      "size_bytes": 6666,
+      "sha256": "2a6678f3ae85fdab48de3772bb642ce796efb8d7beb37902596b9263b62f5ea9"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/design.md",
+      "size_bytes": 36240,
+      "sha256": "b3c877887373aed8535046cfbd2c25f54d35e2115342f731d66a1d7fb7d00ac8"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/tasks.md",
+      "size_bytes": 18254,
+      "sha256": "44e955333ac3683b6f32c9e777f825bfe45d3ea3590be39f9e52d1d5a43bd120"
+    },
+    {
+      "path": "openspec/changes/add-vibe2spec-guided-workflow/specs/host-integration/spec.md",
+      "size_bytes": 6806,
+      "sha256": "801e79d58c2f6a602153eacd7e938af4c7c3cc28695c75520e7e5bddcb2b860d"
+    }
+  ]
+}

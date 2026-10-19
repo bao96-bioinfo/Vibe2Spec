@@ -1,0 +1,9 @@
+{
+  "name": "vibe2spec",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": "^24.22.0 || ^26.11.1"
+  },
+  "private": true
+}

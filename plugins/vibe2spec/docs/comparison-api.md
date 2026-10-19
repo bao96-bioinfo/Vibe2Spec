@@ -1,0 +1,13 @@
+# Comparison helpers
+
+`scripts/compare.mjs` exports `compareBytes`, `compareJson`, `compareNumbers`, `compare`, and `comparePair`. Each returns an outcome of `pass`, `fail`, or `unable_to_determine`, located differences and an optional reason. These functions inspect supplied values. They do not run code, read files, approve rules, or authenticate evidence.
+
+Exact bytes compare every byte. Exact JSON compares finite supported JSON values, ignores object member order, preserves array order, distinguishes missing fields from null, and distinguishes negative zero from positive zero. Sparse arrays, cycles, accessors, hidden properties, malformed Unicode, non-finite numbers and unsafe integers are unsupported. Container depth is limited to 64, using the parser's convention that the outer container is level one. Callers supply bounded values from the approved parser and fixture profile.
+
+The version 1 numerical checker accepts a finite scalar or flat vector and the complete numerical Rule object. `metric` is `absolute_error`, defined as the absolute difference between actual and reference, or `relative_error`, defined as that absolute difference divided by the absolute reference. `tolerance` is an explicit nonnegative finite JavaScript number. `boundary` is `inclusive` for less than or equal, or `exclusive` for strictly less. `alignment` is `position`, which pairs equal array indices and requires identical lengths. `nonfinite_policy` is `reject`. Missing or non-finite values make the check unable to determine.
+
+For relative error at a zero reference, `zero_policy: exact` requires the identical signed zero. `zero_policy: reject` makes the comparison unable to determine. Absolute error uses its specified formula at zero. Arithmetic overflow cannot pass. Values use ordinary JavaScript number arithmetic; numerical tolerances must account for that representation explicitly. Arbitrary formula prose and decimal strings require a separately specified checker. This helper never evaluates a formula or imports the artifact named by `checker_ref`.
+
+The rule's `checker_ref` identifies the approved checker by exact bytes. The project graph and reviewer verify that association before execution; this pure function checks its shape. A well-formed reference alone does not establish approval.
+
+`comparePair(left, right, expected, correctnessRule, pairwiseRule)` reports both comparisons against the expected output and the direct left-to-right comparison. Any failure makes the combined result fail. Otherwise any indeterminate check makes it indeterminate. Agreement between two wrong outputs cannot pass. Two outputs that each satisfy a reference tolerance can still fail their direct comparison.

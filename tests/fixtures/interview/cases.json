@@ -1,0 +1,301 @@
+{
+  "fixture_version": 1,
+  "purpose": "Semantic forward-test cases. Expected actions require independent agent assessment; static tests only validate case integrity.",
+  "cases": [
+    {
+      "id": "paper-direction",
+      "prompt": "I want to publish a paper.",
+      "established_facts": [],
+      "assistant_draft": null,
+      "user_reply": null,
+      "expected": {
+        "resolved": [],
+        "unresolved": [
+          "topic",
+          "venue",
+          "success-criteria",
+          "resources"
+        ],
+        "next_action": "Explain how the topic and publication target affect the study, then ask for the missing direction. Do not choose a model, dataset, or fixed research plan.",
+        "prohibited": [
+          "Invent a research topic",
+          "Start implementing a study"
+        ]
+      }
+    },
+    {
+      "id": "partial-group-answer",
+      "prompt": "Specify a threshold filter.",
+      "established_facts": [
+        "The function receives an array of finite numbers.",
+        "The threshold comparison is inclusive."
+      ],
+      "assistant_draft": "For input [5, 2, 2, 1] and illustrative threshold 2, preserving source order returns [5, 2, 2]; sorting returns [2, 2, 5]. Keeping repeats retains both observations with value 2; unique values would lose one observation. Returning a new array leaves the original [5, 2, 2, 1] available; mutation changes it to retained values. Which policies should apply to order, repeats, and mutation?",
+      "user_reply": "Preserve the input order and leave the original array unchanged. Please explain why repeated values matter.",
+      "expected": {
+        "resolved": [
+          "output-order",
+          "input-mutation"
+        ],
+        "unresolved": [
+          "repeated-values",
+          "actual-threshold"
+        ],
+        "next_action": "Record only the two accepted settings. Explain multiplicity with a concrete count consequence, and ask for the repeat policy. The illustrative threshold supplies no actual approval.",
+        "prohibited": [
+          "Approve all grouped settings",
+          "Adopt threshold 2"
+        ]
+      }
+    },
+    {
+      "id": "non-distinguishing-example",
+      "prompt": "Explain whether to preserve order or sort retained values.",
+      "established_facts": [
+        "The illustrative filter retains numbers greater than or equal to 2."
+      ],
+      "assistant_draft": "Preserve input order or sort. For [1, 2, 5], both return [2, 5]. Which do you want?",
+      "user_reply": "I do not understand the difference.",
+      "expected": {
+        "resolved": [],
+        "unresolved": [
+          "output-order"
+        ],
+        "next_action": "Use a shared input such as [5, 2, 4, 1] so preserving order yields [5, 2, 4] and sorting yields [2, 4, 5]. Explain consequences for sequence and aligned information.",
+        "prohibited": [
+          "Treat the confused reply as approval",
+          "Repeat the same indistinguishable example"
+        ]
+      }
+    },
+    {
+      "id": "dataset-dependent-question",
+      "prompt": "Which preprocessing filters should we use?",
+      "established_facts": [
+        "The dataset has not been selected.",
+        "The task is to study cell-type-specific expression."
+      ],
+      "assistant_draft": null,
+      "user_reply": "I do not know which dataset fits.",
+      "expected": {
+        "resolved": [],
+        "unresolved": [
+          "dataset",
+          "dataset-specific-filtering"
+        ],
+        "next_action": "Research candidate data with evidence about suitability and limitations. Resolve the dataset selection before asking actionable dataset-specific filtering questions.",
+        "prohibited": [
+          "Select conventional filtering cutoffs",
+          "Invent verified literature findings"
+        ]
+      }
+    },
+    {
+      "id": "unavailable-research",
+      "prompt": "Recommend the newest method from the paper I mentioned.",
+      "established_facts": [
+        "No paper text, title, or accessible source is available.",
+        "Research tools are unavailable in this host."
+      ],
+      "assistant_draft": null,
+      "user_reply": null,
+      "expected": {
+        "resolved": [],
+        "unresolved": [
+          "source-identity",
+          "method"
+        ],
+        "next_action": "Identify the unavailable evidence and the method decision it prevents resolving. Ask for an accessible source or supported research capability; retain uncertainty.",
+        "prohibited": [
+          "Claim to have read the paper",
+          "Approve an unsupported method"
+        ]
+      }
+    },
+    {
+      "id": "mutation-hidden-by-return",
+      "prompt": "Should the function modify its input?",
+      "established_facts": [
+        "The input [1, 2, 5] is also used by a later calculation.",
+        "The function returns retained values [2, 5]."
+      ],
+      "assistant_draft": "Both options return [2, 5]. Mutation is faster.",
+      "user_reply": null,
+      "expected": {
+        "resolved": [],
+        "unresolved": [
+          "input-mutation"
+        ],
+        "next_action": "Show the original input after each operation: [1, 2, 5] for a new result array and [2, 5] for mutation. Explain the consequence for the later calculation. Avoid unsupported speed claims.",
+        "prohibited": [
+          "Invent a performance benefit",
+          "Hide the loss of the original array contents"
+        ]
+      }
+    },
+    {
+      "id": "delegation-scope",
+      "prompt": "Use your recommended option for ordering.",
+      "established_facts": [
+        "Only output ordering has been discussed.",
+        "The actual threshold remains unresolved."
+      ],
+      "assistant_draft": null,
+      "user_reply": "Use your recommended option for ordering.",
+      "expected": {
+        "resolved": [
+          "output-order"
+        ],
+        "unresolved": [
+          "threshold"
+        ],
+        "next_action": "Record the scoped ordering delegation and its concrete selection. Ask for the threshold before implementation. Preserve exact specification approval and review requirements.",
+        "prohibited": [
+          "Treat ordering delegation as approval of every future argument",
+          "Invent a user acceptance response"
+        ]
+      }
+    },
+    {
+      "id": "paired-cost-explanation",
+      "prompt": "Do we need two implementations?",
+      "established_facts": [
+        "The overall project trains a large foundation model.",
+        "The proposed paired unit is a deterministic masking function on a small saved vector."
+      ],
+      "assistant_draft": null,
+      "user_reply": null,
+      "expected": {
+        "resolved": [],
+        "unresolved": [
+          "paired-validation"
+        ],
+        "next_action": "Explain one additional small implementation and its reviews, shared saved fixtures, each correctness check, direct comparison, and limited coverage. Ask whether to enable pairing for that bounded unit.",
+        "prohibited": [
+          "Duplicate real-data training",
+          "Claim agreement proves universal correctness"
+        ]
+      }
+    }
+  ],
+  "behavioral_examples": [
+    {
+      "id": "order",
+      "input": [
+        5,
+        2,
+        4,
+        1
+      ],
+      "threshold": 2,
+      "options": [
+        {
+          "policy": "preserve",
+          "output": [
+            5,
+            2,
+            4
+          ]
+        },
+        {
+          "policy": "sort",
+          "output": [
+            2,
+            4,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "duplicates",
+      "input": [
+        2,
+        2,
+        5
+      ],
+      "threshold": 2,
+      "options": [
+        {
+          "policy": "preserve",
+          "output": [
+            2,
+            2,
+            5
+          ]
+        },
+        {
+          "policy": "unique-first",
+          "output": [
+            2,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mutation",
+      "input": [
+        1,
+        2,
+        5
+      ],
+      "threshold": 2,
+      "options": [
+        {
+          "policy": "copy",
+          "output": [
+            2,
+            5
+          ],
+          "input_after": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "policy": "in-place",
+          "output": [
+            2,
+            5
+          ],
+          "input_after": [
+            2,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invalid",
+      "input": [
+        2,
+        "3",
+        5
+      ],
+      "threshold": 2,
+      "options": [
+        {
+          "policy": "reject",
+          "error": "specified error; no array returned"
+        },
+        {
+          "policy": "discard",
+          "output": [
+            2,
+            5
+          ]
+        },
+        {
+          "policy": "convert-decimal",
+          "output": [
+            2,
+            3,
+            5
+          ]
+        }
+      ]
+    }
+  ]
+}

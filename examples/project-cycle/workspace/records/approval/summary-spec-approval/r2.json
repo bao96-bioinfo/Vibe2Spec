@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "kind": "approval",
+  "id": "summary-spec-approval",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "purpose": "step_specification",
+    "snapshot_ref": {
+      "path": "records/snapshot/summary-spec-snapshot/r2.json",
+      "sha256": "93fdaffb4d4b4784eb1afde840b10258bce2d1d4307787531e638f771fcd01c1"
+    },
+    "target_paths": [
+      "artifacts/design-summary.md",
+      "artifacts/output-r2.json",
+      "artifacts/overview.md",
+      "artifacts/spec-summary.md",
+      "artifacts/tasks-summary.md",
+      "records/decision/summary-method-choice/r2.json",
+      "records/decision/pair-choice/r1.json",
+      "records/decision/resource-choice/r1.json",
+      "records/evidence/example-source/r1.json",
+      "records/step/summary-step/r2.json",
+      "records/unit/summary-unit/r2.json"
+    ],
+    "response": {
+      "session_id": "example-user-session",
+      "message_id": "example-approve-summary",
+      "text": "Fictional approval of all listed summary specification contents after renewed acceptance of copy-step revision 2."
+    }
+  }
+}

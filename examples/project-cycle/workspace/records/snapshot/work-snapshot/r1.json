@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "kind": "snapshot",
+  "id": "work-snapshot",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "purpose": "Fictional prepared work",
+    "entries": [
+      {
+        "path": "artifacts/work.txt",
+        "sha256": "dcad2fac14109ab6e9d7da7ef52bc975d50e0f4222b3285261ffd83ddc34da86",
+        "size_bytes": 86
+      },
+      {
+        "path": "records/approval/spec-approval/r1.json",
+        "sha256": "c17ba2321519499e727d855d1bd8aa76c0853c6d175f69129e5b77f9df8d3bc8",
+        "size_bytes": 1121
+      },
+      {
+        "path": "records/review/spec-review/r1.json",
+        "sha256": "a820b050f6720b928f11c0382139d8328e761e2d7fd9246c446fa61992a30497",
+        "size_bytes": 784
+      },
+      {
+        "path": "records/snapshot/spec-snapshot/r1.json",
+        "sha256": "af93cb7cb49043ce20c39c4307ad190097878d9382eda8d33d440d53cfc3d01d",
+        "size_bytes": 2306
+      }
+    ]
+  }
+}

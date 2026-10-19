@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "kind": "project",
+  "id": "project-state",
+  "revision": 5,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "title": "Fictional preparation and summary cycle",
+    "overview_ref": {
+      "path": "artifacts/overview.md",
+      "sha256": "8b225f2b254b1d92076d4e8b84504f3b86c23d45150ce3bda13b1223cfddf44a"
+    },
+    "step_order": [
+      "copy-step",
+      "summary-step"
+    ],
+    "current_step_id": null,
+    "states": [
+      {
+        "step_id": "copy-step",
+        "revision": 2,
+        "state": "finished",
+        "acceptance_ref": {
+          "path": "records/acceptance/copy-acceptance/r2.json",
+          "sha256": "18856fff0cd0e4f7798e608b12f0cf403d52190fcd6aac7527649f6644e4eb6d"
+        },
+        "amendment_ref": {
+          "path": "records/amendment/proposed-amendment/r1.json",
+          "sha256": "b35cb90efc70312089389fbc4965f4224b8a1acb33223dc83572dff4763074cc"
+        },
+        "blocked_by": []
+      },
+      {
+        "step_id": "summary-step",
+        "revision": 2,
+        "state": "finished",
+        "acceptance_ref": {
+          "path": "records/acceptance/summary-copy-acceptance/r2.json",
+          "sha256": "3a2e6012b0c2200370e6b622ac70e574622e2dc16e45b4be702fe4af6bf753ed"
+        },
+        "amendment_ref": null,
+        "blocked_by": []
+      }
+    ],
+    "evidence_refs": [
+      {
+        "path": "records/approval/spec-approval/r1.json",
+        "sha256": "c17ba2321519499e727d855d1bd8aa76c0853c6d175f69129e5b77f9df8d3bc8"
+      },
+      {
+        "path": "records/review/spec-review/r1.json",
+        "sha256": "a820b050f6720b928f11c0382139d8328e761e2d7fd9246c446fa61992a30497"
+      },
+      {
+        "path": "records/review/work-review/r1.json",
+        "sha256": "2a719f6601af3618a17c184035e65bd983676e0b157763bf786a8d50f0372a00"
+      },
+      {
+        "path": "records/run/copy-run/r1.json",
+        "sha256": "6d589229021d875588ff1691c13de615d94344595f7a22b3775b75429754d563"
+      },
+      {
+        "path": "records/comparison/copy-comparison/r1.json",
+        "sha256": "0f4f5ddfef762898b1a3f0bbbd077b81716bad908b30519753f6ce00b197b694"
+      },
+      {
+        "path": "records/review/results-review/r1.json",
+        "sha256": "d15f27d2296e9534cfced879ec5aff512bd0f64648fc351a7588439792977d57"
+      },
+      {
+        "path": "records/acceptance/copy-acceptance/r1.json",
+        "sha256": "fafd44c5c849c262ffbb1cdfba4e8a9d95eb4530b54a3f7773622cb283464f7e"
+      },
+      {
+        "path": "records/approval/reopen-approval/r1.json",
+        "sha256": "a49c9c1d6448ff327a0a15a76378194a61cdb0bdf12574b6fcbf26b701a9ef7f"
+      },
+      {
+        "path": "records/acceptance/copy-acceptance/r2.json",
+        "sha256": "18856fff0cd0e4f7798e608b12f0cf403d52190fcd6aac7527649f6644e4eb6d"
+      },
+      {
+        "path": "records/approval/spec-approval/r2.json",
+        "sha256": "e959b574ff6f0f97d0715d68693a1682b9598046b2ab9c6cffd32c7958b7fcec"
+      },
+      {
+        "path": "records/comparison/copy-comparison/r2.json",
+        "sha256": "0df618ddb3dfc16b3cffaf9e5fddf865f75e1bc6a71e9d572b763952705346aa"
+      },
+      {
+        "path": "records/review/results-review/r2.json",
+        "sha256": "4f6d602b70bab7bae45b48747173214d63d61b4564a2af8ba475882fbdb6f98a"
+      },
+      {
+        "path": "records/review/spec-review/r2.json",
+        "sha256": "2afb5ebc23a5cab4dd8700a482b71d17605b3221a62cc654bd986f8b02a1c786"
+      },
+      {
+        "path": "records/review/work-review/r2.json",
+        "sha256": "17ccbca281c4e402e5f6c52a4131191cc2b71fb069c704b079702ae9f59822c0"
+      },
+      {
+        "path": "records/run/copy-run/r2.json",
+        "sha256": "1594dc8368913ca78a831212842cc08af9b88cdd9272fd551196e3b15d56ea2d"
+      },
+      {
+        "path": "records/acceptance/summary-copy-acceptance/r2.json",
+        "sha256": "3a2e6012b0c2200370e6b622ac70e574622e2dc16e45b4be702fe4af6bf753ed"
+      },
+      {
+        "path": "records/approval/summary-spec-approval/r2.json",
+        "sha256": "c9026a1a2446c71888a5817f4122073e04f82b1953c54162755d3de28ffe946e"
+      },
+      {
+        "path": "records/comparison/summary-copy-comparison/r2.json",
+        "sha256": "e262e42c031e72033425619ee99c1ab4902b5ad2b23ba093e0a368df687b6d02"
+      },
+      {
+        "path": "records/review/summary-results-review/r2.json",
+        "sha256": "a9d23119490a22d635d258489e6588039d8d36b2bf7385b7482f3b405f9a18c8"
+      },
+      {
+        "path": "records/review/summary-spec-review/r2.json",
+        "sha256": "53a0e8c1950d0fe0e7fe5b090b2e1ce1914ad33b251589d56e874a490633b362"
+      },
+      {
+        "path": "records/review/summary-work-review/r2.json",
+        "sha256": "b1d0f9a077c38630482b952d47b267cd3e13c3a579da52a826de4581dfd70470"
+      },
+      {
+        "path": "records/run/summary-copy-run/r2.json",
+        "sha256": "c2612ffeb58ab5754d9428d3bc2b1fcba513388fd97122d55a8fa8132743093e"
+      }
+    ],
+    "project_settings": {}
+  }
+}

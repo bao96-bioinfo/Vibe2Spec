@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "kind": "acceptance",
+  "id": "copy-acceptance",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "step_id": "copy-step",
+    "step_revision": 1,
+    "spec_snapshot_ref": {
+      "path": "records/snapshot/spec-snapshot/r1.json",
+      "sha256": "af93cb7cb49043ce20c39c4307ad190097878d9382eda8d33d440d53cfc3d01d"
+    },
+    "work_snapshot_ref": {
+      "path": "records/snapshot/work-snapshot/r1.json",
+      "sha256": "9f67bba28af7f3cef11e7d4098f6f61e948b4878bfff54e992357bf6a8992586"
+    },
+    "run_refs": [
+      {
+        "path": "records/run/copy-run/r1.json",
+        "sha256": "6d589229021d875588ff1691c13de615d94344595f7a22b3775b75429754d563"
+      }
+    ],
+    "comparison_refs": [
+      {
+        "path": "records/comparison/copy-comparison/r1.json",
+        "sha256": "0f4f5ddfef762898b1a3f0bbbd077b81716bad908b30519753f6ce00b197b694"
+      }
+    ],
+    "results_review_ref": {
+      "path": "records/review/results-review/r1.json",
+      "sha256": "d15f27d2296e9534cfced879ec5aff512bd0f64648fc351a7588439792977d57"
+    },
+    "response": {
+      "session_id": "example-user-session",
+      "message_id": "example-accept-result",
+      "text": "Fictional acceptance of the assessed copy result."
+    }
+  }
+}

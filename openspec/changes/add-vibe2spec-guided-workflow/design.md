@@ -1,8 +1,10 @@
 # Design
 
+Development authorization: the user has requested autonomous completion using recommended remaining choices. [The recorded instruction](../../planning/development-authorization.md) supersedes development-only interview and acceptance pauses below. Product workflow gates remain required. Historical completion evidence is preserved.
+
 ## Context
 
-See `proposal.md` for the motivation and capability scope. The repository currently has no product implementation. The six capability specifications define the proposed release behavior. `../../planning/vibe2spec-interview.md` distinguishes accepted user decisions from design recommendations.
+See `proposal.md` for the motivation and capability scope. Step 1 has delivered reviewed documents, templates, and fictional fixtures; the user accepted its exact reviewed result. Step 2 is current for interview and specification. Executable workflows, helpers, and host packages remain planned. The six capability specifications define the release behavior. `../../planning/vibe2spec-interview.md` distinguishes accepted user decisions from design recommendations.
 
 The accepted architecture uses standalone agent instructions, Markdown specifications, JSON records, and Node.js validation helpers. A separate reviewer assesses specifications before implementation, prepared work before execution, and evidence after execution. Each project step has its own complete interview and specification process. A completed step remains closed until a necessary amendment is approved and the step is explicitly reopened.
 
@@ -245,6 +247,20 @@ OpenAI's submission guidance preserves reusable skills and requires adapting Cla
 
 Clean installation checks verify every referenced skill, template, helper, runtime prerequisite, and delegation fallback. User state remains in the selected workspace. A package must not reference the author's local SpecViz or writing-style folders. Missing research access, file access, helpers, or separate contexts are reported as capability gaps. They do not silently weaken a gate.
 
+### Require marketplace installation and prepare directory submissions
+
+The user reaffirmed that the package must work in both Codex and Claude Code and be installable through their marketplaces. This is a release requirement. Shared instructions, templates, and Node.js helpers remain the core. Each host receives the metadata and delegation adaptation its supported versions require. Exact names, versions, paths, catalog fields, listing text, and commands are resolved in Step 8's specification before implementation.
+
+The official documentation was checked on 2026-10-17. Claude Code documents `.claude-plugin/plugin.json` and a repository catalog at `.claude-plugin/marketplace.json`. Git-backed installation can copy the plugin into a cache, so all required resources must travel with that package. Local development loading alone cannot establish installed behavior. [Claude manifest reference](https://code.claude.com/docs/en/plugins-reference), [Claude marketplace guide](https://code.claude.com/docs/en/plugin-marketplaces), [Claude loading behavior](https://code.claude.com/docs/en/plugins/loading)
+
+OpenAI documents a portable root `plugin.json`, with `.codex-plugin/plugin.json` retained as a compatibility format. Its repository catalog uses `.agents/plugins/marketplace.json`. The supported installation surface and format must be verified against the approved Codex version. This design does not assume that copying Claude metadata establishes Codex compatibility. [OpenAI packaging guide](https://developers.openai.com/plugins/build/plugins)
+
+Reusable worker and reviewer procedures remain in shared skills. Host adapters preserve the separate reviewer context and separate-session fallback. Claude-specific command and agent declarations need adaptation for OpenAI submission; public packages cannot rely on lifecycle hooks. [OpenAI conversion guidance](https://developers.openai.com/plugins/guides/submit-claude-plugin)
+
+Step 8 tests discovery and actual installation through each marketplace mechanism in clean environments. Evidence identifies the host surface, versions, source revision, catalog, and package. Checks cover packaged resources, the reviewer path, updates, removal, and preserved workspace records. Step 9 exercises the integrated workflow and resumption across the installed hosts. Neither a valid manifest nor a successful development load is sufficient.
+
+Project-maintained catalogs and official directory listings are separate distribution routes. Claude's directory submission requires external review; its default official marketplace has a distinct admission path. OpenAI public plugins use a submission portal and require approval followed by publication. Step 8 prepares the applicable listing materials and Step 9 records readiness against current requirements. External submission and published availability are recorded separately after release acceptance. [Claude publishing guide](https://code.claude.com/docs/en/plugins/publish), [OpenAI submission guide](https://developers.openai.com/plugins/deploy/submission)
+
 ### Implement the product in sequential stages
 
 This table is the proposed development overview for Vibe2Spec itself. Each stage becomes a project step with its own detailed specification when it becomes current. The six capability specifications describe the release contract; they do not authorize implementing all stages at once.
@@ -258,7 +274,7 @@ This table is the proposed development overview for Vibe2Spec itself. Each stage
 | 5. Worker and reviewer protocol | Separate specification, pre-execution, and results review handoffs | Hidden defaults, unavailable reviewers, and changed code block the correct gate |
 | 6. Paired unit validation | Independent small functions, shared fixtures, correctness and direct comparisons | Shared mistakes, reference-only agreement, and exceeded budgets fail correctly |
 | 7. Completion and reopening | Sequential acceptance, resume, history, and necessary amendments | No early advancement; reopened work repeats the cycle and invalidates affected evidence |
-| 8. Host packages and documentation | Installable Claude and Codex packages with shared semantics | Clean installation, portable records, and explicit capability failures |
+| 8. Host packages and documentation | Claude Code and Codex marketplace packages and public submission materials | Clean marketplace installation, package lifecycle, portable records, and explicit capability failures |
 | 9. Release examples and verification | Small paired examples and a complete multi-step workflow demonstration | Repeated step cycles, necessary reopening, both hosts, and bounded resources |
 
 Before Stage 1 implementation, its detailed contract must fix the exact record fields, identities, validation meanings, template examples, file scope, and acceptance checks. It must record the paired-validation decision for Stage 1. Later stages receive the same process after their predecessors are accepted. `tasks.md` provides the proposed work breakdown and evidence expected at each stage.
@@ -282,7 +298,7 @@ Before Stage 1 implementation, its detailed contract must fix the exact record f
 
 This is a greenfield product. Existing OpenSpec planning files remain authoring records. They are not imported as user-approved Vibe2Spec project records. The initial package declares its record version and rejects unsupported versions with an actionable diagnostic.
 
-Development proceeds through the stages above. Local installation and release examples precede any marketplace submission. Package updates preserve workspace records. A future record migration must have its own specification, preserved prior contents, review, and approval. Reverting a plugin version must not silently reinterpret records written by a newer unsupported format.
+Development proceeds through the stages above. Verified marketplace installation, submission preparation, and release examples precede external directory submission. Package updates and removal preserve workspace records. A future record migration must have its own specification, preserved prior contents, review, and approval. Reverting a plugin version must not silently reinterpret records written by a newer unsupported format.
 
 ## Open Questions
 

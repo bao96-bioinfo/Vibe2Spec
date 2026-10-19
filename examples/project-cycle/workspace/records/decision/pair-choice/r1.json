@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "decision",
+  "id": "pair-choice",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "question": "Enable paired implementations for this example?",
+    "options": [],
+    "selection": {
+      "mode": "literal",
+      "value": "disabled"
+    },
+    "rationale": "This example illustrates a single fictional run.",
+    "evidence_refs": []
+  }
+}

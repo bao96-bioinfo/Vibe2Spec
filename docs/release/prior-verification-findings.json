@@ -1,0 +1,20 @@
+{
+  "attempt": 1,
+  "reports": [
+    {
+      "runtime": "26.11.1",
+      "tests": 192,
+      "passed": 191,
+      "failed": 1,
+      "failure": "Generated package differed from records.mjs after the final audit correction. All source tests and 64 paired cases passed. Rebuild required before final verification."
+    },
+    {
+      "runtime": "24.22.0",
+      "tests": 192,
+      "passed": 191,
+      "failed": 1,
+      "failure": "Generated package differed from records.mjs after the final audit correction. All source tests and 64 paired cases passed. Rebuild required before final verification."
+    }
+  ],
+  "remedy": "Freeze source, rebuild the package, and rerun both complete suites. Original comparison fixtures and criteria are unchanged."
+}

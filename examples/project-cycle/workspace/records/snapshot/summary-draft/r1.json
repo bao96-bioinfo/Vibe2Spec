@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "snapshot",
+  "id": "summary-draft",
+  "revision": 1,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "purpose": "Presented incomplete summary-step interview draft; this snapshot supplies no approval.",
+    "entries": [
+      {
+        "path": "records/step/summary-step/r1.json",
+        "sha256": "46947084c1722882502a29b2c51d0531014989bc6a211a7d09d1320ab990b8bb",
+        "size_bytes": 675
+      }
+    ]
+  }
+}

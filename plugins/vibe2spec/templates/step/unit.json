@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "kind": "unit",
+  "id": "template-unit",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "name": null,
+    "step_id": null,
+    "step_revision": null,
+    "requirement_ids": null,
+    "interface": null,
+    "method": null,
+    "argument_decision_refs": null,
+    "environment_decision_refs": null,
+    "failure_rules": null,
+    "fixture_refs": null,
+    "check_ids": null,
+    "write_paths": null,
+    "project_settings": null
+  }
+}

@@ -4,19 +4,20 @@ Turn an idea into a specification you can approve, implement, and verify.
 
 ![A researcher clarifies an idea, approves a specification, and accepts a step after a separate worker and reviewer examine the work.](docs/assets/vibe2spec-overview.png)
 
-Vibe2Spec is being built to turn developer and researcher requests into precise,
+Vibe2Spec turns developer and researcher requests into precise,
 user-approved steps. It asks about missing decisions, explains the options,
 and records what the worker must follow. Each step receives its own
 specification and reviews before the project advances.
 
-Planned integrations: Claude Code and Codex. The current repository contains
-the record format, specification templates, fictional record examples, and
-development evidence. An installable Vibe2Spec plugin and automated helpers
-are still in development. The cartoon illustrates the intended workflow.
+Vibe2Spec 0.1.0 is a standalone plugin for Claude Code and Codex. It includes
+three workflow skills, readable specifications, structured JSON records, and
+Node.js helpers. Install it through this repository’s marketplace in either
+host. The workflow uses instructions and separate review; it is not a system
+permission barrier.
 
 [See the example](#one-request-many-decisions-one-explicit-specification) ·
 [Get started](#quick-start) · [Follow the workflow](#one-step-at-a-time) ·
-[Read the roadmap](#development-roadmap)
+[Read verification and development](#verification-and-development)
 
 ## One request. Many decisions. One explicit specification.
 
@@ -28,9 +29,8 @@ That request leaves several choices open. Does a number equal to the threshold
 stay? Does the output preserve the input order? What happens when a value is
 missing? These choices change the function's behavior and its downstream use.
 
-The following is an illustrative conversation for the planned workflow.
-It is not output from an implemented Vibe2Spec command. Its values and answers
-do not approve work in a real project.
+The following illustrative conversation shows how the coordinator explains a
+choice. Its example values and answers do not approve work in a real project.
 
 > When a number equals the threshold, should it be retained? For the input
 > `[-1, 0, 2, 2, 5]` and threshold `2`, an inclusive rule returns `[2, 2, 5]`.
@@ -132,34 +132,69 @@ authorize implementation.
 
 ## Quick start
 
-The current version is a documentation and template prototype. You can read
-the worked example and inspect the record format without installing a runtime.
-To explore a local copy, use Git:
+Install Node.js 24.22.0 or later within major version 24, or Node.js 26.11.1 or
+later within major version 26. Vibe2Spec uses built-in modules and requires no
+additional Node.js packages.
+
+For Claude Code:
 
 ```sh
-git clone --branch main https://github.com/bao96-bioinfo/Vibe2Spec.git
-cd Vibe2Spec
+claude plugin marketplace add bao96-bioinfo/Vibe2Spec
+claude plugin install vibe2spec@vibe2spec-marketplace
 ```
 
-Start with the [worked example](docs/illustrative-example.md), then open the
-[project template](templates/project.md) and
-[step specification template](templates/step/spec.md). The
-[record-format guide](docs/record-format.md) defines the structured fields and
-the evidence needed to approve, review, and finish a step.
+Start a new session and enter:
 
-For a manual exploration with your coding agent, you can use this prompt:
+```text
+/vibe2spec:vibe2spec I want to build a reproducible analysis. Interview me before planning the current step.
+```
 
-> Read `docs/illustrative-example.md` and `docs/record-format.md`. My goal is
-> [describe your goal]. Begin by clarifying the intended outcome and missing
-> constraints. Explain the options with concrete examples. Keep unresolved
-> decisions visible and wait for my explicit choices before writing a complete
-> current-step specification. Do not begin implementation while it is incomplete.
+For Codex:
 
-This is an ordinary prompt using the repository's documents. There is no
-Vibe2Spec installation command, executable coordinator, or automated review
-integration yet. Node.js helpers and host packages appear in the roadmap below.
-The generated OpenSpec files in `.agents/` and `.claude/` support development
-of this repository; they are not the planned Vibe2Spec package.
+```sh
+codex plugin marketplace add bao96-bioinfo/Vibe2Spec
+codex plugin add vibe2spec@vibe2spec-marketplace
+```
+
+Start a new session and select the Vibe2Spec coordinator through the skill
+picker, or invoke `$vibe2spec` with your goal. The coordinator conducts the
+interview and arranges worker and reviewer handoffs when their prerequisites
+are met.
+
+The [installation guide](docs/installation.md) covers local checkouts, updates,
+removal and missing capabilities. Project records are stored in your selected
+workspace, outside the plugin cache, so plugin updates and removal preserve
+them. The [compatibility report](docs/host-compatibility.md) identifies the
+tested host versions and the exact scope of verification.
+
+To explore the package from a development checkout:
+
+```sh
+git clone https://github.com/bao96-bioinfo/Vibe2Spec.git
+cd Vibe2Spec
+npm run demo
+npm test
+```
+
+The demo displays a fictional interview, the repeated step cycle, and a
+comparison failure. [The full interview example](docs/illustrative-example.md)
+explains each decision in more detail. [Paired unit evidence](examples/paired-units/README.md)
+and [the project-cycle example](examples/project-cycle/README.md) demonstrate
+bounded implementation checks and preserved revisions.
+
+## Marketplace availability
+
+The repository supplies a project-maintained catalog for each host. Both
+catalogs install the same self-contained package from `plugins/vibe2spec/`.
+The installed skills are `vibe2spec`, `vibe2spec-worker`, and
+`vibe2spec-review`. OpenSpec, Spec Kit and SpecViz are not runtime dependencies.
+
+Actual local marketplace installation, versioned update, removal and installed
+helper checks were performed with Claude Code 2.1.296 and Codex CLI 0.162.1.
+The evidence distinguishes these checks from autonomous model behavior.
+Official public directory submission and approval remain separate external
+actions. No official listing is claimed. [Publishing materials](docs/publishing.md)
+include the package archive, listing copy and review scenarios.
 
 ## One step at a time
 
@@ -230,7 +265,7 @@ If native delegation is unavailable, the workflow requests a separate review
 session. The relevant gate remains pending until a passing review is available.
 Checks and review must pass before the user can accept a step as finished.
 
-The planned first release uses instructions, records, and review to control
+The first release uses instructions, records, and review to control
 execution. These controls are not an operating-system sandbox. Their reliability
 depends on agents following the workflow and reviewers examining adequate evidence.
 
@@ -277,11 +312,12 @@ Two workers returning `[5]` agree with each other but both fail correctness.
 Small paired checks can expose ambiguity and implementation differences.
 They do not prove equivalence for every input or establish scientific validity.
 This workflow does not require duplicating a large model training run.
-Paired small-unit examples are required for the planned release examples.
+The release includes independently implemented envelope-checker evidence on
+64 shared synthetic cases.
 
 ## A research project starts with research questions
 
-For a request such as “I want to publish a paper,” Vibe2Spec's planned interview
+For a request such as “I want to publish a paper,” Vibe2Spec's interview
 first establishes the research topic, intended contribution, and target venue.
 It gathers relevant literature and explains feasible options when the user is
 unsure. Dataset access, evaluation design, computing resources, cost, storage,
@@ -334,44 +370,25 @@ they cannot become implicit permission to implement.
 The record fixtures are fictional. Their stored commands, responses, reviews,
 and acceptance records do not describe real execution or authorize work.
 
-## See what has been verified
+## Verification and development
 
-Development Step 1 delivered twenty format, template, and fixture files. Its
-recorded read-only verification checked JSON parsing, byte formatting, file
-identities, and content fingerprints. Separate review assessed the specified
-requirements and all twenty-four fixture cases manually.
+All 192 tests pass on Node.js 24.22.0 and 26.11.1 on macOS arm64.
+The test suite covers strict JSON parsing, all twelve record kinds, exact file
+references and snapshots, approval coverage, separate-review requirements,
+execution and acceptance evidence, reopening, output comparisons, diagrams,
+and package resources. Reports collect independent findings and distinguish
+known defects from checks that could not finish.
 
-The [results review](openspec/changes/add-vibe2spec-guided-workflow/steps/01-records-and-templates/evidence/results-review-v1.md)
-reports passing checks and no unresolved findings. Explicit user acceptance of
-the Step 1 results remains pending, so the step is not marked finished. The
-verification establishes the documented scope only. Automated record validation,
-paired executions, and live plugin installation checks have not been implemented.
+Run `npm test` for the automated checks. Run `npm run build` to regenerate
+the committed host package after changing its source. The [release verification
+record](docs/release/verification.md) links the independent reviews, paired
+checks, host observations and tested runtime versions. Finite test results do
+not establish universal implementation equivalence.
 
-The [recorded command and run evidence](openspec/changes/add-vibe2spec-guided-workflow/steps/01-records-and-templates/evidence/)
-document that specific approved verification. They are historical evidence;
-there is no general product test command yet.
-
-## Development roadmap
-
-Each group follows the same interview, specification, review, and acceptance
-cycle. The [task tracker](openspec/changes/add-vibe2spec-guided-workflow/tasks.md)
-contains the detailed planned deliverables.
-
-| Step | Deliverable | Current status |
-| --- | --- | --- |
-| 1 | Record format, Markdown and JSON templates, and fictional record fixtures. | Implemented and reviewed; result acceptance pending. |
-| 2 | Node.js helpers for structural validation, snapshots, and readiness checks. | Planned. |
-| 3 | Interview and research instructions with explanatory dialogue examples. | Planned. |
-| 4 | Current-step authoring instructions and ASCII overview generation. | Planned. |
-| 5 | Worker handoffs and separate specification, pre-execution, and results reviews. | Planned. |
-| 6 | Small paired-unit validation and approved comparison helpers. | Planned. |
-| 7 | Step completion, session resume, and necessary reopening. | Planned. |
-| 8 | Claude Code and Codex packages with verified installation documentation. | Planned. |
-| 9 | Paired release examples and integrated workflow verification. | Planned. |
-
-Supported runtime and host versions will be fixed and verified during their
-own implementation steps. Marketplace submission follows release acceptance
-and separate publication authorization.
+The [development task tracker](openspec/changes/add-vibe2spec-guided-workflow/tasks.md)
+retains the implementation history. The user authorized autonomous completion
+of this package using recommended development decisions. Product projects
+retain their own explicit interview, review and acceptance requirements.
 
 ## Design foundations
 
@@ -381,7 +398,7 @@ named requirements, explicit scenarios, and separate behavior, design, and task
 documents. Vibe2Spec adds exact decision approval, output comparison rules,
 independent review, and preserved step acceptance to support reproducible work.
 
-The intended runtime is standalone. OpenSpec and Spec Kit are design references,
+The runtime is standalone. OpenSpec and Spec Kit are design references,
 and OpenSpec currently supports this repository's development process.
 [SpecViz](https://github.com/bao96-bioinfo/SpecViz) inspired this README's cartoon,
 example-first structure, and text diagrams. SpecViz is not a runtime dependency.
@@ -393,14 +410,14 @@ The writing conventions are incorporated into the project documents.
 | --- | --- |
 | [Illustrative interview](docs/illustrative-example.md) | Concrete decision explanations and a small function example. |
 | [Record-format guide](docs/record-format.md) | The complete current record contract. |
-| [Release proposal](openspec/changes/add-vibe2spec-guided-workflow/proposal.md) | Purpose and scope of the planned product. |
+| [Release proposal](openspec/changes/add-vibe2spec-guided-workflow/proposal.md) | Purpose and scope of the product. |
 | [Design](openspec/changes/add-vibe2spec-guided-workflow/design.md) | Architecture and workflow decisions. |
 | [Capability specifications](openspec/changes/add-vibe2spec-guided-workflow/specs/) | Required discovery, specification, reproducibility, review, lifecycle, and host behavior. |
 | [Figure source notes](docs/assets/README.md) | The cartoon's generation prompt and provenance. |
 
 Contributions can help identify missing decisions, unclear examples, and
-incomplete behavioral contracts. Implementation changes follow the current-step
-specification and review process. Accepted work retains its history.
+incomplete behavioral contracts. Changes should include a clear behavioral contract, relevant checks and an
+independent review. Accepted record-format revisions retain their history.
 
 Vibe2Spec is licensed under [Apache 2.0](LICENSE). Generated OpenSpec development
 tooling retains its [MIT notice](THIRD_PARTY_NOTICES.md).

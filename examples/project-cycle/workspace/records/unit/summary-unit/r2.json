@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "unit",
+  "id": "summary-unit",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "name": "sum_vector",
+    "step_id": "summary-step",
+    "step_revision": 2,
+    "requirement_ids": [
+      "preserve-vector"
+    ],
+    "interface": "Read the approved object {\"values\":[1,2,3]} from artifacts/output-r2.json without mutation and write {\"sum\":6} to artifacts/output-summary.json.",
+    "method": "Initialize zero, add each of the three integer values in source order, and write exactly one sum field. Stop without output if input differs from the approved object. This fictional operation was not executed.",
+    "argument_decision_refs": [
+      {
+        "path": "records/decision/summary-method-choice/r2.json",
+        "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+      }
+    ],
+    "environment_decision_refs": [
+      {
+        "path": "records/decision/summary-method-choice/r2.json",
+        "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+      }
+    ],
+    "failure_rules": [
+      "Stop on missing or changed input without creating output.",
+      "No retry or fallback is allowed."
+    ],
+    "fixture_refs": [
+      {
+        "path": "artifacts/output-r2.json",
+        "sha256": "12d1ca3e63e341ebe7fbf99fa8f2ee0291b41b69edaadda4f246728894364691"
+      }
+    ],
+    "check_ids": [
+      "same-vector"
+    ],
+    "write_paths": [
+      "artifacts/output-summary.json"
+    ],
+    "project_settings": {
+      "copy-method": {
+        "path": "records/decision/summary-method-choice/r2.json",
+        "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+      }
+    }
+  }
+}

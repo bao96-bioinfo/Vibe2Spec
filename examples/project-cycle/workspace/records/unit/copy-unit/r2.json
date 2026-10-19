@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "unit",
+  "id": "copy-unit",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "name": "copy_vector",
+    "step_id": "copy-step",
+    "step_revision": 2,
+    "requirement_ids": [
+      "preserve-vector"
+    ],
+    "interface": "Read artifacts/input.json containing [1,2,3]. Leave it unchanged. Write exactly {\"values\":[1,2,3]} to artifacts/output-r2.json as two-space-indented JSON followed by one newline.",
+    "method": "Wrap the approved vector in an object with one values field. Do not sort or transform its values. This is a fictional operation, not an executed command.",
+    "argument_decision_refs": [
+      {
+        "path": "records/decision/method-choice/r2.json",
+        "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+      }
+    ],
+    "environment_decision_refs": [
+      {
+        "path": "records/decision/method-choice/r2.json",
+        "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+      }
+    ],
+    "failure_rules": [
+      "Stop on missing or changed input without creating output.",
+      "No retry or fallback is allowed."
+    ],
+    "fixture_refs": [
+      {
+        "path": "artifacts/input.json",
+        "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a"
+      }
+    ],
+    "check_ids": [
+      "same-vector"
+    ],
+    "write_paths": [
+      "artifacts/output-r2.json"
+    ],
+    "project_settings": {
+      "copy-method": {
+        "path": "records/decision/method-choice/r2.json",
+        "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+      }
+    }
+  }
+}

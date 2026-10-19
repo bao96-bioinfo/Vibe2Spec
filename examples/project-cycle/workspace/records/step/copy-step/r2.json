@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "kind": "step",
+  "id": "copy-step",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "title": "Wrap the preserved vector in the required values field",
+    "documents": {
+      "spec": {
+        "path": "artifacts/spec-r2.md",
+        "sha256": "1223aafcf7e3be7084d09fb7208422fd575662bc20d804010d3c2759823246c0"
+      },
+      "design": {
+        "path": "artifacts/design-r2.md",
+        "sha256": "f9e8e073bfac76b7cff5af963d7fc4d1894e65b9341e1184de7e8b8fb75f09d0"
+      },
+      "tasks": {
+        "path": "artifacts/tasks-r2.md",
+        "sha256": "4a9730536d201e428a9fce7fa999fe2a7736cb05b7d52bedb30dd4023a5274bc"
+      }
+    },
+    "depends_on": [],
+    "requirements": [
+      {
+        "id": "preserve-vector",
+        "text": "The step SHALL preserve the input vector and write an object with exactly one values field containing that vector in its original order.",
+        "decision_refs": [
+          {
+            "path": "records/decision/method-choice/r2.json",
+            "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+          }
+        ],
+        "check_ids": [
+          "same-vector"
+        ]
+      }
+    ],
+    "decision_refs": [
+      {
+        "path": "records/decision/method-choice/r2.json",
+        "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+      },
+      {
+        "path": "records/decision/resource-choice/r1.json",
+        "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9"
+      },
+      {
+        "path": "records/decision/pair-choice/r1.json",
+        "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63"
+      }
+    ],
+    "input_refs": [
+      {
+        "path": "artifacts/input.json",
+        "sha256": "fbcd098215e9b438f44797ee2cb978928d36e2faef39256d05dca291857dca0a"
+      }
+    ],
+    "unit_refs": [
+      {
+        "path": "records/unit/copy-unit/r2.json",
+        "sha256": "9722826c492f5eb1c9102ed5b1d497a8f0154d4d600de9929f3602a2ba3d1fad"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "copied-vector",
+        "path": "artifacts/output-r2.json",
+        "description": "Object containing the unchanged vector under values.",
+        "rule": {
+          "category": "exact_json",
+          "array_order": "preserved",
+          "object_key_order": "ignored"
+        },
+        "decision_refs": [
+          {
+            "path": "records/decision/method-choice/r2.json",
+            "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+          }
+        ]
+      }
+    ],
+    "checks": [
+      {
+        "id": "same-vector",
+        "description": "Verify unchanged input and exactly the required named output field.",
+        "expected": {
+          "input": [
+            1,
+            2,
+            3
+          ],
+          "output": {
+            "values": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "rule": {
+          "category": "exact_json",
+          "array_order": "preserved",
+          "object_key_order": "ignored"
+        },
+        "decision_refs": [
+          {
+            "path": "records/decision/method-choice/r2.json",
+            "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+          }
+        ]
+      }
+    ],
+    "paired_validation": {
+      "decision_ref": {
+        "path": "records/decision/pair-choice/r1.json",
+        "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63"
+      },
+      "mode": "disabled",
+      "unit_ids": []
+    },
+    "resource_decision_refs": [
+      {
+        "path": "records/decision/resource-choice/r1.json",
+        "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9"
+      }
+    ],
+    "project_settings": {
+      "copy-method": {
+        "path": "records/decision/method-choice/r2.json",
+        "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+      }
+    }
+  }
+}

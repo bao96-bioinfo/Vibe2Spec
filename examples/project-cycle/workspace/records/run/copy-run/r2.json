@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "kind": "run",
+  "id": "copy-run",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-worker"
+  },
+  "content": {
+    "step_id": "copy-step",
+    "step_revision": 2,
+    "spec_snapshot_ref": {
+      "path": "records/snapshot/spec-snapshot/r2.json",
+      "sha256": "5c7642e82a0b99049800e4fec763da8975bc78faeb8fb1ebc11401addba0c3ba"
+    },
+    "work_snapshot_ref": {
+      "path": "records/snapshot/work-snapshot/r2.json",
+      "sha256": "70aa295cbbe4972fc92d183453e175d53874d36e98233d5192985601b1fc0af4"
+    },
+    "pre_execution_review_ref": {
+      "path": "records/review/work-review/r2.json",
+      "sha256": "17ccbca281c4e402e5f6c52a4131191cc2b71fb069c704b079702ae9f59822c0"
+    },
+    "input_snapshot_ref": {
+      "path": "records/snapshot/input-snapshot/r1.json",
+      "sha256": "2a510ebb56920bbd257a502eb04c885442b11b0cdea000646b253c4a221ae9ea"
+    },
+    "commands": [
+      {
+        "program": "example-wrap",
+        "args": [
+          "artifacts/input.json",
+          "artifacts/output-r2.json"
+        ],
+        "cwd": ".",
+        "environment": []
+      }
+    ],
+    "effective_settings": [
+      {
+        "name": "copy-method",
+        "value": {
+          "operation": "wrap",
+          "input": "artifacts/input.json",
+          "output": "artifacts/output-r2.json",
+          "comparison": "exact_json",
+          "runtime": "fictional-copy-1",
+          "platform": "fictional"
+        },
+        "decision_ref": {
+          "path": "records/decision/method-choice/r2.json",
+          "sha256": "f9709283b9c7b2c635fdeb3cb73d12b11015206c1725e9f2e48282e44144c78e"
+        },
+        "source": "Approved method choice."
+      }
+    ],
+    "environment": {
+      "runtime": "fictional-copy-1",
+      "platform": "fictional",
+      "details": "Deterministic example data only; no execution occurred."
+    },
+    "output_snapshot_ref": {
+      "path": "records/snapshot/output-snapshot/r2.json",
+      "sha256": "bb89e02d0e55c144b6ebd30ec24d24dc854ddf1262f5e0db18b1ee6e916d1b0c"
+    },
+    "check_results": [
+      {
+        "check_id": "same-vector",
+        "outcome": "pass",
+        "observed": {
+          "input": [
+            1,
+            2,
+            3
+          ],
+          "output": {
+            "values": [
+              1,
+              2,
+              3
+            ]
+          }
+        },
+        "detail": "Fictional output and retained input equal the approved array."
+      }
+    ],
+    "worker": {
+      "session_id": "example-session",
+      "context_id": "example-worker"
+    },
+    "started_at": "2000-01-01T00:00:00Z",
+    "finished_at": "2000-01-01T00:00:01Z",
+    "resource_use": {
+      "elapsed_ms": 1000,
+      "input_bytes": 18,
+      "output_bytes": 42,
+      "calls": 1
+    }
+  }
+}

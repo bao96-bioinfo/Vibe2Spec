@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "kind": "step",
+  "id": "summary-step",
+  "revision": 2,
+  "project_id": "example-project",
+  "context": "example",
+  "lifecycle": "frozen",
+  "author": {
+    "session_id": "example-session",
+    "context_id": "example-author"
+  },
+  "content": {
+    "title": "Calculate the sum from the accepted named-field output",
+    "documents": {
+      "spec": {
+        "path": "artifacts/spec-summary.md",
+        "sha256": "a44cf696d6d135ea523d41b8cc672be0822c233032ea28d53fefac29a97745de"
+      },
+      "design": {
+        "path": "artifacts/design-summary.md",
+        "sha256": "59f728c6a8fefbcb0efdd980ae98166411b0a4b3e220b35bce594aea32947299"
+      },
+      "tasks": {
+        "path": "artifacts/tasks-summary.md",
+        "sha256": "354cebe71c6c9ee059160e30014df92f7d05896da207fa0cb571332e9a5a70b1"
+      }
+    },
+    "depends_on": [
+      {
+        "step_id": "copy-step",
+        "revision": 2
+      }
+    ],
+    "requirements": [
+      {
+        "id": "preserve-vector",
+        "text": "The step SHALL sum the three values in order and leave the accepted input object unchanged.",
+        "decision_refs": [
+          {
+            "path": "records/decision/summary-method-choice/r2.json",
+            "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+          }
+        ],
+        "check_ids": [
+          "same-vector"
+        ]
+      }
+    ],
+    "decision_refs": [
+      {
+        "path": "records/decision/summary-method-choice/r2.json",
+        "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+      },
+      {
+        "path": "records/decision/resource-choice/r1.json",
+        "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9"
+      },
+      {
+        "path": "records/decision/pair-choice/r1.json",
+        "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63"
+      }
+    ],
+    "input_refs": [
+      {
+        "path": "artifacts/output-r2.json",
+        "sha256": "12d1ca3e63e341ebe7fbf99fa8f2ee0291b41b69edaadda4f246728894364691"
+      }
+    ],
+    "unit_refs": [
+      {
+        "path": "records/unit/summary-unit/r2.json",
+        "sha256": "0d976d30556dbc2132055f33f1446ad07d078956c6c5aaf1367445edb9906d82"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "copied-vector",
+        "path": "artifacts/output-summary.json",
+        "description": "Object containing exactly sum: 6.",
+        "rule": {
+          "category": "exact_json",
+          "array_order": "preserved",
+          "object_key_order": "ignored"
+        },
+        "decision_refs": [
+          {
+            "path": "records/decision/summary-method-choice/r2.json",
+            "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+          }
+        ]
+      }
+    ],
+    "checks": [
+      {
+        "id": "same-vector",
+        "description": "The input object remains unchanged and the exact sum is six.",
+        "expected": {
+          "input": {
+            "values": [
+              1,
+              2,
+              3
+            ]
+          },
+          "output": {
+            "sum": 6
+          }
+        },
+        "rule": {
+          "category": "exact_json",
+          "array_order": "preserved",
+          "object_key_order": "ignored"
+        },
+        "decision_refs": [
+          {
+            "path": "records/decision/summary-method-choice/r2.json",
+            "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+          }
+        ]
+      }
+    ],
+    "paired_validation": {
+      "decision_ref": {
+        "path": "records/decision/pair-choice/r1.json",
+        "sha256": "307dec321b8067a8d6edc415b7cc4aa32b4246d95d2df4f1f8dd62e3709b2f63"
+      },
+      "mode": "disabled",
+      "unit_ids": []
+    },
+    "resource_decision_refs": [
+      {
+        "path": "records/decision/resource-choice/r1.json",
+        "sha256": "e42c27b6a1ac52e4e1cb5af9f7f7621876c3a33917907658c9aa2bba048df5a9"
+      }
+    ],
+    "project_settings": {
+      "copy-method": {
+        "path": "records/decision/summary-method-choice/r2.json",
+        "sha256": "ea1bb32aeac8145382bfda2f19c6a4fc5a2ecf87a19def7e5b5c570dbc57554f"
+      }
+    }
+  }
+}

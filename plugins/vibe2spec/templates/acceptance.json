@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "acceptance",
+  "id": "template-acceptance",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "step_id": null,
+    "step_revision": null,
+    "spec_snapshot_ref": null,
+    "work_snapshot_ref": null,
+    "run_refs": null,
+    "comparison_refs": null,
+    "results_review_ref": null,
+    "response": null
+  }
+}

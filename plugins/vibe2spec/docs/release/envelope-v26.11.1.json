@@ -1,0 +1,1012 @@
+{
+  "evidence_version": 1,
+  "unit": "record-envelope",
+  "runtime": "v26.11.1",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "identities": {
+    "docs/envelope-unit.md": "f4b5d694c832a33890edfc56725d20f38dbf3781acaad1c27285b2b015664684",
+    "tests/fixtures/envelope/cases.json": "b4c795e0025f9722a58eae324c43378c2fe5d3ccbe9dbbccea2d1622adbd77b9",
+    "scripts/envelope.mjs": "209fc7a363ae0a6581f1b1899e95679daf580bd76c861eba4c595807c623e8d8",
+    "tests/paired/envelope-b.mjs": "b0f83120c089523f8b30c4d49e3dcfadc19e357e8ee9bb39f79c5748e0a6eb84",
+    "tests/envelope-fixture.mjs": "d74e8239c5eebf767306fbbd72ad46624b14bdc66c29eaa15ebae9fd53673a44"
+  },
+  "fixture_bytes": 23440,
+  "cases": 64,
+  "calls": 128,
+  "elapsed_ms": 32,
+  "worker_a_context": "/root/records_core",
+  "worker_b_context": "/root/independent_envelope_b",
+  "reviewer_context": "/root/paired_and_package_review",
+  "outcome": "pass",
+  "observations": [
+    {
+      "case_id": "kind-project",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-decision",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-evidence",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-approval",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-step",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-unit",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-review",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-run",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-comparison",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-acceptance",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-amendment",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "kind-snapshot",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "authoring",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "project-actors",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "frozen",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "maximum-revision",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "maximum-identifiers",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "untrimmed-actors",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "root-null",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "root-array",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "root-number",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "root-string",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "root-boolean",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "all-fields-missing",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "missing-field",
+            "pointer": "/author",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/content",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/context",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/id",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/kind",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/lifecycle",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/project_id",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/revision",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/schema_version",
+            "message": "This required field is absent."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "unknown-root-field",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "unknown-field",
+            "pointer": "/extra",
+            "message": "This field is not declared for the containing object."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "numeric-root-key",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "unknown-field",
+            "pointer": "/0",
+            "message": "This field is not declared for the containing object."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "root-order",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-field-order",
+            "pointer": "",
+            "message": "The object fields are not in their declared order."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "version-type",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/schema_version",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "version-fraction",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/schema_version",
+            "message": "The value does not satisfy the declared safe-integer range."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "version-unsupported",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "unsupported-version",
+            "pointer": "/schema_version",
+            "message": "The record format version is unsupported."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "version-negative",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/schema_version",
+            "message": "The value does not satisfy the declared safe-integer range."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "kind-type",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/kind",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "kind-unknown",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-enumeration",
+            "pointer": "/kind",
+            "message": "This value is not one of the declared alternatives."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "identifier-length",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-identifier",
+            "pointer": "/id",
+            "message": "The identifier does not satisfy the declared spelling or length rule."
+          },
+          {
+            "code": "invalid-identifier",
+            "pointer": "/project_id",
+            "message": "The identifier does not satisfy the declared spelling or length rule."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "identifier-spelling",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-identifier",
+            "pointer": "/id",
+            "message": "The identifier does not satisfy the declared spelling or length rule."
+          },
+          {
+            "code": "invalid-identifier",
+            "pointer": "/project_id",
+            "message": "The identifier does not satisfy the declared spelling or length rule."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "identifier-types",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/id",
+            "message": "This value does not have the type declared for this field."
+          },
+          {
+            "code": "invalid-type",
+            "pointer": "/project_id",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "revision-zero",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/revision",
+            "message": "The value does not satisfy the declared safe-integer range."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "revision-negative",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/revision",
+            "message": "The value does not satisfy the declared safe-integer range."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "revision-fraction",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/revision",
+            "message": "The value does not satisfy the declared safe-integer range."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "revision-unsafe",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-integer",
+            "pointer": "/revision",
+            "message": "The value does not satisfy the declared safe-integer range."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "revision-type",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/revision",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "context-type",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/context",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "context-unknown",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-enumeration",
+            "pointer": "/context",
+            "message": "This value is not one of the declared alternatives."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "lifecycle-type",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/lifecycle",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "lifecycle-unknown",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-enumeration",
+            "pointer": "/lifecycle",
+            "message": "This value is not one of the declared alternatives."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "author-null",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/author",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "author-array",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/author",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "author-fields-missing",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "missing-field",
+            "pointer": "/author/context_id",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/author/session_id",
+            "message": "This required field is absent."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "author-unknown-field",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "unknown-field",
+            "pointer": "/author/extra",
+            "message": "This field is not declared for the containing object."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "author-order",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-field-order",
+            "pointer": "/author",
+            "message": "The object fields are not in their declared order."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "actor-types",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/author/context_id",
+            "message": "This value does not have the type declared for this field."
+          },
+          {
+            "code": "invalid-type",
+            "pointer": "/author/session_id",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "actor-empty",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "empty-value",
+            "pointer": "/author/context_id",
+            "message": "This field requires a nonempty string or collection."
+          },
+          {
+            "code": "empty-value",
+            "pointer": "/author/session_id",
+            "message": "This field requires a nonempty string or collection."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "example-session-prefix",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "context-conflict",
+            "pointer": "/author/session_id",
+            "message": "The declared context or actor identity violates the record's context rules."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "example-context-prefix",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "context-conflict",
+            "pointer": "/author/context_id",
+            "message": "The declared context or actor identity violates the record's context rules."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "authoring-actor-conflict",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "context-conflict",
+            "pointer": "/author/context_id",
+            "message": "The declared context or actor identity violates the record's context rules."
+          },
+          {
+            "code": "context-conflict",
+            "pointer": "/author/session_id",
+            "message": "The declared context or actor identity violates the record's context rules."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "project-prefix-not-reserved",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "frozen-authoring",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "content-null",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/content",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "content-array",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/content",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "content-boolean",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-type",
+            "pointer": "/content",
+            "message": "This value does not have the type declared for this field."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "content-uninspected",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": []
+      }
+    },
+    {
+      "case_id": "independent-findings",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "findings",
+        "items": [
+          {
+            "code": "invalid-field-order",
+            "pointer": "",
+            "message": "The object fields are not in their declared order."
+          },
+          {
+            "code": "missing-field",
+            "pointer": "/author/context_id",
+            "message": "This required field is absent."
+          },
+          {
+            "code": "empty-value",
+            "pointer": "/author/session_id",
+            "message": "This field requires a nonempty string or collection."
+          },
+          {
+            "code": "invalid-type",
+            "pointer": "/content",
+            "message": "This value does not have the type declared for this field."
+          },
+          {
+            "code": "invalid-identifier",
+            "pointer": "/id",
+            "message": "The identifier does not satisfy the declared spelling or length rule."
+          },
+          {
+            "code": "unsupported-version",
+            "pointer": "/schema_version",
+            "message": "The record format version is unsupported."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "root-order-metadata-invalid",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "throw",
+        "name": "TypeError",
+        "message": "Invalid envelope-checker input."
+      }
+    },
+    {
+      "case_id": "author-order-metadata-invalid",
+      "correctness_a": "pass",
+      "correctness_b": "pass",
+      "pairwise": "pass",
+      "observation": {
+        "kind": "throw",
+        "name": "TypeError",
+        "message": "Invalid envelope-checker input."
+      }
+    }
+  ]
+}
