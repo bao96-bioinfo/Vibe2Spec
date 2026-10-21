@@ -1,0 +1,22 @@
+✔ source manifests and marketplace catalogs agree on name, version and license (2.64525ms)
+✔ assembled package contains identical runtime source and no author-only dependencies (5.736334ms)
+✔ every installed Markdown link resolves locally or names an external resource (11.042583ms)
+✔ shared skills expose valid names and descriptions using the supported plain frontmatter form (2.271208ms)
+✔ portable workflow entrypoints resolve their actual packaged documentation and templates (2.190667ms)
+✔ interview corpus preserves independently resolved and unresolved choices (0.422833ms)
+✔ the order explanation uses a shared input that actually distinguishes the alternatives (0.090209ms)
+✔ the duplicate explanation exposes the actual loss of multiplicity (0.062334ms)
+✔ the mutation explanation distinguishes input state even with equal return values (0.064125ms)
+✔ invalid-input options reveal rejection, element loss, and explicit conversion (0.053875ms)
+✔ review fixtures distinguish established defects from missing evidence (0.071875ms)
+✔ the shared-error fixture agrees pairwise while violating its expected result (0.052875ms)
+✔ the numerical fixture passes both reference checks and fails direct comparison (0.08075ms)
+✔ the changed-criterion fixture really fails its original rule (0.050541ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 98.288875

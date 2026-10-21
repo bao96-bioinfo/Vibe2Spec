@@ -29,6 +29,7 @@ test('portable workflow entrypoints resolve their actual packaged documentation 
     'skills/vibe2spec-review/SKILL.md',
     'skills/vibe2spec/references/lifecycle.md',
     'docs/interview.md',
+    'docs/friendly-explanations.md',
     'docs/specification-authoring.md',
     'docs/project-overview.md',
     'docs/review.md',

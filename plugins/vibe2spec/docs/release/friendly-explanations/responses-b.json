@@ -1,0 +1,74 @@
+{
+  "agent": "friendly_explanation_forward_b",
+  "limitations": [],
+  "cases": [
+    {
+      "id": "source-order-and-scores",
+      "turns": [
+        {
+          "id": "explanation",
+          "response": "**We cannot tell whether 0.80 is good from these bullets alone, and this score drop does not call for changing your approved numerical tolerance.**\n\n1. **Original training set result:**\n   > With the original training set, the reported score was 0.93.\n\n   The original training set produced a score of 0.93 on a scale from zero to one, where higher means better predictions on this evaluation. The score is not necessarily accuracy, so we cannot call it “93% correct.”\n\n2. **Fewer training examples result:**\n   > With fewer training examples, the reported score was 0.80.\n\n   This score is 0.13 lower than 0.93. It shows worse performance on the reported evaluation, but whether 0.80 is good enough depends on the project's required performance and an appropriate baseline. Neither is supplied, and there is no uncertainty estimate to tell us how stable the difference is.\n\n3. **Same held-out examples:**\n   > Both scores were measured on the same held-out examples.\n\n   Held-out examples are examples set aside from training for evaluation. Using the same examples makes the comparison more informative because the evaluation examples did not change. It does not, by itself, establish that every other condition was identical or that fewer training examples caused the entire drop.\n\nYour approved tolerance answers a different question: “Do two implementations of the same function produce sufficiently close numerical results?” It remains an absolute difference **at most 0.000001**, including equality, with **relative tolerance 0**. It is not a model-quality target, so the 0.13 score drop does not revise it. No new target or tolerance has been selected.",
+          "decision_state": {
+            "resolved": {
+              "implementation_comparison": {
+                "absolute_tolerance": 0.000001,
+                "relative_tolerance": 0,
+                "boundary": "inclusive"
+              }
+            },
+            "unresolved": [
+              "model_quality_target"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "three-missing-value-options",
+      "turns": [
+        {
+          "id": "question",
+          "response": "**I recommend stopping and reporting the missing measurement, because you need to catch export problems before calculating totals.**\n\nFor illustration, suppose three sample rows contain measurements of `5`, missing, and `2`. The missing measurement is unknown; it is not a measured zero.\n\n- **Stop and report missingness:** The importer stops and tells you a measurement is missing. You can investigate the export before treating the imported table as ready for totals. This interrupts the import, but makes the problem visible at the point you need to catch it.\n- **Skip the affected row:** The importer keeps the samples measured as `5` and `2`, leaving out the sample whose measurement is unavailable. Their total is `7`, but it describes only the remaining samples. A separately measured sample has disappeared from the imported table.\n- **Replace missing with zero:** The importer keeps all three rows as `5`, `0`, and `2`. Their total is also `7`, but the middle row now contains an invented measurement. That hides the distinction between “unavailable” and “measured as zero.”\n\n| Option | Result in this example | Consequence for your work |\n| --- | --- | --- |\n| Stop and report | Import stops at the missing measurement | Exposes the export problem before totals |\n| Skip the row | Samples with `5` and `2` remain | Totals omit one sample |\n| Replace with zero | All rows remain as `5`, `0`, `2` | Unavailable data appears to be a measured zero |\n\nYour approved choice to preserve sample order remains in place. No missing-value policy has been selected yet. Should the importer stop and tell you when a row has a missing measurement?",
+          "decision_state": {
+            "resolved": {
+              "row_order": "preserve"
+            },
+            "unresolved": [
+              "missing_value_policy"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "confused-order-followup",
+      "turns": [
+        {
+          "id": "confusion",
+          "response": "**Keeping collection order leaves earlier measurements first; sorting can move a later measurement ahead of an earlier one.**\n\nMy previous example hid the difference because its retained values were already arranged from smallest to largest. Let's use measurements collected in this order: `[5, 1, 2]`.\n\nYour approved cutoff of `2`, including values equal to it, removes `1` and keeps `5` and `2`.\n\n| Choice | Returned measurements | What happened to collection order? |\n| --- | --- | --- |\n| Keep collection order, also called stable order | `[5, 2]` | The earlier measurement `5` stays before the later measurement `2`. |\n| Sort from smallest to largest, called ascending order | `[2, 5]` | The later measurement `2` moves ahead of the earlier measurement `5`. |\n\nIn collection order, these retained measurements go down from `5` to `2`. If you treated the sorted positions as collection order, they would misleadingly appear to go up from `2` to `5`.\n\nI recommend keeping collection order because you want to analyze change over collection time, and array position carries that order. Should the retained measurements stay in their original collection order?",
+          "decision_state": {
+            "resolved": {
+              "threshold": 2,
+              "inclusive": true
+            },
+            "unresolved": [
+              "output_order"
+            ]
+          }
+        },
+        {
+          "id": "selection",
+          "response": "**The remaining measurements will keep their original collection order.** I'll record this as your choice for output order only.",
+          "decision_state": {
+            "resolved": {
+              "threshold": 2,
+              "inclusive": true,
+              "output_order": "preserve"
+            },
+            "unresolved": []
+          }
+        }
+      ]
+    }
+  ]
+}

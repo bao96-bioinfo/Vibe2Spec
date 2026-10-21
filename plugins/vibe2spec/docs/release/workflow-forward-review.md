@@ -17,7 +17,9 @@ The saved response file has SHA-256 fingerprint `8515b63d53bbda08ffb1e18d02e3b83
 | Delegation scope | Selected preserved ordering under the explicit ordering delegation. It did not extend delegation to the unresolved threshold or manufacture acceptance. |
 | Paired validation cost | Limited the proposal to one additional small masking implementation and its reviews. It required shared saved fixtures, individual correctness, and direct comparison. It stated the coverage limit and excluded duplicate model training. |
 
-The detailed explanations resolve the original concern about terse option labels. They identify the situation, the decision's effect, an observable example, the reason for a recommendation, and the remaining selection. Grouping preserves independent approval status. A user's uncertainty remains visible instead of being converted into a default.
+The responses include fuller explanations than terse option labels. They identify the situation, the decision's effect, an observable example, the reason for a recommendation, and the remaining selection. Grouping preserves independent approval status. A user's uncertainty remains visible instead of being converted into a default.
+
+Later assessment, 2026-10-21: these eight stimuli assessed next actions and approval handling. They did not establish that users understood the explanations. The earlier wording that the explanations resolved the concern was too strong. The saved historical responses and their fingerprint remain unchanged. The [conversation evaluation guide](../interview-evaluation.md) adds multi-turn assessment of pacing, consequences, context reuse, and confusion recovery, with human comprehension explicitly outside the claims of simulated cases.
 
 ## Review observations
 

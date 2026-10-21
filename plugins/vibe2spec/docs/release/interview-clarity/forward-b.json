@@ -1,0 +1,274 @@
+{
+  "limitations": [
+    "Fictional scripted users.",
+    "A single evaluator context is used across four reset cases."
+  ],
+  "cases": [
+    {
+      "id": "bounded-pairing",
+      "turns": [
+        {
+          "id": "question",
+          "response": "No. The extra implementation would cover only the small masking function. It would not repeat model training or run a second real-data experiment.\n\nTwo separate workers would write that function from the same agreed specification. Both versions would receive the same saved synthetic inputs. We would check each result against the expected answer and compare the two results directly. This adds one small implementation and its reviews. Agreement helps detect discrepancies on those examples; it does not prove correctness for every input. Declining it would still leave ordinary correctness checks and a separate reviewer.\n\nBecause this function determines which inputs the model sees during expensive training, I recommend this bounded additional check. We would agree on its examples and resource limits before implementation. Should we include it for the masking function?",
+          "decision_state": {
+            "resolved": {
+              "masking_behavior": {
+                "value": "Replace selected input positions with zero without changing other positions.",
+                "source": "Supplied current-step user approval"
+              }
+            },
+            "unresolved": [
+              "Whether to enable paired validation for the masking function",
+              "Exact paired unit scope, saved synthetic fixtures, expected results, comparison rules, and resource bounds",
+              "Complete specification approval and separate review"
+            ]
+          }
+        },
+        {
+          "id": "selection",
+          "response": "Paired validation will cover only the small masking function, using a second independent implementation. Model training is excluded. The saved test inputs, expected answers, comparison rules, and resource limits remain undecided.\n\nTo choose examples that exercise the function correctly, I need to understand the input it receives. What does one input look like, including how the positions to replace with zero are supplied?",
+          "decision_state": {
+            "resolved": {
+              "masking_behavior": {
+                "value": "Replace selected input positions with zero without changing other positions.",
+                "source": "Supplied current-step user approval"
+              },
+              "paired_validation": {
+                "value": "Enabled for a second independent implementation of only the small masking function",
+                "source": "Current scripted user selection"
+              },
+              "excluded_work": {
+                "value": "Do not duplicate model training",
+                "source": "Current scripted user selection"
+              }
+            },
+            "unresolved": [
+              "Input shape and representation of selected positions",
+              "Saved synthetic fixtures and expected answers",
+              "Reference-correctness and direct pairwise comparison rules",
+              "Resource limits",
+              "Complete specification approval and separate review"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "expert-comparison",
+      "turns": [
+        {
+          "id": "question",
+          "response": "I recommend an absolute-only criterion. It gives the residual discrepancy a fixed limit in the solver’s physical units, consistent with residuals expected near zero.\n\nA combined allowance of atol + rtol × |reference| contributes almost nothing beyond atol near zero, but permits a larger absolute discrepancy when the reference residual is larger. That would make acceptance depend on residual magnitude. The fixed-unit, near-zero goal does not establish a need for that relaxation.\n\nThe tolerance magnitude remains for you to select. Shall we use an absolute-only criterion?",
+          "decision_state": {
+            "resolved": {
+              "number_type": {
+                "value": "float64",
+                "source": "Supplied user approval"
+              },
+              "tolerance_selection": {
+                "value": "User selects tolerance magnitude",
+                "source": "Supplied project context"
+              }
+            },
+            "unresolved": [
+              "Absolute-only versus combined absolute and relative criterion; absolute-only recommended but not approved",
+              "Tolerance magnitude",
+              "Boundary operator",
+              "Compared components and alignment",
+              "Non-finite behavior",
+              "Reference-correctness and direct pairwise rules if applicable",
+              "Exact checker and complete specification approval"
+            ]
+          }
+        },
+        {
+          "id": "selection",
+          "response": "For finite compared values, the rule is |output − reference| ≤ 1e-8, with rtol = 0. An error exactly equal to 1e-8 passes. The approved number type remains float64.\n\nI recommend failing the check if a compared output contains NaN or either infinity, even when both implementations produce the same non-finite value. Such agreement would not establish a residual within the finite error limit. Ignoring those values would allow a failed solver case to escape this check.\n\nShould any NaN or infinity in a compared output fail the check?",
+          "decision_state": {
+            "resolved": {
+              "number_type": {
+                "value": "float64",
+                "source": "Supplied user approval"
+              },
+              "error_metric": {
+                "value": "Absolute error",
+                "source": "Current scripted user selection"
+              },
+              "absolute_tolerance": {
+                "value": 1e-8,
+                "source": "Current scripted user selection"
+              },
+              "relative_tolerance": {
+                "value": 0,
+                "source": "Current scripted user selection"
+              },
+              "boundary": {
+                "value": "Inclusive; error at most 1e-8",
+                "source": "Current scripted user selection"
+              }
+            },
+            "unresolved": [
+              "Non-finite output behavior; failing the check recommended but not approved",
+              "Compared components and alignment",
+              "Reference-correctness and direct pairwise rules if applicable",
+              "Non-finite reference handling if applicable",
+              "Exact checker and complete specification approval"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "approved-conflict",
+      "turns": [
+        {
+          "id": "question",
+          "response": "The current entry already settles CSV format and ascending sample-ID order. Those choices remain in place.\n\nThe output directory has two conflicting approvals: directory-r1 selects /workspace/reports, and directory-r2 selects /workspace/exports. Neither says it replaces the other, so the revision labels do not settle where this step should write its reports.\n\nWhich directory should govern the current report step: /workspace/reports or /workspace/exports?",
+          "decision_state": {
+            "resolved": {
+              "report_format": {
+                "value": "csv",
+                "source": "Approved format decision referenced by the supplied current entry"
+              },
+              "row_order": {
+                "value": "sample-id-ascending",
+                "source": "Approved row-order decision referenced by the supplied current entry"
+              }
+            },
+            "unresolved": [
+              "Output directory conflict between preserved approvals directory-r1 and directory-r2; neither has recorded supersession",
+              "No current-step preparation or gate success established by the supplied context"
+            ]
+          }
+        },
+        {
+          "id": "selection",
+          "response": "For this report step, /workspace/exports replaces /workspace/reports. The approved CSV format and ascending sample-ID row order remain in place.\n\nThis resolves the directory conflict. I will use these selections when preparing the current step’s specification.",
+          "decision_state": {
+            "resolved": {
+              "output_directory": {
+                "value": "/workspace/exports",
+                "scope": "Current report step",
+                "source": "Current scripted user selection"
+              },
+              "supersession": {
+                "value": "The current-step selection of /workspace/exports explicitly replaces the previous /workspace/reports choice",
+                "source": "Current scripted user selection"
+              },
+              "report_format": {
+                "value": "csv",
+                "source": "Existing approval reaffirmed by current scripted user selection"
+              },
+              "row_order": {
+                "value": "sample-id-ascending",
+                "source": "Existing approval reaffirmed by current scripted user selection"
+              }
+            },
+            "unresolved": [
+              "Exact complete current-step artifacts and implementation readiness have not been inspected or established in this simulation"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "precise-translation",
+      "turns": [
+        {
+          "id": "selection",
+          "response": "The filter will retain values greater than or equal to the approved cutoff of 2. It will preserve their original order and every repeated observation, return a new array, and leave the original array unchanged. For example, [5, 1, 2, 2] will return [5, 2, 2], while the original remains [5, 1, 2, 2].\n\nOne remaining choice is what happens if an element is text such as \"3\". Rejecting the call exposes the input problem. Discarding that element loses an observation. Converting it to a number accepts an additional kind of input and would require exact conversion rules. Since each element represents an observation, I recommend rejecting the call so that the caller must address the problem.\n\nShould text elements make the call fail, be discarded, or be converted under an agreed rule?",
+          "decision_state": {
+            "resolved": {
+              "threshold": {
+                "value": 2,
+                "source": "Supplied user approval"
+              },
+              "inclusive": {
+                "value": true,
+                "source": "Supplied user approval"
+              },
+              "paired_validation": {
+                "value": false,
+                "source": "Supplied explicit user decline"
+              },
+              "output_order": {
+                "value": "Preserve original relative order",
+                "source": "Current scripted user selection"
+              },
+              "repeated_values": {
+                "value": "Preserve all retained observations including equal values",
+                "source": "Current scripted user selection"
+              },
+              "result_allocation": {
+                "value": "Return a new result array",
+                "source": "Current scripted user selection"
+              },
+              "input_mutation": {
+                "value": "Leave original input unchanged",
+                "source": "Current scripted user selection"
+              }
+            },
+            "unresolved": [
+              "Accepted input domain and text-element policy; rejection recommended but not approved",
+              "Remaining boundaries, failure details, fixtures, and comparison rules",
+              "Complete current-step specification approval and passing separate specification review"
+            ]
+          }
+        },
+        {
+          "id": "scope",
+          "response": "Here is the review draft of the settled behavior. The full step specification remains incomplete until its remaining input, failure, environment, and verification details are resolved. Your confirmation covers the three selected behaviors; the full specification is still unapproved.\n\nThe step produces a numerical filter with these requirements:\n\n- R1, cutoff: For valid input, the function SHALL retain each observation whose value is greater than or equal to 2 and exclude each observation below 2.\n- R2, order: The returned observations SHALL retain their relative order from the input.\n- R3, repeats: Every qualifying observation SHALL remain, including repeated values.\n- R4, original data: The function SHALL return a new array and SHALL leave the original input unchanged.\n\nWHEN valid input is [5, 1, 2, 2], THEN the result SHALL be [5, 2, 2], and the original SHALL remain [5, 1, 2, 2]. The result SHALL be a separate array.\n\nWHEN valid input is [2], THEN the result SHALL be a new array containing [2], and the original SHALL remain unchanged.\n\nPaired implementations remain declined. Ordinary correctness checks and separate review remain required. The exact fixtures and check definitions are still to be completed. No code execution is authorized.\n\nThe text-element question remains unanswered. Rejecting text would expose the input problem without discarding or converting an observation, so I still recommend rejection. Should an element such as \"3\" make the call fail?",
+          "decision_state": {
+            "resolved": {
+              "threshold": {
+                "value": 2,
+                "source": "Supplied user approval"
+              },
+              "inclusive": {
+                "value": true,
+                "source": "Supplied user approval"
+              },
+              "paired_validation": {
+                "value": false,
+                "source": "Supplied explicit user decline"
+              },
+              "output_order": {
+                "value": "Preserve original relative order",
+                "source": "First scripted user selection, reaffirmed in current turn"
+              },
+              "repeated_values": {
+                "value": "Preserve all retained observations including equal values",
+                "source": "First scripted user selection, reaffirmed in current turn"
+              },
+              "result_allocation": {
+                "value": "Return a new result array",
+                "source": "First scripted user selection, reaffirmed in current turn"
+              },
+              "input_mutation": {
+                "value": "Leave original input unchanged",
+                "source": "First scripted user selection, reaffirmed in current turn"
+              },
+              "draft_authorization": {
+                "value": "Draft the step specification for review",
+                "source": "Current scripted user request"
+              },
+              "full_specification_approval": {
+                "value": false,
+                "source": "Current scripted user explicitly withholds full-specification approval"
+              },
+              "code_execution_authorization": {
+                "value": false,
+                "source": "Current scripted user explicitly withholds code-execution approval"
+              }
+            },
+            "unresolved": [
+              "Accepted input domain and text-element policy; prior recommendation was not accepted",
+              "Remaining boundaries, failure details, environment, fixtures, and exact comparison rules",
+              "Complete current-step specification approval and passing separate specification review"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

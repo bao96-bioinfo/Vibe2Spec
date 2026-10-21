@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "inputs-initial.json: 6 content hashes validated",
+    "inputs-retest.json: 6 content hashes validated",
+    "inputs-focused.json: 6 content hashes validated",
+    "all six replies, source review and three assessments match frozen scratch originals",
+    "package inventory validates 108 files and 16 directories",
+    "three skills, explanation guide and interview guide match packaged copies; illustrative example differs only by the expected README repository-link rewrite",
+    "JSON/text release evidence matches packaged copies",
+    "both full-suite logs record 210 passed / 0 failed",
+    "final package/workflow log records 14 passed / 0 failed"
+  ],
+  "errors": []
+}

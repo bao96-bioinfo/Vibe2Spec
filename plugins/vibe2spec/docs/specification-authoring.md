@@ -21,6 +21,8 @@ This example specifies one boundary only. The complete step still needs its inpu
 
 ## Resolve sources of divergent behavior
 
+Use the following table as an internal completeness check. Before asking about a gap, consult applicable approved context and scoped delegation. Explain the remaining choice through its effect on the user's work, introducing one unfamiliar decision at a time. Record the precise approved meaning afterward. The table is not a script to read to the user; all applicable areas still need to be settled before implementation.
+
 | Contract area | Information needed before implementation | Example of an unresolved choice |
 | --- | --- | --- |
 | Purpose and dependencies | Current outcome, exclusions, accepted prerequisite revisions, and downstream input requirements that affect this step | An accepted data file lacks a required identifier |

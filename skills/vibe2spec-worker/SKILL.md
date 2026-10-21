@@ -5,6 +5,8 @@ description: Prepare and execute one fully specified Vibe2Spec step or small uni
 
 # Vibe2Spec worker
 
+When explaining prepared work or an uncovered choice to the user, apply [the friendly explanation guide](../../docs/friendly-explanations.md). Keep exact technical details in the required evidence records and return unresolved decisions to the coordinator; clearer wording does not authorize selecting a missing setting.
+
 Implement only the approved current-step behavior. Read [the record format](../../docs/record-format.md), [the authoring contract](../../docs/specification-authoring.md), and [the review protocol](../../docs/review.md). Obtain the exact current-step specification, linked unit contracts, decisions, approvals, dependency acceptances, fixtures, check definitions, and passing separate specification review before preparing code.
 
 ## Check the handoff

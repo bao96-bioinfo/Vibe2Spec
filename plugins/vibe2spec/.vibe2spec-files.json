@@ -67,6 +67,16 @@
       "sha256": "0e1ff7d6293e247be085ad24ed80b57160b5cdd3ef967b3728e68bacf095ecf2"
     },
     {
+      "path": "docs/explanation-evaluation.md",
+      "kind": "file",
+      "sha256": "337d6913eb01bf06d0894083ed8466a9bc6536cd9f376b59a8795743e498f7f0"
+    },
+    {
+      "path": "docs/friendly-explanations.md",
+      "kind": "file",
+      "sha256": "a4d5470465bc27ebd5ecc8cbd11c90a67776c0eb74c451191ca60d6995b32642"
+    },
+    {
       "path": "docs/host-compatibility.md",
       "kind": "file",
       "sha256": "469e2ad9c75f6c3b295f73b9661054205e89a4d991351131ecec746dbda2e048"
@@ -74,7 +84,7 @@
     {
       "path": "docs/illustrative-example.md",
       "kind": "file",
-      "sha256": "76a1f096ce9669f7221ff30eaf49dc1ecb397c395f39f6820a4474fb3b961f85"
+      "sha256": "8ad9cd191040961502a887de20b2eea3ce505f9505f7da1a276d8ea1cd38ae54"
     },
     {
       "path": "docs/installation.md",
@@ -82,9 +92,14 @@
       "sha256": "592b3155b883c7f278326c1816da7bef73caedd2fe5fc4b6fd824a9066f9c0fb"
     },
     {
+      "path": "docs/interview-evaluation.md",
+      "kind": "file",
+      "sha256": "a359fdbc1ab11fdaec92f69ad7ec5ea99a485982a6a8a51357ba2bc4c27b9fff"
+    },
+    {
       "path": "docs/interview.md",
       "kind": "file",
-      "sha256": "0f0374fc5712bf5beec1cf9653b47d4b7170918a32ac26d1d6d82175e8ec6c54"
+      "sha256": "59f1b1d808c4c538cf5e87b6b2c24f91b60096004451f022497183f1619f1752"
     },
     {
       "path": "docs/lifecycle.md",
@@ -131,6 +146,105 @@
       "sha256": "d013eeabf433fff2e1c36cb3c242d66524ec169d0cf9670426dc3676d7fa057f"
     },
     {
+      "path": "docs/release/friendly-explanations",
+      "kind": "directory"
+    },
+    {
+      "path": "docs/release/friendly-explanations/assessment-focused.json",
+      "kind": "file",
+      "sha256": "74ea2e0e49a22be79377999a2025fc509f7929930c381369bdbb2d99c530a160"
+    },
+    {
+      "path": "docs/release/friendly-explanations/assessment-initial.json",
+      "kind": "file",
+      "sha256": "82a890937af9866a4e53728a5d9ebe3d72a795c065e61e7282838a3c1a1275fe"
+    },
+    {
+      "path": "docs/release/friendly-explanations/assessment-retest.json",
+      "kind": "file",
+      "sha256": "2fca254081a9c4f9484635dd3fb65cb26643b9061c58ba7d031ce09c0f93b40a"
+    },
+    {
+      "path": "docs/release/friendly-explanations/final-review-checks.json",
+      "kind": "file",
+      "sha256": "1426367151f02d55c544fb0421e3d0278e21a996e24cb491fea570c0270fc45c"
+    },
+    {
+      "path": "docs/release/friendly-explanations/final-review.md",
+      "kind": "file",
+      "sha256": "43032fa3ea9256af27be2628b893fda3fcef1150e9acd637b520ad9075595920"
+    },
+    {
+      "path": "docs/release/friendly-explanations/inputs-focused.json",
+      "kind": "file",
+      "sha256": "a56f59feb8613687bb8641981b02d2da93086a549558d27ade8c18b8ede7f152"
+    },
+    {
+      "path": "docs/release/friendly-explanations/inputs-initial.json",
+      "kind": "file",
+      "sha256": "2952e3d22a910510449f4bfdc17244325e0ee37adc959028bfd1e46f801098e6"
+    },
+    {
+      "path": "docs/release/friendly-explanations/inputs-retest.json",
+      "kind": "file",
+      "sha256": "5eafb35f18e139d17b518374f3c7a41dbd4d29fb9624771f2ebe8c9811295c0c"
+    },
+    {
+      "path": "docs/release/friendly-explanations/responses-a.json",
+      "kind": "file",
+      "sha256": "279a843ec5f66c5f0e4e099595359f2e5352204d27c25bce889854638e351f3f"
+    },
+    {
+      "path": "docs/release/friendly-explanations/responses-b.json",
+      "kind": "file",
+      "sha256": "8c9f2a5017422028cdb8d097ab110c7b0079453571f188d1f849458fb619978d"
+    },
+    {
+      "path": "docs/release/friendly-explanations/responses-focused-a.json",
+      "kind": "file",
+      "sha256": "3186a2dab79ff2a85b3070f663fd9439f426e06f190e0bd2fd46bfed9e126461"
+    },
+    {
+      "path": "docs/release/friendly-explanations/responses-focused-b.json",
+      "kind": "file",
+      "sha256": "7dfd470e3920c7bfdd60786c8f2fbd1c0a67ef47df35732448efbfa55ccca764"
+    },
+    {
+      "path": "docs/release/friendly-explanations/responses-retest-a.json",
+      "kind": "file",
+      "sha256": "66eb8e408a6fbde08339d7fc92edbab69ecc3ceea83fde7311496f75c4cce5e0"
+    },
+    {
+      "path": "docs/release/friendly-explanations/responses-retest-b.json",
+      "kind": "file",
+      "sha256": "e9355189c6c0044f96d05251eb1c0c99d7487d7bd2c4832c1b702b713a292d9c"
+    },
+    {
+      "path": "docs/release/friendly-explanations/source-review.json",
+      "kind": "file",
+      "sha256": "482b2f6d11a93fa50492dc63cd0e546e022f330073413c88768752d82fd492d7"
+    },
+    {
+      "path": "docs/release/friendly-explanations/tests-final-package.txt",
+      "kind": "file",
+      "sha256": "9b7d3e002b62bd7901f538b378a932380064e80769e3e506322dd56a33ea166c"
+    },
+    {
+      "path": "docs/release/friendly-explanations/tests-node24.txt",
+      "kind": "file",
+      "sha256": "1a6d5cef43944f94751462fb868f56f3e497977d180ba13a3e38a4efcd1de00c"
+    },
+    {
+      "path": "docs/release/friendly-explanations/tests-node26.txt",
+      "kind": "file",
+      "sha256": "5f968dbd98f7a6c586d0b52e530a4136eff58d8b68f04eda9d4ecd1dd2642f57"
+    },
+    {
+      "path": "docs/release/friendly-explanations/verification.md",
+      "kind": "file",
+      "sha256": "39193306a98ad31ffabd1cc12e409b06d53ef452d91c4f10ced109adda49dcff"
+    },
+    {
       "path": "docs/release/host-install-observation.json",
       "kind": "file",
       "sha256": "528f1da65393a5f84176127e7d6ad1a29bd08311afeead5ec8d146b6d6cd60c0"
@@ -144,6 +258,75 @@
       "path": "docs/release/integration-review.md",
       "kind": "file",
       "sha256": "386e954778d7b09f2e26a9c7bd073fea22dd6df316bcd10d9552b4dfc0870762"
+    },
+    {
+      "path": "docs/release/interview-clarity",
+      "kind": "directory"
+    },
+    {
+      "path": "docs/release/interview-clarity/assessment-initial.json",
+      "kind": "file",
+      "sha256": "90e53907f95ece1f764633fe3cdb84ae9150651d82c256639a993634a7e15bd4"
+    },
+    {
+      "path": "docs/release/interview-clarity/assessment-retest.json",
+      "kind": "file",
+      "sha256": "a13d8abc7d8378c8701dc71193956bbbb337b1fc92eea8c9c60279fa260bcd49"
+    },
+    {
+      "path": "docs/release/interview-clarity/final-review.md",
+      "kind": "file",
+      "sha256": "4c119cff1e9e248544e15867a0d2cae8ed92f416acf98ee3e2352fdd3ad42405"
+    },
+    {
+      "path": "docs/release/interview-clarity/forward-a.json",
+      "kind": "file",
+      "sha256": "0c68a441699c73c2bffb70260a335a36b40725c25843b69b2d14f782df78d587"
+    },
+    {
+      "path": "docs/release/interview-clarity/forward-b.json",
+      "kind": "file",
+      "sha256": "94f33fa8ac1126cfd99b71819fef4e472dc59f2582722a5fc2a6e7071bc0781f"
+    },
+    {
+      "path": "docs/release/interview-clarity/forward-cutoff.json",
+      "kind": "file",
+      "sha256": "e0bdc65c653490d7df2b2e47958cb7802a953a2d2d55d5db3fab3376fca42ccc"
+    },
+    {
+      "path": "docs/release/interview-clarity/inputs-retest.json",
+      "kind": "file",
+      "sha256": "9b18bcfd4bc05dd5cc9140b8b05c83126aea2b4aff538dcbf4427173d93f20bb"
+    },
+    {
+      "path": "docs/release/interview-clarity/inputs.json",
+      "kind": "file",
+      "sha256": "e5b45646a19e3de7aefad1752c12004cc1f28fc0bce6b549b2022324fa4499bd"
+    },
+    {
+      "path": "docs/release/interview-clarity/responses-initial.json",
+      "kind": "file",
+      "sha256": "d25ae5e5024b4e0b68907f3c0d8debf76c97a82456e27fdd608d8b6867b4b970"
+    },
+    {
+      "path": "docs/release/interview-clarity/responses-retest.json",
+      "kind": "file",
+      "sha256": "640bac5e6436d3edd769546efcd5b918177888e83acdc05717b0676a1b4e47ff"
+    },
+    {
+      "path": "docs/release/interview-clarity/tests-node24.txt",
+      "kind": "file",
+      "sha256": "bb2b72b81ef9d845e889c75f84865fbf66125cdbb5b40d97de49bbdbdbbb8e23"
+    },
+    {
+      "path": "docs/release/interview-clarity/tests-node26.txt",
+      "kind": "file",
+      "sha256": "b2da8c1bc92494bc67e24f05ea40e2cd0d85f546a35b5306f33e045587c0ff61"
+    },
+    {
+      "path": "docs/release/interview-clarity/verification.md",
+      "kind": "file",
+      "sha256": "768d5e48ee98e816e79df4e9e76008e9baca586f16ff3c17bab611789d95df59"
     },
     {
       "path": "docs/release/listing.md",
@@ -203,7 +386,7 @@
     {
       "path": "docs/release/workflow-forward-review.md",
       "kind": "file",
-      "sha256": "a65a6c9cd5eb0e8dd43cca20e14fab9586c5658adfb1fa88a92292f293d8bb76"
+      "sha256": "1ce4732973fa0d603528ec87f380fb88f49bfe605eb0e009f2ee09b626e0e8f5"
     },
     {
       "path": "docs/review.md",
@@ -213,7 +396,7 @@
     {
       "path": "docs/specification-authoring.md",
       "kind": "file",
-      "sha256": "055c4ace0613dce6ca17fb55eb6703c27b0efe9a8bd6edac83b4499df4415f50"
+      "sha256": "896aa7baee0ca7edd4bcb899826c157beec107cb7a73df2f560884030e0be56b"
     },
     {
       "path": "docs/validation-graph.md",
@@ -319,7 +502,7 @@
     {
       "path": "skills/vibe2spec-review/SKILL.md",
       "kind": "file",
-      "sha256": "053eb7ec67d690dfc1b2bf9e455cfd557d98d8c5c234d27683798f79c06f6ae1"
+      "sha256": "b38ab625757b080caf70d205b7eff47c0ba7edf33c6ff9acefcea8d6fdea1647"
     },
     {
       "path": "skills/vibe2spec-worker",
@@ -328,12 +511,12 @@
     {
       "path": "skills/vibe2spec-worker/SKILL.md",
       "kind": "file",
-      "sha256": "42001d295cc931545639cabb8b697b5725afb7756c2eafe245a6098d38ab3985"
+      "sha256": "ce77d1d80f5cfb7dc8dc7f31ada41fa5f9df34d80a98b9721262bb27ea3ccada"
     },
     {
       "path": "skills/vibe2spec/SKILL.md",
       "kind": "file",
-      "sha256": "20fca5a0f5ef6025d855644067f4135e354d60bcdbaab8babb7e4309cf581cc5"
+      "sha256": "8a889c69832cad8b54479dad1d8ae36aa410f8eda6ef656f9fbda4d925c972f0"
     },
     {
       "path": "skills/vibe2spec/references",

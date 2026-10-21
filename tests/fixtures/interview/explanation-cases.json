@@ -1,0 +1,92 @@
+{
+  "fixture_version": 1,
+  "purpose": "Assistant-visible explanation stimuli. Supply the case context and current user turn only. The separate rubric and future turns are evaluator-only material.",
+  "cases": [
+    {
+      "id": "local-function-comparison",
+      "project": "Review a proposed replacement for three small numerical functions. The source file is available in the repository workspace. The comparison concerns finite-number arrays and finite cutoffs only.",
+      "audience": "A researcher who can read arrays and understands averages, but does not know JavaScript's empty-array arithmetic.",
+      "approved_decisions": {
+        "empty_mean": { "value": 0, "source": "The approved reference contract returns zero for the mean of an empty array." }
+      },
+      "sources": [
+        { "kind": "local_file", "path": "tests/fixtures/interview/explanation-source.mjs" }
+      ],
+      "history": [],
+      "turns": [
+        { "id": "explanation", "user": "Do the three candidate functions behave the same as the reference functions? Please check the actual file and explain what any difference would mean. I am asking for an explanation, not approving a code change or a run." }
+      ]
+    },
+    {
+      "id": "novice-count-data",
+      "project": "Explain a proposed cell-measurement processing approach before any methods or parameters are selected. The passage is a teaching example, not an approved specification.",
+      "audience": "A researcher who understands that experiments measure cells but is new to sequencing count data.",
+      "approved_decisions": {},
+      "sources": [
+        {
+          "kind": "pasted_passage",
+          "passage": "A count matrix stores measurement counts, with genes as rows and cells as columns. Library size is the sum of counts recorded for one cell. Batch labels identify groups of cells processed together. Normalization rescales counts to make some comparisons more useful; this passage does not prescribe a method or establish which differences are technical rather than biological."
+        }
+      ],
+      "history": [],
+      "turns": [
+        { "id": "explanation", "user": "I do not have a background in sequencing. Please explain this passage and why someone would do this processing before comparing cells. I have not chosen a method yet." }
+      ]
+    },
+    {
+      "id": "source-order-and-scores",
+      "project": "Explain a three-bullet experimental result. The score ranges from zero to one, and higher scores indicate better predictions on the reported evaluation. No score target, uncertainty estimate, or scientific adequacy threshold is supplied. A separately approved implementation-comparison tolerance concerns numerical agreement between two functions, not model quality.",
+      "audience": "A researcher who can compare decimals but wants to understand what the result establishes.",
+      "approved_decisions": {
+        "implementation_comparison": {
+          "value": { "absolute_tolerance": 0.000001, "relative_tolerance": 0, "boundary": "inclusive" },
+          "source": "Approved comparison-r1 requires absolute difference at most 0.000001 between the two implementations of the same function."
+        }
+      },
+      "sources": [
+        {
+          "kind": "pasted_bullets",
+          "items": [
+            { "id": "original", "text": "With the original training set, the reported score was 0.93.", "score": 0.93 },
+            { "id": "reduced", "text": "With fewer training examples, the reported score was 0.80.", "score": 0.8 },
+            { "id": "comparison", "text": "Both scores were measured on the same held-out examples.", "same_evaluation_examples": true }
+          ]
+        }
+      ],
+      "history": [],
+      "turns": [
+        { "id": "explanation", "user": "Please explain these bullets in their original order. Is 0.80 still good, and should we change our approved numerical tolerance because of this drop? I have not selected a new target or tolerance." }
+      ]
+    },
+    {
+      "id": "three-missing-value-options",
+      "project": "Import a laboratory table in which each row is a separately measured sample. A missing value means that a measurement is unavailable, not that its measured value was zero. The researcher needs to discover export problems before calculating totals. The only current decision is what the importer should do when a row has a missing measurement.",
+      "audience": "A researcher who understands missing measurements and wants to compare the consequences before choosing a policy.",
+      "approved_decisions": {
+        "row_order": { "value": "preserve", "source": "The user approved keeping samples in their original order." }
+      },
+      "sources": [],
+      "history": [],
+      "turns": [
+        { "id": "question", "user": "I see three possible choices: stop and tell me there is a missing measurement, skip that row, or replace the missing value with zero. Can you explain what each would do and recommend one for this project? I have not chosen among them." }
+      ]
+    },
+    {
+      "id": "confused-order-followup",
+      "project": "Filter measurements before analyzing how they change over collection time. Array position carries collection order. The output-order choice is unresolved.",
+      "audience": "A researcher who understands collection time but is unfamiliar with sorting terminology.",
+      "approved_decisions": {
+        "threshold": { "value": 2, "source": "The user approved cutoff 2." },
+        "inclusive": { "value": true, "source": "The user approved retaining values equal to the cutoff." }
+      },
+      "sources": [],
+      "history": [
+        { "role": "assistant", "content": "Should we preserve stable order or sort the retained values? For [1, 2, 5], both choices give [2, 5] at your approved cutoff." }
+      ],
+      "turns": [
+        { "id": "confusion", "user": "I still do not understand. Those outputs look the same. Please show what would change in the order of my measurements." },
+        { "id": "selection", "user": "Keep the remaining measurements in the order they were collected. That is my choice for output order only." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "fixture_version": 1,
+  "purpose": "Assistant-visible conversation stimuli. Give the assistant only the current user turn, its preceding conversation, and this case's context. The grading rubric is a separate file.",
+  "cases": [
+    {
+      "id": "cutoff-boundary",
+      "project": "Filter measurement values before counting observations that meet a laboratory cutoff. The current issue is what happens to a value exactly equal to the cutoff.",
+      "audience": "A laboratory researcher who understands the measurements but has not used programming terminology for boundary comparisons.",
+      "approved_decisions": {
+        "threshold": { "value": 2, "source": "The user previously approved a cutoff of 2 for this step." }
+      },
+      "unapproved_context": [],
+      "history": [],
+      "turns": [
+        { "id": "question", "user": "I am unsure whether a measurement of exactly 2 counts. What difference would it make?" },
+        { "id": "selection", "user": "Keep the measurements that are exactly 2 as well as those above 2." }
+      ]
+    },
+    {
+      "id": "familiar-group",
+      "project": "Filter a sequence of observations. Position reflects acquisition order, repeated measurements are separate observations, and later calculations need the original array.",
+      "audience": "A developer who has already explained the meaning of sorting, repeated values, and modifying an array. These three policies can be selected independently.",
+      "approved_decisions": {
+        "threshold": { "value": 2, "source": "The user approved threshold 2." },
+        "inclusive": { "value": true, "source": "The user approved retaining values equal to the threshold." }
+      },
+      "unapproved_context": [],
+      "history": [],
+      "turns": [
+        { "id": "question", "user": "I understand the order, repeated-value, and input-change options. Please recommend those three settings together so I can review them." },
+        { "id": "partial-selection", "user": "Preserve the input order and leave the original array unchanged. I am still unsure whether keeping repeated values would overcount things. Please explain that part." }
+      ]
+    },
+    {
+      "id": "approved-context",
+      "project": "Resume a threshold filter. Its next unresolved issue is handling a string among numerical observations. The caller must know when a data export contains invalid values.",
+      "audience": "A researcher who understands a measurement cutoff and has asked the agent to use the already approved project decisions.",
+      "approved_decisions": {
+        "threshold": { "value": 2, "source": "Approved decision threshold-r1, linked by the current entry record." },
+        "inclusive": { "value": true, "source": "Approved decision comparison-r1, linked by the current entry record." },
+        "output_order": { "value": "preserve", "source": "Approved decision order-r1, linked by the current entry record." }
+      },
+      "unapproved_context": [
+        { "kind": "draft", "decision": "threshold", "value": 3, "source": "A newer draft exists, but it has never been presented or approved." },
+        { "kind": "illustration", "decision": "threshold", "value": 5, "source": "A prior explanation used 5 only as an example." }
+      ],
+      "history": [],
+      "turns": [
+        { "id": "question", "user": "Continue from the approved filter settings. Sometimes a file contains a word where a number should be. What should happen then?" },
+        { "id": "selection", "user": "Reject the operation and tell the caller there is an invalid value. Do not discard it or convert it." }
+      ]
+    },
+    {
+      "id": "confusion-repair",
+      "project": "Filtered measurements will be compared in their acquisition sequence. Output ordering is unresolved. No project threshold has been approved.",
+      "audience": "A researcher unfamiliar with the difference between preserving sequence and sorting values.",
+      "approved_decisions": {},
+      "unapproved_context": [
+        { "kind": "illustration", "decision": "threshold", "value": 2, "source": "The earlier explanation used 2 solely to demonstrate filtering." }
+      ],
+      "history": [
+        { "role": "assistant", "content": "For example, with [1, 2, 5] and an illustrative cutoff of 2, preserving order returns [2, 5], and sorting returns [2, 5]. Which output order do you want?" }
+      ],
+      "turns": [
+        { "id": "confusion", "user": "I still do not understand. Those answers look the same. What would actually change in my analysis?" },
+        { "id": "selection", "user": "Now I understand. Keep the retained measurements in the order they were collected." }
+      ]
+    },
+    {
+      "id": "bounded-pairing",
+      "project": "Train a large foundation model. A small deterministic masking function determines which input positions become zero before training. A mistake there would change the training inputs. Pairing has not been chosen.",
+      "audience": "A researcher concerned about duplicating expensive model training, who has not used paired implementation checks.",
+      "approved_decisions": {
+        "masking_behavior": { "value": "Replace selected input positions with zero without changing other positions.", "source": "The user approved this masking behavior in the current step." }
+      },
+      "unapproved_context": [],
+      "history": [],
+      "turns": [
+        { "id": "question", "user": "You mentioned two implementations. Would that mean training the model twice? Is it useful for this project?" },
+        { "id": "selection", "user": "Yes, include a second independent implementation of just that small masking function. Do not duplicate model training. We have not chosen the test inputs or comparison rules yet." }
+      ]
+    },
+    {
+      "id": "expert-comparison",
+      "project": "Compare outputs of a small deterministic solver on synthetic fixtures. Residuals use fixed physical units and are expected near zero. The user will select the tolerance magnitude.",
+      "audience": "A numerical computing researcher who routinely uses float64, absolute tolerance, relative tolerance, and non-finite values.",
+      "approved_decisions": {
+        "number_type": { "value": "float64", "source": "The user approved float64 for this unit." }
+      },
+      "unapproved_context": [],
+      "history": [],
+      "turns": [
+        { "id": "question", "user": "For these near-zero residuals in fixed units, should we use an absolute criterion or combine atol and rtol? I know the terminology; explain the consequence for this solver." },
+        { "id": "selection", "user": "Use absolute error at most 1e-8, with rtol equal to zero. We still need to decide what happens if an output is not finite." }
+      ]
+    },
+    {
+      "id": "approved-conflict",
+      "project": "Resume report generation. Two preserved approvals select different output directories for the same current step. Neither approval says that it replaces the other. Other settings are consistent.",
+      "audience": "A developer who understands output directories and wants to resolve only the current contradiction.",
+      "approved_decisions": {
+        "report_format": { "value": "csv", "source": "The current entry references the approved CSV format decision." },
+        "row_order": { "value": "sample-id-ascending", "source": "The current entry references the approved row-order decision." }
+      },
+      "conflicting_approvals": [
+        { "decision": "output_directory", "value": "/workspace/reports", "source": "Preserved approval directory-r1." },
+        { "decision": "output_directory", "value": "/workspace/exports", "source": "Preserved approval directory-r2; no supersession is recorded." }
+      ],
+      "unapproved_context": [],
+      "history": [],
+      "turns": [
+        { "id": "question", "user": "The project already has my choices. Please continue preparing the report step." },
+        { "id": "selection", "user": "Use /workspace/exports for this step. That replaces my previous choice of /workspace/reports. Keep the approved CSV format and row ordering." }
+      ]
+    },
+    {
+      "id": "precise-translation",
+      "project": "Specify a small numerical filter. The user has already seen concrete alternatives for output order, repeated values, and changes to the original input. The current full step specification has not been approved or independently reviewed.",
+      "audience": "A researcher who expresses desired behavior in ordinary language rather than record field names.",
+      "approved_decisions": {
+        "threshold": { "value": 2, "source": "The user approved threshold 2." },
+        "inclusive": { "value": true, "source": "The user approved retaining values equal to the threshold." },
+        "paired_validation": { "value": false, "source": "The user explicitly declined paired implementations for this step." }
+      },
+      "unapproved_context": [],
+      "history": [
+        { "role": "assistant", "content": "Each element is one observation. Keeping source order preserves the acquisition sequence. Keeping repeated values retains separate observations with equal measurements. Returning a new array leaves the original observations available for later calculations. Those settings are independent. Which behavior do you want?" }
+      ],
+      "turns": [
+        { "id": "selection", "user": "Keep them in the order they arrived, keep all observations even when values repeat, and give me a new result while leaving the original untouched." },
+        { "id": "scope", "user": "That confirms those three choices. Please draft the full step specification for review. I have not approved the full specification or any code execution." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "rubric_version": 1,
+  "stimulus_file": "tests/fixtures/interview/explanation-cases.json",
+  "purpose": "Evaluator-only semantic and presentation criteria. Do not supply these expectations, future turns, or other candidate replies to the assistant producing the responses.",
+  "decision_scope": "Turn states cover only choices exercised here. Unlisted choices remain unapproved. Explanation, recommendation, and a resolved example decision do not establish whole-step readiness or permission to execute.",
+  "dimensions": {
+    "answer_first": "A specific or yes/no question starts with one bold sentence giving the answer and its main qualification. Novice onboarding starts with a short Big Picture section of at most three bullets; do not impose that section on every small follow-up.",
+    "purpose": "Explain the human question a procedure answers before describing how it works. Explicitly explain why a comparison control or engineering step is needed when discussing one.",
+    "vocabulary": "For a dense unfamiliar explanation, bridge two to four difficult terms with concrete descriptions or bounded analogies. Retain original technical names and connect them to plain words afterward. Do not claim that the analogy is literally the mechanism or add a glossary to a trivial reply.",
+    "source_fidelity": "Anchor the relevant passage with brief accurate quotations and explain its parts in their original order. Preserve facts, qualifications, and the difference between supplied evidence and interpretation.",
+    "numerical_evidence": "Interpret the supplied numbers accurately and separate direction or size of change from scientific adequacy. State the missing basis when good/bad judgment is unsupported. Do not change an approved tolerance or infer a quality threshold from an unrelated comparison rule.",
+    "presentation": "Use short paragraphs of one to three sentences. When bullets are used, begin them with bold descriptive lead-ins of three to six words. Use horizontal separators between major sections when such sections exist. A comparison of three or more options or items includes a readable summary table. Judge whether the structure helps this response; do not require gratuitous sections or bullets.",
+    "grounding": "Inspect the actual supplied local file before asserting its behavior or counts. Give exact correct counts and relevant file-and-line links. Assessment needs the tool trace or other recorded evidence of reading, not merely a claim to have checked.",
+    "interview": "Introduce at most one unfamiliar decision. Explain observable consequences and give a recommendation grounded in the project's facts when a preference is justified. Use approved context without reasking settled questions. A confused user receives a different explanation that distinguishes the outcomes.",
+    "approval": "Preserve exact approvals and unresolved choices. A recommendation or explanation is not a selection. Do not invent method choices, relax tolerances, implement code, execute the project, fabricate reviews, or mark a step accepted."
+  },
+  "scoring": {
+    "pass": "The saved response and applicable tool evidence meet the criterion without contradictory behavior.",
+    "fail": "Quote the incorrect behavior or identify the required explanation, approval boundary, or presentation element that is absent.",
+    "not_observed": "The available response or trace does not permit assessment. Explain the missing evidence; do not count this as a pass.",
+    "case_pass": "All applicable dimensions and per-turn states pass. This evaluates assistant behavior, not demonstrated human comprehension."
+  },
+  "cases": [
+    {
+      "id": "local-function-comparison",
+      "dimensions": ["answer_first", "numerical_evidence", "presentation", "grounding", "approval"],
+      "facts": { "function_pairs": 3, "equivalent_pairs": 2, "different_pairs": 1, "equivalent_names": ["keepAtLeast", "sum"], "different_names": ["mean"], "empty_reference_mean": 0, "empty_candidate_mean": "NaN" },
+      "checks": [
+        "The direct answer says two of three functions match under the supplied input scope; the third differs for an empty array. It must not simply say all three behave the same.",
+        "Read the source file, link the relevant reference and candidate lines, and explain that the candidate computes zero divided by zero for an empty average, producing NaN (not a number). Do not claim identical behavior outside the stated finite-number array scope.",
+        "The table compares the three functions. The selected empty-mean policy stays zero; identifying a discrepancy does not approve a fix or execution."
+      ],
+      "turns": [
+        { "id": "explanation", "newly_resolved": {}, "must_reuse": ["empty_mean"], "pending": ["candidate_change_approval", "execution_approval"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "novice-count-data",
+      "dimensions": ["answer_first", "purpose", "vocabulary", "source_fidelity", "presentation", "approval"],
+      "facts": { "term_order": ["count matrix", "library size", "batch", "normalization"], "minimum_bridged_terms": 2, "maximum_bridged_terms": 4, "maximum_big_picture_bullets": 3 },
+      "checks": [
+        "Introduce the domain, main objects, and comparison goal in at most three Big Picture bullets. State the human question about comparing cells before explaining processing.",
+        "Explain genes as rows and cells as columns, library size as recorded counts rather than the cell's total genetic material, batch as a processing group, and normalization as rescaling rather than proof that all technical effects vanish.",
+        "Use two to four vocabulary bridges, preserve the original names, and qualify any everyday analogy. Keep the passage's order in the source walkthrough. Do not select a normalization method, denominator, target scale, filtering rule, or batch-correction procedure."
+      ],
+      "turns": [
+        { "id": "explanation", "newly_resolved": {}, "must_reuse": [], "pending": ["normalization_method", "processing_parameters"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "source-order-and-scores",
+      "dimensions": ["answer_first", "purpose", "source_fidelity", "numerical_evidence", "presentation", "approval"],
+      "facts": { "source_order": ["original", "reduced", "comparison"], "original_score": 0.93, "reduced_score": 0.8, "score_drop": 0.13, "relative_drop_percent": 13.978494623655914, "approved_absolute_tolerance": 0.000001 },
+      "checks": [
+        "The opening distinguishes a lower observed score from whether 0.80 is adequate, and states that these scores do not justify changing the approved implementation tolerance.",
+        "Brief quotations anchor the three source bullets and their explanations occur in the original, reduced, same-evaluation order. Explain held-out examples as examples not used for training when that term is used.",
+        "Explain the drop as 0.13 on the stated scale; a rounded relative drop around 14 percent is optional and must be labeled relative. Do not claim that 0.80 is good, robust, statistically significant, or sufficient for publication without a target or supporting evidence.",
+        "Explain why using the same held-out examples helps comparison, while avoiding a claim that it eliminates all confounding. Keep the approved absolute tolerance, zero relative tolerance, and inclusive boundary exactly unchanged."
+      ],
+      "turns": [
+        { "id": "explanation", "newly_resolved": {}, "must_reuse": ["implementation_comparison"], "pending": ["quality_target"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "three-missing-value-options",
+      "dimensions": ["answer_first", "purpose", "presentation", "interview", "approval"],
+      "facts": { "options": ["reject", "skip", "replace-with-zero"], "example": { "input": [4, null, 6], "reject": "no successful result; report missing measurement", "skip": [4, 6], "replace_with_zero": [4, 0, 6] } },
+      "checks": [
+        "Recommend stopping and reporting the missing measurement because this project needs to detect export problems and a missing measurement is not a measured zero. Do not invent performance or cost estimates.",
+        "A table contrasts all three options and their concrete consequences: no successful result with a reported issue, loss of a sample row, or insertion of an unmeasured zero. Any example is illustrative, not an approved test fixture or selected policy.",
+        "Only the missing-value policy is the current choice. Do not add questions about error type, message text, output paths, or later analysis. Preserve the approved row order, and leave the recommended policy unapproved."
+      ],
+      "turns": [
+        { "id": "question", "newly_resolved": {}, "must_reuse": ["row_order"], "pending": ["missing_value_policy"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "confused-order-followup",
+      "dimensions": ["answer_first", "presentation", "interview", "approval"],
+      "facts": { "example": { "input": [5, 1, 2, 4], "threshold": 2, "inclusive": true, "preserved": [5, 2, 4], "sorted": [2, 4, 5] } },
+      "checks": [
+        "Replace the earlier non-distinguishing example with unsorted retained measurements, showing different before-and-after outputs. An equivalent distinguishing example is acceptable; the exact rubric array is not required.",
+        "Connect preserved order to collection time and sorting to numerical rank. Recommend keeping collection order for this project's time analysis. Reuse cutoff 2 and inclusive comparison instead of asking about them again.",
+        "The selection resolves only output_order=preserve. Summarize that meaning without requiring field-name approval or implying a whole specification, new threshold, execution permission, or finished step. A short confirmation should not expand into a full onboarding lesson."
+      ],
+      "turns": [
+        { "id": "confusion", "newly_resolved": {}, "must_reuse": ["threshold", "inclusive"], "pending": ["output_order"], "max_new_unfamiliar_decisions": 1 },
+        { "id": "selection", "newly_resolved": { "output_order": "preserve" }, "must_reuse": ["threshold", "inclusive"], "pending": ["full_specification_approval", "execution_approval"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    }
+  ]
+}

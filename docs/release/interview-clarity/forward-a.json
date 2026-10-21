@@ -1,0 +1,191 @@
+{
+  "limitations": [
+    "Fictional scripted users.",
+    "Single evaluator context across four cases, with case context reset between cases."
+  ],
+  "cases": [
+    {
+      "id": "cutoff-boundary",
+      "turns": [
+        {
+          "id": "question",
+          "response": "The cutoff is already set to 2. Suppose the measurements are 1.9, 2, and 2.1. If equality counts, 2 and 2.1 remain, giving two observations. If only values above the cutoff count, only 2.1 remains, giving one observation.\n\nShould a measurement of exactly 2 count, or should only measurements above 2 count?",
+          "decision_state": {
+            "resolved": {
+              "threshold": {
+                "value": 2,
+                "source": "Supplied approved decision: the user previously approved a cutoff of 2 for this step."
+              }
+            },
+            "unresolved": [
+              "Whether equality at the cutoff counts."
+            ]
+          }
+        },
+        {
+          "id": "selection",
+          "response": "Measurements equal to 2 will count, along with measurements above 2. Measurements below 2 will be excluded.\n\nIf the measurements are [2, 2, 5], retaining both occurrences of 2 gives three observations. Keeping each distinct value only once gives two. Since this step counts observations, I recommend retaining repeated measurements. Should repeated measurements remain as separate observations?",
+          "decision_state": {
+            "resolved": {
+              "threshold": {
+                "value": 2,
+                "source": "Supplied approved decision: the user previously approved a cutoff of 2 for this step."
+              },
+              "cutoff_boundary": {
+                "value": "Retain measurements greater than or equal to 2.",
+                "source": "Current user selection explicitly includes equality and values above 2."
+              }
+            },
+            "unresolved": [
+              "Whether repeated retained measurements remain as separate observations."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "familiar-group",
+      "turns": [
+        {
+          "id": "question",
+          "response": "With the approved cutoff of 2 and equality included, I recommend these three settings:\n\n| Setting | Recommendation | Effect on your work |\n| --- | --- | --- |\n| Order | Preserve input order. | Retained observations stay in acquisition order. |\n| Repeated values | Retain every occurrence. | Equal measurements still count as separate observations. |\n| Original input | Return a new array and leave the original unchanged. | Later calculations can still use all original observations. |\n\nTogether, these settings would return [5, 2, 2] from [5, 2, 2, 1], while the original array would remain [5, 2, 2, 1]. Which of these settings do you approve, and which would you change?",
+          "decision_state": {
+            "resolved": {
+              "threshold": {
+                "value": 2,
+                "source": "Supplied approved decision: the user approved threshold 2."
+              },
+              "inclusive": {
+                "value": true,
+                "source": "Supplied approved decision: the user approved retaining values equal to the threshold."
+              }
+            },
+            "unresolved": [
+              "Output order: preserving input order recommended, awaiting selection.",
+              "Repeated values: retaining every occurrence recommended, awaiting selection.",
+              "Original input: returning a new array without changing the original recommended, awaiting selection."
+            ]
+          }
+        },
+        {
+          "id": "partial-selection",
+          "response": "I will preserve input order and leave the original array unchanged. The repeated-value choice remains open.\n\nEqual values can come from separate observations. Suppose the first measurement is 2, the second is also 2, and the third is 5. Keeping [2, 2, 5] counts each of those three observations once. Returning [2, 5] counts two distinct measurement values and drops one observation.\n\nYour project treats repeated measurements as separate observations, so I recommend keeping every occurrence. Should both measurements of 2 remain in this example?",
+          "decision_state": {
+            "resolved": {
+              "threshold": {
+                "value": 2,
+                "source": "Supplied approved decision: the user approved threshold 2."
+              },
+              "inclusive": {
+                "value": true,
+                "source": "Supplied approved decision: the user approved retaining values equal to the threshold."
+              },
+              "output_order": {
+                "value": "Preserve input order.",
+                "source": "Current user partial selection."
+              },
+              "input_preservation": {
+                "value": "Leave the original array unchanged.",
+                "source": "Current user partial selection."
+              }
+            },
+            "unresolved": [
+              "Repeated-value policy: user remains unsure; retaining every occurrence is still only a recommendation."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "approved-context",
+      "turns": [
+        {
+          "id": "question",
+          "response": "The approved filter keeps measurements of 2 or above and preserves their input order.\n\nFor an input such as [2, \"missing\", 5], stopping with an error would return no filtered result and tell the caller to address the invalid value. Skipping the word would return [2, 5], but one entry would be removed; an explicit report would be needed to make that loss visible.\n\nBecause the caller must know when an export contains invalid values, I recommend stopping with an error. Should the filter reject the whole input when it encounters a word, or skip that entry and explicitly report it?",
+          "decision_state": {
+            "resolved": {
+              "threshold": {
+                "value": 2,
+                "source": "Approved threshold-r1 linked by the current entry record."
+              },
+              "inclusive": {
+                "value": true,
+                "source": "Approved comparison-r1 linked by the current entry record."
+              },
+              "output_order": {
+                "value": "preserve",
+                "source": "Approved order-r1 linked by the current entry record."
+              }
+            },
+            "unresolved": [
+              "Invalid word policy: rejection recommended; no selection yet.",
+              "Exact error or reporting behavior depends on the invalid-input selection."
+            ]
+          }
+        },
+        {
+          "id": "selection",
+          "response": "The operation will reject an invalid value, return no filtered result, and tell the caller that the input is invalid. It will neither discard nor convert the value. The approved cutoff of 2, inclusion of equality, and input order remain in effect.\n\nFor [2, \"missing\", 5], the error could identify the second entry as invalid, which would help the caller locate the problem. A general error would only say that an invalid value exists. I recommend identifying its position. Should the error identify the invalid entry’s position, or give only a general invalid-value message?",
+          "decision_state": {
+            "resolved": {
+              "threshold": {
+                "value": 2,
+                "source": "Approved threshold-r1 linked by the current entry record."
+              },
+              "inclusive": {
+                "value": true,
+                "source": "Approved comparison-r1 linked by the current entry record."
+              },
+              "output_order": {
+                "value": "preserve",
+                "source": "Approved order-r1 linked by the current entry record."
+              },
+              "invalid_input_policy": {
+                "value": "Reject the operation, notify the caller of an invalid value, and neither discard nor convert it.",
+                "source": "Current user selection."
+              }
+            },
+            "unresolved": [
+              "Whether the error identifies the invalid entry’s position.",
+              "Exact error type and message are not yet selected.",
+              "Other unprovided current-step contract details remain unapproved."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "confusion-repair",
+      "turns": [
+        {
+          "id": "confusion",
+          "response": "You are right. My earlier example was already sorted, so it hid the difference.\n\nSuppose the measurements arrive in this order: [5, 1, 4, 2]. Using 2 only as an illustrative cutoff, we would remove 1.\n\n| Choice | Filtered measurements | What your analysis sees |\n| --- | --- | --- |\n| Keep acquisition order | [5, 4, 2] | The retained readings appear in the order they were measured. |\n| Sort from smallest to largest | [2, 4, 5] | The last reading now appears first. Positions describe size order rather than measurement sequence. |\n\nBecause your analysis compares measurements in acquisition sequence, I recommend keeping their original order. Should the filtered measurements stay in acquisition order?",
+          "decision_state": {
+            "resolved": {},
+            "unresolved": [
+              "Output order: preserving acquisition order recommended, awaiting selection.",
+              "Threshold: 2 remains an illustrative value, with no approved project threshold."
+            ]
+          }
+        },
+        {
+          "id": "selection",
+          "response": "Retained measurements will stay in the order they were collected. Filtering may remove measurements, but it will preserve the relative order of those that remain.\n\nThe cutoff of 2 in the examples has not been selected for your project. What cutoff should this filter use for your measurements?",
+          "decision_state": {
+            "resolved": {
+              "output_order": {
+                "value": "Preserve the collection order of retained measurements.",
+                "source": "Current user selection after the contrasting example."
+              }
+            },
+            "unresolved": [
+              "Project threshold has not been selected.",
+              "Whether equality at the eventual threshold counts has not been selected.",
+              "Other unprovided current-step contract details remain unapproved."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

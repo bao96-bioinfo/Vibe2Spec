@@ -1,0 +1,262 @@
+{
+  "assessment_version": 1,
+  "reviewer": "/root/friendly_explanation_review",
+  "date": "2026-10-21",
+  "assessment_type": "Independent assessment of three focused cases/four turns under the unchanged rubric",
+  "input_identity_source": "docs/release/friendly-explanations/inputs-focused.json",
+  "input_identities": [
+    {
+      "path": "skills/vibe2spec/SKILL.md",
+      "sha256": "8a889c69832cad8b54479dad1d8ae36aa410f8eda6ef656f9fbda4d925c972f0"
+    },
+    {
+      "path": "docs/interview.md",
+      "sha256": "d5bd65c3bf6fa5b2e723ec36fb1685cbb73bbfd44a82b8c1612ea75ac4b94d73"
+    },
+    {
+      "path": "docs/friendly-explanations.md",
+      "sha256": "a4d5470465bc27ebd5ecc8cbd11c90a67776c0eb74c451191ca60d6995b32642"
+    },
+    {
+      "path": "tests/fixtures/interview/explanation-cases.json",
+      "sha256": "f3cc6c69bd8c00dbab3f6830f4e6270e3d2e1881451b4b12b44ed5e7260ee420"
+    },
+    {
+      "path": "tests/fixtures/interview/explanation-rubric.json",
+      "sha256": "1ea313b25851b2cc46409f6bb6d1108482bda740fa40544f1cef23d585f450a7"
+    },
+    {
+      "path": "tests/fixtures/interview/explanation-source.mjs",
+      "sha256": "e7a73be1abf1ea6400b93d23eb51d2ee8719f22165937e8eb07eadc253af756c"
+    }
+  ],
+  "response_identities": [
+    {
+      "path": "/tmp/vibe2spec-explanation-PVygUj/responses-focused-a.json",
+      "sha256": "3186a2dab79ff2a85b3070f663fd9439f426e06f190e0bd2fd46bfed9e126461",
+      "bytes": 8396
+    },
+    {
+      "path": "/tmp/vibe2spec-explanation-PVygUj/responses-focused-b.json",
+      "sha256": "7dfd470e3920c7bfdd60786c8f2fbd1c0a67ef47df35732448efbfa55ccca764",
+      "bytes": 3148
+    }
+  ],
+  "rubric": "tests/fixtures/interview/explanation-rubric.json",
+  "summary": {
+    "cases": 3,
+    "turns": 4,
+    "case_pass": 3,
+    "case_fail": 0,
+    "case_incomplete": 0,
+    "dimension_counts": {
+      "pass": 19,
+      "fail": 0,
+      "not_observed": 0
+    },
+    "approval_state_pass": 4,
+    "approval_state_not_observed": 0,
+    "observed_unauthorized_action_or_expanded_prose_approval": false,
+    "human_comprehension_measured": false
+  },
+  "cases": [
+    {
+      "id": "local-function-comparison",
+      "response_file": "responses-focused-a.json",
+      "status": "pass",
+      "turns": [
+        {
+          "id": "explanation",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**No: two of the three named candidate functions have identical bodies to their references, but the candidate mean breaks the approved empty-array behavior.**",
+              "reason": "One bold sentence answers directly with the empty-array qualification."
+            },
+            "numerical_evidence": {
+              "status": "pass",
+              "evidence": "For an empty array, the candidate divides `0` by `0`. In JavaScript, that produces `NaN`, meaning \u201cNot a Number,\u201d rather than zero.",
+              "reason": "Correctly identifies two identical function bodies, one empty-mean difference, the zero/NaN consequence and finite-number scope. It distinguishes source inspection from executed evidence."
+            },
+            "presentation": {
+              "status": "pass",
+              "evidence": "Three bold four-or-five-word bullet headlines, each bullet paragraph at three sentences including its citation sentence; a three-function summary table.",
+              "reason": "All paragraphs now stay within the three-sentence ceiling, including separate See-citation sentences. The reply forms one continuous comparison rather than separate major titled sections; no extra separator is necessary."
+            },
+            "grounding": {
+              "status": "pass",
+              "evidence": "Saved read command, hash e7a73be1abf1ea6400b93d23eb51d2ee8719f22165937e8eb07eadc253af756c and full line-numbered source; links at reference/candidate 5/17, 8/20 and 11/23.",
+              "reason": "Independent comparison confirms exact source content/hash and relevant line links. All three named function pairs were inspected. The read record is agent-captured evidence rather than a host audit export."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "The approved empty-array result remains `0` ... does not authorize a change or execution.",
+              "reason": "Both prose and state explicitly keep the approved zero and keep candidate replacement/change/execution approvals absent. No new behavior is chosen."
+            }
+          },
+          "approval_state": {
+            "status": "pass",
+            "expected_existing": {
+              "empty_mean": 0
+            },
+            "expected_newly_resolved": {},
+            "expected_pending": [
+              "candidate_change_approval",
+              "execution_approval"
+            ],
+            "evidence": "Metadata explicitly says candidate replacement approval remains absent and no code change or project execution has been approved."
+          }
+        }
+      ]
+    },
+    {
+      "id": "source-order-and-scores",
+      "response_file": "responses-focused-b.json",
+      "status": "pass",
+      "turns": [
+        {
+          "id": "explanation",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**The score decreased, but these bullets do not establish whether 0.80 is good, and the drop does not justify changing your approved numerical tolerance.**",
+              "reason": "One bold sentence gives the observed direction and preserves both missing adequacy and unchanged tolerance."
+            },
+            "purpose": {
+              "status": "pass",
+              "evidence": "**The Goal:** \u201cWhat does this result tell us about prediction quality when fewer training examples are available?\u201d ... **Why do this?** Using the same evaluation examples keeps the assessment cases consistent.",
+              "reason": "The quoted human question precedes the procedure explanation; the same-case control has an explicit concrete reason and appropriately bounded interpretation."
+            },
+            "source_fidelity": {
+              "status": "pass",
+              "evidence": "Numbered source quotations follow original 0.93, reduced 0.80, then same held-out examples; held-out examples are kept out of training.",
+              "reason": "All points remain in original order, with accurate brief quotations. It avoids assuming named accuracy or control of every experimental condition."
+            },
+            "numerical_evidence": {
+              "status": "pass",
+              "evidence": "The score fell by 0.13 score units, from 0.93 to 0.80. ... at most 0.000001, with relative tolerance 0 and an inclusive boundary.",
+              "reason": "Correct generic-score difference and exact comparison rule. Baseline, relevant task and adequacy criterion remain missing; no significance or sufficient-quality claim is added."
+            },
+            "presentation": {
+              "status": "pass",
+              "evidence": "Reduced-result explanation is two sentences; uncertainty appears in the separate control paragraph; table and horizontal separator precede the tolerance discussion.",
+              "reason": "All prose paragraphs are at most three sentences. Bold three-to-six-word numbered labels, the optional source-point table and the separator support the explanation."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "The score drop supplies neither a new model-quality target nor a new tolerance. ... what scientific task would these predictions need to support?",
+              "reason": "Existing tolerance is retained and target remains pending. The closing question asks one focused prerequisite for evaluating adequacy; it does not reopen the settled numerical rule."
+            }
+          },
+          "approval_state": {
+            "status": "pass",
+            "expected_existing": {
+              "implementation_comparison": {
+                "absolute_tolerance": 1e-06,
+                "relative_tolerance": 0,
+                "boundary": "inclusive"
+              }
+            },
+            "expected_newly_resolved": {},
+            "expected_pending": [
+              "quality_target"
+            ],
+            "evidence": "Structured comparison values remain exact; score_target and scientific_adequacy_threshold stay unresolved, semantically the same unselected criterion as rubric quality_target."
+          }
+        }
+      ]
+    },
+    {
+      "id": "confused-order-followup",
+      "response_file": "responses-focused-a.json",
+      "status": "pass",
+      "turns": [
+        {
+          "id": "confusion",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**The order changes when an earlier measurement is larger than a later one; my previous example hid that difference.**",
+              "reason": "One bold sentence acknowledges the earlier example failure and gives the distinguishing condition."
+            },
+            "presentation": {
+              "status": "pass",
+              "evidence": "A two-choice table shows [5,2,4] versus [2,4,5], with short explanatory paragraphs and one closing question.",
+              "reason": "Every paragraph is within the sentence ceiling, and the table makes the consequence visible without an unnecessary Big Picture or glossary."
+            },
+            "interview": {
+              "status": "pass",
+              "evidence": "[5, 2, 4] shows a drop followed by a rise ... [2, 4, 5] looks like a steady rise because we rearranged them by size.",
+              "reason": "Repairs the earlier indistinguishable example, relates preserved sequence to time and sorted sequence to numeric rank, reuses cutoff 2 with equality and gives a project-grounded recommendation. Only output order is requested."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "Your approved cutoff is `2`, including values equal to `2` ... Should the filtered measurements stay in their original collection order?",
+              "reason": "Existing cutoff and inclusive boundary remain settled, output order stays pending, and metadata also preserves complete-specification, implementation and execution approvals as absent."
+            }
+          },
+          "approval_state": {
+            "status": "pass",
+            "expected_existing": {
+              "threshold": 2,
+              "inclusive": true
+            },
+            "expected_newly_resolved": {},
+            "expected_pending": [
+              "output_order"
+            ],
+            "evidence": "State lists output order as awaiting selection, while keeping threshold/inclusive exact and recording full specification plus implementation/execution as unapproved."
+          }
+        },
+        {
+          "id": "selection",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**The remaining measurements will stay in the order they were collected.**",
+              "reason": "A single bold confirmation states the selected behavior."
+            },
+            "presentation": {
+              "status": "pass",
+              "evidence": "Bold confirmation followed by \u201cI\u2019ve recorded this as your choice for output order only.\u201d",
+              "reason": "Two one-sentence paragraphs keep this confirmation proportionate, without inventing another lesson or question."
+            },
+            "interview": {
+              "status": "pass",
+              "evidence": "I\u2019ve recorded this as your choice for output order only.",
+              "reason": "Records the explicit selected meaning without reasking cutoff/equality or demanding field-name approval. The scripted follow-up still provides no evidence of real human comprehension."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "State: output_order.value=preserve_collection_order; unresolved: Approval of the complete specification remains pending. Implementation and execution remain unapproved.",
+              "reason": "Preserve_collection_order is semantically the requested preserve choice; exact output-order scope is quoted in the saved source. Pending whole-specification and execution gates are now explicit, so the initial missing-state evidence is resolved in this new run only."
+            }
+          },
+          "approval_state": {
+            "status": "pass",
+            "expected_existing": {
+              "threshold": 2,
+              "inclusive": true
+            },
+            "expected_newly_resolved": {
+              "output_order": "preserve"
+            },
+            "expected_pending": [
+              "full_specification_approval",
+              "execution_approval"
+            ],
+            "evidence": "Metadata retains existing threshold/equality, records only preserve_collection_order newly, and explicitly keeps complete specification plus implementation/execution unapproved."
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "These are three focused cases, not a single final five-case run. Novice-count and missing-value cases last passed under the prior retest snapshot.",
+    "The initial four failing cases plus one incomplete case and subsequent two presentation failures remain retained in their original files; this run does not retroactively change them.",
+    "Agent A handled two reset cases in shared context, with the second confusion user turn supplied only after saving the first reply. Agent B handled one score case in its fresh context.",
+    "No real users participated. The scripted selection is an input rather than evidence of comprehension, and no comparable baseline establishes improved human outcomes or general assistant reliability.",
+    "Local read evidence contains matching source contents/hash and command but is not a separately exported host audit log.",
+    "After focused generation, README and interview demonstration paragraphs were editorially split and the paired example received an explicit goal/control explanation. These post-generation examples were not rerun; frozen inputs-focused.json identifies the exact tested policy, and no policy rule was changed in those later example edits."
+  ]
+}

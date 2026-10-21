@@ -1,0 +1,46 @@
+{
+  "agent": "/root/friendly_explanation_forward_a",
+  "limitations": ["Only the supplied case contexts and permitted read-only source inspection were used; project/source code was not executed."],
+  "cases": [
+    {
+      "id": "local-function-comparison",
+      "turns": [
+        {
+          "id": "explanation",
+          "response": "**No: two of the three named functions have identical implementations, but the candidate mean gives a different answer for an empty array.**\n\nI checked the actual file. In its original order:\n\n- **Filtering keeps the same values:** Both `keepAtLeast` functions use `value >= cutoff`, so values equal to the cutoff remain too. Both return a new array and preserve the retained values’ order. The bodies match exactly: [reference](/Users/jingxuan.bao/Downloads/Vibe2Spec/tests/fixtures/interview/explanation-source.mjs:5), [candidate](/Users/jingxuan.bao/Downloads/Vibe2Spec/tests/fixtures/interview/explanation-source.mjs:17).\n- **Summing follows the same calculation:** Both `sum` functions add the values starting from zero. That also means an empty array has a sum of zero. The bodies match exactly: [reference](/Users/jingxuan.bao/Downloads/Vibe2Spec/tests/fixtures/interview/explanation-source.mjs:8), [candidate](/Users/jingxuan.bao/Downloads/Vibe2Spec/tests/fixtures/interview/explanation-source.mjs:20).\n- **Averaging differs for empty inputs:** The [reference mean](/Users/jingxuan.bao/Downloads/Vibe2Spec/tests/fixtures/interview/explanation-source.mjs:11) explicitly returns zero when there are no values. The [candidate mean](/Users/jingxuan.bao/Downloads/Vibe2Spec/tests/fixtures/interview/explanation-source.mjs:23) always divides the sum by the number of values:\n\n> `return this.sum(values) / values.length;`\n\nFor an empty array, that calculation is `0 / 0`. JavaScript produces `NaN`, meaning “Not a Number,” rather than zero. A later calculation using that mean could also become `NaN`; it would no longer receive the zero specified by your approved contract. For nonempty arrays, both means use the same calculation.\n\n| Function | Comparison within the stated input scope | What it means |\n| --- | --- | --- |\n| `keepAtLeast` | Identical function bodies | Same filtering behavior |\n| `sum` | Identical function bodies | Same addition, including zero for empty input |\n| `mean` | Same calculation for nonempty input; different empty result | Reference returns `0`; candidate returns `NaN` |\n\nThe candidate mean therefore does not meet the approved empty-array behavior. These conclusions come from reading the three named functions, not from a test run; no code was changed or executed.",
+          "decision_state": {
+            "resolved": {
+              "empty_mean": {
+                "value": 0,
+                "source": "Supplied approved reference contract; retained without reopening."
+              }
+            },
+            "unresolved": []
+          }
+        }
+      ],
+      "source_reads": [
+        {
+          "path": "tests/fixtures/interview/explanation-source.mjs",
+          "command": "node --input-type=module -e 'import fs from \"node:fs\"; import {createHash} from \"node:crypto\"; const path = \"tests/fixtures/interview/explanation-source.mjs\"; const contents = fs.readFileSync(path, \"utf8\"); console.log(JSON.stringify({path,sha256:createHash(\"sha256\").update(contents).digest(\"hex\"),line_numbered_contents:contents.split(\"\\n\").map((line,i)=>`${i+1}: ${line}`).join(\"\\n\")}, null, 2));'",
+          "sha256": "e7a73be1abf1ea6400b93d23eb51d2ee8719f22165937e8eb07eadc253af756c",
+          "line_numbered_contents": "1: // Evaluation source only. Inputs are finite-number arrays; cutoffs are finite.\n2: // The reference contract defines the mean of an empty array as zero.\n3: // The candidate functions have not been approved for implementation or execution.\n4: export const reference = {\n5:   keepAtLeast(values, cutoff) {\n6:     return values.filter(value => value >= cutoff);\n7:   },\n8:   sum(values) {\n9:     return values.reduce((total, value) => total + value, 0);\n10:   },\n11:   mean(values) {\n12:     return values.length === 0 ? 0 : this.sum(values) / values.length;\n13:   },\n14: };\n15: \n16: export const candidate = {\n17:   keepAtLeast(values, cutoff) {\n18:     return values.filter(value => value >= cutoff);\n19:   },\n20:   sum(values) {\n21:     return values.reduce((total, value) => total + value, 0);\n22:   },\n23:   mean(values) {\n24:     return this.sum(values) / values.length;\n25:   },\n26: };\n27: "
+        }
+      ]
+    },
+    {
+      "id": "novice-count-data",
+      "turns": [
+        {
+          "id": "explanation",
+          "response": "## The Big Picture\n\n- **Organize measurements by cell:** The passage describes a table of counts, so you can find the recorded measurements for each cell.\n- **Keep measurement context visible:** Total counts and processing groups help you understand what you are comparing.\n- **Make a particular comparison useful:** Rescaling can help answer some questions about cells, but the right method depends on the question.\n\n**The Goal:** “When two cells have different counts, what does that difference tell us about the cells?”\n\n**Why do this?** Larger counts can go along with a larger total number of measurements recorded for a cell. Processing helps you examine comparisons in that context; it does not automatically establish which differences come from biology and which come from how the measurements were made.\n\nHere is the passage in its original order.\n\n1. **Arrange counts in a table:**\n\n   > “A count matrix stores measurement counts, with genes as rows and cells as columns.”\n\n   A *matrix* is a table of numbers. Each entry holds the recorded count for one gene in one cell. Reading down a column shows the measurements for that cell; reading across a row compares the same gene across cells.\n\n2. **Add one cell’s counts:**\n\n   > “Library size is the sum of counts recorded for one cell.”\n\n   *Library size* means that column’s total, not the cell’s physical size. In a tiny illustrative table, a cell with counts `10` and `20` has a library size of `30`.\n\n3. **Identify shared processing groups:**\n\n   > “Batch labels identify groups of cells processed together.”\n\n   A *batch label* is a group tag. It lets you see whether a pattern in the measurements lines up with cells being processed together. The label alone does not prove that processing caused the pattern.\n\n4. **Rescale for a specific question:**\n\n   > “Normalization rescales counts to make some comparisons more useful”\n\n   *Normalization* means changing the numerical scale. For illustration, cells with counts `[10, 20]` and `[20, 40]` have different totals, `30` and `60`, but the same proportions: one-third and two-thirds. Comparing proportions would highlight that similarity; comparing raw counts highlights the difference in totals. This illustrates a possible comparison, not a method selected for your project.\n\n   > “this passage does not prescribe a method or establish which differences are technical rather than biological.”\n\n   *Technical differences* arise from how measurements are made; *biological differences* arise from the cells themselves. Rescaling alone cannot tell you which explanation is correct, and a difference in total counts could matter to your scientific question.\n\n| Term | Role | Plain meaning |\n| --- | --- | --- |\n| Count matrix | Stores the data | One count for each gene–cell pair |\n| Library size | Summarizes one cell | Total recorded counts in its column |\n| Batch label | Records processing context | Which cells were processed together |\n| Normalization | Changes the numerical scale | Makes a chosen comparison easier to interpret, with limits |\n\nNo normalization method or parameter has been selected.",
+          "decision_state": {
+            "resolved": {},
+            "unresolved": ["Normalization method remains unselected; the supplied passage is a teaching example, not an approved specification."]
+          }
+        }
+      ],
+      "source_reads": []
+    }
+  ]
+}

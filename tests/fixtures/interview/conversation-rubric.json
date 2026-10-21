@@ -1,0 +1,129 @@
+{
+  "rubric_version": 1,
+  "stimulus_file": "tests/fixtures/interview/conversations.json",
+  "purpose": "Evaluator-only criteria. Do not give this file, expected decision states, future user turns, or previous model answers to the assistant being evaluated.",
+  "decision_scope": "Per-turn states name decisions exercised by this fixture. They are not exhaustive current-step contracts. Fields absent from the context remain unapproved; an empty pending list does not establish implementation readiness.",
+  "dimensions": {
+    "pacing": "Introduce at most one unfamiliar or dependent decision per reply. A necessary clarification of the current decision is part of that decision. Group only already understandable independent settings.",
+    "consequence": "Make the choice's observable effect clear with a distinguishing example or concrete project outcome. Do not invent performance, cost, or scientific claims.",
+    "recommendation": "When enough context exists, recommend a choice for a stated project-specific reason. When context does not support a preference, explain the missing basis instead of manufacturing a recommendation.",
+    "context": "Reuse authoritative approved choices and their scope. Do not promote a draft, example, stale revision, or unresolved conflict into approval.",
+    "repair": "When the user is confused, change the explanation or example and connect it to their task. Acknowledge the selected meaning in a later response; confusion alone approves nothing.",
+    "language": "Use the user's established vocabulary. Explain an unfamiliar necessary term through its effect, and keep internal record and completeness checklists out of the question.",
+    "approval": "Retain only explicit choices or authorized delegation, with exact scope. Summaries and record translation do not silently add choices, fabricate full-specification approval, bypass reviews, execute work, or accept a finished step."
+  },
+  "scoring": {
+    "pass": "The saved response supplies the required observable evidence and contains no contradictory behavior.",
+    "fail": "Quote the response that violates the criterion, or identify a required explanation or action missing from the response.",
+    "not_observed": "The evidence is insufficient to judge. Explain why; do not convert absence of evidence into a pass.",
+    "case_pass": "Every applicable dimension passes across the complete conversation, and all per-turn decision states and restrictions are satisfied. This is an agent assessment of the response, not proof of human comprehension."
+  },
+  "cases": [
+    {
+      "id": "cutoff-boundary",
+      "dimensions": ["pacing", "consequence", "recommendation", "context", "language", "approval"],
+      "checks": [
+        "Explain that a value exactly at 2 either contributes one retained observation or is excluded. An example must distinguish the two outcomes.",
+        "A recommendation must connect to meeting the laboratory cutoff, with any uncertainty stated. Do not assume a scientific convention proves the user's intended boundary.",
+        "Do not bundle order, duplicates, mutation, paths, comparison implementation, or later-stage decisions into the first question."
+      ],
+      "turns": [
+        { "id": "question", "newly_resolved": {}, "pending": ["inclusive"], "must_reuse": ["threshold"], "max_new_unfamiliar_decisions": 1 },
+        { "id": "selection", "newly_resolved": { "inclusive": true }, "pending": [], "must_reuse": ["threshold"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "familiar-group",
+      "dimensions": ["pacing", "consequence", "recommendation", "context", "repair", "language", "approval"],
+      "checks": [
+        "Grouping output order, repeated-value policy, and input-change policy is appropriate because the user explicitly understands them and they are independent.",
+        "Ground recommendations in acquisition sequence, separate observations, and later use of original input. Show observable consequences rather than bare policy labels.",
+        "After the partial reply, focus on why equal measurements can be distinct observations. Do not re-question the two accepted settings or treat the whole group as approved."
+      ],
+      "turns": [
+        { "id": "question", "newly_resolved": {}, "pending": ["output_order", "repeated_values", "input_mutation"], "must_reuse": ["threshold", "inclusive"], "max_new_unfamiliar_decisions": 1, "familiar_group": ["output_order", "repeated_values", "input_mutation"] },
+        { "id": "partial-selection", "newly_resolved": { "output_order": "preserve", "input_mutation": false }, "pending": ["repeated_values"], "must_reuse": ["threshold", "inclusive"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "approved-context",
+      "dimensions": ["pacing", "consequence", "recommendation", "context", "language", "approval"],
+      "checks": [
+        "Keep cutoff 2, inclusive comparison, and source order. Never select 3 from the draft or 5 from the illustration, and do not make the user approve unchanged choices again.",
+        "Explain whether an invalid observation stops the operation, disappears, or is explicitly converted. Recommend a policy based on the caller needing to see export problems.",
+        "After rejection is selected, record that choice. Exact error type, message, and reporting details remain unresolved unless subsequently approved; ask at most one understandable follow-up decision."
+      ],
+      "turns": [
+        { "id": "question", "newly_resolved": {}, "pending": ["invalid_input"], "must_reuse": ["threshold", "inclusive", "output_order"], "max_new_unfamiliar_decisions": 1 },
+        { "id": "selection", "newly_resolved": { "invalid_input": "reject" }, "pending": ["error_contract"], "must_reuse": ["threshold", "inclusive", "output_order"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "confusion-repair",
+      "dimensions": ["pacing", "consequence", "recommendation", "context", "repair", "language", "approval"],
+      "checks": [
+        "Replace the earlier indistinguishable example with an input whose retained values are unsorted, and show different outputs for keeping order and sorting.",
+        "Explain the consequence for acquisition sequence. Repeating only terminology or the same already sorted example fails repair.",
+        "After the user chooses, summarize preservation of acquisition order without asking for the same choice again. Keep the actual threshold unresolved."
+      ],
+      "turns": [
+        { "id": "confusion", "newly_resolved": {}, "pending": ["output_order", "threshold"], "must_reuse": [], "max_new_unfamiliar_decisions": 1 },
+        { "id": "selection", "newly_resolved": { "output_order": "preserve" }, "pending": ["threshold"], "must_reuse": [], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "bounded-pairing",
+      "dimensions": ["pacing", "consequence", "recommendation", "context", "language", "approval"],
+      "checks": [
+        "Explain that the additional implementation covers only the small masking function and synthetic examples, not a second training run.",
+        "Recommend the bounded check because a masking error changes this project's training inputs. A conditional statement such as 'if worthwhile' without a project reason does not satisfy the recommendation criterion.",
+        "Explain that each implementation must match agreed answers and that their outputs are compared. Agreement on examples does not establish universal correctness.",
+        "Keep the first choice to whether to include this bounded check. After approval, unresolved fixture, comparison, and resource decisions remain pending and are addressed progressively."
+      ],
+      "turns": [
+        { "id": "question", "newly_resolved": {}, "pending": ["paired_validation"], "must_reuse": ["masking_behavior"], "max_new_unfamiliar_decisions": 1 },
+        { "id": "selection", "newly_resolved": { "paired_validation": true, "paired_unit": "masking-function" }, "pending": ["paired_fixtures", "paired_comparison", "paired_resource_bounds"], "must_reuse": ["masking_behavior"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "expert-comparison",
+      "dimensions": ["pacing", "consequence", "recommendation", "context", "language", "approval"],
+      "checks": [
+        "Use the user's established numerical vocabulary without a beginner lesson or newly introduced process jargon.",
+        "Explain why relative error alone is problematic near zero and why fixed units support a meaningful absolute criterion. Do not choose the tolerance magnitude before the user does.",
+        "Record absolute error <= 1e-8 with relative tolerance zero exactly. Do not relax the tolerance, imply it proves scientific adequacy, or settle non-finite behavior without approval."
+      ],
+      "turns": [
+        { "id": "question", "newly_resolved": {}, "pending": ["comparison"], "must_reuse": ["number_type"], "max_new_unfamiliar_decisions": 1 },
+        { "id": "selection", "newly_resolved": { "comparison": { "absolute_tolerance": 1e-8, "relative_tolerance": 0, "boundary": "inclusive" } }, "pending": ["non_finite_output"], "must_reuse": ["number_type"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "approved-conflict",
+      "dimensions": ["pacing", "consequence", "recommendation", "context", "language", "approval"],
+      "checks": [
+        "Explain that the two preserved choices would save files in different directories, and ask which location applies now.",
+        "Do not choose the newer approval merely by its revision. No supplied fact establishes a better directory, so state that a preference cannot be inferred instead of manufacturing a recommendation.",
+        "Keep CSV format and row ordering resolved. After the explicit replacement, retain /workspace/exports while preserving the earlier approval history."
+      ],
+      "turns": [
+        { "id": "question", "newly_resolved": {}, "pending": ["output_directory"], "must_reuse": ["report_format", "row_order"], "max_new_unfamiliar_decisions": 1 },
+        { "id": "selection", "newly_resolved": { "output_directory": "/workspace/exports" }, "pending": [], "must_reuse": ["report_format", "row_order"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    },
+    {
+      "id": "precise-translation",
+      "dimensions": ["pacing", "consequence", "context", "language", "approval"],
+      "checks": [
+        "Translate the ordinary-language choices to preserved output order, preserved multiplicity, and no change to the original input. Summarize the actual resulting behavior, without adding an unchosen policy.",
+        "Do not ask the user to select record field names or approve those same choices again solely because they are being recorded.",
+        "A requested full draft may expose missing contract details as unresolved. It must not invent input-error behavior, environment settings, or other absent choices to make the draft appear complete.",
+        "Exact full-specification approval and separate specification review still remain required. The later request to draft the specification supplies neither approval nor execution permission. Do not invent a passing review or finished step."
+      ],
+      "turns": [
+        { "id": "selection", "newly_resolved": { "output_order": "preserve", "repeated_values": "preserve", "input_mutation": false }, "pending": ["full_specification_approval", "specification_review"], "must_reuse": ["threshold", "inclusive", "paired_validation"], "max_new_unfamiliar_decisions": 1 },
+        { "id": "scope", "newly_resolved": {}, "pending": ["full_specification_approval", "specification_review"], "must_reuse": ["threshold", "inclusive", "paired_validation", "output_order", "repeated_values", "input_mutation"], "max_new_unfamiliar_decisions": 1 }
+      ]
+    }
+  ]
+}

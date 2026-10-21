@@ -1,0 +1,43 @@
+{
+  "run_id": "2026-10-21-cutoff-retest",
+  "date": "2026-10-21",
+  "policy_snapshot": "inputs-retest.json",
+  "responder": "/root/interview_forward_cutoff",
+  "model_identifier": null,
+  "method": "A fresh agent context received the corrected policy and only the current cutoff-boundary stimulus. The first reply was saved before the scripted second user turn was revealed. No rubric or prior responses were supplied.",
+  "limitations": [
+    "One focused two-turn retest; the other seven cases were not rerun after this clarification.",
+    "Scripted fictional user; this is not evidence of human comprehension.",
+    "No baseline comparison or reliability estimate."
+  ],
+  "cases": [
+    {
+      "id": "cutoff-boundary",
+      "turns": [
+        {
+          "id": "question",
+          "response": "With your approved cutoff of 2, the choice changes whether measurements exactly equal to 2 contribute to the count. For measurements [1, 2, 3], including 2 keeps [2, 3] and counts two observations. Excluding 2 keeps only [3] and counts one observation.\n\nBecause the goal is to count observations that meet the cutoff, I recommend including measurements exactly equal to 2. This treats reaching the cutoff as sufficient. Should a measurement of exactly 2 count?",
+          "decision_state": {
+            "resolved": {
+              "threshold": 2
+            },
+            "unresolved": [
+              "include_equal_to_cutoff"
+            ]
+          }
+        },
+        {
+          "id": "selection",
+          "response": "Understood. Measurements equal to 2 or above 2 will be kept and counted. Measurements below 2 will be excluded. The approved cutoff remains 2.",
+          "decision_state": {
+            "resolved": {
+              "threshold": 2,
+              "include_equal_to_cutoff": true
+            },
+            "unresolved": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,8 @@ description: Independently review a Vibe2Spec specification, prepared implementa
 
 # Vibe2Spec independent reviewer
 
+When explaining findings to the user, apply [the friendly explanation guide](../../docs/friendly-explanations.md). Lead with the result and concrete consequence, then cite the inspected evidence. Preserve the required review fields and approval boundaries; explanatory examples do not supply new approved behavior.
+
 Assess the requested phase against exact approved content. Read [the review protocol](../../docs/review.md) and [the record format](../../docs/record-format.md). Inspect actual artifacts and evidence directly. A worker's narrative or an automated report alone is insufficient.
 
 ## Confirm independence and scope

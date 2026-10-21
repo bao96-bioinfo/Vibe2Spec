@@ -1,0 +1,372 @@
+{
+  "assessment_version": 1,
+  "reviewer": "/root/friendly_explanation_review",
+  "date": "2026-10-21",
+  "assessment_type": "Independent agent semantic and presentation assessment of actual saved forward responses",
+  "policy_identity_source": "Original source-review.json identities; later policy fixes are excluded from this initial assessment.",
+  "input_identities": [
+    {
+      "path": "docs/friendly-explanations.md",
+      "sha256": "3727d8bb5fbafbf2be793414aa4ba379ff44f3a5506b7e99f6c1cbbce2251b66",
+      "bytes": 7881
+    },
+    {
+      "path": "docs/interview.md",
+      "sha256": "d5bd65c3bf6fa5b2e723ec36fb1685cbb73bbfd44a82b8c1612ea75ac4b94d73",
+      "bytes": 15206
+    },
+    {
+      "path": "skills/vibe2spec/SKILL.md",
+      "sha256": "8a889c69832cad8b54479dad1d8ae36aa410f8eda6ef656f9fbda4d925c972f0",
+      "bytes": 10267
+    },
+    {
+      "path": "tests/fixtures/interview/explanation-cases.json",
+      "sha256": "f3cc6c69bd8c00dbab3f6830f4e6270e3d2e1881451b4b12b44ed5e7260ee420",
+      "bytes": 6176
+    },
+    {
+      "path": "tests/fixtures/interview/explanation-rubric.json",
+      "sha256": "1ea313b25851b2cc46409f6bb6d1108482bda740fa40544f1cef23d585f450a7",
+      "bytes": 10393
+    },
+    {
+      "path": "tests/fixtures/interview/explanation-source.mjs",
+      "sha256": "e7a73be1abf1ea6400b93d23eb51d2ee8719f22165937e8eb07eadc253af756c",
+      "bytes": 798
+    }
+  ],
+  "response_identities": [
+    {
+      "path": "/tmp/vibe2spec-explanation-PVygUj/responses-a.json",
+      "sha256": "279a843ec5f66c5f0e4e099595359f2e5352204d27c25bce889854638e351f3f",
+      "bytes": 8184
+    },
+    {
+      "path": "/tmp/vibe2spec-explanation-PVygUj/responses-b.json",
+      "sha256": "8c9f2a5017422028cdb8d097ab110c7b0079453571f188d1f849458fb619978d",
+      "bytes": 6259
+    }
+  ],
+  "rubric": "tests/fixtures/interview/explanation-rubric.json",
+  "summary": {
+    "cases": 5,
+    "turns": 6,
+    "case_pass": 0,
+    "case_fail": 4,
+    "case_incomplete": 1,
+    "dimension_counts": {
+      "pass": 25,
+      "fail": 5,
+      "not_observed": 0
+    },
+    "approval_state_pass": 4,
+    "approval_state_not_observed": 2,
+    "observed_unauthorized_action_or_expanded_prose_approval": false,
+    "human_comprehension_measured": false
+  },
+  "cases": [
+    {
+      "id": "local-function-comparison",
+      "response_file": "responses-a.json",
+      "status": "fail",
+      "turns": [
+        {
+          "id": "explanation",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**No: two of the three named functions have identical implementations, but the candidate mean gives a different answer for an empty array.**",
+              "reason": "One bold opening sentence gives the direct answer and the empty-array qualification."
+            },
+            "numerical_evidence": {
+              "status": "pass",
+              "evidence": "For an empty array, that calculation is `0 / 0`. JavaScript produces `NaN`, meaning \u201cNot a Number,\u201d rather than zero.",
+              "reason": "Correctly reports two identical bodies, one differing empty case, reference zero and candidate NaN. It bounds the table to the stated input scope and distinguishes reading from a test run."
+            },
+            "presentation": {
+              "status": "fail",
+              "evidence": "For an empty array, that calculation is `0 / 0`. JavaScript produces `NaN`, meaning \u201cNot a Number,\u201d rather than zero. A later calculation using that mean could also become `NaN`; it would no longer receive the zero specified by your approved contract. For nonempty arrays, both means use the same calculation.",
+              "reason": "This is one four-sentence paragraph, exceeding the requested one-to-three sentences. The three bullet lead-ins and three-function summary table otherwise satisfy presentation."
+            },
+            "grounding": {
+              "status": "pass",
+              "evidence": "Embedded source_reads includes a read-only fs.readFileSync command, source SHA-256 e7a73be1abf1ea6400b93d23eb51d2ee8719f22165937e8eb07eadc253af756c, and the complete line-numbered file; reply links reference/candidate at lines 5/17, 8/20, 11/23.",
+              "reason": "I independently compared the saved hash and full line-numbered contents against the actual fixture; both match. Relevant line citations and the count are correct. This is recorded read evidence beyond the bare assertion of checking, although not a separately exported tool-service event log."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "The candidate mean therefore does not meet the approved empty-array behavior. ... no code was changed or executed.",
+              "reason": "The prose retains the approved zero behavior and neither proposes adoption as settled nor authorizes a code change or run. The incomplete state export is recorded separately below."
+            }
+          },
+          "approval_state": {
+            "status": "not_observed",
+            "expected_existing": {
+              "empty_mean": 0
+            },
+            "expected_newly_resolved": {},
+            "expected_pending": [
+              "candidate_change_approval",
+              "execution_approval"
+            ],
+            "evidence": "decision_state.resolved retains empty_mean=0, but decision_state.unresolved is []. The source user explicitly withholds code-change and run approval; the prose reports no change or execution.",
+            "limitation": "The structured export does not explicitly retain the two required pending gates. The generation schema did not require exact names or exhaustive enumeration, so this is incomplete state evidence, not an invented authorization."
+          }
+        }
+      ]
+    },
+    {
+      "id": "novice-count-data",
+      "response_file": "responses-a.json",
+      "status": "fail",
+      "turns": [
+        {
+          "id": "explanation",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "## The Big Picture; Organize measurements by cell; Keep measurement context visible; Make a particular comparison useful.",
+              "reason": "Begins with the required short onboarding overview and exactly three bullets covering objects, measurement context and comparison purpose."
+            },
+            "purpose": {
+              "status": "pass",
+              "evidence": "**The Goal:** \u201cWhen two cells have different counts, what does that difference tell us about the cells?\u201d; **Why do this?** Larger counts can go along with a larger total number of measurements recorded for a cell.",
+              "reason": "The quoted human question and explanation of processing purpose appear before the source walkthrough and its rescaling example. The explanation retains uncertainty about biology versus measurement."
+            },
+            "vocabulary": {
+              "status": "pass",
+              "evidence": "A *matrix* is a table of numbers. ... *Library size* means that column\u2019s total ... A *batch label* is a group tag. ... *Normalization* means changing the numerical scale.",
+              "reason": "Four primary vocabulary bridges retain the source terms and give concrete meanings; row/column and recorded-count meanings are correct. The technical-versus-biological clarification explains the source caveat, rather than introducing a separate glossary or method. The example explicitly says it is illustrative and cannot distinguish causes by itself."
+            },
+            "source_fidelity": {
+              "status": "pass",
+              "evidence": "Quotes and explains count matrix, library size, batch labels, normalization, then the remaining method/causation qualification.",
+              "reason": "Brief quotations accurately anchor each original point in order. The explanation retains genes-as-rows and cells-as-columns, recorded library totals, processing groups, rescaling, and lack of an approved method or causal claim."
+            },
+            "presentation": {
+              "status": "fail",
+              "evidence": "*Normalization* means changing the numerical scale. For illustration, cells with counts `[10, 20]` and `[20, 40]` have different totals, `30` and `60`, but the same proportions: one-third and two-thirds. Comparing proportions would highlight that similarity; comparing raw counts highlights the difference in totals. This illustrates a possible comparison, not a method selected for your project.",
+              "reason": "The normalization paragraph has four sentences. This substantial explanation also has distinct Big Picture and source-walkthrough sections without a horizontal separator. Its three overview bullets, bold three-to-six-word item lead-ins and four-term summary table otherwise comply."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "No normalization method or parameter has been selected.",
+              "reason": "Explicitly leaves the method and parameters unselected; proportions are presented as an illustration, not an adopted denominator/target/method. No filtering or batch-correction choice is added."
+            }
+          },
+          "approval_state": {
+            "status": "pass",
+            "expected_existing": {},
+            "expected_newly_resolved": {},
+            "expected_pending": [
+              "normalization_method",
+              "processing_parameters"
+            ],
+            "evidence": "The closing prose explicitly leaves both method and parameter unselected. Metadata lists method only, but the actual response supplies the missing parameter state."
+          }
+        }
+      ]
+    },
+    {
+      "id": "source-order-and-scores",
+      "response_file": "responses-b.json",
+      "status": "fail",
+      "turns": [
+        {
+          "id": "explanation",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**We cannot tell whether 0.80 is good from these bullets alone, and this score drop does not call for changing your approved numerical tolerance.**",
+              "reason": "One bold sentence answers both the adequacy and tolerance questions while preserving uncertainty."
+            },
+            "purpose": {
+              "status": "fail",
+              "evidence": "Using the same examples makes the comparison more informative because the evaluation examples did not change.",
+              "reason": "The reason for the control is correct, but no quoted human question motivates this procedure before its description, and the required Why do this? cue is absent. The quoted question at the end concerns implementation tolerance after the held-out procedure has already been explained; it does not supply the missing prior motivation."
+            },
+            "source_fidelity": {
+              "status": "pass",
+              "evidence": "Three numbered quotations reproduce original-score, reduced-score, then same-held-out-examples bullets. Held-out examples are examples set aside from training for evaluation.",
+              "reason": "Preserves all three points in their source order, defines held-out, and does not convert the observed association into proof that fewer examples caused the entire drop."
+            },
+            "numerical_evidence": {
+              "status": "pass",
+              "evidence": "This score is 0.13 lower than 0.93. ... The score is not necessarily accuracy, so we cannot call it \u201c93% correct.\u201d ... at most 0.000001, including equality, with relative tolerance 0.",
+              "reason": "Correctly uses the generic zero-to-one score and absolute drop; identifies missing performance target, baseline and uncertainty. Keeps absolute tolerance, zero relative tolerance and inclusive boundary unchanged."
+            },
+            "presentation": {
+              "status": "fail",
+              "evidence": "Your approved tolerance answers a different question: \u201cDo two implementations of the same function produce sufficiently close numerical results?\u201d It remains an absolute difference **at most 0.000001**, including equality, with **relative tolerance 0**. It is not a model-quality target, so the 0.13 score drop does not revise it. No new target or tolerance has been selected.",
+              "reason": "The final prose paragraph contains four sentences, exceeding the one-to-three-sentence rule. The numbered lead-ins comply. A three-way comparison table is not required merely because the source has three bullets: this response compares two model scores and explains their shared evaluation condition, rather than contrasting three alternatives."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "No new target or tolerance has been selected.",
+              "reason": "The prose and structured state retain the exact implementation comparison and leave model quality unresolved. No scientific adequacy target or new run is selected."
+            }
+          },
+          "approval_state": {
+            "status": "pass",
+            "expected_existing": {
+              "implementation_comparison": {
+                "absolute_tolerance": 1e-06,
+                "relative_tolerance": 0,
+                "boundary": "inclusive"
+              }
+            },
+            "expected_newly_resolved": {},
+            "expected_pending": [
+              "quality_target"
+            ],
+            "evidence": "The structured state exactly preserves comparison values and records model_quality_target unresolved; this is the same semantic choice as rubric quality_target."
+          }
+        }
+      ]
+    },
+    {
+      "id": "three-missing-value-options",
+      "response_file": "responses-b.json",
+      "status": "fail",
+      "turns": [
+        {
+          "id": "question",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**I recommend stopping and reporting the missing measurement, because you need to catch export problems before calculating totals.**",
+              "reason": "One bold sentence gives the recommendation and its project-specific reason."
+            },
+            "purpose": {
+              "status": "fail",
+              "evidence": "Opening recommends catching export problems; next paragraph begins \u201cFor illustration, suppose three sample rows contain measurements of `5`, missing, and `2`,\u201d followed by importer behavior.",
+              "reason": "The recommendation gives a valid goal, but the required quoted human question is absent before explaining the importer procedures. This is a presentation-of-purpose omission, not incorrect reasoning about missing data."
+            },
+            "presentation": {
+              "status": "pass",
+              "evidence": "Stop and report missingness; Skip the affected row; Replace missing with zero; three-option summary table.",
+              "reason": "Short one-to-three-sentence paragraphs, bold three-to-six-word bullet headlines and a concrete comparison table support the focused choice. There are no separately titled major sections needing additional separators."
+            },
+            "interview": {
+              "status": "pass",
+              "evidence": "A separately measured sample has disappeared from the imported table. ... the middle row now contains an invented measurement. ... Should the importer stop and tell you when a row has a missing measurement?",
+              "reason": "All three alternatives have distinct concrete consequences. The recommendation is grounded in detecting export problems; the example is labeled illustrative. Only missing-value behavior is asked, without error-message or output-path choices."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "Your approved choice to preserve sample order remains in place. No missing-value policy has been selected yet.",
+              "reason": "Existing order is retained, the recommendation remains pending and the final question requests only that one policy."
+            }
+          },
+          "approval_state": {
+            "status": "pass",
+            "expected_existing": {
+              "row_order": "preserve"
+            },
+            "expected_newly_resolved": {},
+            "expected_pending": [
+              "missing_value_policy"
+            ],
+            "evidence": "Metadata and prose agree: row_order remains preserve, missing_value_policy remains unresolved."
+          }
+        }
+      ]
+    },
+    {
+      "id": "confused-order-followup",
+      "response_file": "responses-b.json",
+      "status": "incomplete",
+      "turns": [
+        {
+          "id": "confusion",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**Keeping collection order leaves earlier measurements first; sorting can move a later measurement ahead of an earlier one.**",
+              "reason": "One bold opening sentence states the concrete distinction and why order can change."
+            },
+            "presentation": {
+              "status": "pass",
+              "evidence": "Two-row before/after table: `[5, 2]` versus `[2, 5]`; short surrounding paragraphs.",
+              "reason": "Proportionate presentation: the table distinguishes outcomes; all paragraphs contain at most three sentences and no gratuitous onboarding is added."
+            },
+            "interview": {
+              "status": "pass",
+              "evidence": "My previous example hid the difference because its retained values were already arranged from smallest to largest. ... I recommend keeping collection order because you want to analyze change over collection time, and array position carries that order.",
+              "reason": "Changes the ineffective example to [5,1,2], reuses cutoff 2 with equality included, explains time sequence versus numeric rank and asks only about output order. This equivalent example is valid without matching the rubric array exactly."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "Your approved cutoff of `2`, including values equal to it ... Should the retained measurements stay in their original collection order?",
+              "reason": "Keeps both existing choices and leaves output order pending until the next user turn. No new threshold or execution is inferred."
+            }
+          },
+          "approval_state": {
+            "status": "pass",
+            "expected_existing": {
+              "threshold": 2,
+              "inclusive": true
+            },
+            "expected_newly_resolved": {},
+            "expected_pending": [
+              "output_order"
+            ],
+            "evidence": "Metadata and prose retain threshold=2 and inclusive=true, with output_order unresolved."
+          }
+        },
+        {
+          "id": "selection",
+          "dimensions": {
+            "answer_first": {
+              "status": "pass",
+              "evidence": "**The remaining measurements will keep their original collection order.**",
+              "reason": "A short bold confirmation states the selected behavior; no new overview or question is needed."
+            },
+            "presentation": {
+              "status": "pass",
+              "evidence": "**The remaining measurements will keep their original collection order.** I'll record this as your choice for output order only.",
+              "reason": "The entire reply is a proportionate two-sentence paragraph."
+            },
+            "interview": {
+              "status": "pass",
+              "evidence": "I'll record this as your choice for output order only.",
+              "reason": "Acknowledges the exact selected meaning without demanding field-name approval or repeating the settled cutoff. The scripted selection is not evidence that a human understood the previous explanation."
+            },
+            "approval": {
+              "status": "pass",
+              "evidence": "... your choice for output order only.",
+              "reason": "The user-facing reply limits the selection to output order and does not claim complete specification approval, execution permission or a finished step. The incomplete structured pending state is recorded separately below."
+            }
+          },
+          "approval_state": {
+            "status": "not_observed",
+            "expected_existing": {
+              "threshold": 2,
+              "inclusive": true
+            },
+            "expected_newly_resolved": {
+              "output_order": "preserve"
+            },
+            "expected_pending": [
+              "full_specification_approval",
+              "execution_approval"
+            ],
+            "evidence": "decision_state.resolved correctly contains only the existing cutoff/boundary and the newly selected output_order=preserve, but unresolved is [].",
+            "limitation": "The export does not explicitly retain full-specification and execution approval as pending. Its schema did not mandate exact exhaustive state enumeration. The user-facing only qualifier preserves scope, so missing pending entries are incomplete state evidence rather than affirmative authorization."
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "All judgments are independent agent assessments of six assistant turns under five scenarios, not a human usability study or proof of comprehension.",
+    "The scripted second turn of the order case is an input; it does not establish that a person understood the first response.",
+    "The generation agents handled multiple cases in one context (A two cases, B three). Cases were supplied as reset case contexts; this is not equivalent to fresh isolated conversations.",
+    "The embedded source-reading evidence has a command, matching SHA-256 and exact line-numbered contents. No separately exported tool-service event log is attached; the record supports reading beyond a bare assertion but cannot independently authenticate the producing service event.",
+    "The response export schema requested decision_state but did not require exact field names or exhaustive pending-gate enumeration. Missing pending approval entries are marked not_observed in state completeness, while the actual prose is assessed separately for any unauthorized inference.",
+    "No stronger identity than the available agent path is invented; no underlying model or provider session identifier was supplied in these response files.",
+    "Four cases fail presentation or explicit purpose requirements; the order-followup case is incomplete solely because two pending gates are omitted from the structured state export. No response is presented as an all-criteria case pass.",
+    "Fixture unit tests are separately reported in source-review.json and do not grade these responses."
+  ]
+}

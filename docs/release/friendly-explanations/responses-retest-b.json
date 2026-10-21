@@ -1,0 +1,47 @@
+{
+  "agent": "friendly_explanation_retest_b",
+  "limitations": [
+    "The two cases share one agent context, although each reply is reset to its supplied case context."
+  ],
+  "cases": [
+    {
+      "id": "source-order-and-scores",
+      "turns": [
+        {
+          "id": "explanation",
+          "response": "**We cannot tell whether 0.80 is good enough from these results alone, and the score drop does not justify changing your approved numerical tolerance.**\n\n**The Goal:** “What do these results tell us about using fewer training examples?”\n\nThe *score* measures prediction quality on a zero-to-one scale, with higher values meaning better predictions. *Held-out examples* are examples kept out of training and used to evaluate the trained model; they provide the common comparison here.\n\n1. **Start with the original result:**\n   > With the original training set, the reported score was 0.93.\n\n   This establishes the reported result for the original training set. A score of 0.93 is near the top of this scale, but the passage does not establish that it meets your scientific needs. It also does not say the score is accuracy, so we cannot interpret it as 93% correct.\n\n2. **Compare the reduced training result:**\n   > With fewer training examples, the reported score was 0.80.\n\n   The score decreased by 0.13 on the same zero-to-one scale. That means worse reported prediction performance on this evaluation. Whether 0.80 remains useful requires a relevant baseline or a task-specific quality requirement; neither is supplied. There is also no uncertainty estimate to tell us how variable the reported difference is.\n\n3. **Check the shared evaluation examples:**\n   > Both scores were measured on the same held-out examples.\n\n   **Why do this?** Evaluating both models on the same examples keeps the evaluation cases fixed, so the comparison is not also affected by switching to different cases. This detail alone does not establish that every other experimental condition was controlled.\n\n| Source point | Reported result | What it establishes |\n| --- | --- | --- |\n| Original training set | 0.93 | The original model’s reported score |\n| Fewer training examples | 0.80 | A score decrease of 0.13 |\n| Shared held-out examples | Same evaluation cases | Both scores concern the same cases |\n\n---\n\nYour approved tolerance answers a different question: “Do two implementations of the same function agree numerically?” It remains an absolute difference **at most 0.000001**, including that boundary, with **relative tolerance 0**. The model-quality scores do not supply a replacement comparison rule or a new quality target; neither has been selected.",
+          "decision_state": {
+            "resolved": {
+              "implementation_comparison": {
+                "absolute_tolerance": 0.000001,
+                "relative_tolerance": 0,
+                "boundary": "inclusive"
+              }
+            },
+            "unresolved": [
+              "score_target",
+              "scientific_adequacy_threshold"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "three-missing-value-options",
+      "turns": [
+        {
+          "id": "question",
+          "response": "**I recommend stopping and reporting the missing measurement, because you need to catch export problems before calculating totals.**\n\n**The Goal:** “How can we prevent an unavailable measurement from quietly changing the meaning of a total?”\n\nFor illustration, suppose three sample rows contain measurements of 5, missing, and 2, in that order. The missing measurement is unknown; it is not a measured zero.\n\n- **Stop and report the gap:** The importer halts and tells you a measurement is missing. You can investigate the export before proceeding to calculate a total. The cost is that importing cannot continue until the issue is addressed.\n- **Skip the affected sample row:** The remaining measurements are 5 and 2, giving a total of 7 across two samples. You can continue, but a separately measured sample disappears from the imported table. That total no longer covers all three samples.\n- **Replace the gap with zero:** The imported measurements become 5, 0, and 2, also giving a total of 7, but across three rows. The sample remains, yet its unavailable measurement now contributes as though it were a measured zero. That misrepresents what you know about the sample.\n\n**Why do this?** Stopping makes the export problem visible before you use the data. Both other options let a total be calculated despite the missing measurement, which works against your stated need to discover export problems first.\n\nYour approved rule to preserve the samples’ original order stays in place. I have not treated this recommendation as your selection.\n\n| Choice | Result for the example | Consequence for your work |\n| --- | --- | --- |\n| Stop and report | Import halts at the missing measurement | Investigate the export before proceeding |\n| Skip the row | 5 and 2; total 7 | The total covers only two samples |\n| Replace with zero | 5, 0, and 2; total 7 | An unknown measurement is represented as zero |\n\nShould the importer stop and report a missing measurement, or would you prefer one of the other two behaviors?",
+          "decision_state": {
+            "resolved": {
+              "row_order": "preserve"
+            },
+            "unresolved": [
+              "missing_measurement_policy"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

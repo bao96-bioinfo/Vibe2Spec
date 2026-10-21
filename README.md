@@ -34,24 +34,41 @@ choice. Its example values and answers do not approve work in a real project.
 
 > When a number equals the threshold, should it be retained? For the input
 > `[-1, 0, 2, 2, 5]` and threshold `2`, an inclusive rule returns `[2, 2, 5]`.
-> A strict rule returns `[5]`. The inclusive rule is appropriate when the
+> A strict rule returns `[5]`.
+>
+> The inclusive rule is appropriate when the
 > threshold means the minimum acceptable value. The strict rule requires every
-> retained value to exceed that minimum. Which meaning do you intend?
+> retained value to exceed that minimum.
+>
+> I need your intended meaning before
+> recommending a rule for this task. Which meaning do you intend?
 
-Imagine you choose the inclusive rule. The conversation then explains other
-independent settings together. For example:
+Imagine you choose the inclusive rule. Vibe2Spec records it and introduces
+the next unfamiliar decision individually. For example:
 
 > The retained values can stay in their original order or be sorted. With input
 > `[5, 1, 2, 2]` and threshold `2`, preserving order returns `[5, 2, 2]`.
-> Sorting in ascending order returns `[2, 2, 5]`. Preserving order retains the
+> Sorting in ascending order returns `[2, 2, 5]`.
+>
+> Preserving order retains the
 > sequence in which observations appeared. Sorting makes values easier to read
 > by magnitude, but changes that sequence. Does the original sequence matter
 > to the next part of your analysis?
 
-The other settings need equally concrete explanations. A grouped review keeps
-each decision's context, consequences, and examples visible. You can approve
-some settings and leave others unresolved. A difficult decision receives an
-individual question when its answer determines what to ask next.
+The other settings need equally concrete explanations. Vibe2Spec reuses answers
+already established in approved context and explains remaining choices in your
+language. Recommendations connect the visible consequence to your project's
+goals. Independent settings can share a grouped review once you understand them.
+You can approve some and leave others unresolved. An unfamiliar or dependent
+decision receives its own question. If a question is unclear, the agent changes
+the example or explanation before moving on.
+
+The incorporated [Friendly Technical Explainer guidance](docs/friendly-explanations.md)
+starts specific explanations with the answer, introduces unfamiliar topics with
+a short overview, and connects technical terms to concrete meanings. Source
+walkthroughs preserve the original order. Numerical interpretations and code
+comparisons use inspected evidence. These explanations use short paragraphs,
+bold lead-ins, and summary tables while keeping each decision focused.
 
 Imagine you also choose to retain repeated values and preserve input order.
 The proposed checks could then include these small, known examples:
@@ -372,7 +389,8 @@ and acceptance records do not describe real execution or authorize work.
 
 ## Verification and development
 
-All 192 tests pass on Node.js 24.22.0 and 26.11.1 on macOS arm64.
+The original 0.1.0 release passed 192 tests on Node.js 24.22.0 and 26.11.1
+on macOS arm64.
 The test suite covers strict JSON parsing, all twelve record kinds, exact file
 references and snapshots, approval coverage, separate-review requirements,
 execution and acceptance evidence, reopening, output comparisons, diagrams,
@@ -384,6 +402,15 @@ the committed host package after changing its source. The [release verification
 record](docs/release/verification.md) links the independent reviews, paired
 checks, host observations and tested runtime versions. Finite test results do
 not establish universal implementation equivalence.
+
+The [interview evaluation guide](docs/interview-evaluation.md) separately tests
+conversation pacing, approved-context reuse, concrete recommendations, and
+recovery from confusion through multi-turn examples. It distinguishes static
+fixture checks, independent assessments of actual agent responses, and evidence
+from real users. Passing record checks alone does not establish comprehension.
+The [October 21 assessment](docs/release/interview-clarity/verification.md)
+retains the initial missed recommendation, its correction and focused retest,
+and the 202-check results on both supported fixed runtimes.
 
 The [development task tracker](openspec/changes/add-vibe2spec-guided-workflow/tasks.md)
 retains the implementation history. The user authorized autonomous completion
@@ -409,6 +436,8 @@ The writing conventions are incorporated into the project documents.
 | Resource | What you will find |
 | --- | --- |
 | [Illustrative interview](docs/illustrative-example.md) | Concrete decision explanations and a small function example. |
+| [Friendly explanation guide](docs/friendly-explanations.md) | Answer-first explanations, vocabulary bridges, source walkthroughs, and inspected evidence. |
+| [Explanation evaluation](docs/explanation-evaluation.md) | Separate criteria for meaning, presentation, and approval fidelity, with saved responses and findings. |
 | [Record-format guide](docs/record-format.md) | The complete current record contract. |
 | [Release proposal](openspec/changes/add-vibe2spec-guided-workflow/proposal.md) | Purpose and scope of the product. |
 | [Design](openspec/changes/add-vibe2spec-guided-workflow/design.md) | Architecture and workflow decisions. |
