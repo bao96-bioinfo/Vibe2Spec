@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "review",
+  "id": "template-review-covered",
+  "revision": 1,
+  "project_id": "template-project",
+  "context": "authoring",
+  "lifecycle": "draft",
+  "author": {
+    "session_id": "template-session",
+    "context_id": "template-author"
+  },
+  "content": {
+    "phase": null,
+    "snapshot_ref": null,
+    "reviewer": null,
+    "artifact_authors": null,
+    "workers": null,
+    "outcome": null,
+    "findings": null,
+    "coverage": null
+  }
+}

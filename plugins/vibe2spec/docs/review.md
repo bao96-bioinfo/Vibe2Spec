@@ -12,7 +12,7 @@ The specification review occurs before code preparation. User approval and the p
 
 ## Build a direct, versioned handoff
 
-The coordinator supplies the reviewer with a Markdown handoff and exact referenced artifacts. The handoff identifies the review phase, workspace, allowed read locations, snapshot, target step revision, decisions and responses, prior reviews, run evidence when applicable, and author and worker identities. It distinguishes records from commands to execute. The reviewer reads actual source and evidence; summaries serve only as navigation.
+The coordinator supplies the reviewer with a short [file-based handoff](../templates/review-handoff.md) and exact referenced artifacts. Include the current task, binding constraints, snapshot, author identities, and evidence locations. Keep the full conversation and unrelated project history out of the handoff. The reviewer inspects actual source and evidence for the obligations being assessed; summaries serve only as navigation. For corrections, use [review continuation](review-continuation.md) to retain valid earlier checks and inspect the fix and affected dependencies.
 
 ```text
 Review phase: pre_execution
@@ -31,9 +31,21 @@ Execution: do not execute the prepared step during this review
 
 The displayed angle-bracket values are handoff placeholders, not usable project evidence. Fill them with actual available information. Missing identity or response provenance remains unresolved. Do not invent a message identifier to make a record structurally complete.
 
-Preserve the exact assessment snapshot. Trace its entries and referenced evidence transitively. The author list includes authors of earlier review records within that scope. The reviewer cannot share a context identity with any assessed author or relevant worker. A new session label for the same context does not create independence. Later phases may therefore need new reviewers.
+Preserve the exact complete assessment snapshot. The helper checks its entries and referenced evidence transitively; this does not require sending every file body to the reviewer on every correction. The author list includes authors of earlier review records within that scope. Only the explicit continuation baseline edge is historical evidence outside that assessment scope. The reviewer cannot share a context identity with any assessed author or relevant worker. A new session label for the same context does not create independence. Later phases may therefore need new reviewers.
 
 If the host supports delegation, launch a separate reviewer with the shared reviewer skill and the actual handoff. If delegation is unavailable, present the handoff for a separate review session. Keep the gate pending. A coordinator adopting a reviewer role in its existing context does not satisfy the independence requirement.
+
+## Bound the review work
+
+Use one consolidated reviewer per phase for specification conformance and relevant quality. Do not dispatch duplicate reviewers for the same obligations or let reviewers recursively dispatch other reviewers. A genuinely distinct specialist task needs a named question and a centrally allocated scope and budget. The three phase gates remain separate because they inspect different evidence.
+
+Plan one initial review and, if needed, one correction review per phase. Applicable user-approved limits take precedence. After these two rounds, stop automatic review dispatch and report unresolved blockers, completed coverage, and the proposed next work. Further rounds need an explicit recorded budget extension or a smaller scope. A smaller scope can complete part of the review; it cannot make the original gate pass while an obligation remains unresolved. Budget exhaustion never establishes correctness.
+
+Read the current diff and existing evidence once, then expand inspection only for a named risk, such as a changed interface affecting unchanged callers. Inspect existing test results before requesting another execution. A reviewer requests any additional focused check through the coordinator; prepared code and tests still need the applicable pre-execution authorization. The results phase verifies run identity and actual outcomes instead of automatically repeating the complete source audit.
+
+Collect actionable findings together and keep their identifiers stable. Optional refactoring and stylistic suggestions do not block an otherwise conforming result. A genuine requirement violation discovered outside the initial fix remains a blocker for affected readiness. Verify a finding against the actual requirement and evidence before implementing its remedy.
+
+The handoff records the round limit and any applicable time or read limits. Record actual elapsed time, inspected paths, and tool-call count when observable. Record token usage only when the host provides it; otherwise state that it is unavailable. These effort controls are instructions, not a host-enforced token limit.
 
 ## Inspect effective settings
 

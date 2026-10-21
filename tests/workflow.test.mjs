@@ -33,6 +33,9 @@ test('portable workflow entrypoints resolve their actual packaged documentation 
     'docs/specification-authoring.md',
     'docs/project-overview.md',
     'docs/review.md',
+    'docs/review-continuation.md',
+    'docs/review-sources.md',
+    'templates/review-handoff.md',
     'docs/paired-validation.md',
   ];
   let checked = 0;

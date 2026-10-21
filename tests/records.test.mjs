@@ -49,7 +49,7 @@ test('parser bounds are inclusive and count containers as values',()=>{
   assert.deepEqual(codes(parse('[0]',{maxValues:1})),['resource-limit']);
 });
 test('every accepted blank template passes structure',()=>{
-  const paths=['templates/project.json','templates/decision.json','templates/evidence.json','templates/approval.json','templates/step/contract.json','templates/step/unit.json','templates/review.json','templates/run.json','templates/comparison.json','templates/acceptance.json','templates/amendment.json','templates/snapshot.json'];
+  const paths=['templates/project.json','templates/decision.json','templates/evidence.json','templates/approval.json','templates/step/contract.json','templates/step/unit.json','templates/review.json','templates/review-covered.json','templates/review-correction.json','templates/run.json','templates/comparison.json','templates/acceptance.json','templates/amendment.json','templates/snapshot.json'];
   for(const path of paths){const parsed=parseJsonBytes(fs.readFileSync(path));assert.equal(parsed.ok,true,path);assert.deepEqual(validateRecord(parsed.value,{path,orders:parsed.orders}),[],path);}
 });
 test('accepted fictional records pass local schemas',()=>{

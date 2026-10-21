@@ -7,6 +7,7 @@ const en = (...values)=>({t:'enum',values});
 const obj = fields=>({t:'object',fields});
 const arr = (item,min=0,unique=null)=>({t:'array',item,min,unique});
 const nullable = spec=>({...spec,nullable:true});
+const optional = spec=>({...spec,optional:true});
 const ref = kind=>({t:'ref',kind});
 const path={t:'path'}, directory={t:'path',directory:true}, timestamp={t:'timestamp'};
 const actor = {t:'actor'}, response = obj({session_id:str,message_id:str,text:str});
@@ -17,6 +18,9 @@ const effective=obj({name:str,value:json,decision_ref:decisionRef,source:str});
 const stateNames=['provisional','interviewing','awaiting_specification','ready_to_implement','awaiting_pre_execution_review','ready_to_execute','awaiting_results_review','awaiting_acceptance','finished','reopened','suspended'];
 const state=obj({step_id:id,revision,state:en(...stateNames),acceptance_ref:nullable(ref('acceptance')),amendment_ref:nullable(ref('amendment')),blocked_by:arr(id,0,'value')});
 const selection={t:'variant',key:'mode',variants:{literal:obj({mode:en('literal'),value:json}),derived:obj({mode:en('derived'),expression:str,input_refs:arr(decisionRef)}),inapplicable:obj({mode:en('inapplicable'),reason:str})}};
+const reviewOutcome=en('pass','changes_required','unable_to_determine');
+const coverage=obj({id,input_refs:arr(ref(null),1,'path'),dependency_refs:arr(ref(null),0,'path'),check_ids:arr(id,0,'value'),outcome:reviewOutcome});
+const continuation=obj({baseline_review_ref:ref('review'),reused_coverage_ids:arr(id,0,'value'),finding_resolutions:arr(obj({code:id,path:string,coverage_ids:arr(id,1,'value'),detail:str}))});
 const schemas={
   project:obj({title:str,overview_ref:ref(null),step_order:arr(id,1,'value'),current_step_id:nullable(id),states:arr(state),evidence_refs:arr(ref(['approval','review','run','comparison','acceptance','amendment'])),project_settings:settings}),
   decision:obj({question:str,options:arr(obj({id:str,label:str,explanation:str}),0,'id'),selection,rationale:str,evidence_refs:arr(ref('evidence'))}),
@@ -24,7 +28,7 @@ const schemas={
   approval:obj({purpose:en('overview','decisions','step_specification','reopen'),snapshot_ref:snapshotRef,target_paths:arr(path,1,'value'),response}),
   step:obj({title:str,documents:obj({spec:ref(null),design:ref(null),tasks:ref(null)}),depends_on:arr(obj({step_id:id,revision})),requirements:arr(obj({id,text:str,decision_refs:arr(decisionRef),check_ids:arr(id)}),1,'id'),decision_refs:arr(decisionRef,1),input_refs:arr(ref(null)),unit_refs:arr(ref('unit'),1),outputs:arr(obj({id,path,description:str,rule,decision_refs:arr(decisionRef)}),1,'id'),checks:arr(obj({id,description:str,expected:json,rule,decision_refs:arr(decisionRef)}),1,'id'),paired_validation:obj({decision_ref:decisionRef,mode:en('enabled','disabled'),unit_ids:arr(id)}),resource_decision_refs:arr(decisionRef,1),project_settings:settings}),
   unit:obj({name:str,step_id:id,step_revision:revision,requirement_ids:arr(id,1),interface:str,method:str,argument_decision_refs:arr(decisionRef),environment_decision_refs:arr(decisionRef),failure_rules:arr(str,1),fixture_refs:arr(ref(null),1),check_ids:arr(id,1),write_paths:arr(path),project_settings:settings}),
-  review:obj({phase:en('specification','pre_execution','results'),snapshot_ref:snapshotRef,reviewer:actor,artifact_authors:arr(actor,1,'actor'),workers:arr(actor),outcome:en('pass','changes_required','unable_to_determine'),findings:arr(obj({code:id,path:string,message:str}))}),
+  review:obj({phase:en('specification','pre_execution','results'),snapshot_ref:snapshotRef,reviewer:actor,artifact_authors:arr(actor,1,'actor'),workers:arr(actor),outcome:reviewOutcome,findings:arr(obj({code:id,path:string,message:str})),coverage:optional(arr(coverage,1,'id')),continuation:optional(continuation)}),
   run:obj({step_id:id,step_revision:revision,spec_snapshot_ref:snapshotRef,work_snapshot_ref:snapshotRef,pre_execution_review_ref:ref('review'),input_snapshot_ref:snapshotRef,commands:arr(obj({program:str,args:arr(string),cwd:directory,environment:arr(effective)}),1),effective_settings:arr(effective),environment:obj({runtime:str,platform:str,details:str}),output_snapshot_ref:snapshotRef,check_results:arr(result,1),worker:actor,started_at:timestamp,finished_at:timestamp,resource_use:obj({elapsed_ms:integer,input_bytes:integer,output_bytes:integer,calls:integer})}),
   comparison:obj({mode:en('single','paired'),unit_ref:ref('unit'),input_snapshot_ref:snapshotRef,run_refs:arr(ref('run'),1),worker_contexts:arr(actor),correctness_results:arr(obj({run_ref:ref('run'),results:arr(result,1)})),pairwise_results:arr(result),rules:arr(obj({check_id:id,correctness_rule:rule,pairwise_rule:nullable(rule),pairwise_decision_ref:nullable(decisionRef)}))}),
   acceptance:obj({step_id:id,step_revision:revision,spec_snapshot_ref:snapshotRef,work_snapshot_ref:snapshotRef,run_refs:arr(ref('run'),1),comparison_refs:arr(ref('comparison')),results_review_ref:ref('review'),response}),
@@ -112,9 +116,10 @@ export function validateRecord(value, {path:recordPath='', orders=null}={}) {
       case 'object':{
         if(!object())return;
         const keys=Object.keys(spec.fields),actual=order(v,p);
-        for(const key of keys)if(!own(v,key))add('missing-field',`${p}/${escapePointer(key)}`);
+        for(const key of keys)if(!own(v,key)&&!spec.fields[key].optional)add('missing-field',`${p}/${escapePointer(key)}`);
         for(const key of actual)if(!Object.hasOwn(spec.fields,key))add('unknown-field',`${p}/${escapePointer(key)}`);
-        if(actual.length===keys.length&&actual.every(key=>Object.hasOwn(spec.fields,key))&&actual.some((key,i)=>key!==keys[i]))add('invalid-field-order',p);
+        const present=keys.filter(key=>own(v,key));
+        if(keys.every(key=>spec.fields[key].optional||own(v,key))&&actual.length===present.length&&actual.every(key=>Object.hasOwn(spec.fields,key))&&actual.some((key,i)=>key!==present[i]))add('invalid-field-order',p);
         for(const key of keys)if(own(v,key))validate(v[key],spec.fields[key],`${p}/${escapePointer(key)}`);
         return;
       }
@@ -154,6 +159,12 @@ export function validateRecord(value, {path:recordPath='', orders=null}={}) {
     if(isRecordObject(c.paired_validation)&&Array.isArray(c.paired_validation.unit_ids)&&((c.paired_validation.mode==='enabled'&&c.paired_validation.unit_ids.length===0)||(c.paired_validation.mode==='disabled'&&c.paired_validation.unit_ids.length!==0)))add('record-inconsistency',at('paired_validation/unit_ids'));
   }
   if(value.kind==='review'){
+    if(own(c,'continuation')&&!own(c,'coverage'))add('missing-field',at('coverage'));
+    if(Array.isArray(c.coverage))c.coverage.forEach((item,i)=>{
+      if(!Array.isArray(item?.input_refs)||!Array.isArray(item?.dependency_refs))return;
+      const inputs=new Set(item.input_refs.map(reference=>reference?.path).filter(path=>typeof path==='string'));
+      item.dependency_refs.forEach((reference,j)=>{if(inputs.has(reference?.path))add('duplicate-value',at(`coverage/${i}/dependency_refs/${j}`));});
+    });
     if(isRecordObject(c.reviewer)&&!sameActor(c.reviewer,value.author))add('association-mismatch',at('reviewer'));
     if(c.outcome==='pass'&&Array.isArray(c.findings)&&c.findings.length)add('record-inconsistency',at('findings'));
     if(Array.isArray(c.artifact_authors))for(let i=1;i<c.artifact_authors.length;i++){

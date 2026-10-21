@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 import {pathToFileURL} from 'node:url';
+import {performance} from 'node:perf_hooks';
 import {validate,createReport,formatReport,supportedRuntime} from './report.mjs';
 import {finding} from './findings.mjs';
 import {loadGraph} from './graph.mjs';
 import {renderOverview} from './overview.mjs';
-const help=`Vibe2Spec 0.1.0\n\nRead-only inspection:\n  node scripts/vibe2spec.mjs validate --workspace /absolute/workspace --entry relative/record.json --operation structure|implementation_readiness|lifecycle [--format json|readable]\n  node scripts/vibe2spec.mjs overview --workspace /absolute/workspace --entry relative/project.json\n\nBoth commands accept repeated --external-file /absolute/exact/file and --limit key=value.\nApproved limits and runtime requirements: docs/validation.md.\nReports do not replace user approval or separate review.\n`;
+import {buildReviewPacket,formatReviewPacket} from './review-packet.mjs';
+const help=`Vibe2Spec 0.1.0\n\nRead-only inspection:\n  node scripts/vibe2spec.mjs validate --workspace /absolute/workspace --entry relative/record.json --operation structure|implementation_readiness|lifecycle [--format json|readable]\n  node scripts/vibe2spec.mjs overview --workspace /absolute/workspace --entry relative/project.json\n  node scripts/vibe2spec.mjs review-packet --workspace /absolute/workspace --entry relative/review.json [--format json|readable]\n\nAll commands accept repeated --external-file /absolute/exact/file and --limit key=value.\nApproved limits and runtime requirements: docs/validation.md.\nReports and inspection packets do not replace user approval or separate review.\n`;
 export function parseArguments(args) {
  if(args.length===1 && ['--help','-h'].includes(args[0])) return {help:true};
  const [command,...rest]=args;
- if(!['validate','overview'].includes(command)) throw new TypeError('invalid-operation');
+ if(!['validate','overview','review-packet'].includes(command)) throw new TypeError('invalid-operation');
  const out={command,externalFiles:[],limits:{},format:'json'}, seen=new Set();
  for(let i=0;i<rest.length;i+=2) {
   const key=rest[i],value=rest[i+1];
@@ -25,6 +27,7 @@ export function parseArguments(args) {
  if(!out.workspace || !out.entry || !['json','readable'].includes(out.format)) throw new TypeError('invalid-argument');
  if(command==='validate' && !out.operation) throw new TypeError('invalid-operation');
  if(command==='overview' && (seen.has('--operation') || seen.has('--format'))) throw new TypeError('invalid-argument');
+ if(command==='review-packet' && seen.has('--operation')) throw new TypeError('invalid-argument');
  return out;
 }
 export async function main(args=process.argv.slice(2),stdout=process.stdout,stderr=process.stderr) {
@@ -34,6 +37,15 @@ export async function main(args=process.argv.slice(2),stdout=process.stdout,stde
   stdout.write(formatReport(report));return report.exit_status;
  }
  if(options.help) {stdout.write(help);return 0;}
+ if(options.command==='review-packet') {
+  if(!supportedRuntime()) {
+   const report=createReport({operation:'structure',entry:options.entry,findings:[finding('incomplete','check-not-supported')]});
+   stdout.write(formatReport(report,options.format));return report.exit_status;
+  }
+  const startedAt=performance.now();
+  const {packet,report}=buildReviewPacket(await loadGraph(options),{startedAt});
+  stdout.write(packet?formatReviewPacket(packet,options.format):formatReport(report,options.format));return report.exit_status;
+ }
  if(options.command==='overview') {
   const report=await validate({...options,operation:'structure'});
   if(report.exit_status!==0) {stdout.write(formatReport(report));return report.exit_status;}

@@ -26,6 +26,9 @@ export function scopePaths(graph, start, {normative = false} = {}) {
     if (!record) continue;
     if (normative && !['step','unit','decision','snapshot'].includes(record.kind)) continue;
     for (const descriptor of getReferences(record)) {
+      // A continuation baseline is historical evidence, never assessment input.
+      // Graph loading still follows this declared reference and checks its bytes.
+      if (record.kind === 'review' && descriptor.pointer === '/content/continuation/baseline_review_ref') continue;
       if (graph.artifacts.get(descriptor.ref?.path)?.sha256 === descriptor.ref?.sha256
         && (!descriptor.kind || resolveRef(graph,descriptor.ref,descriptor.kind))) pending.push(descriptor.ref.path);
     }
@@ -68,21 +71,147 @@ function unresolved(value) {
   if (value && typeof value === 'object') return Object.entries(value).some(([key,item]) => key !== 'expected' && unresolved(item));
   return false;
 }
+const coverageRefs = item => [...list(item?.input_refs),...list(item?.dependency_refs)];
+const refKey = value => JSON.stringify([value?.path,value?.sha256]);
+const findingKey = value => JSON.stringify([value?.code,value?.path]);
+function matchingSets(left, right, key = value => value) {
+  if (!Array.isArray(left) || !Array.isArray(right)) return false;
+  const a = new Set(left.map(key)), b = new Set(right.map(key));
+  return a.size === left.length && b.size === right.length && a.size === b.size && [...a].every(value => b.has(value));
+}
+/** Structural equality only; callers decide whether the outcomes permit reuse. */
+export function coverageMatches(a, b) {
+  return Boolean(a && b && typeof a.id === 'string' && a.id === b.id
+    && matchingSets(a.input_refs,b.input_refs,refKey)
+    && matchingSets(a.dependency_refs,b.dependency_refs,refKey)
+    && matchingSets(a.check_ids,b.check_ids));
+}
 export function reviewFindings(graph, reviewPath, {requirePass = true} = {}) {
+  return assessReview(graph,reviewPath,requirePass,new Set(),new Map());
+}
+function assessReview(graph, reviewPath, requirePass, ancestors, scopeCache) {
   const review = graph.records.get(reviewPath);
   if (review?.kind !== 'review') return [];
   const c = review.content ?? {};
   const out = [];
   const add = (code,pointer,related = null,category = 'readiness') => out.push(finding(category,code,reviewPath,pointer,related));
+  if (ancestors.has(reviewPath)) { add('review-continuation-cycle','/content/continuation'); return out; }
+  if (ancestors.size >= 64) { add('review-continuation-depth','/content/continuation'); return out; }
+  const chain = new Set(ancestors).add(reviewPath);
   if (requirePass && (!validRecord(graph,reviewPath) || review.lifecycle !== 'frozen' || c.outcome !== 'pass' || list(c.findings).length)) add('review-not-passing','/content/outcome');
   const reviewer = c.reviewer?.context_id;
   const authors = list(c.artifact_authors), workers = list(c.workers);
-  const scopedAuthors = [...scopePaths(graph,c.snapshot_ref?.path)].map(p => graph.records.get(p)?.author).filter(Boolean);
+  const assessmentScope = file => {
+    if (!scopeCache.has(file)) scopeCache.set(file,scopePaths(graph,file));
+    return scopeCache.get(file);
+  };
+  const scope = assessmentScope(c.snapshot_ref?.path);
+  const scopedAuthors = [...scope].map(p => graph.records.get(p)?.author).filter(Boolean);
   if (reviewer && [...authors,...workers,...scopedAuthors].some(a => a?.context_id === reviewer)) add('review-not-independent','/content/reviewer');
   for (const actor of scopedAuthors) {
     if (!authors.some(a => a?.session_id === actor.session_id && a?.context_id === actor.context_id)) add('association-mismatch','/content/artifact_authors',null,'structural');
   }
   if (!resolveRef(graph,c.snapshot_ref,'snapshot') || resolveRef(graph,c.snapshot_ref,'snapshot')?.lifecycle !== 'frozen') add('snapshot-membership-mismatch','/content/snapshot_ref',c.snapshot_ref?.path ?? null,'structural');
+
+  const covered = Object.hasOwn(c,'coverage');
+  const items = list(c.coverage), byId = new Map(items.map(item => [item?.id,item]));
+  const assessmentPaths = [...scope].filter(file => graph.records.get(file)?.kind !== 'snapshot');
+  const requiredChecks = new Map();
+  for (const file of assessmentPaths) {
+    const step = graph.records.get(file);
+    if (step?.kind === 'step') for (const check of list(step.content?.checks)) {
+      if (!requiredChecks.has(check?.id)) requiredChecks.set(check?.id,[]);
+      requiredChecks.get(check?.id).push(file);
+    }
+  }
+  const coveredPaths = new Set(), coveredChecks = new Set();
+  if (covered) {
+    if (!items.length) add('review-coverage-missing','/content/coverage');
+    items.forEach((item,index) => {
+      const pointer = `/content/coverage/${index}`;
+      const refs = coverageRefs(item);
+      const itemPaths = new Set();
+      for (const ref of refs) {
+        if (!ref || !scope.has(ref.path) || graph.artifacts.get(ref.path)?.sha256 !== ref.sha256
+          || (graph.records.has(ref.path) && !validRecord(graph,ref.path))) {
+          add('review-coverage-reference-invalid',pointer,ref?.path ?? null); continue;
+        }
+        itemPaths.add(ref.path); coveredPaths.add(ref.path);
+      }
+      for (const file of itemPaths) {
+        if (!graph.records.has(file)) continue;
+        for (const dependency of assessmentScope(file)) {
+          if (graph.records.get(dependency)?.kind !== 'snapshot' && !itemPaths.has(dependency)) add('review-coverage-dependency-missing',pointer,dependency);
+        }
+      }
+      for (const id of list(item?.check_ids)) {
+        const owners = requiredChecks.get(id) ?? [];
+        const included = owners.filter(file => itemPaths.has(file));
+        if (!included.length) add('review-coverage-check-mismatch',`${pointer}/check_ids`);
+        for (const file of included) coveredChecks.add(JSON.stringify([file,id]));
+      }
+      if (c.outcome === 'pass' && item?.outcome !== 'pass') add('review-coverage-not-passing',`${pointer}/outcome`);
+      if (item?.outcome === 'pass' && list(c.findings).some(issue => issue?.path === '' || itemPaths.has(issue?.path))) add('review-coverage-finding-conflict',`${pointer}/outcome`);
+    });
+    for (const file of assessmentPaths) if (!coveredPaths.has(file)) add('review-coverage-missing','/content/coverage',file);
+    for (const [id,owners] of requiredChecks) for (const file of owners) if (!coveredChecks.has(JSON.stringify([file,id]))) add('review-coverage-missing','/content/coverage',file);
+    const findingIdentities = new Set();
+    list(c.findings).forEach((item,index) => {
+      if (item?.path !== '' && !assessmentPaths.includes(item?.path)) add('review-finding-path-invalid',`/content/findings/${index}/path`,item?.path ?? null);
+      const key = findingKey(item);
+      if (findingIdentities.has(key)) add('review-finding-ambiguous',`/content/findings/${index}`);
+      findingIdentities.add(key);
+    });
+  }
+
+  if (Object.hasOwn(c,'continuation')) {
+    const continuation = c.continuation ?? {};
+    const baselinePath = continuation.baseline_review_ref?.path;
+    const baseline = resolveRef(graph,continuation.baseline_review_ref,'review');
+    const baselineContent = baseline?.content ?? {};
+    if (!covered || !Array.isArray(baselineContent.coverage) || !baselineContent.coverage.length) add('review-coverage-required','/content/continuation/baseline_review_ref',baselinePath ?? null);
+    if (scope.has(baselinePath)) add('review-baseline-in-scope','/content/continuation/baseline_review_ref',baselinePath);
+    const eligible = baseline && baseline.lifecycle === 'frozen' && baselineContent.phase === c.phase
+      && ['pass','changes_required'].includes(baselineContent.outcome) && Array.isArray(baselineContent.coverage) && baselineContent.coverage.length;
+    if (!eligible) add('review-baseline-invalid','/content/continuation/baseline_review_ref',baselinePath ?? null);
+    else {
+      const baselineIssues = assessReview(graph,baselinePath,false,chain,scopeCache);
+      if (baselineIssues.length) {
+        add('review-baseline-invalid','/content/continuation/baseline_review_ref',baselinePath);
+        out.push(...baselineIssues);
+      }
+    }
+    const baselineItems = list(baselineContent.coverage), baselineById = new Map(baselineItems.map(item => [item?.id,item]));
+    const reused = new Set(list(continuation.reused_coverage_ids));
+    list(continuation.reused_coverage_ids).forEach((id,index) => {
+      const current = byId.get(id), prior = baselineById.get(id);
+      if (!coverageMatches(current,prior) || current?.outcome !== 'pass' || prior?.outcome !== 'pass') add('review-reuse-mismatch',`/content/continuation/reused_coverage_ids/${index}`,baselinePath ?? null);
+    });
+    const priorFindings = new Map();
+    for (const item of list(baselineContent.findings)) {
+      const key = findingKey(item);
+      if (priorFindings.has(key)) add('review-finding-ambiguous','/content/continuation/baseline_review_ref',baselinePath ?? null);
+      priorFindings.set(key,item);
+    }
+    const resolutions = new Set(), resolved = new Set();
+    list(continuation.finding_resolutions).forEach((resolution,index) => {
+      const pointer = `/content/continuation/finding_resolutions/${index}`;
+      const key = findingKey(resolution), priorFinding = priorFindings.get(key);
+      const ids = list(resolution?.coverage_ids);
+      const associatedFreshPass = ids.some(id => {
+        const current = byId.get(id), prior = baselineById.get(id);
+        return current?.outcome === 'pass' && !reused.has(id) && prior
+          && (priorFinding?.path === '' || coverageRefs(prior).some(ref => ref?.path === priorFinding?.path));
+      });
+      if (!priorFinding || resolutions.has(key) || typeof resolution?.detail !== 'string' || !resolution.detail.trim()
+        || !ids.length || ids.some(id => byId.get(id)?.outcome !== 'pass' || reused.has(id)) || !associatedFreshPass) add('review-finding-resolution-invalid',pointer,baselinePath ?? null);
+      else resolved.add(key);
+      resolutions.add(key);
+    });
+    if (c.outcome === 'pass') for (const [key,item] of priorFindings) {
+      if (!resolved.has(key)) add('review-finding-unresolved','/content/continuation/finding_resolutions',item?.path || baselinePath || null);
+    }
+  }
   return sortFindings(out);
 }
 export function checkStepReadiness(graph, stepPath, {project = graph.records.get(graph.entry), requireContext = true} = {}) {

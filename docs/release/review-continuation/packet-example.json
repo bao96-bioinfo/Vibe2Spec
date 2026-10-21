@@ -1,0 +1,59 @@
+{
+  "context": "example",
+  "description": "Fictional synthetic fixture used by tests/review-packet.test.mjs. Byte counts demonstrate scope selection only; they are not measured token savings.",
+  "runtime": "26.11.1",
+  "packet": {
+    "packet_version": 1,
+    "notice": "Advisory only: candidate reuse requires independent impact assessment. This packet grants no approval, review pass, or permission to execute.",
+    "current_review": {
+      "path": "reviews/current.json",
+      "sha256": "68b846efb83d65673763173bcba0bd4ebf9f92b80959124f9aa5105ad138f990",
+      "id": "work-review",
+      "revision": 2,
+      "lifecycle": "draft"
+    },
+    "phase": "pre_execution",
+    "snapshot_ref": {
+      "path": "snapshots/current.json",
+      "sha256": "832bf41b8617955a802658fed18b5fd98d55e4157662e3c76d3cd5cc069d3359"
+    },
+    "baseline_review": {
+      "path": "reviews/baseline.json",
+      "sha256": "e8c4b3e169d0c17996fa7cc196b7a2f075c44508c96714366aedffbbe3d2e441",
+      "id": "work-review",
+      "revision": 1,
+      "lifecycle": "frozen"
+    },
+    "baseline_snapshot_ref": {
+      "path": "snapshots/baseline.json",
+      "sha256": "6bc70fe408b16be4bfe2b44e6e529983a4bcf38dd3dc87c409ec68007f111f00"
+    },
+    "candidate_reuse_ids": [
+      "independent"
+    ],
+    "fresh_coverage_ids": [
+      "correct-result"
+    ],
+    "uncovered_paths": [],
+    "uncovered_checks": [],
+    "inspection_paths": [
+      "work/corrected.txt"
+    ],
+    "baseline_findings": [
+      {
+        "code": "wrong-result",
+        "path": "work/incorrect.txt",
+        "record_path": "reviews/baseline.json",
+        "pointer": "/content/findings/0"
+      }
+    ],
+    "measurements": {
+      "scope_files": 3,
+      "scope_bytes": 124054,
+      "inspection_files": 1,
+      "inspection_bytes": 18,
+      "graph_files_read": 8,
+      "graph_bytes_read": 129416
+    }
+  }
+}

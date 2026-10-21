@@ -27,6 +27,8 @@ Do not run prepared work, its tests, comparison scripts, or data operations befo
 
 For paired validation, also read [the bounded protocol](../../docs/paired-validation.md). Both workers receive identical approved specifications and saved inputs. Work in separate contexts and disjoint approved output paths. Do not read the other implementation or its results before your own implementation is fixed for comparison. Shared fixture generation requires an approved procedure; separately generated inputs with matching seed labels are insufficient.
 
+For a review correction, verify each finding against its cited requirement, then fix only the authorized defect and its necessary dependencies. Preserve the old version and provide the exact before/after file identities or commit range, a short per-finding resolution, changed paths, affected callers/settings, and available test evidence. Do not add unrelated cleanup or send the whole conversation. Return this [compact handoff](../../templates/review-handoff.md) to the coordinator for focused re-review; do not dispatch your own reviewers or claim that unchanged files are automatically unaffected.
+
 ## Execute and retain evidence
 
 Execute only after the coordinator establishes a passing pre-execution review with no unresolved findings and unchanged assessed contents. Recheck the exact implementation, settings, input identities, and relevant environment. Run only the approved commands, in their approved order, within the resource bounds.

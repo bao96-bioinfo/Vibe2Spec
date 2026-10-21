@@ -43,6 +43,8 @@ Preserve every version presented for approval or review. Editable drafts can cha
 
 Before implementation, obtain user approval covering the exact complete specification and a passing separate specification review. Read [the review guide](../../docs/review.md), then delegate [the reviewer skill](../vibe2spec-review/SKILL.md) with direct access to the artifacts. Missing choices or contradictions return to interview. A structurally valid JSON document or a worker-ready unit cannot bypass an unresolved current-step contract.
 
+Use one consolidated reviewer per phase and a [compact handoff](../../templates/review-handoff.md); do not copy the entire conversation into each review. Plan one full assessment and one correction assessment per phase unless applicable user-approved limits say otherwise. Manage all reviewer dispatch centrally. If blockers remain at the limit, report them and request an explicit budget extension or narrower scope; never infer a pass. For a correction, follow [review continuation](../../docs/review-continuation.md): preserve the baseline, keep the complete current snapshot, reuse explicit passing coverage only when still applicable, and check the fixes plus affected dependencies. Continue with the same independent reviewer when available; a replacement receives the durable evidence instead of an unbounded transcript.
+
 When helpers are available, run the read-only assessment from the installed package root with the approved paths:
 
 ```text

@@ -1,0 +1,35 @@
+# Design
+
+## Context
+
+See proposal.md. Existing review records are closed ordered objects and all readiness gates use reviewFindings. Graph loading already verifies exact references, bounds reads, and detects cycles. It loads one digest per physical path, so historical bytes must remain preserved. The user's incorporation request and existing development authorization permit implementation without another proposal-only approval round.
+
+## Goals / Non-Goals
+
+Reuse explicit review evidence, minimize repeated model input, and stop automatic fix loops. Preserve complete current snapshots and all user approval gates. Do not infer semantic dependencies from file hashes, guarantee a token reduction without measurements, migrate old records, add a dependency, or implement a host-level execution/token interceptor.
+
+## Decisions
+
+Add optional trailing review content fields in order: coverage, continuation. Existing records without them keep their exact old behavior; old validators reject the extension rather than silently accept it. Optional field handling retains closed schemas and ordering among present fields.
+
+A coverage item is {id,input_refs,dependency_refs,check_ids,outcome}; outcome uses pass, changes_required, unable_to_determine. Input references are nonempty. IDs, references, and check IDs are unique within their scope. Each entry identifies a complete obligation. All current non-snapshot scope artifacts must be covered; structured record references require their transitive assessment dependencies in the same entry. Every required step check needs an entry including its owning step and dependencies. A finding on an item's input or dependency path prevents that item from passing; a whole-review finding prevents every item from passing. Raw-file imports, callers, runtime conditions, and scientific assumptions still require the reviewer's impact assessment.
+
+Continuation is {baseline_review_ref,reused_coverage_ids,finding_resolutions}. Each resolution is {code,path,coverage_ids,detail}. The baseline is a valid frozen same-phase review with explicit complete coverage and outcome pass or changes_required. Baseline code/path finding pairs must be unambiguous. Reuse requires matching ID, exact input/dependency reference sets, check-ID sets, and passing outcomes. Preserve unchanged references where possible; identical bytes at a new path are conservatively fresh because paths can affect behavior.
+
+Non-reused items receive fresh review. A current pass requires all items passing and empty current findings, plus an explicit resolution for every baseline finding associated with at least one fresh passing coverage item. For covered reviews, finding.path is an exact covered artifact path, or an empty string for a whole-review finding; field and line details belong in message. At least one cited fresh passing item must preserve the ID of a baseline coverage item containing that finding path (any baseline item for a whole-review finding). This prevents unrelated fresh checks from resolving a defect while permitting corrected files at new preserved paths. Nonpassing corrections can leave findings unresolved. Every declared resolution identifies a real baseline finding and explains the correction. The baseline chain is recursively validated with bounded depth and cycle protection; invalid or incomplete inherited evidence cannot establish a pass.
+
+Keep the baseline outside the current assessment snapshot. getReferences/loadGraph traverse it for integrity; scopePaths skips only the explicit continuation baseline edge as historical provenance. Do not generally exempt earlier review authors or alter legacy independence tests. A correction can reuse the same reviewer through this separate reference; current product-author and worker separation still applies. Later phase independence remains governed by actual assessed scope.
+
+Add coverageMatches as a pure comparison helper and route all continuation gate checks through reviewFindings. Do not duplicate this logic in lifecycle code. Provide buildReviewPacket(graph) and a review-packet CLI command using --workspace, --entry, optional --format json|readable, --external-file and --limit. Entry is a draft or frozen review; existing validation checks references and record shapes first. Packet includes exact scope/baseline identities, candidate reuse/fresh IDs, inspection paths, baseline finding code/path locations, and actual scope/inspection byte counts. No artifact bodies, execution, writes, or guessed token counts. Candidate reuse requires a valid covered baseline and structural equality; output remains advisory even when the input review already passes. Current decision outcomes do not become approved through packet construction.
+
+Borrow concepts from the local Superpowers 7.0.0 task/re-review prompts: one task-focused spec+quality pass, a short handoff, the exact correction diff, per-finding resolutions, named-risk expansion, existing evidence before rerunning tests, and centralized reviewer dispatch. Write original wording and implementation; do not copy its scripts. Attribute the local files and their hashes. Same-reviewer continuation is our adaptation, not a claim about Superpowers. Do not import its ability to park genuine defects and mark completion after a round cap.
+
+Policy uses one full review and one correction review per phase as the normal bounded plan; further work needs a recorded extension or smaller scope. User-approved limits override this default. Record elapsed time, files/read scope, tool calls, and host-provided token usage when available; unknown token counts stay unknown. The helper enforces read limits, while agent effort limits remain instruction based. Three phase gates retain distinct responsibilities and reuse applicable prior evidence. Optional suggestions do not block; genuine defects outside the initial diff still do.
+
+## Risks / Trade-offs
+
+Incomplete dependency declarations can conceal impact: retain independent scope assessment and test changed dependencies/criteria. Hash equality is evidence of bytes, not behavioral independence. Legacy reviews cannot support item reuse, so their first correction needs a fresh explicit covered review. Snapshot records and exact whole-scope validation can still require machine reads of history; the packet prevents those bodies becoming repeated model input. A compact packet cannot establish consent or review authenticity.
+
+## Migration and verification
+
+No migration of old records. Add separate covered-review and correction templates; retain the legacy review template. Test successful partial-baseline reuse plus stale inputs/dependencies, missing coverage, finding-resolution gaps, invalid baselines/chains, phase mismatch, and worker self-review. Test the read-only CLI and actual inspection-path reduction on a small synthetic example. Run one bounded independent behavioral/review pass, then only targeted correction verification if needed. Run the full suite on Node.js 24.22.0 and 26.11.1 and rebuild both-host distribution. Preserve original acceptance evidence rather than rewriting old contracts.

@@ -1,0 +1,23 @@
+{
+  "kind": "bounded_instruction_behavior_probe",
+  "reviewer_context": "/root/focused_review_evaluation",
+  "recorded_at_utc": "2026-10-21T21:09:57.676240+00:00",
+  "scope": "Three synthetic next-action cases answered from the six assigned instruction files; these are proposed responses, not executed product reviews or evidence of universal model compliance.",
+  "responses": [
+    {
+      "case": "independent_formatter_unchanged",
+      "coordinator_response": "Preserve the initial review and its referenced files. Ask the worker to correct only the inclusive filter boundary under the existing approval and return the exact before/after identities. Send the same independent reviewer round 2 of 2 with the complete new snapshot, prior filter finding, unchanged formatter references, and a compact impact assessment. Keep execution pending until that correction review passes.",
+      "reviewer_response": "I will check the changed filter operator, threshold source, callers, and approved equality-boundary check, and resolve the original filter finding against fresh coverage. I will retain the formatter coverage only after confirming the baseline explicitly passed it and its exact inputs, dependencies, checks, and criteria still match; the filter fix must have no effect on it. I will use existing evidence and will not run the prepared tests. If all current obligations pass and every prior finding is resolved, I will return a passing correction review with the formatter ID recorded as reused."
+    },
+    {
+      "case": "unchanged_formatter_changed_shared_configuration",
+      "coordinator_response": "Add the changed shared configuration and the formatter obligation to the correction handoff as affected work. Preserve both configuration versions and show their approved decisions and effective use sites; do not propose the formatter as reusable merely because its file is unchanged. Keep the complete current snapshot and the same review budget.",
+      "reviewer_response": "I will mark formatter coverage fresh, inspect how the changed shared setting reaches its output, and compare that effective behavior and affected checks with the approved contract. I will expand to other consumers only where that setting creates a concrete impact. If the changed output lacks approval, I will report changes_required and return that decision to the coordinator; if evidence is missing, I will report unable_to_determine. I will not carry forward the old formatter pass or start a whole-project audit."
+    },
+    {
+      "case": "extra_unapproved_argument_after_round_two",
+      "coordinator_response": "Stop automatic review dispatch: the initial and correction rounds are used. Preserve the correction report, completed coverage, and the remaining unapproved-argument finding, and leave the pre-execution gate blocked. Return the argument and its behavioral consequence for an explicit decision, with the proposed next correction and review work. Request a recorded review-budget extension or an agreed narrower review scope before any further review; narrowing cannot clear the unresolved original gate. Do not launch reviewer 3 or execute the step.",
+      "reviewer_response": "Return changes_required with the remaining argument location, observed effective behavior, missing approved decision, and required resolution, retaining its finding identifier if already assigned. State which obligations passed and which remain unresolved. Report that the two-round budget is exhausted and the next work needs coordinator handling; do not dispatch another reviewer, approve the argument, or treat a nearly complete review as a pass."
+    }
+  ]
+}

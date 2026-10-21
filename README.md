@@ -282,6 +282,31 @@ If native delegation is unavailable, the workflow requests a separate review
 session. The relevant gate remains pending until a passing review is available.
 Checks and review must pass before the user can accept a step as finished.
 
+**Corrections receive a focused follow-up.** If the first review finds a boundary
+error in a filtering function but passes an independent report formatter, the
+next review checks the corrected boundary and affected callers. It can reuse the
+formatter's recorded pass when its exact inputs, dependencies, and criteria still
+match. Every earlier defect needs an explicit resolution; a changed dependency
+requires fresh review even when the calling file is unchanged.
+
+Each phase normally allows one initial review and one correction review. If
+blockers remain, the coordinator reports them before extending the budget.
+Reviewers receive a short file-based handoff, consolidate findings, and consult
+existing test evidence before requesting another run. These mechanisms adapt
+ideas from Superpowers while preserving Vibe2Spec's approval gates. See the
+[focused-review guide](docs/review-continuation.md) and
+[source notes](docs/review-sources.md).
+
+The read-only `review-packet` helper lists candidate reusable checks and the files
+needing inspection, without copying their contents into the report:
+
+```text
+node scripts/vibe2spec.mjs review-packet --workspace <workspace> --entry <review-record> --format readable
+```
+
+The packet is advice for the reviewer, not an approval. Its byte counts measure
+the proposed inspection scope, not model tokens or guaranteed time savings.
+
 The first release uses instructions, records, and review to control
 execution. These controls are not an operating-system sandbox. Their reliability
 depends on agents following the workflow and reviewers examining adequate evidence.

@@ -8,7 +8,7 @@ This format represents decisions and evidence. It does not itself enforce tool p
 
 ## Common envelope
 
-All fields in each table are required and appear in the listed order. Objects are closed: an unlisted field is invalid. Arrays preserve order. An empty array is a specified empty collection; it is not an unresolved value. All identifiers are case-sensitive.
+All fields in each table are required unless explicitly marked optional, and present fields appear in the listed order. Objects are closed: an unlisted field is invalid. Arrays preserve order. An empty array is a specified empty collection; it is not an unresolved value. All identifiers are case-sensitive.
 
 | Field | Type | Meaning |
 | --- | --- | --- |
@@ -211,10 +211,14 @@ Interface and method descriptions receive semantic review. Nonempty text alone d
 | `workers` | Array of implementation-worker Actors |
 | `outcome` | `pass`, `changes_required`, or `unable_to_determine` |
 | `findings` | Array of Finding |
+| `coverage` | Optional nonempty array of CoverageItem; see [review continuation](review-continuation.md) |
+| `continuation` | Optional Continuation object; requires `coverage` |
 
-The reviewer context must differ from every assessed artifact author's and relevant worker's context. Assessment scope includes the snapshot record, its entries, and all transitively referenced evidence. `artifact_authors` lists every distinct author of that scope, including earlier review authors. The list is sorted by UTF-8 bytes of `session_id`, then `context_id`. For non-record artifacts, author provenance comes from the actual handoff. Later phases therefore need a different reviewer when they assess earlier reviewers' reports. Actors with the same context identity are not separate reviewers merely because their session labels differ.
+The reviewer context must differ from every assessed artifact author's and relevant worker's context. Assessment scope includes the snapshot record, its entries, and transitively referenced evidence, excluding only the historical `continuation.baseline_review_ref` edge. That baseline remains subject to reference integrity and review validation. `artifact_authors` lists every distinct author of the assessment scope, including earlier review authors when actually in scope. The list is sorted by UTF-8 bytes of `session_id`, then `context_id`. For non-record artifacts, author provenance comes from the actual handoff. Later phases therefore need a different reviewer when they assess earlier reviewers' reports. Actors with the same context identity are not separate reviewers merely because their session labels differ.
 
 A pass requires no unresolved findings. An absent review, a non-pass outcome, or a changed assessed snapshot does not satisfy the gate. Pending review is represented by absence of a passing assessment and the project state, not an invented passing record. Reviewer independence also requires checking the actual handoff, not only the written actor labels.
+
+The optional fields extend version 1 without changing legacy records. Older validators reject these unrecognized fields and must be updated before inspecting covered reviews. Legacy reviews still require complete review and cannot establish reusable item-level coverage. A correction preserves the complete current snapshot and binds the historical baseline separately; it does not replace the scope with only a diff. The linked continuation contract defines the added closed types and mandatory applicability checks.
 
 ## Run records
 

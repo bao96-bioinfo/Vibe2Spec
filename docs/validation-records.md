@@ -42,13 +42,15 @@ All twelve kinds receive closed-field, field-order, primitive-type, required-fie
 | Decision and evidence | Selection variants, unique option identities, timestamp representation and explicit evidence references. |
 | Step and unit | Unique requirement, check and output identities; output path uniqueness; requirement-to-check associations; explicit pairing mode; declared method, interface, resource and fixture fields. |
 | Snapshot and approval | Unique snapshot paths, UTF-8 path ordering, self-entry exclusion, exact reference shapes and explicit approval scope fields. |
-| Review and run | Recorded actor associations, actor ordering and repeated authors, directly conflicting reviewer identities, pass/findings consistency, timestamp order and resource-use integer bounds. |
+| Review and run | Recorded actor associations, actor ordering and repeated authors, directly conflicting reviewer identities, pass/findings consistency, optional coverage and continuation shapes, timestamp order and resource-use integer bounds. |
 | Comparison | One or two runs according to mode, ordered correctness associations, distinct paired worker contexts, pairwise observation shape and explicit pairwise rule fields. |
 | Acceptance and amendment | Exact revision and reference fields, explicit user-response fields, nonempty amendment rationale and edit inventory, and declared change operations. |
 
 Cross-file digests, reference kinds, project identities, graph cycles, actual snapshot membership, approval coverage, unit ownership, comparison rule associations and lifecycle evidence require graph inspection. They are not inferred from a standalone record. Undisclosed history cannot establish that a selected revision is the newest revision.
 
 ## Limits of automated conclusions
+
+Covered reviews additionally receive [continuation checks](review-continuation.md) at readiness assessment: complete scope and required checks, exact reuse of passing coverage, valid same-phase baselines, and explicit fresh resolutions for baseline findings. Legacy reviews retain their existing behavior. These checks do not infer semantic dependencies or prove that a cited correction solves its finding.
 
 A nonempty method can still omit a necessary choice. An actor label does not prove a separate context. A response field does not authenticate user approval. A matching run record does not establish that execution occurred. The separate reviewer must assess complete decision coverage, agreement between readable and structured specifications, actual approval provenance, handoff independence and evidence authenticity.
 

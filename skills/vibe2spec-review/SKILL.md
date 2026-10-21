@@ -11,7 +11,7 @@ Assess the requested phase against exact approved content. Read [the review prot
 
 ## Confirm independence and scope
 
-Obtain the review phase, exact snapshot, complete reference scope, artifact author identities, relevant worker identities, approval provenance, and permitted read locations. Your context must differ from every assessed artifact author's and relevant worker's context. The assessment scope includes snapshot contents and transitive references, including earlier review reports. A later phase may therefore require a new reviewer context.
+Obtain the review phase, exact snapshot, complete reference scope, artifact author identities, relevant worker identities, approval provenance, and permitted read locations. Your context must differ from every assessed artifact author's and relevant worker's context. The assessment scope includes snapshot contents and transitive references, including earlier review reports; only an explicit continuation baseline edge is historical evidence outside it. A later phase may therefore require a new reviewer context.
 
 Check actual handoff provenance as well as actor labels. Renaming a session does not create independence. If independence or required artifacts cannot be established, report `unable_to_determine` and identify the missing evidence. Do not satisfy the gate by reviewing your own work. If native delegation is unavailable, a distinct review session must perform this assessment.
 
@@ -25,7 +25,11 @@ For `results`, inspect actual run records and available execution evidence. Matc
 
 ## Return an assessment
 
-Use the [review record](../../templates/review.json) with the actual phase and preserved assessment snapshot. Report `pass` only when all required evidence supports conformance and there are no unresolved findings. Use `changes_required` for established defects or missing decisions. Use `unable_to_determine` when evidence is insufficient to establish the assessment. Give each finding a stable code, exact affected file or field, observed condition, approved requirement, and required resolution.
+Use the [covered review](../../templates/review-covered.json) for a new assessment, or the [correction review](../../templates/review-correction.json) for a continuation. The [legacy review](../../templates/review.json) remains valid but cannot supply item-level reuse. Read [the continuation contract](../../docs/review-continuation.md) when recording coverage or corrections. Report `pass` only when all required evidence supports conformance and there are no unresolved findings. Use `changes_required` for established defects or missing decisions. Use `unable_to_determine` when evidence is insufficient to establish the assessment. Give each finding a stable code, affected artifact path, observed condition, approved requirement, and required resolution; put line or field details in its message.
+
+Within this phase, assess conformance and relevant quality together. Read the compact handoff and actual changed material once. On correction, inspect every prior finding's resolution, the exact fix, and affected dependencies; retain only explicitly passing applicable coverage. Unchanged bytes do not establish independence from changed callers, shared state, settings, or criteria. Expand to a named concrete risk, not a fresh whole-project audit by default. Check existing execution evidence before asking the coordinator for a specific additional test. Do not execute unapproved prepared work or dispatch further reviewers.
+
+Return all blockers together within the handoff's effort budget, normally one initial and one correction review per phase. At the limit, report unresolved issues and coverage still needed; do not continue an automatic review loop or convert an unresolved defect into a pass. Include actual effort observations when available, not guessed token counts. A candidate-reuse packet narrows navigation but cannot itself approve coverage.
 
 State recommendations separately. Do not approve a new value, replace a reference, relax a tolerance, or repair ambiguity on the user's behalf. A worker can correct a contradiction under existing approved decisions, then obtain fresh review of the changed work. A proposed behavioral change returns to the coordinator's interview and approval process.
 
